@@ -1,0 +1,725 @@
+[
+  {
+    "arcgisGlobalId": "{04052A64-5FEB-4DBC-A78F-B3E0BE637EF9}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.430906880000066,
+    "longitude": 12.32390262000007,
+    "properties": {
+      "globalid": "{04052A64-5FEB-4DBC-A78F-B3E0BE637EF9}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 14:21:25+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/26 14:21:25+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "04052a64-5feb-4dbc-a78f-b3e0be637ef9",
+    "images": [
+      "images/artwork_001_01.jpg"
+    ],
+    "primaryImage": "images/artwork_001_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0983980F-FE3C-4D03-8C0E-54222F6A06A4}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43233209300007,
+    "longitude": 12.321879810000041,
+    "properties": {
+      "globalid": "{0983980F-FE3C-4D03-8C0E-54222F6A06A4}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:47:33+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/26 13:47:33+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "0983980f-fe3c-4d03-8c0e-54222f6a06a4",
+    "images": [
+      "images/artwork_002_01.jpg"
+    ],
+    "primaryImage": "images/artwork_002_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0B6A8108-E065-4CDE-84B0-1BC3120AFF1C}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.430948269000055,
+    "longitude": 12.326369045000035,
+    "properties": {
+      "globalid": "{0B6A8108-E065-4CDE-84B0-1BC3120AFF1C}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "multiple statues/ reliefs on wall",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:52:45+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/27 16:52:45+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "0b6a8108-e065-4cde-84b0-1bc3120aff1c",
+    "images": [
+      "images/artwork_003_01.jpg"
+    ],
+    "primaryImage": "images/artwork_003_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0C471CFC-8FC5-466F-B5D1-163F66F0BD26}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.432371887000045,
+    "longitude": 12.324600890000056,
+    "properties": {
+      "globalid": "{0C471CFC-8FC5-466F-B5D1-163F66F0BD26}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:52:29+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/27 16:52:29+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "0c471cfc-8fc5-466f-b5d1-163f66f0bd26",
+    "images": [
+      "images/artwork_004_01.jpg"
+    ],
+    "primaryImage": "images/artwork_004_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{120D5292-944F-4D3D-B165-C6D285250B2F}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43363677000008,
+    "longitude": 12.322349750000058,
+    "properties": {
+      "globalid": "{120D5292-944F-4D3D-B165-C6D285250B2F}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 14:19:28+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/26 14:19:28+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "120d5292-944f-4d3d-b165-c6d285250b2f",
+    "images": [
+      "images/artwork_005_01.jpg"
+    ],
+    "primaryImage": "images/artwork_005_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{16EEA23F-F225-488B-B11B-A7AB91177B65}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43404558000003,
+    "longitude": 12.322061330000054,
+    "properties": {
+      "globalid": "{16EEA23F-F225-488B-B11B-A7AB91177B65}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:38:44+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/26 13:38:44+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "16eea23f-f225-488b-b11b-a7ab91177b65",
+    "images": [
+      "images/artwork_006_01.jpg"
+    ],
+    "primaryImage": "images/artwork_006_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{1B350784-6E65-40E8-9DE7-C71FB61B4582}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43216204400005,
+    "longitude": 12.32107972600005,
+    "properties": {
+      "globalid": "{1B350784-6E65-40E8-9DE7-C71FB61B4582}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:49:33+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/26 13:49:33+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "1b350784-6e65-40e8-9de7-c71fb61b4582",
+    "images": [
+      "images/artwork_007_01.jpg"
+    ],
+    "primaryImage": "images/artwork_007_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{2927CE4E-E138-4671-A51D-F48B32940A83}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43243946000007,
+    "longitude": 12.322220150000021,
+    "properties": {
+      "globalid": "{2927CE4E-E138-4671-A51D-F48B32940A83}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 14:19:44+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/26 14:19:44+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "2927ce4e-e138-4671-a51d-f48b32940a83",
+    "images": [
+      "images/artwork_008_01.jpg"
+    ],
+    "primaryImage": "images/artwork_008_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{3971E738-0D4B-4519-AB09-9A289ED32B11}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43119701000006,
+    "longitude": 12.322947750000026,
+    "properties": {
+      "globalid": "{3971E738-0D4B-4519-AB09-9A289ED32B11}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 14:21:22+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/26 14:21:22+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "3971e738-0d4b-4519-ab09-9a289ed32b11",
+    "images": [
+      "images/artwork_009_01.jpg"
+    ],
+    "primaryImage": "images/artwork_009_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{3BCFF81F-B529-4252-9AED-70761D5E57DC}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43109307000003,
+    "longitude": 12.323411770000064,
+    "properties": {
+      "globalid": "{3BCFF81F-B529-4252-9AED-70761D5E57DC}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 14:21:23+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/26 14:21:23+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "3bcff81f-b529-4252-9aed-70761d5e57dc",
+    "images": [
+      "images/artwork_010_01.jpg",
+      "images/artwork_010_02.jpg"
+    ],
+    "primaryImage": "images/artwork_010_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{3D26EF79-601D-44EE-934D-0C5A2AE6AA3D}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43209893400007,
+    "longitude": 12.320941051000034,
+    "properties": {
+      "globalid": "{3D26EF79-601D-44EE-934D-0C5A2AE6AA3D}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:50:44+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/26 13:50:44+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "3d26ef79-601d-44ee-934d-0c5a2ae6aa3d",
+    "images": [
+      "images/artwork_011_01.jpg"
+    ],
+    "primaryImage": "images/artwork_011_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4DE68C62-DCEA-4A36-BB95-65DCB84E7A84}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43404036000004,
+    "longitude": 12.322068440000066,
+    "properties": {
+      "globalid": "{4DE68C62-DCEA-4A36-BB95-65DCB84E7A84}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:38:33+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/26 13:38:33+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "4de68c62-dcea-4a36-bb95-65dcb84e7a84",
+    "images": [
+      "images/artwork_012_01.jpg"
+    ],
+    "primaryImage": "images/artwork_012_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5142CDBA-BEF2-4A58-A6A7-63CC327D64F1}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.432463487000064,
+    "longitude": 12.32470673000006,
+    "properties": {
+      "globalid": "{5142CDBA-BEF2-4A58-A6A7-63CC327D64F1}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:52:30+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/27 16:52:30+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "5142cdba-bef2-4a58-a6a7-63cc327d64f1",
+    "images": [
+      "images/artwork_013_01.jpg"
+    ],
+    "primaryImage": "images/artwork_013_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{54372240-3C26-49BD-B2E6-7440E1A290C7}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43379547200004,
+    "longitude": 12.32334140200004,
+    "properties": {
+      "globalid": "{54372240-3C26-49BD-B2E6-7440E1A290C7}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:18:50+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/26 13:18:50+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "54372240-3c26-49bd-b2e6-7440e1a290c7",
+    "images": [
+      "images/artwork_014_01.jpg"
+    ],
+    "primaryImage": "images/artwork_014_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5A560534-BEC1-4CB0-A698-AEF1A1D89050}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43090867800004,
+    "longitude": 12.326457968000057,
+    "properties": {
+      "globalid": "{5A560534-BEC1-4CB0-A698-AEF1A1D89050}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:52:44+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/27 16:52:44+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "5a560534-bec1-4cb0-a698-aef1a1d89050",
+    "images": [
+      "images/artwork_015_01.jpg"
+    ],
+    "primaryImage": "images/artwork_015_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5DEF2281-7B8D-4524-995A-D9E604ADE96B}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43122828400004,
+    "longitude": 12.320663098000068,
+    "properties": {
+      "globalid": "{5DEF2281-7B8D-4524-995A-D9E604ADE96B}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 14:01:32+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/26 14:01:32+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "5def2281-7b8d-4524-995a-d9e604ade96b",
+    "images": [
+      "images/artwork_016_01.jpg"
+    ],
+    "primaryImage": "images/artwork_016_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{771DB429-5265-4F8B-BA1B-2152E49F2B8F}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43409668800007,
+    "longitude": 12.322191239000063,
+    "properties": {
+      "globalid": "{771DB429-5265-4F8B-BA1B-2152E49F2B8F}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "There are 8 on this wall",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:37:26+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/26 13:37:26+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "771db429-5265-4f8b-ba1b-2152e49f2b8f",
+    "images": [
+      "images/artwork_017_01.jpg"
+    ],
+    "primaryImage": "images/artwork_017_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{8E4DE8A6-C504-4A70-AAB6-66AC086C8F36}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43102347000007,
+    "longitude": 12.32195973000006,
+    "properties": {
+      "globalid": "{8E4DE8A6-C504-4A70-AAB6-66AC086C8F36}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 14:21:09+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/26 14:21:09+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "8e4de8a6-c504-4a70-aab6-66ac086c8f36",
+    "images": [
+      "images/artwork_018_01.jpg"
+    ],
+    "primaryImage": "images/artwork_018_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9022D815-E7AC-42D6-A590-C8C6336BDF02}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.431057174000046,
+    "longitude": 12.323660585000027,
+    "properties": {
+      "globalid": "{9022D815-E7AC-42D6-A590-C8C6336BDF02}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "multiple on wall",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 14:13:24+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/26 14:13:24+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "9022d815-e7ac-42d6-a590-c8c6336bdf02",
+    "images": [
+      "images/artwork_019_01.jpg"
+    ],
+    "primaryImage": "images/artwork_019_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9149A57B-278A-4348-A62F-1618AC4A7771}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43376765000005,
+    "longitude": 12.32148705000003,
+    "properties": {
+      "globalid": "{9149A57B-278A-4348-A62F-1618AC4A7771}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:35:12+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/27 16:35:12+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "9149a57b-278a-4348-a62f-1618ac4a7771",
+    "images": [
+      "images/artwork_020_01.jpg"
+    ],
+    "primaryImage": "images/artwork_020_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{92D275D8-5125-4F64-8977-BB560027A30A}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43235770000007,
+    "longitude": 12.321892160000061,
+    "properties": {
+      "globalid": "{92D275D8-5125-4F64-8977-BB560027A30A}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 14:20:08+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/26 14:20:08+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "92d275d8-5125-4f64-8977-bb560027a30a",
+    "images": [
+      "images/artwork_021_01.jpg"
+    ],
+    "primaryImage": "images/artwork_021_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{939AE128-ED80-48D9-8620-9BBC8B8B842E}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43208295900007,
+    "longitude": 12.32561335400004,
+    "properties": {
+      "globalid": "{939AE128-ED80-48D9-8620-9BBC8B8B842E}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "2 in 1",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:52:33+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/27 16:52:33+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "939ae128-ed80-48d9-8620-9bbc8b8b842e",
+    "images": [
+      "images/artwork_022_01.jpg"
+    ],
+    "primaryImage": "images/artwork_022_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9FFDA6E2-0B0C-4C47-944C-918AE361D6F4}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43412894800008,
+    "longitude": 12.323540939000054,
+    "properties": {
+      "globalid": "{9FFDA6E2-0B0C-4C47-944C-918AE361D6F4}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:20:41+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/26 13:20:41+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "9ffda6e2-0b0c-4c47-944c-918ae361d6f4",
+    "images": [
+      "images/artwork_023_01.jpg"
+    ],
+    "primaryImage": "images/artwork_023_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A73E0578-D0F6-4300-A5CC-047DFE8B3F49}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.430948200000046,
+    "longitude": 12.322910290000038,
+    "properties": {
+      "globalid": "{A73E0578-D0F6-4300-A5CC-047DFE8B3F49}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 14:21:24+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/26 14:21:24+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "a73e0578-d0f6-4300-a5cc-047dfe8b3f49",
+    "images": [
+      "images/artwork_024_01.jpg"
+    ],
+    "primaryImage": "images/artwork_024_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A92DEB11-7C77-4D4C-8B6E-6142B9FA535D}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43124886000004,
+    "longitude": 12.322713750000048,
+    "properties": {
+      "globalid": "{A92DEB11-7C77-4D4C-8B6E-6142B9FA535D}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "1 statue 2 reliefs",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 14:21:48+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/26 14:21:48+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "a92deb11-7c77-4d4c-8b6e-6142b9fa535d",
+    "images": [
+      "images/artwork_025_01.jpg",
+      "images/artwork_025_02.jpg"
+    ],
+    "primaryImage": "images/artwork_025_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B14ECFEB-D105-42E6-8E03-1CE2865AD80A}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.431013051000036,
+    "longitude": 12.326666162000038,
+    "properties": {
+      "globalid": "{B14ECFEB-D105-42E6-8E03-1CE2865AD80A}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "multiple on building",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:52:41+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/27 16:52:41+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "b14ecfeb-d105-42e6-8e03-1ce2865ad80a",
+    "images": [
+      "images/artwork_026_01.jpg"
+    ],
+    "primaryImage": "images/artwork_026_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B6A75011-FF35-4511-9180-FCDFAB8DE8F6}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.433738008000034,
+    "longitude": 12.322327994000034,
+    "properties": {
+      "globalid": "{B6A75011-FF35-4511-9180-FCDFAB8DE8F6}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "Smaller reliefs above",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:40:16+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/26 13:40:16+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "b6a75011-ff35-4511-9180-fcdfab8de8f6",
+    "images": [
+      "images/artwork_027_01.jpg"
+    ],
+    "primaryImage": "images/artwork_027_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{BAFF92F1-E03F-4E8F-BCF2-7AD1B85CF051}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43208825000005,
+    "longitude": 12.325592407000045,
+    "properties": {
+      "globalid": "{BAFF92F1-E03F-4E8F-BCF2-7AD1B85CF051}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "3 patere also on wall",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:52:32+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/27 16:52:32+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "baff92f1-e03f-4e8f-bcf2-7ad1b85cf051",
+    "images": [
+      "images/artwork_028_01.jpg"
+    ],
+    "primaryImage": "images/artwork_028_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C9C9150D-8878-48BD-B4CA-605847D24E39}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43390064000005,
+    "longitude": 12.321724710000069,
+    "properties": {
+      "globalid": "{C9C9150D-8878-48BD-B4CA-605847D24E39}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:35:11+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/27 16:35:11+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "c9c9150d-8878-48bd-b4ca-605847d24e39",
+    "images": [
+      "images/artwork_029_01.jpg",
+      "images/artwork_029_02.jpg"
+    ],
+    "primaryImage": "images/artwork_029_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E15F389C-7BA1-4CA6-B3B9-871FE0543856}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43098013900004,
+    "longitude": 12.326621414000044,
+    "properties": {
+      "globalid": "{E15F389C-7BA1-4CA6-B3B9-871FE0543856}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "Tons of patere on building too",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:52:40+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/10/27 16:52:40+00",
+      "Editor": "v26b.MONU_serendpt"
+    },
+    "id": "e15f389c-7ba1-4ca6-b3b9-871fe0543856",
+    "images": [
+      "images/artwork_030_01.jpg"
+    ],
+    "primaryImage": "images/artwork_030_01.jpg"
+  }
+]

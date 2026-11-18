@@ -1,0 +1,216 @@
+---
+name: Terracotta & Meridian
+colors:
+  surface: '#f7f9fb'
+  surface-dim: '#d8dadc'
+  surface-bright: '#f7f9fb'
+  surface-container-lowest: '#ffffff'
+  surface-container-low: '#f2f4f6'
+  surface-container: '#eceef0'
+  surface-container-high: '#e6e8ea'
+  surface-container-highest: '#e0e3e5'
+  on-surface: '#191c1e'
+  on-surface-variant: '#45464d'
+  inverse-surface: '#2d3133'
+  inverse-on-surface: '#eff1f3'
+  outline: '#76777d'
+  outline-variant: '#c6c6cd'
+  surface-tint: '#565e74'
+  primary: '#000000'
+  on-primary: '#ffffff'
+  primary-container: '#131b2e'
+  on-primary-container: '#7c839b'
+  inverse-primary: '#bec6e0'
+  secondary: '#ad3217'
+  on-secondary: '#ffffff'
+  secondary-container: '#ff6d4d'
+  on-secondary-container: '#681000'
+  tertiary: '#000000'
+  on-tertiary: '#ffffff'
+  tertiary-container: '#001d31'
+  on-tertiary-container: '#188ace'
+  error: '#ba1a1a'
+  on-error: '#ffffff'
+  error-container: '#ffdad6'
+  on-error-container: '#93000a'
+  primary-fixed: '#dae2fd'
+  primary-fixed-dim: '#bec6e0'
+  on-primary-fixed: '#131b2e'
+  on-primary-fixed-variant: '#3f465c'
+  secondary-fixed: '#ffdad3'
+  secondary-fixed-dim: '#ffb4a4'
+  on-secondary-fixed: '#3d0600'
+  on-secondary-fixed-variant: '#8b1901'
+  tertiary-fixed: '#cce5ff'
+  tertiary-fixed-dim: '#93ccff'
+  on-tertiary-fixed: '#001d31'
+  on-tertiary-fixed-variant: '#004b73'
+  background: '#f7f9fb'
+  on-background: '#191c1e'
+  surface-variant: '#e0e3e5'
+typography:
+  display-lg:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 36px
+    fontWeight: '700'
+    lineHeight: 44px
+    letterSpacing: -0.02em
+  display-lg-mobile:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 30px
+    fontWeight: '700'
+    lineHeight: 38px
+    letterSpacing: -0.02em
+  headline-lg:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 26px
+    fontWeight: '600'
+    lineHeight: 34px
+    letterSpacing: -0.015em
+  headline-md:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 22px
+    fontWeight: '600'
+    lineHeight: 30px
+    letterSpacing: -0.01em
+  headline-sm:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 18px
+    fontWeight: '600'
+    lineHeight: 26px
+  body-lg:
+    fontFamily: Inter
+    fontSize: 16px
+    fontWeight: '400'
+    lineHeight: 24px
+  body-md:
+    fontFamily: Inter
+    fontSize: 14px
+    fontWeight: '400'
+    lineHeight: 20px
+  body-sm:
+    fontFamily: Inter
+    fontSize: 13px
+    fontWeight: '400'
+    lineHeight: 18px
+  label-lg:
+    fontFamily: Inter
+    fontSize: 14px
+    fontWeight: '600'
+    lineHeight: 20px
+    letterSpacing: 0.01em
+  label-md:
+    fontFamily: Inter
+    fontSize: 12px
+    fontWeight: '500'
+    lineHeight: 16px
+    letterSpacing: 0.02em
+  label-sm:
+    fontFamily: Inter
+    fontSize: 11px
+    fontWeight: '600'
+    lineHeight: 14px
+    letterSpacing: 0.04em
+  carto-mono:
+    fontFamily: Inter
+    fontSize: 11px
+    fontWeight: '500'
+    lineHeight: 14px
+    letterSpacing: 0.06em
+rounded:
+  sm: 0.25rem
+  DEFAULT: 0.5rem
+  md: 0.75rem
+  lg: 1rem
+  xl: 1.5rem
+  full: 9999px
+spacing:
+  gutter: 1rem
+  gutter-mobile: 0.75rem
+  margin: 1.25rem
+  margin-mobile: 1rem
+  space-xs: 0.25rem
+  space-sm: 0.5rem
+  space-md: 0.75rem
+  space-lg: 1.25rem
+  space-xl: 2rem
+---
+
+## Brand & Style
+The design system articulates an intersection of civic cartography and curated gallery presentation. Designed for urban navigators, cultural patrons, and municipal GIS researchers, the aesthetic replaces clinical technical mapping with editorial warmth and archival rigor.
+
+The visual direction merges **Minimalism** with **Cartographic Precision**:
+- High-contrast legibility pairing rich slate grounds with tactile gallery ivory backdrops.
+- Expressive editorial curation juxtaposed against functional, micro-calibrated navigational affordances.
+- Restrained, intentional chrome that prioritizes immersive geospatial viewports and museum-grade public art metadata.
+- Tactile floating controls designed for one-handed field navigation under varying outdoor light conditions.
+
+## Colors
+The palette balances institutional archival depth with purposeful navigational signals:
+
+- **Primary (`#0F172A` - Rich Charcoal Slate)**: Anchor for display headlines, active chrome, primary sheet containers, high-contrast markers, and grounded bottom navigation.
+- **Secondary (`#E05638` - Ochre Terracotta)**: Reserved exclusively for art highlights, curated walking tour focal points, exhibition badges, and primary interactive milestones.
+- **Tertiary (`#0284C7` - Waypoint Cyan)**: Dedicated to cartographic interactions, GPS pathfinding poly-lines, live telemetry rings, and active GIS route switches.
+- **Neutral Canvas (`#F8FAFC` to `#FFFFFF` - Sand & Gallery Ivory)**: Clean neutral fields for cards, bottom sheet panels, and search drawer backdrops, preventing visual fatigue across dense metadata.
+- **Structural Outlines (`#E2E8F0` / `#CBD5E1`)**: Low-contrast borders creating disciplined dividers without competing with visual photography or vector vector tiles.
+- **Status & Feedback**: Success (`#0D9488`), Warning (`#D97706`), and Danger (`#BE123C`) calibrated to maintain harmony with the warm terracotta and cool cyan anchors.
+
+## Typography
+The system employs **Plus Jakarta Sans** for editorial presence and display authority, paired with **Inter** for dense geospatial attributes, distances, and long-form curatorial statements.
+
+- Use `display-lg` and `headline-lg` for artwork monographs, curated trail titles, and featured exhibition covers.
+- Use `headline-md` and `headline-sm` within map preview drawers, bottom sheet titles, and venue cards.
+- Use `carto-mono` (Inter, uppercase with tabular numerals and track spacing) strictly for geographic coordinates (Lat/Long), bearing degrees, spatial accuracy radii, and cadastral reference IDs.
+- Preserve body text line-height at 1.5x minimum to ensure outdoor readability on mobile screens.
+
+## Layout & Spacing
+A 4-column mobile-first fluid layout forms the foundation, transitioning into an 8-column canvas on tablet/field devices. Layout prioritizes expansive full-bleed map canvases overlaid with docked sheets and floating spatial nodes.
+
+- **Map Canvas Margin**: Floating spatial utility controls (compass, pitch toggle, layer switcher, user location) float with a consistent `1rem` safe offset from viewport edges and active sheet boundaries.
+- **Dynamic Bottom Sheets**: The bottom sheet conforms to three calibrated snap points: collapsed peek (72px), preview card (35% viewport), and curatorial longform (88% viewport).
+- **Component rhythm**: Internal card content strictly adheres to `space-sm` (4-8px) for related metadata pairs and `space-lg` (20px) between distinct structural sections.
+
+## Elevation & Depth
+Elevation mimics stacked physical layers over an infinite cartographic surface using low-opacity, slate-tinted ambient shadows combined with delicate 1px borders.
+
+- **Level 0 (Map Surface)**: Base raster and vector tiles, coordinate grids, and polygon boundaries. Flat.
+- **Level 1 (In-Canvas Cards & Tiles)**: Inline gallery list views, horizontal scroll strips. Border `1px solid #E2E8F0`, surface `#FFFFFF`.
+- **Level 2 (Floating Action Controls & Map Nodes)**: Tactile floating compass, re-center trigger, and layer HUD. Surface `#FFFFFF` with 80% backdrop blur, border `1px solid rgba(226, 232, 240, 0.8)`, shadow: `0 4px 12px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04)`.
+- **Level 3 (Modal Sheets & Waypoint Panels)**: Bottom sheets and search drawers. Surface `#FFFFFF`, shadow: `0 -8px 24px -4px rgba(15, 23, 42, 0.12), 0 -2px 8px -1px rgba(15, 23, 42, 0.04)`.
+- **Level 4 (Wayfinding Heads-Up Overlay)**: Turn indicators, artwork audio players. Surface `#0F172A` with `#FFFFFF` high-contrast typography, shadow: `0 12px 32px -4px rgba(15, 23, 42, 0.25)`.
+
+## Shapes
+A disciplined hybrid geometric system:
+
+- Structural surfaces (bottom sheets, standard preview cards, modal drawers) implement `roundedness: 2` (0.5rem base, `1rem` on container corners) to mirror contemporary architectural cut lines.
+- Contextual metadata tokens (medium tags, walking distances, GIS coordinates, audio length tags) override to pure full pills (`9999px`) to distinguish actionable tags from structural content containers.
+- Floating round map buttons maintain symmetrical 44x44px circular or 12px rounded-squircle profiles to maximize mobile tap ergonomics.
+
+## Components
+
+### Floating Map HUD & GIS Controls
+- **Geometry & Alignment**: Stacked vertical cluster pinned to the trailing edge, 44x44px footprint.
+- **Surface**: Ultra-dense white acrylic background (`rgba(255, 255, 255, 0.94)` with `backdrop-filter: blur(12px)`), hairline stroke `1px solid #E2E8F0`.
+- **Icons**: Slate `#0F172A` iconography at 20px. Active states (such as tracking lock) illuminate with Waypoint Cyan (`#0284C7`) background tints.
+
+### Badges & Pill Tags
+- **Medium & Category Pills**: Gallery ivory background (`#F1F5F9`), slate text (`#334155`), hairline border (`#E2E8F0`).
+- **Distance & Spatial Badges**: Waypoint Cyan tint (`#E0F2FE`), cyan text (`#0369A1`), paired with a leading SVG bearing arrow.
+- **Curatorial Highlights**: Warm terracotta background (`#FEE2E2`), terracotta text (`#991B1B`), indicating featured public monuments.
+
+### Bottom Sheet Cards (Art Discovery)
+- **Header**: Contains drag-handle (36x4px, `#CBD5E1`), followed by artist name (`body-sm`), monument title (`headline-md`), and inline spatial badges.
+- **Media Module**: 16:9 aspect ratio image frame with 12px internal radius, subtle inner shadow to define ivory sculpture edges against light backgrounds.
+- **Action Strip**: Primary split action—"Navigate via GIS" (Solid Cyan `#0284C7`, white text) and "Curatorial Audio" (Charcoal Slate `#0F172A`, white text).
+
+### Buttons
+- **Primary Action**: Terracotta `#E05638` or Slate `#0F172A`, 48px height for thumb targets, bold font, rounded to 12px.
+- **Secondary / Ghost**: Transparent fill, 1px border `#CBD5E1`, slate label, subtle `#F8FAFC` fill on press.
+
+### Inputs & Spatial Search Field
+- **Surface**: Integrated pill or 12px rounded bar floating over map canopy.
+- **Styling**: `#FFFFFF` background, `0 4px 16px rgba(15, 23, 42, 0.08)` elevation, leading search glyph in slate, trailing voice/filter toggle in Ochre Terracotta (`#E05638`).
+
+### Navigation Bar (Mobile)
+- **Placement**: Bottom-anchored bar with safe-area padding.
+- **Visuals**: Grounded translucent slate/white background, 4 primary destinations (Explore Map, Curated Trails, Saved Works, Settings). Selected item flagged with a subtle 4px terracotta geometric dot indicator.

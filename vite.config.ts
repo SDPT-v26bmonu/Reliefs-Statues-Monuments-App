@@ -1,0 +1,38 @@
+import tailwindcss from '@tailwindcss/vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { defineConfig, loadEnv } from 'vite';
+
+const ROOT_DIR = path.dirname(fileURLToPath(import.meta.url));
+
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '');
+  const mapsApiKey =
+    process.env.VITE_GOOGLE_MAPS_API_KEY ||
+    env.VITE_GOOGLE_MAPS_API_KEY ||
+    process.env.GOOGLE_MAPS_API_KEY ||
+    env.GOOGLE_MAPS_API_KEY ||
+    '';
+
+  return {
+    plugins: [react(), tailwindcss()],
+    define: mapsApiKey
+      ? {
+          'import.meta.env.VITE_GOOGLE_MAPS_API_KEY': JSON.stringify(mapsApiKey),
+        }
+      : undefined,
+    resolve: {
+      alias: {
+        '@': path.resolve(ROOT_DIR, '.'),
+      },
+    },
+    server: {
+      // HMR is disabled in AI Studio via DISABLE_HMR env var.
+      // Do not modify—file watching is disabled to prevent flickering during agent edits.
+      hmr: process.env.DISABLE_HMR !== 'true',
+      // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
+      watch: process.env.DISABLE_HMR === 'true' ? null : {},
+    },
+  };
+});

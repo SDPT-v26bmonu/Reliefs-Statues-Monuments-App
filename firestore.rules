@@ -1,0 +1,95 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() >= 1 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isVerifiedUser() {
+      return isSignedIn() && request.auth.token.email_verified == true;
+    }
+
+    function isPremadeTrailId(trailId) {
+      return trailId in [
+        'dorsoduro-central-survey',
+        'dorsoduro-west-survey',
+        'dorsoduro-east-survey'
+      ];
+    }
+
+    function isValidTrailPhoto(data) {
+      return data.keys().hasAll([
+          'trailId',
+          'trailTitle',
+          'imageDataUrl',
+          'authorUid',
+          'authorName',
+          'createdAt'
+        ])
+        && data.keys().hasOnly([
+          'trailId',
+          'trailTitle',
+          'imageDataUrl',
+          'caption',
+          'authorUid',
+          'authorName',
+          'stopTitle',
+          'lat',
+          'lng',
+          'createdAt'
+        ])
+        && data.trailId is string
+        && isPremadeTrailId(data.trailId)
+        && data.trailTitle is string
+        && data.trailTitle.size() >= 1
+        && data.trailTitle.size() <= 120
+        && data.imageDataUrl is string
+        && data.imageDataUrl.size() >= 30
+        && data.imageDataUrl.size() <= 450000
+        && data.imageDataUrl.matches('^data:image/(jpeg|jpg|png|webp);base64,[A-Za-z0-9+/=]+$')
+        && data.authorUid is string
+        && data.authorUid.size() >= 1
+        && data.authorUid.size() <= 128
+        && data.authorUid == request.auth.uid
+        && data.authorName is string
+        && data.authorName.size() >= 1
+        && data.authorName.size() <= 80
+        && data.createdAt == request.time
+        && (!data.keys().hasAny(['caption']) || (data.caption is string && data.caption.size() <= 240))
+        && (!data.keys().hasAny(['stopTitle']) || (data.stopTitle is string && data.stopTitle.size() <= 120))
+        && (!data.keys().hasAny(['lat']) || (data.lat is number && data.lat >= -90 && data.lat <= 90))
+        && (!data.keys().hasAny(['lng']) || (data.lng is number && data.lng >= -180 && data.lng <= 180));
+    }
+
+    match /trailPhotos/{photoId} {
+      allow get: if isValidId(photoId);
+      allow list: if isPremadeTrailId(resource.data.trailId);
+
+      allow create: if isVerifiedUser()
+        && isValidId(photoId)
+        && isValidTrailPhoto(incoming());
+
+      allow update: if false;
+
+      allow delete: if isVerifiedUser()
+        && isValidId(photoId)
+        && existing().authorUid == request.auth.uid;
+    }
+  }
+}

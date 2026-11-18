@@ -1,0 +1,88 @@
+{
+  "entities": {
+    "TrailPhoto": {
+      "title": "TrailPhoto",
+      "description": "Public route photo uploaded by a visitor along one of the premade Dorsoduro walking trails.",
+      "type": "object",
+      "properties": {
+        "trailId": {
+          "type": "string",
+          "description": "Identifier of the premade curated trail (must not be custom-route).",
+          "enum": [
+            "dorsoduro-central-survey",
+            "dorsoduro-west-survey",
+            "dorsoduro-east-survey"
+          ],
+          "minLength": 1,
+          "maxLength": 80,
+          "pattern": "^[a-z0-9\\-]+$"
+        },
+        "trailTitle": {
+          "type": "string",
+          "description": "Display title of the premade curated trail.",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "imageDataUrl": {
+          "type": "string",
+          "description": "Compressed JPEG/PNG/WebP data URL of the user's photo.",
+          "minLength": 30,
+          "maxLength": 450000,
+          "pattern": "^data:image/(jpeg|jpg|png|webp);base64,[A-Za-z0-9+/=]+$"
+        },
+        "caption": {
+          "type": "string",
+          "description": "Optional short note about the moment along the route.",
+          "maxLength": 240
+        },
+        "authorUid": {
+          "type": "string",
+          "description": "Firebase Auth UID of the authenticated uploader.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "authorName": {
+          "type": "string",
+          "description": "Public display name shown with the photo.",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "stopTitle": {
+          "type": "string",
+          "description": "Nearest artwork stop along the trail when captured.",
+          "maxLength": 120
+        },
+        "lat": {
+          "type": "number",
+          "description": "Optional GPS latitude where the photo was captured."
+        },
+        "lng": {
+          "type": "number",
+          "description": "Optional GPS longitude where the photo was captured."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the photo was uploaded."
+        }
+      },
+      "required": [
+        "trailId",
+        "trailTitle",
+        "imageDataUrl",
+        "authorUid",
+        "authorName",
+        "createdAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/trailPhotos/{photoId}": {
+      "schema": {
+        "$ref": "#/entities/TrailPhoto"
+      },
+      "description": "Public traveler photos captured along premade curated Dorsoduro trails."
+    }
+  }
+}

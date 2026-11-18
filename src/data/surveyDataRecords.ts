@@ -1,0 +1,15915 @@
+// Auto-imported from full ArcGIS Survey123 dataset:
+// - artworks_4a797b48.json (402 records across 10 Venice regions)
+// - image_manifest_7c28216e.json (475 attachment mappings)
+// - lens_test_cases_c20d0df7.json (402 recognition test cases)
+
+export interface RawSurveyArtwork {
+  arcgisGlobalId: string;
+  arcgisObjectId: number | null;
+  category: string;
+  latitude: number;
+  longitude: number;
+  properties: {
+    globalid: string;
+    what_type_of_artwork_are_you_lo: 'Statues' | 'Reliefs' | 'Monuments';
+    artist: string | null;
+    artworks_date: string | null;
+    general_notes: string | null;
+    _3d_model_captured: string | null;
+    CreationDate: string;
+    Creator: string;
+    EditDate: string;
+    Editor: string;
+    region: string;
+  };
+  id: string;
+  images: string[];
+  primaryImage: string;
+}
+
+export interface RawImageManifestEntry {
+  arcgisGlobalId: string;
+  attachmentId: string | null;
+  originalFilename: string;
+  imagePath: string;
+}
+
+export interface RawLensTestCase {
+  testImage: string;
+  expectedArtworkId: string;
+  latitude: number;
+  longitude: number;
+}
+
+// All 475 ArcGIS Survey123 reference photos on disk in /public/assets/aistudio/ matched via image_manifest.json & GlobalID
+export const EXISTING_ARCHIVE_IMAGE_URL_MAP: Record<string, string> = {
+  "images/artwork_001_01.jpg": "/assets/aistudio/artwork_001_01_dc42561b.jpg",
+  "images/artwork_002_01.jpg": "/assets/aistudio/artwork_002_01_36d89b8f.jpg",
+  "images/artwork_002_02.jpg": "/assets/aistudio/artwork_002_02_d070f2dc.jpg",
+  "images/artwork_003_01.jpg": "/assets/aistudio/artwork_003_01_78214ceb.jpg",
+  "images/artwork_004_01.jpg": "/assets/aistudio/artwork_004_01_99637032.jpg",
+  "images/artwork_005_01.jpg": "/assets/aistudio/artwork_005_01_e19fb20d.jpg",
+  "images/artwork_006_01.jpg": "/assets/aistudio/artwork_006_01_5d0271f4.jpg",
+  "images/artwork_007_01.jpg": "/assets/aistudio/artwork_007_01_4fe14b09.jpg",
+  "images/artwork_008_01.jpg": "/assets/aistudio/artwork_008_01_711625ee.jpg",
+  "images/artwork_009_01.jpg": "/assets/aistudio/artwork_009_01_87468ce6.jpg",
+  "images/artwork_010_01.jpg": "/assets/aistudio/artwork_010_01_34d2175b.jpg",
+  "images/artwork_011_01.jpg": "/assets/aistudio/artwork_011_01_b7b48584.jpg",
+  "images/artwork_011_02.jpg": "/assets/aistudio/artwork_011_02_403968cc.jpg",
+  "images/artwork_011_03.jpg": "/assets/aistudio/artwork_011_03_b35b6f93.jpg",
+  "images/artwork_012_01.jpg": "/assets/aistudio/artwork_012_01_2b988106.jpg",
+  "images/artwork_013_01.jpg": "/assets/aistudio/artwork_013_01_1099facd.jpg",
+  "images/artwork_014_01.jpg": "/assets/aistudio/artwork_014_01_99a12369.jpg",
+  "images/artwork_014_02.jpg": "/assets/aistudio/artwork_014_02_d5179125.jpg",
+  "images/artwork_015_01.jpg": "/assets/aistudio/artwork_015_01_db48cf6c.jpg",
+  "images/artwork_016_01.jpg": "/assets/aistudio/artwork_016_01_19adbea5.jpg",
+  "images/artwork_017_01.jpg": "/assets/aistudio/artwork_017_01_f7d33785.jpg",
+  "images/artwork_018_01.jpg": "/assets/aistudio/artwork_018_01_b98c8e5b.jpg",
+  "images/artwork_019_01.jpg": "/assets/aistudio/artwork_019_01_22be0f5d.jpg",
+  "images/artwork_020_01.jpg": "/assets/aistudio/artwork_020_01_fb1b0573.jpg",
+  "images/artwork_021_01.jpg": "/assets/aistudio/artwork_021_01_a6d8e719.jpg",
+  "images/artwork_022_01.jpg": "/assets/aistudio/artwork_022_01_a4402c19.jpg",
+  "images/artwork_023_01.jpg": "/assets/aistudio/artwork_023_01_abe3320c.jpg",
+  "images/artwork_024_01.jpg": "/assets/aistudio/artwork_024_01_62be4cc6.jpg",
+  "images/artwork_025_01.jpg": "/assets/aistudio/artwork_025_01_2c091081.jpg",
+  "images/artwork_026_01.jpg": "/assets/aistudio/artwork_026_01_22e62021.jpg",
+  "images/artwork_027_01.jpg": "/assets/aistudio/artwork_027_01_38b38689.jpg",
+  "images/artwork_028_01.jpg": "/assets/aistudio/artwork_028_01_882fc42b.jpg",
+  "images/artwork_029_01.jpg": "/assets/aistudio/artwork_029_01_fc1a04f7.jpg",
+  "images/artwork_030_01.jpg": "/assets/aistudio/artwork_030_01_6a91b0fd.jpg",
+  "images/artwork_031_01.jpg": "/assets/aistudio/artwork_031_01_1c1688a8.jpg",
+  "images/artwork_032_01.jpg": "/assets/aistudio/artwork_032_01_7b61e954.jpg",
+  "images/artwork_033_01.jpg": "/assets/aistudio/artwork_033_01_d9dc2c5e.jpg",
+  "images/artwork_034_01.jpg": "/assets/aistudio/artwork_034_01_6f8e1cd1.jpg",
+  "images/artwork_035_01.jpg": "/assets/aistudio/artwork_035_01_c2347944.jpg",
+  "images/artwork_036_01.jpg": "/assets/aistudio/artwork_036_01_1489862e.jpg",
+  "images/artwork_037_01.jpg": "/assets/aistudio/artwork_037_01_1ce3e8b4.jpg",
+  "images/artwork_038_01.jpg": "/assets/aistudio/artwork_038_01_96a41f60.jpg",
+  "images/artwork_039_01.jpg": "/assets/aistudio/artwork_039_01_13a9a1ca.jpg",
+  "images/artwork_040_01.jpg": "/assets/aistudio/artwork_040_01_84c304be.jpg",
+  "images/artwork_041_01.jpg": "/assets/aistudio/artwork_041_01_e02f4f1c.jpg",
+  "images/artwork_042_01.jpg": "/assets/aistudio/artwork_042_01_04185d13.jpg",
+  "images/artwork_043_01.jpg": "/assets/aistudio/artwork_043_01_aa4c7285.jpg",
+  "images/artwork_044_01.jpg": "/assets/aistudio/artwork_044_01_166b82ec.jpg",
+  "images/artwork_045_01.jpg": "/assets/aistudio/artwork_045_01_f85bf0cb.jpg",
+  "images/artwork_046_01.jpg": "/assets/aistudio/artwork_046_01_1c9eb8ab.jpg",
+  "images/artwork_047_01.jpg": "/assets/aistudio/artwork_047_01_a6902c1c.jpg",
+  "images/artwork_048_01.jpg": "/assets/aistudio/artwork_048_01_3d7928c9.jpg",
+  "images/artwork_049_01.jpg": "/assets/aistudio/artwork_049_01_91df571a.jpg",
+  "images/artwork_050_01.jpg": "/assets/aistudio/artwork_050_01_61d2c672.jpg",
+  "images/artwork_051_01.jpg": "/assets/aistudio/artwork_051_01_2dd4588b.jpg",
+  "images/artwork_051_02.jpg": "/assets/aistudio/artwork_051_02_303e978b.jpg",
+  "images/artwork_052_01.jpg": "/assets/aistudio/artwork_052_01_464d1296.jpg",
+  "images/artwork_053_01.jpg": "/assets/aistudio/artwork_053_01_86fa8787.jpg",
+  "images/artwork_054_01.jpg": "/assets/aistudio/artwork_054_01_07f7adb1.jpg",
+  "images/artwork_055_01.jpg": "/assets/aistudio/artwork_055_01_0120ce53.jpg",
+  "images/artwork_056_01.jpg": "/assets/aistudio/artwork_056_01_50b0ec10.jpg",
+  "images/artwork_057_01.jpg": "/assets/aistudio/artwork_057_01_e2041c8e.jpg",
+  "images/artwork_058_01.jpg": "/assets/aistudio/artwork_058_01_41c27928.jpg",
+  "images/artwork_059_01.jpg": "/assets/aistudio/artwork_059_01_5df88c76.jpg",
+  "images/artwork_059_02.jpg": "/assets/aistudio/artwork_059_02_a48dcd60.jpg",
+  "images/artwork_059_03.jpg": "/assets/aistudio/artwork_059_03_a66dfdf8.jpg",
+  "images/artwork_060_01.jpg": "/assets/aistudio/artwork_060_01_a6046341.jpg",
+  "images/artwork_061_01.jpg": "/assets/aistudio/artwork_061_01_66d7ea19.jpg",
+  "images/artwork_062_01.jpg": "/assets/aistudio/artwork_062_01_f0b85d61.jpg",
+  "images/artwork_063_01.jpg": "/assets/aistudio/artwork_063_01_6c31cefb.jpg",
+  "images/artwork_064_01.jpg": "/assets/aistudio/artwork_064_01_46e0f9d9.jpg",
+  "images/artwork_065_01.jpg": "/assets/aistudio/artwork_065_01_7fd509d8.jpg",
+  "images/artwork_066_01.jpg": "/assets/aistudio/artwork_066_01_84db0bc4.jpg",
+  "images/artwork_067_01.jpg": "/assets/aistudio/artwork_067_01_4829d406.jpg",
+  "images/artwork_068_01.jpg": "/assets/aistudio/artwork_068_01_669c70dc.jpg",
+  "images/artwork_068_02.jpg": "/assets/aistudio/artwork_068_02_4d327b71.jpg",
+  "images/artwork_069_01.jpg": "/assets/aistudio/artwork_069_01_0f86fc21.jpg",
+  "images/artwork_070_01.jpg": "/assets/aistudio/artwork_070_01_361868cf.jpg",
+  "images/artwork_071_01.jpg": "/assets/aistudio/artwork_071_01_6cebc327.jpg",
+  "images/artwork_072_01.jpg": "/assets/aistudio/artwork_072_01_a113cac0.jpg",
+  "images/artwork_073_01.jpg": "/assets/aistudio/artwork_073_01_4dda2d33.jpg",
+  "images/artwork_074_01.jpg": "/assets/aistudio/artwork_074_01_eb42e7ca.jpg",
+  "images/artwork_075_01.jpg": "/assets/aistudio/artwork_075_01_fd7aa746.jpg",
+  "images/artwork_075_02.jpg": "/assets/aistudio/artwork_075_02_1b247b69.jpg",
+  "images/artwork_076_01.jpg": "/assets/aistudio/artwork_076_01_6d0684d5.jpg",
+  "images/artwork_077_01.jpg": "/assets/aistudio/artwork_077_01_1d68f4db.jpg",
+  "images/artwork_078_01.jpg": "/assets/aistudio/artwork_078_01_c54403fe.jpg",
+  "images/artwork_079_01.jpg": "/assets/aistudio/artwork_079_01_6f957ef8.jpg",
+  "images/artwork_080_01.jpg": "/assets/aistudio/artwork_080_01_a98118fb.jpg",
+  "images/artwork_080_02.jpg": "/assets/aistudio/artwork_080_02_6e393f8b.jpg",
+  "images/artwork_081_01.jpg": "/assets/aistudio/artwork_081_01_2406f1c1.jpg",
+  "images/artwork_082_01.jpg": "/assets/aistudio/artwork_082_01_7be38d0a.jpg",
+  "images/artwork_083_01.jpg": "/assets/aistudio/artwork_083_01_cbfa64ef.jpg",
+  "images/artwork_084_01.jpg": "/assets/aistudio/artwork_084_01_1b46759e.jpg",
+  "images/artwork_085_01.jpg": "/assets/aistudio/artwork_085_01_d8969103.jpg",
+  "images/artwork_086_01.jpg": "/assets/aistudio/artwork_086_01_b7e98013.jpg",
+  "images/artwork_087_01.jpg": "/assets/aistudio/artwork_087_01_2220b4e9.jpg",
+  "images/artwork_088_01.jpg": "/assets/aistudio/artwork_088_01_af8fa096.jpg",
+  "images/artwork_088_02.jpg": "/assets/aistudio/artwork_088_02_51796c01.jpg",
+  "images/artwork_089_01.jpg": "/assets/aistudio/artwork_089_01_c0364aff.jpg",
+  "images/artwork_090_01.jpg": "/assets/aistudio/artwork_090_01_ad9b26e8.jpg",
+  "images/artwork_091_01.jpg": "/assets/aistudio/artwork_091_01_74142b61.jpg",
+  "images/artwork_092_01.jpg": "/assets/aistudio/artwork_092_01_0e316a61.jpg",
+  "images/artwork_092_02.jpg": "/assets/aistudio/artwork_092_02_82b20e99.jpg",
+  "images/artwork_093_01.jpg": "/assets/aistudio/artwork_093_01_810414bb.jpg",
+  "images/artwork_094_01.jpg": "/assets/aistudio/artwork_094_01_d208b9f0.jpg",
+  "images/artwork_095_01.jpg": "/assets/aistudio/artwork_095_01_0e1aeac3.jpg",
+  "images/artwork_096_01.jpg": "/assets/aistudio/artwork_096_01_732082e5.jpg",
+  "images/artwork_097_01.jpg": "/assets/aistudio/artwork_097_01_90d9422e.jpg",
+  "images/artwork_098_01.jpg": "/assets/aistudio/artwork_098_01_8120839d.jpg",
+  "images/artwork_099_01.jpg": "/assets/aistudio/artwork_099_01_c0da78c4.jpg",
+  "images/artwork_100_01.jpg": "/assets/aistudio/artwork_100_01_907103e4.jpg",
+  "images/artwork_101_01.jpg": "/assets/aistudio/artwork_101_01_8b87944d.jpg",
+  "images/artwork_102_01.jpg": "/assets/aistudio/artwork_102_01_ed018c47.jpg",
+  "images/artwork_103_01.jpg": "/assets/aistudio/artwork_103_01_d6eef448.jpg",
+  "images/artwork_104_01.jpg": "/assets/aistudio/artwork_104_01_9e15f9a8.jpg",
+  "images/artwork_104_02.jpg": "/assets/aistudio/artwork_104_02_2cb5f87d.jpg",
+  "images/artwork_104_03.jpg": "/assets/aistudio/artwork_104_03_6a539966.jpg",
+  "images/artwork_105_01.jpg": "/assets/aistudio/artwork_105_01_56c269b1.jpg",
+  "images/artwork_106_01.jpg": "/assets/aistudio/artwork_106_01_2db8e172.jpg",
+  "images/artwork_107_01.jpg": "/assets/aistudio/artwork_107_01_bde993ed.jpg",
+  "images/artwork_108_01.jpg": "/assets/aistudio/artwork_108_01_bcc85430.jpg",
+  "images/artwork_109_01.jpg": "/assets/aistudio/artwork_109_01_f7da1fd5.jpg",
+  "images/artwork_110_01.jpg": "/assets/aistudio/artwork_110_01_d133f364.jpg",
+  "images/artwork_111_01.jpg": "/assets/aistudio/artwork_111_01_bba0d91a.jpg",
+  "images/artwork_112_01.jpg": "/assets/aistudio/artwork_112_01_f52dc0e4.jpg",
+  "images/artwork_113_01.jpg": "/assets/aistudio/artwork_113_01_1116c076.jpg",
+  "images/artwork_114_01.jpg": "/assets/aistudio/artwork_114_01_aaa6199c.jpg",
+  "images/artwork_115_01.jpg": "/assets/aistudio/artwork_115_01_92f19453.jpg",
+  "images/artwork_116_01.jpg": "/assets/aistudio/artwork_116_01_2985ed4a.jpg",
+  "images/artwork_117_01.jpg": "/assets/aistudio/artwork_117_01_4d7be39d.jpg",
+  "images/artwork_118_01.jpg": "/assets/aistudio/artwork_118_01_7204531b.jpg",
+  "images/artwork_118_02.jpg": "/assets/aistudio/artwork_118_02_94349c13.jpg",
+  "images/artwork_119_01.jpg": "/assets/aistudio/artwork_119_01_b03e4714.jpg",
+  "images/artwork_120_01.jpg": "/assets/aistudio/artwork_120_01_cacbb1ef.jpg",
+  "images/artwork_121_01.jpg": "/assets/aistudio/artwork_121_01_3ecc72ee.jpg",
+  "images/artwork_122_01.jpg": "/assets/aistudio/artwork_122_01_7d27420b.jpg",
+  "images/artwork_123_01.jpg": "/assets/aistudio/artwork_123_01_8567b22f.jpg",
+  "images/artwork_124_01.jpg": "/assets/aistudio/artwork_124_01_eeebe40f.jpg",
+  "images/artwork_125_01.jpg": "/assets/aistudio/artwork_125_01_d813a0c6.jpg",
+  "images/artwork_125_02.jpg": "/assets/aistudio/artwork_125_02_56c2777c.jpg",
+  "images/artwork_125_03.jpg": "/assets/aistudio/artwork_125_03_b24d007f.jpg",
+  "images/artwork_126_01.jpg": "/assets/aistudio/artwork_126_01_aaab536a.jpg",
+  "images/artwork_127_01.jpg": "/assets/aistudio/artwork_127_01_8b3519d1.jpg",
+  "images/artwork_128_01.jpg": "/assets/aistudio/artwork_128_01_76506971.jpg",
+  "images/artwork_129_01.jpg": "/assets/aistudio/artwork_129_01_58d0a73e.jpg",
+  "images/artwork_130_01.jpg": "/assets/aistudio/artwork_130_01_8ab1d24f.jpg",
+  "images/artwork_131_01.jpg": "/assets/aistudio/artwork_131_01_fb997123.jpg",
+  "images/artwork_132_01.jpg": "/assets/aistudio/artwork_132_01_b4b593c9.jpg",
+  "images/artwork_133_01.jpg": "/assets/aistudio/artwork_133_01_52555447.jpg",
+  "images/artwork_134_01.jpg": "/assets/aistudio/artwork_134_01_e1232963.jpg",
+  "images/artwork_135_01.jpg": "/assets/aistudio/artwork_135_01_b8a7f0ad.jpg",
+  "images/artwork_136_01.jpg": "/assets/aistudio/artwork_136_01_6d16d382.jpg",
+  "images/artwork_137_01.jpg": "/assets/aistudio/artwork_137_01_e7c0cad9.jpg",
+  "images/artwork_138_01.jpg": "/assets/aistudio/artwork_138_01_362b9398.jpg",
+  "images/artwork_139_01.jpg": "/assets/aistudio/artwork_139_01_7498e645.jpg",
+  "images/artwork_140_01.jpg": "/assets/aistudio/artwork_140_01_b76a0fb9.jpg",
+  "images/artwork_140_02.jpg": "/assets/aistudio/artwork_140_02_02bd1b5d.jpg",
+  "images/artwork_141_01.jpg": "/assets/aistudio/artwork_141_01_d80d9cf6.jpg",
+  "images/artwork_142_01.jpg": "/assets/aistudio/artwork_142_01_1ac1cb9a.jpg",
+  "images/artwork_143_01.jpg": "/assets/aistudio/artwork_143_01_c0875d08.jpg",
+  "images/artwork_144_01.jpg": "/assets/aistudio/artwork_144_01_5a3468e4.jpg",
+  "images/artwork_145_01.jpg": "/assets/aistudio/artwork_145_01_644159e6.jpg",
+  "images/artwork_146_01.jpg": "/assets/aistudio/artwork_146_01_4fbe1b3e.jpg",
+  "images/artwork_147_01.jpg": "/assets/aistudio/artwork_147_01_4f79068b.jpg",
+  "images/artwork_148_01.jpg": "/assets/aistudio/artwork_148_01_60fd3b5d.jpg",
+  "images/artwork_148_02.jpg": "/assets/aistudio/artwork_148_02_1be44e13.jpg",
+  "images/artwork_148_03.jpg": "/assets/aistudio/artwork_148_03_43ac2aee.jpg",
+  "images/artwork_148_04.jpg": "/assets/aistudio/artwork_148_04_1ebcdb64.jpg",
+  "images/artwork_149_01.jpg": "/assets/aistudio/artwork_149_01_fac15cd3.jpg",
+  "images/artwork_150_01.jpg": "/assets/aistudio/artwork_150_01_b1c4a96d.jpg",
+  "images/artwork_151_01.jpg": "/assets/aistudio/artwork_151_01_a3a16609.jpg",
+  "images/artwork_151_02.jpg": "/assets/aistudio/artwork_151_02_28467eb3.jpg",
+  "images/artwork_152_01.jpg": "/assets/aistudio/artwork_152_01_c5b1c3d0.jpg",
+  "images/artwork_153_01.jpg": "/assets/aistudio/artwork_153_01_5c9e183e.jpg",
+  "images/artwork_154_01.jpg": "/assets/aistudio/artwork_154_01_10232af4.jpg",
+  "images/artwork_155_01.jpg": "/assets/aistudio/artwork_155_01_11dfe05b.jpg",
+  "images/artwork_156_01.jpg": "/assets/aistudio/artwork_156_01_3d01208a.jpg",
+  "images/artwork_157_01.jpg": "/assets/aistudio/artwork_157_01_e94d533d.jpg",
+  "images/artwork_158_01.jpg": "/assets/aistudio/artwork_158_01_73b0c673.jpg",
+  "images/artwork_159_01.jpg": "/assets/aistudio/artwork_159_01_3cf3a9ad.jpg",
+  "images/artwork_160_01.jpg": "/assets/aistudio/artwork_160_01_d7954ae6.jpg",
+  "images/artwork_161_01.jpg": "/assets/aistudio/artwork_161_01_6e7ae836.jpg",
+  "images/artwork_162_01.jpg": "/assets/aistudio/artwork_162_01_eaee57d2.jpg",
+  "images/artwork_163_01.jpg": "/assets/aistudio/artwork_163_01_80f839a8.jpg",
+  "images/artwork_164_01.jpg": "/assets/aistudio/artwork_164_01_7c6e8b0f.jpg",
+  "images/artwork_165_01.jpg": "/assets/aistudio/artwork_165_01_018fc95c.jpg",
+  "images/artwork_166_01.jpg": "/assets/aistudio/artwork_166_01_539723bd.jpg",
+  "images/artwork_167_01.jpg": "/assets/aistudio/artwork_167_01_6bdceaf4.jpg",
+  "images/artwork_168_01.jpg": "/assets/aistudio/artwork_168_01_8c9a66e9.jpg",
+  "images/artwork_169_01.jpg": "/assets/aistudio/artwork_169_01_cba93bbe.jpg",
+  "images/artwork_169_02.jpg": "/assets/aistudio/artwork_169_02_7d0cdd1b.jpg",
+  "images/artwork_170_01.jpg": "/assets/aistudio/artwork_170_01_fe24e31e.jpg",
+  "images/artwork_171_01.jpg": "/assets/aistudio/artwork_171_01_3e5d9e6b.jpg",
+  "images/artwork_172_01.jpg": "/assets/aistudio/artwork_172_01_66c1dcb2.jpg",
+  "images/artwork_173_01.jpg": "/assets/aistudio/artwork_173_01_67ed7ac7.jpg",
+  "images/artwork_174_01.jpg": "/assets/aistudio/artwork_174_01_a55b8cc7.jpg",
+  "images/artwork_174_02.jpg": "/assets/aistudio/artwork_174_02_d6c9e8b2.jpg",
+  "images/artwork_175_01.jpg": "/assets/aistudio/artwork_175_01_a8de9bd3.jpg",
+  "images/artwork_176_01.jpg": "/assets/aistudio/artwork_176_01_d306dd32.jpg",
+  "images/artwork_177_01.jpg": "/assets/aistudio/artwork_177_01_c39449ef.jpg",
+  "images/artwork_178_01.jpg": "/assets/aistudio/artwork_178_01_4af48e70.jpg",
+  "images/artwork_179_01.jpg": "/assets/aistudio/artwork_179_01_a87b5288.jpg",
+  "images/artwork_180_01.jpg": "/assets/aistudio/artwork_180_01_928e944b.jpg",
+  "images/artwork_181_01.jpg": "/assets/aistudio/artwork_181_01_9cb8a578.jpg",
+  "images/artwork_182_01.jpg": "/assets/aistudio/artwork_182_01_4b21ea02.jpg",
+  "images/artwork_183_01.jpg": "/assets/aistudio/artwork_183_01_54d6844f.jpg",
+  "images/artwork_184_01.jpg": "/assets/aistudio/artwork_184_01_e056d079.jpg",
+  "images/artwork_185_01.jpg": "/assets/aistudio/artwork_185_01_6a7035e1.jpg",
+  "images/artwork_186_01.jpg": "/assets/aistudio/artwork_186_01_1647ff2a.jpg",
+  "images/artwork_187_01.jpg": "/assets/aistudio/artwork_187_01_c8b9106e.jpg",
+  "images/artwork_187_02.jpg": "/assets/aistudio/artwork_187_02_eb0c4306.jpg",
+  "images/artwork_188_01.jpg": "/assets/aistudio/artwork_188_01_61aeb44f.jpg",
+  "images/artwork_189_01.jpg": "/assets/aistudio/artwork_189_01_2cc9eb98.jpg",
+  "images/artwork_190_01.jpg": "/assets/aistudio/artwork_190_01_52b387c4.jpg",
+  "images/artwork_191_01.jpg": "/assets/aistudio/artwork_191_01_b3505b95.jpg",
+  "images/artwork_192_01.jpg": "/assets/aistudio/artwork_192_01_d482cab6.jpg",
+  "images/artwork_192_02.jpg": "/assets/aistudio/artwork_192_02_71c721af.jpg",
+  "images/artwork_192_03.jpg": "/assets/aistudio/artwork_192_03_a0e8b60f.jpg",
+  "images/artwork_193_01.jpg": "/assets/aistudio/artwork_193_01_a188b269.jpg",
+  "images/artwork_194_01.jpg": "/assets/aistudio/artwork_194_01_5b26653b.jpg",
+  "images/artwork_195_01.jpg": "/assets/aistudio/artwork_195_01_21dd07e6.jpg",
+  "images/artwork_196_01.jpg": "/assets/aistudio/artwork_196_01_778719ae.jpg",
+  "images/artwork_197_01.jpg": "/assets/aistudio/artwork_197_01_3a09a291.jpg",
+  "images/artwork_198_01.jpg": "/assets/aistudio/artwork_198_01_5ae470a1.jpg",
+  "images/artwork_199_01.jpg": "/assets/aistudio/artwork_199_01_afd3ac5d.jpg",
+  "images/artwork_200_01.jpg": "/assets/aistudio/artwork_200_01_25fbb090.jpg",
+  "images/artwork_201_01.jpg": "/assets/aistudio/artwork_201_01_77723960.jpg",
+  "images/artwork_202_01.jpg": "/assets/aistudio/artwork_202_01_4d28192f.jpg",
+  "images/artwork_203_01.jpg": "/assets/aistudio/artwork_203_01_56816bfb.jpg",
+  "images/artwork_203_02.jpg": "/assets/aistudio/artwork_203_02_bffcfa6d.jpg",
+  "images/artwork_204_01.jpg": "/assets/aistudio/artwork_204_01_73d3c1ee.jpg",
+  "images/artwork_205_01.jpg": "/assets/aistudio/artwork_205_01_78f92358.jpg",
+  "images/artwork_206_01.jpg": "/assets/aistudio/artwork_206_01_ebc388f8.jpg",
+  "images/artwork_207_01.jpg": "/assets/aistudio/artwork_207_01_bb58cdb9.jpg",
+  "images/artwork_208_01.jpg": "/assets/aistudio/artwork_208_01_bf1fe65f.jpg",
+  "images/artwork_209_01.jpg": "/assets/aistudio/artwork_209_01_f2f95a15.jpg",
+  "images/artwork_210_01.jpg": "/assets/aistudio/artwork_210_01_da766b46.jpg",
+  "images/artwork_211_01.jpg": "/assets/aistudio/artwork_211_01_860a5d49.jpg",
+  "images/artwork_212_01.jpg": "/assets/aistudio/artwork_212_01_5b391c31.jpg",
+  "images/artwork_212_02.jpg": "/assets/aistudio/artwork_212_02_9d46e25d.jpg",
+  "images/artwork_213_01.jpg": "/assets/aistudio/artwork_213_01_856d01c2.jpg",
+  "images/artwork_214_01.jpg": "/assets/aistudio/artwork_214_01_a36f9660.jpg",
+  "images/artwork_215_01.jpg": "/assets/aistudio/artwork_215_01_99637b32.jpg",
+  "images/artwork_216_01.jpg": "/assets/aistudio/artwork_216_01_d2154b64.jpg",
+  "images/artwork_217_01.jpg": "/assets/aistudio/artwork_217_01_1c1aee6c.jpg",
+  "images/artwork_218_01.jpg": "/assets/aistudio/artwork_218_01_f5d3a3e1.jpg",
+  "images/artwork_219_01.jpg": "/assets/aistudio/artwork_219_01_9a56424b.jpg",
+  "images/artwork_220_01.jpg": "/assets/aistudio/artwork_220_01_55e63432.jpg",
+  "images/artwork_221_01.jpg": "/assets/aistudio/artwork_221_01_d8db593a.jpg",
+  "images/artwork_222_01.jpg": "/assets/aistudio/artwork_222_01_c0b9cd98.jpg",
+  "images/artwork_223_01.jpg": "/assets/aistudio/artwork_223_01_8487aacc.jpg",
+  "images/artwork_224_01.jpg": "/assets/aistudio/artwork_224_01_9e2cf1ff.jpg",
+  "images/artwork_225_01.jpg": "/assets/aistudio/artwork_225_01_d1fde050.jpg",
+  "images/artwork_226_01.jpg": "/assets/aistudio/artwork_226_01_a9846d2c.jpg",
+  "images/artwork_226_02.jpg": "/assets/aistudio/artwork_226_02_34142e01.jpg",
+  "images/artwork_227_01.jpg": "/assets/aistudio/artwork_227_01_3ffbb4c1.jpg",
+  "images/artwork_228_01.jpg": "/assets/aistudio/artwork_228_01_0e7c6515.jpg",
+  "images/artwork_229_01.jpg": "/assets/aistudio/artwork_229_01_3f25da24.jpg",
+  "images/artwork_230_01.jpg": "/assets/aistudio/artwork_230_01_be1502b3.jpg",
+  "images/artwork_231_01.jpg": "/assets/aistudio/artwork_231_01_ca433c9c.jpg",
+  "images/artwork_232_01.jpg": "/assets/aistudio/artwork_232_01_b0eff3f0.jpg",
+  "images/artwork_233_01.jpg": "/assets/aistudio/artwork_233_01_ea0d5305.jpg",
+  "images/artwork_234_01.jpg": "/assets/aistudio/artwork_234_01_9b173328.jpg",
+  "images/artwork_235_01.jpg": "/assets/aistudio/artwork_235_01_7ac9350b.jpg",
+  "images/artwork_236_01.jpg": "/assets/aistudio/artwork_236_01_77751ccb.jpg",
+  "images/artwork_237_01.jpg": "/assets/aistudio/artwork_237_01_92099649.jpg",
+  "images/artwork_238_01.jpg": "/assets/aistudio/artwork_238_01_d8d5cbc8.jpg",
+  "images/artwork_239_01.jpg": "/assets/aistudio/artwork_239_01_ed797387.jpg",
+  "images/artwork_240_01.jpg": "/assets/aistudio/artwork_240_01_7a7820db.jpg",
+  "images/artwork_241_01.jpg": "/assets/aistudio/artwork_241_01_b010acfc.jpg",
+  "images/artwork_242_01.jpg": "/assets/aistudio/artwork_242_01_d7aa00cf.jpg",
+  "images/artwork_243_01.jpg": "/assets/aistudio/artwork_243_01_928868db.jpg",
+  "images/artwork_244_01.jpg": "/assets/aistudio/artwork_244_01_a970ceb1.jpg",
+  "images/artwork_245_01.jpg": "/assets/aistudio/artwork_245_01_1352aeae.jpg",
+  "images/artwork_246_01.jpg": "/assets/aistudio/artwork_246_01_28e217b4.jpg",
+  "images/artwork_247_01.jpg": "/assets/aistudio/artwork_247_01_6724074b.jpg",
+  "images/artwork_248_01.jpg": "/assets/aistudio/artwork_248_01_a52de482.jpg",
+  "images/artwork_249_01.jpg": "/assets/aistudio/artwork_249_01_37a2dafa.jpg",
+  "images/artwork_250_01.jpg": "/assets/aistudio/artwork_250_01_d76d8264.jpg",
+  "images/artwork_251_01.jpg": "/assets/aistudio/artwork_251_01_ba5da0e0.jpg",
+  "images/artwork_252_01.jpg": "/assets/aistudio/artwork_252_01_4dbff11e.jpg",
+  "images/artwork_253_01.jpg": "/assets/aistudio/artwork_253_01_3182e9c8.jpg",
+  "images/artwork_254_01.jpg": "/assets/aistudio/artwork_254_01_66162478.jpg",
+  "images/artwork_255_01.jpg": "/assets/aistudio/artwork_255_01_6b10666b.jpg",
+  "images/artwork_256_01.jpg": "/assets/aistudio/artwork_256_01_4ac1d7ab.jpg",
+  "images/artwork_256_02.jpg": "/assets/aistudio/artwork_256_02_ba790e13.jpg",
+  "images/artwork_256_03.jpg": "/assets/aistudio/artwork_256_03_7a95aec1.jpg",
+  "images/artwork_256_04.jpg": "/assets/aistudio/artwork_256_04_8a9fde77.jpg",
+  "images/artwork_257_01.jpg": "/assets/aistudio/artwork_257_01_aa9fdbbb.jpg",
+  "images/artwork_258_01.jpg": "/assets/aistudio/artwork_258_01_1813c6da.jpg",
+  "images/artwork_258_02.jpg": "/assets/aistudio/artwork_258_02_1b9de10c.jpg",
+  "images/artwork_259_01.jpg": "/assets/aistudio/artwork_259_01_c8fc86f5.jpg",
+  "images/artwork_260_01.jpg": "/assets/aistudio/artwork_260_01_ebeb3a78.jpg",
+  "images/artwork_261_01.jpg": "/assets/aistudio/artwork_261_01_322068d6.jpg",
+  "images/artwork_262_01.jpg": "/assets/aistudio/artwork_262_01_3360d196.jpg",
+  "images/artwork_263_01.jpg": "/assets/aistudio/artwork_263_01_72b2d19a.jpg",
+  "images/artwork_264_01.jpg": "/assets/aistudio/artwork_264_01_e302592f.jpg",
+  "images/artwork_265_01.jpg": "/assets/aistudio/artwork_265_01_491a66f4.jpg",
+  "images/artwork_266_01.jpg": "/assets/aistudio/artwork_266_01_027424d6.jpg",
+  "images/artwork_266_02.jpg": "/assets/aistudio/artwork_266_02_5a6c34d8.jpg",
+  "images/artwork_266_03.jpg": "/assets/aistudio/artwork_266_03_1973417a.jpg",
+  "images/artwork_267_01.jpg": "/assets/aistudio/artwork_267_01_74ad4302.jpg",
+  "images/artwork_268_01.jpg": "/assets/aistudio/artwork_268_01_4987ee4b.jpg",
+  "images/artwork_269_01.jpg": "/assets/aistudio/artwork_269_01_00852afd.jpg",
+  "images/artwork_270_01.jpg": "/assets/aistudio/artwork_270_01_527e18ee.jpg",
+  "images/artwork_271_01.jpg": "/assets/aistudio/artwork_271_01_c0d55572.jpg",
+  "images/artwork_272_01.jpg": "/assets/aistudio/artwork_272_01_6311e577.jpg",
+  "images/artwork_273_01.jpg": "/assets/aistudio/artwork_273_01_e9cd348d.jpg",
+  "images/artwork_274_01.jpg": "/assets/aistudio/artwork_274_01_4128ac27.jpg",
+  "images/artwork_275_01.jpg": "/assets/aistudio/artwork_275_01_2c7afdae.jpg",
+  "images/artwork_275_02.jpg": "/assets/aistudio/artwork_275_02_3bd603c7.jpg",
+  "images/artwork_276_01.jpg": "/assets/aistudio/artwork_276_01_5f650003.jpg",
+  "images/artwork_277_01.jpg": "/assets/aistudio/artwork_277_01_47ddcc6c.jpg",
+  "images/artwork_278_01.jpg": "/assets/aistudio/artwork_278_01_7b0c93e4.jpg",
+  "images/artwork_279_01.jpg": "/assets/aistudio/artwork_279_01_71e9dd48.jpg",
+  "images/artwork_280_01.jpg": "/assets/aistudio/artwork_280_01_b565b298.jpg",
+  "images/artwork_280_02.jpg": "/assets/aistudio/artwork_280_02_ccf862df.jpg",
+  "images/artwork_281_01.jpg": "/assets/aistudio/artwork_281_01_759aa3f1.jpg",
+  "images/artwork_282_01.jpg": "/assets/aistudio/artwork_282_01_afef9e2b.jpg",
+  "images/artwork_283_01.jpg": "/assets/aistudio/artwork_283_01_6585907e.jpg",
+  "images/artwork_283_02.jpg": "/assets/aistudio/artwork_283_02_8d1f8522.jpg",
+  "images/artwork_284_01.jpg": "/assets/aistudio/artwork_284_01_0f6fa08b.jpg",
+  "images/artwork_285_01.jpg": "/assets/aistudio/artwork_285_01_27e59c0c.jpg",
+  "images/artwork_286_01.jpg": "/assets/aistudio/artwork_286_01_312aca47.jpg",
+  "images/artwork_287_01.jpg": "/assets/aistudio/artwork_287_01_bd19a1fe.jpg",
+  "images/artwork_288_01.jpg": "/assets/aistudio/artwork_288_01_404e8b11.jpg",
+  "images/artwork_289_01.jpg": "/assets/aistudio/artwork_289_01_32720583.jpg",
+  "images/artwork_290_01.jpg": "/assets/aistudio/artwork_290_01_0bd0014b.jpg",
+  "images/artwork_291_01.jpg": "/assets/aistudio/artwork_291_01_381c86d8.jpg",
+  "images/artwork_292_01.jpg": "/assets/aistudio/artwork_292_01_7c9b3b5a.jpg",
+  "images/artwork_293_01.jpg": "/assets/aistudio/artwork_293_01_27734c12.jpg",
+  "images/artwork_294_01.jpg": "/assets/aistudio/artwork_294_01_2271eb93.jpg",
+  "images/artwork_295_01.jpg": "/assets/aistudio/artwork_295_01_a921ecf0.jpg",
+  "images/artwork_296_01.jpg": "/assets/aistudio/artwork_296_01_f398336b.jpg",
+  "images/artwork_297_01.jpg": "/assets/aistudio/artwork_297_01_8550409f.jpg",
+  "images/artwork_298_01.jpg": "/assets/aistudio/artwork_298_01_fcb4d144.jpg",
+  "images/artwork_299_01.jpg": "/assets/aistudio/artwork_299_01_45007440.jpg",
+  "images/artwork_300_01.jpg": "/assets/aistudio/artwork_300_01_66a29cd3.jpg",
+  "images/artwork_301_01.jpg": "/assets/aistudio/artwork_301_01_06cef14a.jpg",
+  "images/artwork_302_01.jpg": "/assets/aistudio/artwork_302_01_67661567.jpg",
+  "images/artwork_303_01.jpg": "/assets/aistudio/artwork_303_01_316c32f8.jpg",
+  "images/artwork_304_01.jpg": "/assets/aistudio/artwork_304_01_d396e8af.jpg",
+  "images/artwork_305_01.jpg": "/assets/aistudio/artwork_305_01_3f89438b.jpg",
+  "images/artwork_306_01.jpg": "/assets/aistudio/artwork_306_01_bec95844.jpg",
+  "images/artwork_306_02.jpg": "/assets/aistudio/artwork_306_02_6b19a2ba.jpg",
+  "images/artwork_307_01.jpg": "/assets/aistudio/artwork_307_01_80647cfc.jpg",
+  "images/artwork_308_01.jpg": "/assets/aistudio/artwork_308_01_326047c5.jpg",
+  "images/artwork_309_01.jpg": "/assets/aistudio/artwork_309_01_2876c16b.jpg",
+  "images/artwork_310_01.jpg": "/assets/aistudio/artwork_310_01_cb9f922a.jpg",
+  "images/artwork_311_01.jpg": "/assets/aistudio/artwork_311_01_0cbd8f83.jpg",
+  "images/artwork_312_01.jpg": "/assets/aistudio/artwork_312_01_753e91ab.jpg",
+  "images/artwork_313_01.jpg": "/assets/aistudio/artwork_313_01_14a834fe.jpg",
+  "images/artwork_314_01.jpg": "/assets/aistudio/artwork_314_01_269d208a.jpg",
+  "images/artwork_315_01.jpg": "/assets/aistudio/artwork_315_01_1252b052.jpg",
+  "images/artwork_316_01.jpg": "/assets/aistudio/artwork_316_01_197324c9.jpg",
+  "images/artwork_317_01.jpg": "/assets/aistudio/artwork_317_01_8dcbf920.jpg",
+  "images/artwork_318_01.jpg": "/assets/aistudio/artwork_318_01_104296fe.jpg",
+  "images/artwork_319_01.jpg": "/assets/aistudio/artwork_319_01_fe64985e.jpg",
+  "images/artwork_320_01.jpg": "/assets/aistudio/artwork_320_01_97d49015.jpg",
+  "images/artwork_320_02.jpg": "/assets/aistudio/artwork_320_02_b70a52ba.jpg",
+  "images/artwork_320_03.jpg": "/assets/aistudio/artwork_320_03_247e7671.jpg",
+  "images/artwork_320_04.jpg": "/assets/aistudio/artwork_320_04_23766f27.jpg",
+  "images/artwork_320_05.jpg": "/assets/aistudio/artwork_320_05_9d41a56b.jpg",
+  "images/artwork_320_06.jpg": "/assets/aistudio/artwork_320_06_a2654efb.jpg",
+  "images/artwork_321_01.jpg": "/assets/aistudio/artwork_321_01_44b07065.jpg",
+  "images/artwork_322_01.jpg": "/assets/aistudio/artwork_322_01_41d71d2c.jpg",
+  "images/artwork_323_01.jpg": "/assets/aistudio/artwork_323_01_d09193d1.jpg",
+  "images/artwork_324_01.jpg": "/assets/aistudio/artwork_324_01_54e8b162.jpg",
+  "images/artwork_325_01.jpg": "/assets/aistudio/artwork_325_01_6e044c24.jpg",
+  "images/artwork_326_01.jpg": "/assets/aistudio/artwork_326_01_392128a0.jpg",
+  "images/artwork_327_01.jpg": "/assets/aistudio/artwork_327_01_39a2e19a.jpg",
+  "images/artwork_328_01.jpg": "/assets/aistudio/artwork_328_01_1ece1527.jpg",
+  "images/artwork_328_02.jpg": "/assets/aistudio/artwork_328_02_8a2e6c6a.jpg",
+  "images/artwork_329_01.jpg": "/assets/aistudio/artwork_329_01_9aff6dac.jpg",
+  "images/artwork_329_02.jpg": "/assets/aistudio/artwork_329_02_fb4aafca.jpg",
+  "images/artwork_330_01.jpg": "/assets/aistudio/artwork_330_01_67fab770.jpg",
+  "images/artwork_331_01.jpg": "/assets/aistudio/artwork_331_01_2d7829b2.jpg",
+  "images/artwork_332_01.jpg": "/assets/aistudio/artwork_332_01_66dc1377.jpg",
+  "images/artwork_333_01.jpg": "/assets/aistudio/artwork_333_01_02f07683.jpg",
+  "images/artwork_334_01.jpg": "/assets/aistudio/artwork_334_01_ecc91aeb.jpg",
+  "images/artwork_335_01.jpg": "/assets/aistudio/artwork_335_01_409c4afb.jpg",
+  "images/artwork_336_01.jpg": "/assets/aistudio/artwork_336_01_82d45bcf.jpg",
+  "images/artwork_337_01.jpg": "/assets/aistudio/artwork_337_01_8240048a.jpg",
+  "images/artwork_338_01.jpg": "/assets/aistudio/artwork_338_01_acdf8672.jpg",
+  "images/artwork_338_02.jpg": "/assets/aistudio/artwork_338_02_1e97e5c8.jpg",
+  "images/artwork_339_01.jpg": "/assets/aistudio/artwork_339_01_dd5bda59.jpg",
+  "images/artwork_339_02.jpg": "/assets/aistudio/artwork_339_02_4262aff7.jpg",
+  "images/artwork_339_03.jpg": "/assets/aistudio/artwork_339_03_3822e667.jpg",
+  "images/artwork_339_04.jpg": "/assets/aistudio/artwork_339_04_2284e2f1.jpg",
+  "images/artwork_339_05.jpg": "/assets/aistudio/artwork_339_05_c3de4cbb.jpg",
+  "images/artwork_339_06.jpg": "/assets/aistudio/artwork_339_06_fc9caf80.jpg",
+  "images/artwork_339_07.jpg": "/assets/aistudio/artwork_339_07_da56a9b2.jpg",
+  "images/artwork_339_08.jpg": "/assets/aistudio/artwork_339_08_fa72bb74.jpg",
+  "images/artwork_339_09.jpg": "/assets/aistudio/artwork_339_09_0dac589a.jpg",
+  "images/artwork_339_10.jpg": "/assets/aistudio/artwork_339_10_ade4750a.jpg",
+  "images/artwork_339_11.jpg": "/assets/aistudio/artwork_339_11_e4e32ee6.jpg",
+  "images/artwork_339_12.jpg": "/assets/aistudio/artwork_339_12_e9f60a67.jpg",
+  "images/artwork_339_13.jpg": "/assets/aistudio/artwork_339_13_496c998d.jpg",
+  "images/artwork_339_14.jpg": "/assets/aistudio/artwork_339_14_a6eec34c.jpg",
+  "images/artwork_339_15.jpg": "/assets/aistudio/artwork_339_15_d8f3f6d4.jpg",
+  "images/artwork_339_16.jpg": "/assets/aistudio/artwork_339_16_a7756c6e.jpg",
+  "images/artwork_339_17.jpg": "/assets/aistudio/artwork_339_17_6d2022c4.jpg",
+  "images/artwork_340_01.jpg": "/assets/aistudio/artwork_340_01_1c905947.jpg",
+  "images/artwork_341_01.jpg": "/assets/aistudio/artwork_341_01_87fd1faf.jpg",
+  "images/artwork_342_01.jpg": "/assets/aistudio/artwork_342_01_17b8c9b2.jpg",
+  "images/artwork_343_01.jpg": "/assets/aistudio/artwork_343_01_e1bc9008.jpg",
+  "images/artwork_343_02.jpg": "/assets/aistudio/artwork_343_02_d51cac51.jpg",
+  "images/artwork_344_01.jpg": "/assets/aistudio/artwork_344_01_cd1b3e3f.jpg",
+  "images/artwork_345_01.jpg": "/assets/aistudio/artwork_345_01_5a687d1f.jpg",
+  "images/artwork_345_02.jpg": "/assets/aistudio/artwork_345_02_34be2dbd.jpg",
+  "images/artwork_346_01.jpg": "/assets/aistudio/artwork_346_01_4225491f.jpg",
+  "images/artwork_347_01.jpg": "/assets/aistudio/artwork_347_01_b446a85a.jpg",
+  "images/artwork_348_01.jpg": "/assets/aistudio/artwork_348_01_034ffd19.jpg",
+  "images/artwork_348_02.jpg": "/assets/aistudio/artwork_348_02_1abd78d6.jpg",
+  "images/artwork_349_01.jpg": "/assets/aistudio/artwork_349_01_86af5bac.jpg",
+  "images/artwork_349_02.jpg": "/assets/aistudio/artwork_349_02_9f322fc9.jpg",
+  "images/artwork_349_03.jpg": "/assets/aistudio/artwork_349_03_cdead77a.jpg",
+  "images/artwork_350_01.jpg": "/assets/aistudio/artwork_350_01_cf324e32.jpg",
+  "images/artwork_351_01.jpg": "/assets/aistudio/artwork_351_01_f3f81a3a.jpg",
+  "images/artwork_352_01.jpg": "/assets/aistudio/artwork_352_01_3d48fe65.jpg",
+  "images/artwork_353_01.jpg": "/assets/aistudio/artwork_353_01_d832c3c0.jpg",
+  "images/artwork_354_01.jpg": "/assets/aistudio/artwork_354_01_58f57c14.jpg",
+  "images/artwork_355_01.jpg": "/assets/aistudio/artwork_355_01_358063dd.jpg",
+  "images/artwork_356_01.jpg": "/assets/aistudio/artwork_356_01_360f55d4.jpg",
+  "images/artwork_357_01.jpg": "/assets/aistudio/artwork_357_01_546d45ec.jpg",
+  "images/artwork_358_01.jpg": "/assets/aistudio/artwork_358_01_6adb31d3.jpg",
+  "images/artwork_359_01.jpg": "/assets/aistudio/artwork_359_01_963b7d9c.jpg",
+  "images/artwork_360_01.jpg": "/assets/aistudio/artwork_360_01_547336db.jpg",
+  "images/artwork_361_01.jpg": "/assets/aistudio/artwork_361_01_1fd1322b.jpg",
+  "images/artwork_362_01.jpg": "/assets/aistudio/artwork_362_01_57d6530c.jpg",
+  "images/artwork_363_01.jpg": "/assets/aistudio/artwork_363_01_653c7c34.jpg",
+  "images/artwork_363_02.jpg": "/assets/aistudio/artwork_363_02_1b9c07fb.jpg",
+  "images/artwork_364_01.jpg": "/assets/aistudio/artwork_364_01_248384a6.jpg",
+  "images/artwork_365_01.jpg": "/assets/aistudio/artwork_365_01_adda84f2.jpg",
+  "images/artwork_366_01.jpg": "/assets/aistudio/artwork_366_01_bc215f3f.jpg",
+  "images/artwork_367_01.jpg": "/assets/aistudio/artwork_367_01_e9acb6a3.jpg",
+  "images/artwork_368_01.jpg": "/assets/aistudio/artwork_368_01_b149f5b1.jpg",
+  "images/artwork_369_01.jpg": "/assets/aistudio/artwork_369_01_63f42607.jpg",
+  "images/artwork_370_01.jpg": "/assets/aistudio/artwork_370_01_3fb3cf5f.jpg",
+  "images/artwork_371_01.jpg": "/assets/aistudio/artwork_371_01_d3d744a1.jpg",
+  "images/artwork_371_02.jpg": "/assets/aistudio/artwork_371_02_fb04f289.jpg",
+  "images/artwork_372_01.jpg": "/assets/aistudio/artwork_372_01_e3944671.jpg",
+  "images/artwork_373_01.jpg": "/assets/aistudio/artwork_373_01_f841959a.jpg",
+  "images/artwork_374_01.jpg": "/assets/aistudio/artwork_374_01_a5a70212.jpg",
+  "images/artwork_375_01.jpg": "/assets/aistudio/artwork_375_01_d1b4917e.jpg",
+  "images/artwork_376_01.jpg": "/assets/aistudio/artwork_376_01_9183036f.jpg",
+  "images/artwork_377_01.jpg": "/assets/aistudio/artwork_377_01_d126dd93.jpg",
+  "images/artwork_378_01.jpg": "/assets/aistudio/artwork_378_01_37def68c.jpg",
+  "images/artwork_379_01.jpg": "/assets/aistudio/artwork_379_01_7254cb39.jpg",
+  "images/artwork_379_02.jpg": "/assets/aistudio/artwork_379_02_52fe362b.jpg",
+  "images/artwork_380_01.jpg": "/assets/aistudio/artwork_380_01_d8e34fff.jpg",
+  "images/artwork_381_01.jpg": "/assets/aistudio/artwork_381_01_ebec3bbc.jpg",
+  "images/artwork_382_01.jpg": "/assets/aistudio/artwork_382_01_ed1fe69c.jpg",
+  "images/artwork_383_01.jpg": "/assets/aistudio/artwork_383_01_0205e0eb.jpg",
+  "images/artwork_384_01.jpg": "/assets/aistudio/artwork_384_01_76e0991c.jpg",
+  "images/artwork_385_01.jpg": "/assets/aistudio/artwork_385_01_f99a704a.jpg",
+  "images/artwork_386_01.jpg": "/assets/aistudio/artwork_386_01_8760f573.jpg",
+  "images/artwork_387_01.jpg": "/assets/aistudio/artwork_387_01_526c0a92.jpg",
+  "images/artwork_388_01.jpg": "/assets/aistudio/artwork_388_01_7ab4adf7.jpg",
+  "images/artwork_389_01.jpg": "/assets/aistudio/artwork_389_01_ad9f62b3.jpg",
+  "images/artwork_389_02.jpg": "/assets/aistudio/artwork_389_02_3eb01c56.jpg",
+  "images/artwork_390_01.jpg": "/assets/aistudio/artwork_390_01_f79a46ea.jpg",
+  "images/artwork_391_01.jpg": "/assets/aistudio/artwork_391_01_855739a6.jpg",
+  "images/artwork_392_01.jpg": "/assets/aistudio/artwork_392_01_f8a40d9a.jpg",
+  "images/artwork_393_01.jpg": "/assets/aistudio/artwork_393_01_3745fe1b.jpg",
+  "images/artwork_394_01.jpg": "/assets/aistudio/artwork_394_01_deaa5d5f.jpg",
+  "images/artwork_395_01.jpg": "/assets/aistudio/artwork_395_01_7edc2e73.jpg",
+  "images/artwork_396_01.jpg": "/assets/aistudio/artwork_396_01_709f5baa.jpg",
+  "images/artwork_397_01.jpg": "/assets/aistudio/artwork_397_01_8c604cc0.jpg",
+  "images/artwork_398_01.jpg": "/assets/aistudio/artwork_398_01_a2fa2af5.jpg",
+  "images/artwork_399_01.jpg": "/assets/aistudio/artwork_399_01_6cba2b64.jpg",
+  "images/artwork_400_01.jpg": "/assets/aistudio/artwork_400_01_81238bb2.jpg",
+  "images/artwork_401_01.jpg": "/assets/aistudio/artwork_401_01_4cd001f2.jpg",
+  "images/artwork_402_01.jpg": "/assets/aistudio/artwork_402_01_9a6e3278.jpg"
+};
+
+export const RAW_SURVEY_ARTWORKS: RawSurveyArtwork[] = [
+  {
+    "arcgisGlobalId": "{00B704C6-4DE2-48C3-9BD9-F9BEA8C6BCBF}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43504643000006,
+    "longitude": 12.330620920000058,
+    "properties": {
+      "globalid": "{00B704C6-4DE2-48C3-9BD9-F9BEA8C6BCBF}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "Many structures on building",
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/02 15:29:15+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:17+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "00b704c6-4de2-48c3-9bd9-f9bea8c6bcbf",
+    "images": [
+      "images/artwork_001_01.jpg"
+    ],
+    "primaryImage": "images/artwork_001_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{025DD28E-62F1-48A8-BD48-65BC1C48D375}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42611728000003,
+    "longitude": 12.324204450000025,
+    "properties": {
+      "globalid": "{025DD28E-62F1-48A8-BD48-65BC1C48D375}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/05 12:46:11+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:47:59+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "025dd28e-62f1-48a8-bd48-65bc1c48d375",
+    "images": [
+      "images/artwork_002_01.jpg",
+      "images/artwork_002_02.jpg"
+    ],
+    "primaryImage": "images/artwork_002_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{02C36CE3-04DF-44A4-A5F0-F02E5117DD5D}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43513796000008,
+    "longitude": 12.336185834000048,
+    "properties": {
+      "globalid": "{02C36CE3-04DF-44A4-A5F0-F02E5117DD5D}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:11:05+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:49:35+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "02c36ce3-04df-44a4-a5f0-f02e5117dd5d",
+    "images": [
+      "images/artwork_003_01.jpg"
+    ],
+    "primaryImage": "images/artwork_003_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{02EC60C9-B6C3-406D-8F67-9494D9EA0C33}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43362250000007,
+    "longitude": 12.317072150000058,
+    "properties": {
+      "globalid": "{02EC60C9-B6C3-406D-8F67-9494D9EA0C33}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:34:43+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:43:39+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "02ec60c9-b6c3-406d-8f67-9494d9ea0c33",
+    "images": [
+      "images/artwork_004_01.jpg"
+    ],
+    "primaryImage": "images/artwork_004_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{03574FD6-11F9-45AA-AF22-D3D185D069ED}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.45202457000005,
+    "longitude": 12.350284700000032,
+    "properties": {
+      "globalid": "{03574FD6-11F9-45AA-AF22-D3D185D069ED}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "multiple along wall",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/03 17:22:51+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:25:31+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Murano"
+    },
+    "id": "03574fd6-11f9-45aa-af22-d3d185d069ed",
+    "images": [
+      "images/artwork_005_01.jpg"
+    ],
+    "primaryImage": "images/artwork_005_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{03A15660-F321-41D1-B392-5AFF98E79CEB}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43748100000005,
+    "longitude": 12.33314475000003,
+    "properties": {
+      "globalid": "{03A15660-F321-41D1-B392-5AFF98E79CEB}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:15+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:55:02+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "03a15660-f321-41d1-b392-5aff98e79ceb",
+    "images": [
+      "images/artwork_006_01.jpg"
+    ],
+    "primaryImage": "images/artwork_006_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{04052A64-5FEB-4DBC-A78F-B3E0BE637EF9}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.430906880000066,
+    "longitude": 12.32390262000007,
+    "properties": {
+      "globalid": "{04052A64-5FEB-4DBC-A78F-B3E0BE637EF9}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 14:21:25+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:43:02+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "04052a64-5feb-4dbc-a78f-b3e0be637ef9",
+    "images": [
+      "images/artwork_007_01.jpg"
+    ],
+    "primaryImage": "images/artwork_007_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{054C8F19-8A3C-4B1D-A26E-8ECC52599B05}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43517749200004,
+    "longitude": 12.34064759000006,
+    "properties": {
+      "globalid": "{054C8F19-8A3C-4B1D-A26E-8ECC52599B05}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:52+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:41:26+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "054c8f19-8a3c-4b1d-a26e-8ecc52599b05",
+    "images": [
+      "images/artwork_008_01.jpg"
+    ],
+    "primaryImage": "images/artwork_008_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{06DF9DDD-43C9-4D19-99C5-56E685200A41}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43344033100004,
+    "longitude": 12.33977187000005,
+    "properties": {
+      "globalid": "{06DF9DDD-43C9-4D19-99C5-56E685200A41}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "huge wall",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:20+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:40:27+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "06df9ddd-43c9-4d19-99c5-56e685200a41",
+    "images": [
+      "images/artwork_009_01.jpg"
+    ],
+    "primaryImage": "images/artwork_009_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{078FDE6B-DFAB-4990-AEF2-11BC1B62B853}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43894992000003,
+    "longitude": 12.334237040000062,
+    "properties": {
+      "globalid": "{078FDE6B-DFAB-4990-AEF2-11BC1B62B853}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:37+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:00:24+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "078fde6b-dfab-4990-aef2-11bc1b62b853",
+    "images": [
+      "images/artwork_010_01.jpg"
+    ],
+    "primaryImage": "images/artwork_010_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{08124E77-B778-46EC-985A-24F83F074482}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43767445900005,
+    "longitude": 12.32652121700005,
+    "properties": {
+      "globalid": "{08124E77-B778-46EC-985A-24F83F074482}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:17:49+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:01:06+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "08124e77-b778-46ec-985a-24f83f074482",
+    "images": [
+      "images/artwork_011_01.jpg",
+      "images/artwork_011_02.jpg",
+      "images/artwork_011_03.jpg"
+    ],
+    "primaryImage": "images/artwork_011_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0877D3E2-E85B-4CC0-A0C9-F0CBFB695CE1}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43690574800007,
+    "longitude": 12.336341084000026,
+    "properties": {
+      "globalid": "{0877D3E2-E85B-4CC0-A0C9-F0CBFB695CE1}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "change with digital camera",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:10:07+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:42:15+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "0877d3e2-e85b-4cc0-a0c9-f0cbfb695ce1",
+    "images": [
+      "images/artwork_012_01.jpg"
+    ],
+    "primaryImage": "images/artwork_012_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{08E55971-C2B0-4017-AE8B-6DDA124235A2}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.430688230000044,
+    "longitude": 12.333634540000048,
+    "properties": {
+      "globalid": "{08E55971-C2B0-4017-AE8B-6DDA124235A2}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "A bunch of stuff",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:36:19+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:45:23+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "08e55971-c2b0-4017-ae8b-6dda124235a2",
+    "images": [
+      "images/artwork_013_01.jpg"
+    ],
+    "primaryImage": "images/artwork_013_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{096E4FE9-B890-452A-8730-0B1720739255}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.48523327500004,
+    "longitude": 12.408745709000073,
+    "properties": {
+      "globalid": "{096E4FE9-B890-452A-8730-0B1720739255}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/17 15:23:46+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:32:28+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Mazzorbo"
+    },
+    "id": "096e4fe9-b890-452a-8730-0b1720739255",
+    "images": [
+      "images/artwork_014_01.jpg",
+      "images/artwork_014_02.jpg"
+    ],
+    "primaryImage": "images/artwork_014_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0983980F-FE3C-4D03-8C0E-54222F6A06A4}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43233209300007,
+    "longitude": 12.321879810000041,
+    "properties": {
+      "globalid": "{0983980F-FE3C-4D03-8C0E-54222F6A06A4}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:47:33+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:30:19+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "0983980f-fe3c-4d03-8c0e-54222f6a06a4",
+    "images": [
+      "images/artwork_015_01.jpg"
+    ],
+    "primaryImage": "images/artwork_015_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0A304AEE-6F4A-4688-80B8-2081C9D869F4}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43494381000005,
+    "longitude": 12.324016070000027,
+    "properties": {
+      "globalid": "{0A304AEE-6F4A-4688-80B8-2081C9D869F4}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:25:32+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:22:53+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "0a304aee-6f4a-4688-80b8-2081c9d869f4",
+    "images": [
+      "images/artwork_016_01.jpg"
+    ],
+    "primaryImage": "images/artwork_016_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0A5B334B-63A4-4026-A998-22BC2060538E}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.434366200000056,
+    "longitude": 12.328232810000031,
+    "properties": {
+      "globalid": "{0A5B334B-63A4-4026-A998-22BC2060538E}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:28:26+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:06+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "0a5b334b-63a4-4026-a998-22bc2060538e",
+    "images": [
+      "images/artwork_017_01.jpg"
+    ],
+    "primaryImage": "images/artwork_017_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0B6A8108-E065-4CDE-84B0-1BC3120AFF1C}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.430948269000055,
+    "longitude": 12.326369045000035,
+    "properties": {
+      "globalid": "{0B6A8108-E065-4CDE-84B0-1BC3120AFF1C}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "multiple statues/ reliefs on wall",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:52:45+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:02+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "0b6a8108-e065-4cde-84b0-1bc3120aff1c",
+    "images": [
+      "images/artwork_018_01.jpg"
+    ],
+    "primaryImage": "images/artwork_018_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0BFD96AA-E7C4-4B0C-BB83-9F0613E53BDC}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43540584100003,
+    "longitude": 12.325122315000044,
+    "properties": {
+      "globalid": "{0BFD96AA-E7C4-4B0C-BB83-9F0613E53BDC}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:17:07+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:00:17+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "0bfd96aa-e7c4-4b0c-bb83-9f0613e53bdc",
+    "images": [
+      "images/artwork_019_01.jpg"
+    ],
+    "primaryImage": "images/artwork_019_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0C0E6161-94A7-4B4A-814F-DE92372F07DF}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43416099900003,
+    "longitude": 12.339510321000034,
+    "properties": {
+      "globalid": "{0C0E6161-94A7-4B4A-814F-DE92372F07DF}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "whole wall",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:35+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:40:49+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "0c0e6161-94a7-4b4a-814f-de92372f07df",
+    "images": [
+      "images/artwork_020_01.jpg"
+    ],
+    "primaryImage": "images/artwork_020_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0C2FB14A-948D-4DA3-A982-DD7A1964137A}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.45327073200008,
+    "longitude": 12.353484318000028,
+    "properties": {
+      "globalid": "{0C2FB14A-948D-4DA3-A982-DD7A1964137A}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "Might be a church",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/03 17:22:52+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:22:57+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Murano"
+    },
+    "id": "0c2fb14a-948d-4da3-a982-dd7a1964137a",
+    "images": [
+      "images/artwork_021_01.jpg"
+    ],
+    "primaryImage": "images/artwork_021_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0C471CFC-8FC5-466F-B5D1-163F66F0BD26}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.432371887000045,
+    "longitude": 12.324600890000056,
+    "properties": {
+      "globalid": "{0C471CFC-8FC5-466F-B5D1-163F66F0BD26}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:52:29+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:46:57+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "0c471cfc-8fc5-466f-b5d1-163f66f0bd26",
+    "images": [
+      "images/artwork_022_01.jpg"
+    ],
+    "primaryImage": "images/artwork_022_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0D4F17BD-40B2-4C59-B49F-940CE767E879}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43380712000004,
+    "longitude": 12.33079353000005,
+    "properties": {
+      "globalid": "{0D4F17BD-40B2-4C59-B49F-940CE767E879}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:26:02+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:39:39+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "0d4f17bd-40b2-4c59-b49f-940ce767e879",
+    "images": [
+      "images/artwork_023_01.jpg"
+    ],
+    "primaryImage": "images/artwork_023_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0E3344A3-97A4-4060-B275-87A8D1206A9C}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.431060184000046,
+    "longitude": 12.32859056500007,
+    "properties": {
+      "globalid": "{0E3344A3-97A4-4060-B275-87A8D1206A9C}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:54:16+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:50:02+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "0e3344a3-97a4-4060-b275-87a8d1206a9c",
+    "images": [
+      "images/artwork_024_01.jpg"
+    ],
+    "primaryImage": "images/artwork_024_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0F6B83F8-0F3D-432B-BDEF-69CB0A2C6630}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42994602300007,
+    "longitude": 12.324533701000064,
+    "properties": {
+      "globalid": "{0F6B83F8-0F3D-432B-BDEF-69CB0A2C6630}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "all over building",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:52:51+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:13+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "0f6b83f8-0f3d-432b-bdef-69cb0a2c6630",
+    "images": [
+      "images/artwork_025_01.jpg"
+    ],
+    "primaryImage": "images/artwork_025_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0FD06CA2-71BA-4414-8D8F-33E7FA7CDFF8}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43612164100006,
+    "longitude": 12.32723320100007,
+    "properties": {
+      "globalid": "{0FD06CA2-71BA-4414-8D8F-33E7FA7CDFF8}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/11 13:00:31+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:58:12+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "0fd06ca2-71ba-4414-8d8f-33e7fa7cdff8",
+    "images": [
+      "images/artwork_026_01.jpg"
+    ],
+    "primaryImage": "images/artwork_026_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{10F7F55A-11AE-46E4-B9B9-069B8FE487A1}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43552142300007,
+    "longitude": 12.325797648000048,
+    "properties": {
+      "globalid": "{10F7F55A-11AE-46E4-B9B9-069B8FE487A1}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:17:10+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:00:21+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "10f7f55a-11ae-46e4-b9b9-069b8fe487a1",
+    "images": [
+      "images/artwork_027_01.jpg"
+    ],
+    "primaryImage": "images/artwork_027_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{11598798-62CD-44B9-8950-2083045EE5EF}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42490479000003,
+    "longitude": 12.325283800000022,
+    "properties": {
+      "globalid": "{11598798-62CD-44B9-8950-2083045EE5EF}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/05 12:46:09+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:47:53+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "11598798-62cd-44b9-8950-2083045ee5ef",
+    "images": [
+      "images/artwork_028_01.jpg"
+    ],
+    "primaryImage": "images/artwork_028_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{120D5292-944F-4D3D-B165-C6D285250B2F}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43363677000008,
+    "longitude": 12.322349750000058,
+    "properties": {
+      "globalid": "{120D5292-944F-4D3D-B165-C6D285250B2F}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 14:19:28+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:34:58+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "120d5292-944f-4d3d-b165-c6d285250b2f",
+    "images": [
+      "images/artwork_029_01.jpg"
+    ],
+    "primaryImage": "images/artwork_029_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{1261FDE9-7DE0-49D2-9B97-70DDF567A4F7}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43042373000003,
+    "longitude": 12.356877820000022,
+    "properties": {
+      "globalid": "{1261FDE9-7DE0-49D2-9B97-70DDF567A4F7}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:41:48+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:52:36+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Castello"
+    },
+    "id": "1261fde9-7de0-49d2-9b97-70ddf567a4f7",
+    "images": [
+      "images/artwork_030_01.jpg"
+    ],
+    "primaryImage": "images/artwork_030_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{12D0BD40-ACB9-4BEB-BA5C-D54C01124542}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.438467900000035,
+    "longitude": 12.334870040000055,
+    "properties": {
+      "globalid": "{12D0BD40-ACB9-4BEB-BA5C-D54C01124542}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/11 13:42:25+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:55:27+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "12d0bd40-acb9-4beb-ba5c-d54c01124542",
+    "images": [
+      "images/artwork_031_01.jpg"
+    ],
+    "primaryImage": "images/artwork_031_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{12E44EBF-DDB1-4D5F-A0AC-40C1A64FE02E}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43018773400007,
+    "longitude": 12.329546195000034,
+    "properties": {
+      "globalid": "{12E44EBF-DDB1-4D5F-A0AC-40C1A64FE02E}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "multiple ",
+      "_3d_model_captured": null,
+      "CreationDate": "2026/10/27 16:53:17+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:45+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "12e44ebf-ddb1-4d5f-a0ac-40c1a64fe02e",
+    "images": [
+      "images/artwork_032_01.jpg"
+    ],
+    "primaryImage": "images/artwork_032_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{1576C170-B138-49DF-99FB-E106093908BA}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.425222631000054,
+    "longitude": 12.333739523000077,
+    "properties": {
+      "globalid": "{1576C170-B138-49DF-99FB-E106093908BA}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/05 10:37:37+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:46:12+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "1576c170-b138-49df-99fb-e106093908ba",
+    "images": [
+      "images/artwork_033_01.jpg"
+    ],
+    "primaryImage": "images/artwork_033_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{15F0E12B-9D45-4347-8575-8429C503AD04}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43577940000006,
+    "longitude": 12.321592750000036,
+    "properties": {
+      "globalid": "{15F0E12B-9D45-4347-8575-8429C503AD04}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:35:14+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:44:29+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "15f0e12b-9d45-4347-8575-8429c503ad04",
+    "images": [
+      "images/artwork_034_01.jpg"
+    ],
+    "primaryImage": "images/artwork_034_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{163DCA4A-0FE8-498E-9E41-6AF429CA7174}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43028781900006,
+    "longitude": 12.334114295000063,
+    "properties": {
+      "globalid": "{163DCA4A-0FE8-498E-9E41-6AF429CA7174}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "2 lions ",
+      "_3d_model_captured": null,
+      "CreationDate": "2026/10/27 15:41:00+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:36:35+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "163dca4a-0fe8-498e-9e41-6af429ca7174",
+    "images": [
+      "images/artwork_035_01.jpg"
+    ],
+    "primaryImage": "images/artwork_035_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{1689FBB2-A234-41A3-990B-994AB15D74DE}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.45749276000004,
+    "longitude": 12.357527740000023,
+    "properties": {
+      "globalid": "{1689FBB2-A234-41A3-990B-994AB15D74DE}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/03 15:18:34+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:27:58+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Murano"
+    },
+    "id": "1689fbb2-a234-41a3-990b-994ab15d74de",
+    "images": [
+      "images/artwork_036_01.jpg"
+    ],
+    "primaryImage": "images/artwork_036_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{16EEA23F-F225-488B-B11B-A7AB91177B65}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43404558000003,
+    "longitude": 12.322061330000054,
+    "properties": {
+      "globalid": "{16EEA23F-F225-488B-B11B-A7AB91177B65}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:38:44+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:29:29+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "16eea23f-f225-488b-b11b-a7ab91177b65",
+    "images": [
+      "images/artwork_037_01.jpg"
+    ],
+    "primaryImage": "images/artwork_037_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{182CF0C1-B902-4434-9FDF-486C2D562FB5}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.429438066000046,
+    "longitude": 12.32655519900004,
+    "properties": {
+      "globalid": "{182CF0C1-B902-4434-9FDF-486C2D562FB5}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:52:59+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:26+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "182cf0c1-b902-4434-9fdf-486c2d562fb5",
+    "images": [
+      "images/artwork_038_01.jpg"
+    ],
+    "primaryImage": "images/artwork_038_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{1894BA93-23EC-4D59-BC43-A33735B6CA28}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43412878000004,
+    "longitude": 12.32934873000005,
+    "properties": {
+      "globalid": "{1894BA93-23EC-4D59-BC43-A33735B6CA28}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:26:22+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:39:46+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "1894ba93-23ec-4d59-bc43-a33735b6ca28",
+    "images": [
+      "images/artwork_039_01.jpg"
+    ],
+    "primaryImage": "images/artwork_039_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{1A7372FC-45D6-4327-8969-952E9BF9EDFC}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43303613000006,
+    "longitude": 12.316287550000027,
+    "properties": {
+      "globalid": "{1A7372FC-45D6-4327-8969-952E9BF9EDFC}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:34:41+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:43:37+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "1a7372fc-45d6-4327-8969-952e9bf9edfc",
+    "images": [
+      "images/artwork_040_01.jpg"
+    ],
+    "primaryImage": "images/artwork_040_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{1AF1230A-A91E-4401-A771-A91F8BE17DA8}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.498524505000034,
+    "longitude": 12.418449132000035,
+    "properties": {
+      "globalid": "{1AF1230A-A91E-4401-A771-A91F8BE17DA8}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/17 18:57:54+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:26:38+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Torcello"
+    },
+    "id": "1af1230a-a91e-4401-a771-a91f8be17da8",
+    "images": [
+      "images/artwork_041_01.jpg"
+    ],
+    "primaryImage": "images/artwork_041_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{1B350784-6E65-40E8-9DE7-C71FB61B4582}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43216204400005,
+    "longitude": 12.32107972600005,
+    "properties": {
+      "globalid": "{1B350784-6E65-40E8-9DE7-C71FB61B4582}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:49:33+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:31:37+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "1b350784-6e65-40e8-9de7-c71fb61b4582",
+    "images": [
+      "images/artwork_042_01.jpg"
+    ],
+    "primaryImage": "images/artwork_042_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{1B83843A-3F47-4815-8CBB-626FE70947DA}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43690329900005,
+    "longitude": 12.336321630000043,
+    "properties": {
+      "globalid": "{1B83843A-3F47-4815-8CBB-626FE70947DA}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:10:09+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:42:18+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "1b83843a-3f47-4815-8cbb-626fe70947da",
+    "images": [
+      "images/artwork_043_01.jpg"
+    ],
+    "primaryImage": "images/artwork_043_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{1BFE874A-D473-49EE-977A-F722B4777DA9}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42958293200007,
+    "longitude": 12.330957368000043,
+    "properties": {
+      "globalid": "{1BFE874A-D473-49EE-977A-F722B4777DA9}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:53:31+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:49:03+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "1bfe874a-d473-49ee-977a-f722b4777da9",
+    "images": [
+      "images/artwork_044_01.jpg"
+    ],
+    "primaryImage": "images/artwork_044_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{1D50BAB3-96D5-4927-9D40-FA174D65A776}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.432632510000076,
+    "longitude": 12.318046250000066,
+    "properties": {
+      "globalid": "{1D50BAB3-96D5-4927-9D40-FA174D65A776}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 15:05:16+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:32:47+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "1d50bab3-96d5-4927-9d40-fa174d65a776",
+    "images": [
+      "images/artwork_045_01.jpg"
+    ],
+    "primaryImage": "images/artwork_045_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{1EA5E277-6D53-42CC-B0CC-7B980AF66257}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.456165490000046,
+    "longitude": 12.352549510000074,
+    "properties": {
+      "globalid": "{1EA5E277-6D53-42CC-B0CC-7B980AF66257}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/03 15:18:25+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:27:01+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Murano"
+    },
+    "id": "1ea5e277-6d53-42cc-b0cc-7b980af66257",
+    "images": [
+      "images/artwork_046_01.jpg"
+    ],
+    "primaryImage": "images/artwork_046_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{1F74308E-5071-4FEE-8B2B-CA002CBE3398}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42977877700008,
+    "longitude": 12.330688079000026,
+    "properties": {
+      "globalid": "{1F74308E-5071-4FEE-8B2B-CA002CBE3398}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:53:30+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:49:00+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "1f74308e-5071-4fee-8b2b-ca002cbe3398",
+    "images": [
+      "images/artwork_047_01.jpg"
+    ],
+    "primaryImage": "images/artwork_047_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{1F93976F-A255-492F-9AE5-E71657247C2E}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.427341424000076,
+    "longitude": 12.361133503000076,
+    "properties": {
+      "globalid": "{1F93976F-A255-492F-9AE5-E71657247C2E}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/10 12:52:00+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:57:25+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Castello"
+    },
+    "id": "1f93976f-a255-492f-9ae5-e71657247c2e",
+    "images": [
+      "images/artwork_048_01.jpg"
+    ],
+    "primaryImage": "images/artwork_048_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{224696F2-A686-40C4-8381-42676C821E3E}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.498496395000075,
+    "longitude": 12.418480329000033,
+    "properties": {
+      "globalid": "{224696F2-A686-40C4-8381-42676C821E3E}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/17 18:57:47+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:26:23+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Torcello"
+    },
+    "id": "224696f2-a686-40c4-8381-42676c821e3e",
+    "images": [
+      "images/artwork_049_01.jpg"
+    ],
+    "primaryImage": "images/artwork_049_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{2375A13D-7C37-43C6-8D0E-6E52CEB3B34D}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.49810228900003,
+    "longitude": 12.418648229000041,
+    "properties": {
+      "globalid": "{2375A13D-7C37-43C6-8D0E-6E52CEB3B34D}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/17 18:58:43+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:23:59+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Torcello"
+    },
+    "id": "2375a13d-7c37-43c6-8d0e-6e52ceb3b34d",
+    "images": [
+      "images/artwork_050_01.jpg"
+    ],
+    "primaryImage": "images/artwork_050_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{23C6E7C5-1D24-46DD-9AEA-FB79F6511403}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.435877864000076,
+    "longitude": 12.335373554000057,
+    "properties": {
+      "globalid": "{23C6E7C5-1D24-46DD-9AEA-FB79F6511403}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:10:45+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:46+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "23c6e7c5-1d24-46dd-9aea-fb79f6511403",
+    "images": [
+      "images/artwork_051_01.jpg",
+      "images/artwork_051_02.jpg"
+    ],
+    "primaryImage": "images/artwork_051_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{243127F9-3280-46DC-9DF1-FB27158F284E}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.45831578000008,
+    "longitude": 12.34922989000006,
+    "properties": {
+      "globalid": "{243127F9-3280-46DC-9DF1-FB27158F284E}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/03 15:18:26+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:30:35+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Murano"
+    },
+    "id": "243127f9-3280-46dc-9df1-fb27158f284e",
+    "images": [
+      "images/artwork_052_01.jpg"
+    ],
+    "primaryImage": "images/artwork_052_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{252E0BD1-136F-4EDD-B9CE-67BBA9A07D00}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42940493900005,
+    "longitude": 12.326666640000042,
+    "properties": {
+      "globalid": "{252E0BD1-136F-4EDD-B9CE-67BBA9A07D00}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:52:58+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:24+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "252e0bd1-136f-4edd-b9ce-67bba9a07d00",
+    "images": [
+      "images/artwork_053_01.jpg"
+    ],
+    "primaryImage": "images/artwork_053_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{27477BCD-C71D-4B61-A0B1-81515A87BCB4}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.45971861000004,
+    "longitude": 12.354283060000057,
+    "properties": {
+      "globalid": "{27477BCD-C71D-4B61-A0B1-81515A87BCB4}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/03 15:18:29+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:29:35+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Murano"
+    },
+    "id": "27477bcd-c71d-4b61-a0b1-81515a87bcb4",
+    "images": [
+      "images/artwork_054_01.jpg"
+    ],
+    "primaryImage": "images/artwork_054_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{2927CE4E-E138-4671-A51D-F48B32940A83}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43243946000007,
+    "longitude": 12.322220150000021,
+    "properties": {
+      "globalid": "{2927CE4E-E138-4671-A51D-F48B32940A83}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 14:19:44+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:35:37+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "2927ce4e-e138-4671-a51d-f48b32940a83",
+    "images": [
+      "images/artwork_055_01.jpg"
+    ],
+    "primaryImage": "images/artwork_055_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{2A6930E8-7967-4A32-9472-88C3A0C347A1}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43259093000006,
+    "longitude": 12.318246680000073,
+    "properties": {
+      "globalid": "{2A6930E8-7967-4A32-9472-88C3A0C347A1}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 15:05:05+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:32:19+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "2a6930e8-7967-4a32-9472-88c3a0c347a1",
+    "images": [
+      "images/artwork_056_01.jpg"
+    ],
+    "primaryImage": "images/artwork_056_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{2AA97C5A-AAB7-4B6A-BE6E-C8DA2422B77B}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43379281800003,
+    "longitude": 12.337870524000039,
+    "properties": {
+      "globalid": "{2AA97C5A-AAB7-4B6A-BE6E-C8DA2422B77B}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "swap with digital camera photos",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:39+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:40:57+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "2aa97c5a-aab7-4b6a-be6e-c8da2422b77b",
+    "images": [
+      "images/artwork_057_01.jpg"
+    ],
+    "primaryImage": "images/artwork_057_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{2BC081D7-F974-4792-833B-763490F55420}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43481881000008,
+    "longitude": 12.331575120000025,
+    "properties": {
+      "globalid": "{2BC081D7-F974-4792-833B-763490F55420}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "Smaller reliefs as well",
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/02 15:29:22+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:20+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "2bc081d7-f974-4792-833b-763490f55420",
+    "images": [
+      "images/artwork_058_01.jpg"
+    ],
+    "primaryImage": "images/artwork_058_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{2BD93D15-53FA-42CE-B0C0-4C88621CADA0}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42933230500006,
+    "longitude": 12.33041062600006,
+    "properties": {
+      "globalid": "{2BD93D15-53FA-42CE-B0C0-4C88621CADA0}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "1 patere",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:53:47+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:49:18+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "2bd93d15-53fa-42ce-b0c0-4c88621cada0",
+    "images": [
+      "images/artwork_059_01.jpg",
+      "images/artwork_059_02.jpg",
+      "images/artwork_059_03.jpg"
+    ],
+    "primaryImage": "images/artwork_059_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{2C4DBF8A-2F79-4D1C-B917-7203C01870D3}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43371040000005,
+    "longitude": 12.320598490000066,
+    "properties": {
+      "globalid": "{2C4DBF8A-2F79-4D1C-B917-7203C01870D3}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:35:09+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:44:15+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "2c4dbf8a-2f79-4d1c-b917-7203c01870d3",
+    "images": [
+      "images/artwork_060_01.jpg"
+    ],
+    "primaryImage": "images/artwork_060_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{2D8F9A0C-ABC5-47AB-A22F-762EDC151E46}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42919462800006,
+    "longitude": 12.33076241200007,
+    "properties": {
+      "globalid": "{2D8F9A0C-ABC5-47AB-A22F-762EDC151E46}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "multiple",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:53:49+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:49:29+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "2d8f9a0c-abc5-47ab-a22f-762edc151e46",
+    "images": [
+      "images/artwork_061_01.jpg"
+    ],
+    "primaryImage": "images/artwork_061_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{2DF4CE92-1FCA-4FF5-A9C1-297E076A0FAF}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.423984732000065,
+    "longitude": 12.33342006600003,
+    "properties": {
+      "globalid": "{2DF4CE92-1FCA-4FF5-A9C1-297E076A0FAF}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/05 10:31:51+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:46:06+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "2df4ce92-1fca-4ff5-a9c1-297e076a0faf",
+    "images": [
+      "images/artwork_062_01.jpg"
+    ],
+    "primaryImage": "images/artwork_062_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{2E1BA89E-63D6-4CBE-995D-7A4A6D4AA127}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42440411000007,
+    "longitude": 12.32585032000003,
+    "properties": {
+      "globalid": "{2E1BA89E-63D6-4CBE-995D-7A4A6D4AA127}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/05 12:46:06+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:47:32+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "2e1ba89e-63d6-4cbe-995d-7a4a6d4aa127",
+    "images": [
+      "images/artwork_063_01.jpg"
+    ],
+    "primaryImage": "images/artwork_063_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{2E4B2D49-1981-45F4-A3A9-489449F449D8}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43218575000003,
+    "longitude": 12.333753240000021,
+    "properties": {
+      "globalid": "{2E4B2D49-1981-45F4-A3A9-489449F449D8}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:23:28+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:38:56+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "2e4b2d49-1981-45f4-a3a9-489449f449d8",
+    "images": [
+      "images/artwork_064_01.jpg"
+    ],
+    "primaryImage": "images/artwork_064_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{2ED876F0-8020-4557-8500-A8C2B88344A5}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.438204564000046,
+    "longitude": 12.331797616000074,
+    "properties": {
+      "globalid": "{2ED876F0-8020-4557-8500-A8C2B88344A5}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 11:58:37+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:57:44+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "2ed876f0-8020-4557-8500-a8c2b88344a5",
+    "images": [
+      "images/artwork_065_01.jpg"
+    ],
+    "primaryImage": "images/artwork_065_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{317695C9-18D7-436D-BCBF-D980E360D8B6}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43805034900004,
+    "longitude": 12.32653102200004,
+    "properties": {
+      "globalid": "{317695C9-18D7-436D-BCBF-D980E360D8B6}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:17:50+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:01:08+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "317695c9-18d7-436d-bcbf-d980e360d8b6",
+    "images": [
+      "images/artwork_066_01.jpg"
+    ],
+    "primaryImage": "images/artwork_066_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{32E4F574-5229-4D73-95AE-17B2F94FEBBF}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43083557300008,
+    "longitude": 12.328882820000047,
+    "properties": {
+      "globalid": "{32E4F574-5229-4D73-95AE-17B2F94FEBBF}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:53:09+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:36+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "32e4f574-5229-4d73-95ae-17b2f94febbf",
+    "images": [
+      "images/artwork_067_01.jpg"
+    ],
+    "primaryImage": "images/artwork_067_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{32E69126-BB5C-4774-B4B2-6005BFD59612}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.436966907000055,
+    "longitude": 12.329581166000025,
+    "properties": {
+      "globalid": "{32E69126-BB5C-4774-B4B2-6005BFD59612}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/11 13:01:27+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:20+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "32e69126-bb5c-4774-b4b2-6005bfd59612",
+    "images": [
+      "images/artwork_068_01.jpg",
+      "images/artwork_068_02.jpg"
+    ],
+    "primaryImage": "images/artwork_068_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{342C760F-3EB4-46F3-8CBD-462A8C3BE10A}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.424201649000054,
+    "longitude": 12.338972095000031,
+    "properties": {
+      "globalid": "{342C760F-3EB4-46F3-8CBD-462A8C3BE10A}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "Multiple around the building ",
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/05 11:02:59+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:46:21+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "342c760f-3eb4-46f3-8cbd-462a8c3be10a",
+    "images": [
+      "images/artwork_069_01.jpg"
+    ],
+    "primaryImage": "images/artwork_069_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{343AF465-6E78-469B-A534-613475EA0215}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42949264100008,
+    "longitude": 12.326509571000031,
+    "properties": {
+      "globalid": "{343AF465-6E78-469B-A534-613475EA0215}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": null,
+      "CreationDate": "2026/10/27 16:52:56+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:22+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "343af465-6e78-469b-a534-613475ea0215",
+    "images": [
+      "images/artwork_070_01.jpg"
+    ],
+    "primaryImage": "images/artwork_070_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{364FAC29-D910-4A65-AE6C-0C90BF74F43E}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43803991200008,
+    "longitude": 12.33669900700005,
+    "properties": {
+      "globalid": "{364FAC29-D910-4A65-AE6C-0C90BF74F43E}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:10:26+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:42:47+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "364fac29-d910-4a65-ae6c-0c90bf74f43e",
+    "images": [
+      "images/artwork_071_01.jpg"
+    ],
+    "primaryImage": "images/artwork_071_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{366FAB3F-953C-4604-89CD-5C0BAC42D74A}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43655503600007,
+    "longitude": 12.33537601100005,
+    "properties": {
+      "globalid": "{366FAB3F-953C-4604-89CD-5C0BAC42D74A}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:10:38+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:43:08+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "366fab3f-953c-4604-89cd-5c0bac42d74a",
+    "images": [
+      "images/artwork_072_01.jpg"
+    ],
+    "primaryImage": "images/artwork_072_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{3971E738-0D4B-4519-AB09-9A289ED32B11}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43119701000006,
+    "longitude": 12.322947750000026,
+    "properties": {
+      "globalid": "{3971E738-0D4B-4519-AB09-9A289ED32B11}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 14:21:22+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:41:58+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "3971e738-0d4b-4519-ab09-9a289ed32b11",
+    "images": [
+      "images/artwork_073_01.jpg"
+    ],
+    "primaryImage": "images/artwork_073_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{3A41D946-72B2-4C3F-A143-D59E259ACC56}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42848049600008,
+    "longitude": 12.361024314000076,
+    "properties": {
+      "globalid": "{3A41D946-72B2-4C3F-A143-D59E259ACC56}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/10 12:45:00+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:56:51+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Castello"
+    },
+    "id": "3a41d946-72b2-4c3f-a143-d59e259acc56",
+    "images": [
+      "images/artwork_074_01.jpg"
+    ],
+    "primaryImage": "images/artwork_074_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{3BCFF81F-B529-4252-9AED-70761D5E57DC}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43109307000003,
+    "longitude": 12.323411770000064,
+    "properties": {
+      "globalid": "{3BCFF81F-B529-4252-9AED-70761D5E57DC}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 14:21:23+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:42:20+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "3bcff81f-b529-4252-9aed-70761d5e57dc",
+    "images": [
+      "images/artwork_075_01.jpg",
+      "images/artwork_075_02.jpg"
+    ],
+    "primaryImage": "images/artwork_075_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{3CA68CFC-F260-4841-8446-E7175D2F1550}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.430765370000074,
+    "longitude": 12.333895470000073,
+    "properties": {
+      "globalid": "{3CA68CFC-F260-4841-8446-E7175D2F1550}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:36:20+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:45:56+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "3ca68cfc-f260-4841-8446-e7175d2f1550",
+    "images": [
+      "images/artwork_076_01.jpg"
+    ],
+    "primaryImage": "images/artwork_076_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{3D26EF79-601D-44EE-934D-0C5A2AE6AA3D}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43209893400007,
+    "longitude": 12.320941051000034,
+    "properties": {
+      "globalid": "{3D26EF79-601D-44EE-934D-0C5A2AE6AA3D}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:50:44+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:32:37+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "3d26ef79-601d-44ee-934d-0c5a2ae6aa3d",
+    "images": [
+      "images/artwork_077_01.jpg"
+    ],
+    "primaryImage": "images/artwork_077_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{3E5F8552-E875-4946-A657-D10D7220F551}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43368526300003,
+    "longitude": 12.34092862700004,
+    "properties": {
+      "globalid": "{3E5F8552-E875-4946-A657-D10D7220F551}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:45+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:41:06+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "3e5f8552-e875-4946-a657-d10d7220f551",
+    "images": [
+      "images/artwork_078_01.jpg"
+    ],
+    "primaryImage": "images/artwork_078_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{400E4AB5-B590-4AF3-875E-65C0568E6775}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43728198300005,
+    "longitude": 12.335562758000037,
+    "properties": {
+      "globalid": "{400E4AB5-B590-4AF3-875E-65C0568E6775}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:10:33+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:43:00+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "400e4ab5-b590-4af3-875e-65c0568e6775",
+    "images": [
+      "images/artwork_079_01.jpg"
+    ],
+    "primaryImage": "images/artwork_079_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{403D10A2-6C82-4023-A2B0-E07703A055C6}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43106627000003,
+    "longitude": 12.334290152000051,
+    "properties": {
+      "globalid": "{403D10A2-6C82-4023-A2B0-E07703A055C6}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "across the canal",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:54:07+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:49:51+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "403d10a2-6c82-4023-a2b0-e07703a055c6",
+    "images": [
+      "images/artwork_080_01.jpg",
+      "images/artwork_080_02.jpg"
+    ],
+    "primaryImage": "images/artwork_080_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4075EFBA-DBD4-473A-AA92-71356DFA82EE}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.41817974000003,
+    "longitude": 12.371535720000054,
+    "properties": {
+      "globalid": "{4075EFBA-DBD4-473A-AA92-71356DFA82EE}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:41:33+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:21:44+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Lido"
+    },
+    "id": "4075efba-dbd4-473a-aa92-71356dfa82ee",
+    "images": [
+      "images/artwork_081_01.jpg"
+    ],
+    "primaryImage": "images/artwork_081_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4091CA2F-24DB-46F6-8C73-126555AD92CB}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.433131855000056,
+    "longitude": 12.33948050600003,
+    "properties": {
+      "globalid": "{4091CA2F-24DB-46F6-8C73-126555AD92CB}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "Many all over the walls",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:17+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:40:23+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "4091ca2f-24db-46f6-8c73-126555ad92cb",
+    "images": [
+      "images/artwork_082_01.jpg"
+    ],
+    "primaryImage": "images/artwork_082_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{42737E41-10E0-4253-AF0B-3281E6FED60C}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.429131280000036,
+    "longitude": 12.356781290000072,
+    "properties": {
+      "globalid": "{42737E41-10E0-4253-AF0B-3281E6FED60C}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:41:41+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:52:07+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Castello"
+    },
+    "id": "42737e41-10e0-4253-af0b-3281e6fed60c",
+    "images": [
+      "images/artwork_083_01.jpg"
+    ],
+    "primaryImage": "images/artwork_083_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{43C04BC9-A53D-4588-B732-9724BB3DCDBB}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.432474470000045,
+    "longitude": 12.333505380000076,
+    "properties": {
+      "globalid": "{43C04BC9-A53D-4588-B732-9724BB3DCDBB}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:23:42+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:39:02+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "43c04bc9-a53d-4588-b732-9724bb3dcdbb",
+    "images": [
+      "images/artwork_084_01.jpg"
+    ],
+    "primaryImage": "images/artwork_084_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{45376A79-F0A4-4EFC-B542-4B58B83913DA}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.434572770000045,
+    "longitude": 12.319536570000025,
+    "properties": {
+      "globalid": "{45376A79-F0A4-4EFC-B542-4B58B83913DA}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:34:49+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:43:59+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "45376a79-f0a4-4efc-b542-4b58b83913da",
+    "images": [
+      "images/artwork_085_01.jpg"
+    ],
+    "primaryImage": "images/artwork_085_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{45F75B84-5EE8-4084-8A69-9E4E44E009F6}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.424107794000065,
+    "longitude": 12.339485762000038,
+    "properties": {
+      "globalid": "{45F75B84-5EE8-4084-8A69-9E4E44E009F6}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:16:36+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:56:32+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "45f75b84-5ee8-4084-8a69-9e4e44e009f6",
+    "images": [
+      "images/artwork_086_01.jpg"
+    ],
+    "primaryImage": "images/artwork_086_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{46038A6F-D35E-4EF0-913E-07FBF3381054}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43507314900006,
+    "longitude": 12.320464294000033,
+    "properties": {
+      "globalid": "{46038A6F-D35E-4EF0-913E-07FBF3381054}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 14:20:19+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:31:17+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "46038a6f-d35e-4ef0-913e-07fbf3381054",
+    "images": [
+      "images/artwork_087_01.jpg"
+    ],
+    "primaryImage": "images/artwork_087_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4652E559-E820-493D-8E4C-82CCE112E373}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.438069590000055,
+    "longitude": 12.33499973000005,
+    "properties": {
+      "globalid": "{4652E559-E820-493D-8E4C-82CCE112E373}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:22+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:55:19+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "4652e559-e820-493d-8e4c-82cce112e373",
+    "images": [
+      "images/artwork_088_01.jpg",
+      "images/artwork_088_02.jpg"
+    ],
+    "primaryImage": "images/artwork_088_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4664476D-D5F1-4826-8F5B-77BD65512626}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43015557000007,
+    "longitude": 12.35595703000007,
+    "properties": {
+      "globalid": "{4664476D-D5F1-4826-8F5B-77BD65512626}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:41:46+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:52:29+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Castello"
+    },
+    "id": "4664476d-d5f1-4826-8f5b-77bd65512626",
+    "images": [
+      "images/artwork_089_01.jpg"
+    ],
+    "primaryImage": "images/artwork_089_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{47213C70-78C6-426B-A61C-0A24812C1CD6}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.425247220000074,
+    "longitude": 12.325232700000072,
+    "properties": {
+      "globalid": "{47213C70-78C6-426B-A61C-0A24812C1CD6}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/05 12:46:08+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:47:49+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "47213c70-78c6-426b-a61c-0a24812c1cd6",
+    "images": [
+      "images/artwork_090_01.jpg"
+    ],
+    "primaryImage": "images/artwork_090_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{476B750B-2830-4669-A762-47C0CBF18895}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.498258245000045,
+    "longitude": 12.418598491000068,
+    "properties": {
+      "globalid": "{476B750B-2830-4669-A762-47C0CBF18895}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/17 18:58:34+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:24:24+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Torcello"
+    },
+    "id": "476b750b-2830-4669-a762-47c0cbf18895",
+    "images": [
+      "images/artwork_091_01.jpg"
+    ],
+    "primaryImage": "images/artwork_091_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{48500D82-43E9-4DF9-A5B1-F0C5B2E3A881}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43845587000004,
+    "longitude": 12.334860440000057,
+    "properties": {
+      "globalid": "{48500D82-43E9-4DF9-A5B1-F0C5B2E3A881}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:27+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:55:38+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "48500d82-43e9-4df9-a5b1-f0c5b2e3a881",
+    "images": [
+      "images/artwork_092_01.jpg",
+      "images/artwork_092_02.jpg"
+    ],
+    "primaryImage": "images/artwork_092_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{490C0E1A-8B2E-42B4-8E19-61F5DE30AB29}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.437498090000076,
+    "longitude": 12.33165665000007,
+    "properties": {
+      "globalid": "{490C0E1A-8B2E-42B4-8E19-61F5DE30AB29}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:05+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:54:21+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "490c0e1a-8b2e-42b4-8e19-61f5de30ab29",
+    "images": [
+      "images/artwork_093_01.jpg"
+    ],
+    "primaryImage": "images/artwork_093_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{49424E31-DE07-4A9C-A84E-B59682FEF4C9}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43674751000003,
+    "longitude": 12.325471873000026,
+    "properties": {
+      "globalid": "{49424E31-DE07-4A9C-A84E-B59682FEF4C9}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/11 13:00:40+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:58:38+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "49424e31-de07-4a9c-a84e-b59682fef4c9",
+    "images": [
+      "images/artwork_094_01.jpg"
+    ],
+    "primaryImage": "images/artwork_094_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{499139F5-586A-4465-905E-F4853433510C}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.435282880000045,
+    "longitude": 12.33382849000003,
+    "properties": {
+      "globalid": "{499139F5-586A-4465-905E-F4853433510C}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:30:28+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:40+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "499139f5-586a-4465-905e-f4853433510c",
+    "images": [
+      "images/artwork_095_01.jpg"
+    ],
+    "primaryImage": "images/artwork_095_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{49A3DD4A-BBF4-43CB-8D86-FA0BEBD739CD}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43484505500004,
+    "longitude": 12.336651654000036,
+    "properties": {
+      "globalid": "{49A3DD4A-BBF4-43CB-8D86-FA0BEBD739CD}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:11:02+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:49:20+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "49a3dd4a-bbf4-43cb-8d86-fa0bebd739cd",
+    "images": [
+      "images/artwork_096_01.jpg"
+    ],
+    "primaryImage": "images/artwork_096_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{49AEE689-7642-4D79-90BA-1351B4374EF0}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43527124700006,
+    "longitude": 12.340584857000067,
+    "properties": {
+      "globalid": "{49AEE689-7642-4D79-90BA-1351B4374EF0}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:49+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:41:14+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "49aee689-7642-4d79-90ba-1351b4374ef0",
+    "images": [
+      "images/artwork_097_01.jpg"
+    ],
+    "primaryImage": "images/artwork_097_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4A19A0E6-33A4-4EAC-98A5-2BA4535819B1}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43481070200005,
+    "longitude": 12.340577565000046,
+    "properties": {
+      "globalid": "{4A19A0E6-33A4-4EAC-98A5-2BA4535819B1}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:46+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:41:08+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "4a19a0e6-33a4-4eac-98a5-2ba4535819b1",
+    "images": [
+      "images/artwork_098_01.jpg"
+    ],
+    "primaryImage": "images/artwork_098_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4A3F1C57-2342-4B45-B5CE-1300A911664B}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42840859000006,
+    "longitude": 12.357074330000046,
+    "properties": {
+      "globalid": "{4A3F1C57-2342-4B45-B5CE-1300A911664B}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:41:35+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:52:01+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Castello"
+    },
+    "id": "4a3f1c57-2342-4b45-b5ce-1300a911664b",
+    "images": [
+      "images/artwork_099_01.jpg"
+    ],
+    "primaryImage": "images/artwork_099_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4A42C5C6-3728-433A-B901-7636FCB805FD}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.435959479000076,
+    "longitude": 12.327486373000056,
+    "properties": {
+      "globalid": "{4A42C5C6-3728-433A-B901-7636FCB805FD}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:17:20+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:00:34+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "4a42c5c6-3728-433a-b901-7636fcb805fd",
+    "images": [
+      "images/artwork_100_01.jpg"
+    ],
+    "primaryImage": "images/artwork_100_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4AA7FD76-AFEB-4A40-ADF5-5F4C8C5525E4}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43625866000008,
+    "longitude": 12.32285956000004,
+    "properties": {
+      "globalid": "{4AA7FD76-AFEB-4A40-ADF5-5F4C8C5525E4}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "5 reliefs faces",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:35:23+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:44:44+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "4aa7fd76-afeb-4a40-adf5-5f4c8c5525e4",
+    "images": [
+      "images/artwork_101_01.jpg"
+    ],
+    "primaryImage": "images/artwork_101_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4AFFC815-9DB9-4A07-BCD1-15038AF77E0A}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.484492759000034,
+    "longitude": 12.418930209000052,
+    "properties": {
+      "globalid": "{4AFFC815-9DB9-4A07-BCD1-15038AF77E0A}",
+      "what_type_of_artwork_are_you_lo": "Monuments",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "Yes",
+      "CreationDate": "2026/11/17 19:16:15+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:34:39+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Burano"
+    },
+    "id": "4affc815-9db9-4a07-bcd1-15038af77e0a",
+    "images": [
+      "images/artwork_102_01.jpg"
+    ],
+    "primaryImage": "images/artwork_102_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4B612CB5-ACEF-4486-8360-AD4A563EE2EC}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43817671700003,
+    "longitude": 12.337393271000053,
+    "properties": {
+      "globalid": "{4B612CB5-ACEF-4486-8360-AD4A563EE2EC}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:10:16+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:42:31+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "4b612cb5-acef-4486-8360-ad4a563ee2ec",
+    "images": [
+      "images/artwork_103_01.jpg"
+    ],
+    "primaryImage": "images/artwork_103_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4BC77DF9-D632-4C49-8694-59DCBD29450E}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43246773000004,
+    "longitude": 12.337602581000056,
+    "properties": {
+      "globalid": "{4BC77DF9-D632-4C49-8694-59DCBD29450E}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "Multiple on every wall",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:13+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:40:16+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "4bc77df9-d632-4c49-8694-59dcbd29450e",
+    "images": [
+      "images/artwork_104_01.jpg",
+      "images/artwork_104_02.jpg",
+      "images/artwork_104_03.jpg"
+    ],
+    "primaryImage": "images/artwork_104_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4C5A2957-D8CA-4D88-9B8B-AA283D6CDB63}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43063078000006,
+    "longitude": 12.321961654000063,
+    "properties": {
+      "globalid": "{4C5A2957-D8CA-4D88-9B8B-AA283D6CDB63}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "2 reliefs in one",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 14:01:35+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:33:57+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "4c5a2957-d8ca-4d88-9b8b-aa283d6cdb63",
+    "images": [
+      "images/artwork_105_01.jpg"
+    ],
+    "primaryImage": "images/artwork_105_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4C9B4F72-1166-4A7B-BF4A-570BA83068AF}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42901424000007,
+    "longitude": 12.356927150000047,
+    "properties": {
+      "globalid": "{4C9B4F72-1166-4A7B-BF4A-570BA83068AF}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:41:38+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:52:04+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Castello"
+    },
+    "id": "4c9b4f72-1166-4a7b-bf4a-570ba83068af",
+    "images": [
+      "images/artwork_106_01.jpg"
+    ],
+    "primaryImage": "images/artwork_106_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4D851475-851B-47EF-B570-BC5D4F7863A9}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.435088380000025,
+    "longitude": 12.323918840000033,
+    "properties": {
+      "globalid": "{4D851475-851B-47EF-B570-BC5D4F7863A9}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:30:20+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:25:28+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "4d851475-851b-47ef-b570-bc5d4f7863a9",
+    "images": [
+      "images/artwork_107_01.jpg"
+    ],
+    "primaryImage": "images/artwork_107_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4DE68C62-DCEA-4A36-BB95-65DCB84E7A84}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43404036000004,
+    "longitude": 12.322068440000066,
+    "properties": {
+      "globalid": "{4DE68C62-DCEA-4A36-BB95-65DCB84E7A84}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:38:33+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:29:03+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "4de68c62-dcea-4a36-bb95-65dcb84e7a84",
+    "images": [
+      "images/artwork_108_01.jpg"
+    ],
+    "primaryImage": "images/artwork_108_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4E9B9D93-6484-4152-9031-85F4184992D1}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.434940296000036,
+    "longitude": 12.324035543000036,
+    "properties": {
+      "globalid": "{4E9B9D93-6484-4152-9031-85F4184992D1}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:25:44+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:23:18+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "4e9b9d93-6484-4152-9031-85f4184992d1",
+    "images": [
+      "images/artwork_109_01.jpg"
+    ],
+    "primaryImage": "images/artwork_109_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4FAFACA6-080C-4A73-A48C-563A45CDCD42}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43513524100007,
+    "longitude": 12.336305712000069,
+    "properties": {
+      "globalid": "{4FAFACA6-080C-4A73-A48C-563A45CDCD42}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:11:07+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:49:38+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "4fafaca6-080c-4a73-a48c-563a45cdcd42",
+    "images": [
+      "images/artwork_110_01.jpg"
+    ],
+    "primaryImage": "images/artwork_110_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4FF56EC8-6B69-496F-83F8-9E06B262ED52}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42775100400007,
+    "longitude": 12.361398741000073,
+    "properties": {
+      "globalid": "{4FF56EC8-6B69-496F-83F8-9E06B262ED52}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:17:02+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:57:11+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Castello"
+    },
+    "id": "4ff56ec8-6b69-496f-83f8-9e06b262ed52",
+    "images": [
+      "images/artwork_111_01.jpg"
+    ],
+    "primaryImage": "images/artwork_111_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4FFD1B13-2485-4248-99CE-FE51C2D72BE5}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43009911000007,
+    "longitude": 12.357942510000044,
+    "properties": {
+      "globalid": "{4FFD1B13-2485-4248-99CE-FE51C2D72BE5}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:41:54+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:53:06+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Castello"
+    },
+    "id": "4ffd1b13-2485-4248-99ce-fe51c2d72be5",
+    "images": [
+      "images/artwork_112_01.jpg"
+    ],
+    "primaryImage": "images/artwork_112_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5099AF4E-A67F-4876-951B-2E9FA46BB6D4}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43536247000003,
+    "longitude": 12.332697750000023,
+    "properties": {
+      "globalid": "{5099AF4E-A67F-4876-951B-2E9FA46BB6D4}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:30:20+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:36+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "5099af4e-a67f-4876-951b-2e9fa46bb6d4",
+    "images": [
+      "images/artwork_113_01.jpg"
+    ],
+    "primaryImage": "images/artwork_113_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5142CDBA-BEF2-4A58-A6A7-63CC327D64F1}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.432463487000064,
+    "longitude": 12.32470673000006,
+    "properties": {
+      "globalid": "{5142CDBA-BEF2-4A58-A6A7-63CC327D64F1}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:52:30+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:47:17+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "5142cdba-bef2-4a58-a6a7-63cc327d64f1",
+    "images": [
+      "images/artwork_114_01.jpg"
+    ],
+    "primaryImage": "images/artwork_114_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{524A3079-4F2F-424F-B874-BC40E4A3AC5C}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.45351280600005,
+    "longitude": 12.351858510000056,
+    "properties": {
+      "globalid": "{524A3079-4F2F-424F-B874-BC40E4A3AC5C}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/03 17:22:42+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:23:25+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Murano"
+    },
+    "id": "524a3079-4f2f-424f-b874-bc40e4a3ac5c",
+    "images": [
+      "images/artwork_115_01.jpg"
+    ],
+    "primaryImage": "images/artwork_115_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{525FB39B-98F9-4B34-BF23-D173CD228CBD}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43362329000007,
+    "longitude": 12.328054560000055,
+    "properties": {
+      "globalid": "{525FB39B-98F9-4B34-BF23-D173CD228CBD}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:26:54+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:47:33+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "525fb39b-98f9-4b34-bf23-d173cd228cbd",
+    "images": [
+      "images/artwork_116_01.jpg"
+    ],
+    "primaryImage": "images/artwork_116_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5286F8AF-87F8-4F3D-9F8A-271F4ADAC33E}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.430449330000044,
+    "longitude": 12.329874552000035,
+    "properties": {
+      "globalid": "{5286F8AF-87F8-4F3D-9F8A-271F4ADAC33E}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:53:11+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:39+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "5286f8af-87f8-4f3d-9f8a-271f4adac33e",
+    "images": [
+      "images/artwork_117_01.jpg"
+    ],
+    "primaryImage": "images/artwork_117_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{52E51C27-5A97-4231-A24D-77C6DD7F30FA}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.435764670000026,
+    "longitude": 12.321387810000033,
+    "properties": {
+      "globalid": "{52E51C27-5A97-4231-A24D-77C6DD7F30FA}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:35:16+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:44:31+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "52e51c27-5a97-4231-a24d-77c6dd7f30fa",
+    "images": [
+      "images/artwork_118_01.jpg",
+      "images/artwork_118_02.jpg"
+    ],
+    "primaryImage": "images/artwork_118_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{54372240-3C26-49BD-B2E6-7440E1A290C7}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43379547200004,
+    "longitude": 12.32334140200004,
+    "properties": {
+      "globalid": "{54372240-3C26-49BD-B2E6-7440E1A290C7}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:18:50+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:20:33+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "54372240-3c26-49bd-b2e6-7440e1a290c7",
+    "images": [
+      "images/artwork_119_01.jpg"
+    ],
+    "primaryImage": "images/artwork_119_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{543D7392-844D-4E73-9D43-2C64745C2A34}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43832984000005,
+    "longitude": 12.336192410000024,
+    "properties": {
+      "globalid": "{543D7392-844D-4E73-9D43-2C64745C2A34}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:35+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:59:28+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "543d7392-844d-4e73-9d43-2c64745c2a34",
+    "images": [
+      "images/artwork_120_01.jpg"
+    ],
+    "primaryImage": "images/artwork_120_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{549C4677-DE1B-4A99-92D3-7CA1C25CA4C3}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43273257000004,
+    "longitude": 12.32817244000006,
+    "properties": {
+      "globalid": "{549C4677-DE1B-4A99-92D3-7CA1C25CA4C3}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:27:17+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:47:40+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "549c4677-de1b-4a99-92d3-7ca1c25ca4c3",
+    "images": [
+      "images/artwork_121_01.jpg"
+    ],
+    "primaryImage": "images/artwork_121_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{54E58F89-9DC7-4F46-9D42-EF3437EBD036}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43300685500003,
+    "longitude": 12.336411830000031,
+    "properties": {
+      "globalid": "{54E58F89-9DC7-4F46-9D42-EF3437EBD036}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "possibly come back w selfie stick",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:06+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:39:59+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "54e58f89-9dc7-4f46-9d42-ef3437ebd036",
+    "images": [
+      "images/artwork_122_01.jpg"
+    ],
+    "primaryImage": "images/artwork_122_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{58CCB3BD-B647-4AE8-99E8-8181404D91FC}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.436848558000065,
+    "longitude": 12.329617184000028,
+    "properties": {
+      "globalid": "{58CCB3BD-B647-4AE8-99E8-8181404D91FC}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/11 13:01:30+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:23+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "58ccb3bd-b647-4ae8-99e8-8181404d91fc",
+    "images": [
+      "images/artwork_123_01.jpg"
+    ],
+    "primaryImage": "images/artwork_123_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5946D50F-705B-4BDC-9554-B3BFCB5AEEEB}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43038632100007,
+    "longitude": 12.333160173000067,
+    "properties": {
+      "globalid": "{5946D50F-705B-4BDC-9554-B3BFCB5AEEEB}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:03:14+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:36:52+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "5946d50f-705b-4bdc-9554-b3bfcb5aeeeb",
+    "images": [
+      "images/artwork_124_01.jpg"
+    ],
+    "primaryImage": "images/artwork_124_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{595C3A20-11A5-454E-BBD2-8C1DE22388F0}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.41807674000006,
+    "longitude": 12.371503060000066,
+    "properties": {
+      "globalid": "{595C3A20-11A5-454E-BBD2-8C1DE22388F0}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:41:30+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:21:59+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Lido"
+    },
+    "id": "595c3a20-11a5-454e-bbd2-8c1de22388f0",
+    "images": [
+      "images/artwork_125_01.jpg",
+      "images/artwork_125_02.jpg",
+      "images/artwork_125_03.jpg"
+    ],
+    "primaryImage": "images/artwork_125_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{59E2F898-B26F-49A0-926C-0FF1D487FD15}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.45287974400003,
+    "longitude": 12.351259212000059,
+    "properties": {
+      "globalid": "{59E2F898-B26F-49A0-926C-0FF1D487FD15}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/03 17:22:45+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:24:01+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Murano"
+    },
+    "id": "59e2f898-b26f-49a0-926c-0ff1d487fd15",
+    "images": [
+      "images/artwork_126_01.jpg"
+    ],
+    "primaryImage": "images/artwork_126_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5A560534-BEC1-4CB0-A698-AEF1A1D89050}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43090867800004,
+    "longitude": 12.326457968000057,
+    "properties": {
+      "globalid": "{5A560534-BEC1-4CB0-A698-AEF1A1D89050}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:52:44+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:47:59+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "5a560534-bec1-4cb0-a698-aef1a1d89050",
+    "images": [
+      "images/artwork_127_01.jpg"
+    ],
+    "primaryImage": "images/artwork_127_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5A8DB99F-FA2D-4673-B517-7293A75EF132}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.49833577100003,
+    "longitude": 12.418552012000077,
+    "properties": {
+      "globalid": "{5A8DB99F-FA2D-4673-B517-7293A75EF132}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/17 18:58:29+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:24:50+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Torcello"
+    },
+    "id": "5a8db99f-fa2d-4673-b517-7293a75ef132",
+    "images": [
+      "images/artwork_128_01.jpg"
+    ],
+    "primaryImage": "images/artwork_128_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5BB85057-5F58-488F-BD97-04404B746F87}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.433809445000065,
+    "longitude": 12.339743181000074,
+    "properties": {
+      "globalid": "{5BB85057-5F58-488F-BD97-04404B746F87}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "many along wall",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:28+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:40:40+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "5bb85057-5f58-488f-bd97-04404b746f87",
+    "images": [
+      "images/artwork_129_01.jpg"
+    ],
+    "primaryImage": "images/artwork_129_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5D626C01-A17D-4E05-BE9F-7508026E08D9}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43089061100005,
+    "longitude": 12.328701920000071,
+    "properties": {
+      "globalid": "{5D626C01-A17D-4E05-BE9F-7508026E08D9}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:53:07+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:32+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "5d626c01-a17d-4e05-be9f-7508026e08d9",
+    "images": [
+      "images/artwork_130_01.jpg"
+    ],
+    "primaryImage": "images/artwork_130_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5DDDC2B3-E156-40F6-8972-897164485548}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42889810600008,
+    "longitude": 12.332924548000051,
+    "properties": {
+      "globalid": "{5DDDC2B3-E156-40F6-8972-897164485548}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 15:27:38+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:34:47+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "5dddc2b3-e156-40f6-8972-897164485548",
+    "images": [
+      "images/artwork_131_01.jpg"
+    ],
+    "primaryImage": "images/artwork_131_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5DEF2281-7B8D-4524-995A-D9E604ADE96B}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43122828400004,
+    "longitude": 12.320663098000068,
+    "properties": {
+      "globalid": "{5DEF2281-7B8D-4524-995A-D9E604ADE96B}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 14:01:32+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:33:34+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "5def2281-7b8d-4524-995a-d9e604ade96b",
+    "images": [
+      "images/artwork_132_01.jpg"
+    ],
+    "primaryImage": "images/artwork_132_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5E3C6D3D-B4BB-40B5-B0DF-E5E1D2D64A0C}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43389712000004,
+    "longitude": 12.328830840000023,
+    "properties": {
+      "globalid": "{5E3C6D3D-B4BB-40B5-B0DF-E5E1D2D64A0C}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:28:01+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:47:54+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "5e3c6d3d-b4bb-40b5-b0df-e5e1d2d64a0c",
+    "images": [
+      "images/artwork_133_01.jpg"
+    ],
+    "primaryImage": "images/artwork_133_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5E7073A2-64E9-4588-92E7-5986E67070AA}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43948153000008,
+    "longitude": 12.332854410000039,
+    "properties": {
+      "globalid": "{5E7073A2-64E9-4588-92E7-5986E67070AA}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:41+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:02:49+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "5e7073a2-64e9-4588-92e7-5986e67070aa",
+    "images": [
+      "images/artwork_134_01.jpg"
+    ],
+    "primaryImage": "images/artwork_134_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5F07360A-4942-43D8-A586-32386F42C3DB}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43099237000007,
+    "longitude": 12.355972680000036,
+    "properties": {
+      "globalid": "{5F07360A-4942-43D8-A586-32386F42C3DB}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:41:57+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:53:36+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Castello"
+    },
+    "id": "5f07360a-4942-43d8-a586-32386f42c3db",
+    "images": [
+      "images/artwork_135_01.jpg"
+    ],
+    "primaryImage": "images/artwork_135_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5F14CF6D-6668-4998-86D4-87E7C2E7FE28}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43807016000005,
+    "longitude": 12.335624650000057,
+    "properties": {
+      "globalid": "{5F14CF6D-6668-4998-86D4-87E7C2E7FE28}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:31+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:55:47+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "5f14cf6d-6668-4998-86d4-87e7c2e7fe28",
+    "images": [
+      "images/artwork_136_01.jpg"
+    ],
+    "primaryImage": "images/artwork_136_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5F835D83-7F68-4930-916C-8D8430971C56}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.498228089000065,
+    "longitude": 12.418986872000062,
+    "properties": {
+      "globalid": "{5F835D83-7F68-4930-916C-8D8430971C56}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/17 18:58:50+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:22:55+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Torcello"
+    },
+    "id": "5f835d83-7f68-4930-916c-8d8430971c56",
+    "images": [
+      "images/artwork_137_01.jpg"
+    ],
+    "primaryImage": "images/artwork_137_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5FC73BD0-46B0-4F49-A160-42C38F852C6B}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43532341000008,
+    "longitude": 12.329564800000071,
+    "properties": {
+      "globalid": "{5FC73BD0-46B0-4F49-A160-42C38F852C6B}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:28:35+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:09+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "5fc73bd0-46b0-4f49-a160-42c38f852c6b",
+    "images": [
+      "images/artwork_138_01.jpg"
+    ],
+    "primaryImage": "images/artwork_138_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{6098C9D3-389F-4345-BF32-844BA8DFDFD1}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43383477000003,
+    "longitude": 12.33351287000005,
+    "properties": {
+      "globalid": "{6098C9D3-389F-4345-BF32-844BA8DFDFD1}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:29:53+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:28+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "6098c9d3-389f-4345-bf32-844ba8dfdfd1",
+    "images": [
+      "images/artwork_139_01.jpg"
+    ],
+    "primaryImage": "images/artwork_139_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{61436E09-2990-4880-B4DD-B458B0B99809}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42511940300005,
+    "longitude": 12.333386849000021,
+    "properties": {
+      "globalid": "{61436E09-2990-4880-B4DD-B458B0B99809}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "possibly a fragment",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:16:33+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:56:17+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "61436e09-2990-4880-b4dd-b458b0b99809",
+    "images": [
+      "images/artwork_140_01.jpg",
+      "images/artwork_140_02.jpg"
+    ],
+    "primaryImage": "images/artwork_140_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{6165A111-CDC4-48F6-818C-40A0254D6D90}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43098586100007,
+    "longitude": 12.336525408000057,
+    "properties": {
+      "globalid": "{6165A111-CDC4-48F6-818C-40A0254D6D90}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "many along a wall",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:54:10+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:49:54+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "6165a111-cdc4-48f6-818c-40a0254d6d90",
+    "images": [
+      "images/artwork_141_01.jpg"
+    ],
+    "primaryImage": "images/artwork_141_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{61C0AC56-4748-464B-8117-6363D002C414}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.49848407200005,
+    "longitude": 12.418614526000056,
+    "properties": {
+      "globalid": "{61C0AC56-4748-464B-8117-6363D002C414}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/17 18:58:16+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:25:45+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Torcello"
+    },
+    "id": "61c0ac56-4748-464b-8117-6363d002c414",
+    "images": [
+      "images/artwork_142_01.jpg"
+    ],
+    "primaryImage": "images/artwork_142_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{62523D44-1E9C-4DFA-9058-77509504D235}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43625663000006,
+    "longitude": 12.321790690000057,
+    "properties": {
+      "globalid": "{62523D44-1E9C-4DFA-9058-77509504D235}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:35:19+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:44:36+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "62523d44-1e9c-4dfa-9058-77509504d235",
+    "images": [
+      "images/artwork_143_01.jpg"
+    ],
+    "primaryImage": "images/artwork_143_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{62AF9F24-C25D-493B-B870-1FF20A343BD8}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43569413300003,
+    "longitude": 12.334169297000074,
+    "properties": {
+      "globalid": "{62AF9F24-C25D-493B-B870-1FF20A343BD8}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:10:54+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:49:08+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "62af9f24-c25d-493b-b870-1ff20a343bd8",
+    "images": [
+      "images/artwork_144_01.jpg"
+    ],
+    "primaryImage": "images/artwork_144_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{636B86E9-C203-431A-9401-7DE4381DD10B}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.435016430000076,
+    "longitude": 12.323112610000067,
+    "properties": {
+      "globalid": "{636B86E9-C203-431A-9401-7DE4381DD10B}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:33:04+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:26:06+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "636b86e9-c203-431a-9401-7de4381dd10b",
+    "images": [
+      "images/artwork_145_01.jpg"
+    ],
+    "primaryImage": "images/artwork_145_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{63C964B8-B4DA-4EAA-B0B1-686DB8EB8CBC}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.45836976000004,
+    "longitude": 12.348565930000063,
+    "properties": {
+      "globalid": "{63C964B8-B4DA-4EAA-B0B1-686DB8EB8CBC}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/03 15:18:27+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:30:55+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Murano"
+    },
+    "id": "63c964b8-b4da-4eaa-b0b1-686db8eb8cbc",
+    "images": [
+      "images/artwork_146_01.jpg"
+    ],
+    "primaryImage": "images/artwork_146_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{640322C9-96FE-4C63-B766-ADF05FE4B32B}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.430282386000044,
+    "longitude": 12.32900617200005,
+    "properties": {
+      "globalid": "{640322C9-96FE-4C63-B766-ADF05FE4B32B}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "might be patere?",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:53:03+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:30+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "640322c9-96fe-4c63-b766-adf05fe4b32b",
+    "images": [
+      "images/artwork_147_01.jpg"
+    ],
+    "primaryImage": "images/artwork_147_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{643CD7AF-7CDA-4F79-BEB1-28444F2F93D0}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42969897000006,
+    "longitude": 12.356055190000063,
+    "properties": {
+      "globalid": "{643CD7AF-7CDA-4F79-BEB1-28444F2F93D0}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:41:43+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:52:11+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Castello"
+    },
+    "id": "643cd7af-7cda-4f79-beb1-28444f2f93d0",
+    "images": [
+      "images/artwork_148_01.jpg",
+      "images/artwork_148_02.jpg",
+      "images/artwork_148_03.jpg",
+      "images/artwork_148_04.jpg"
+    ],
+    "primaryImage": "images/artwork_148_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{6531B31E-94B3-44F1-A422-660A0C61CC28}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43235310000006,
+    "longitude": 12.315735000000075,
+    "properties": {
+      "globalid": "{6531B31E-94B3-44F1-A422-660A0C61CC28}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 15:06:59+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:34:09+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "6531b31e-94b3-44f1-a422-660a0c61cc28",
+    "images": [
+      "images/artwork_149_01.jpg"
+    ],
+    "primaryImage": "images/artwork_149_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{669FA5A7-CC83-4380-9394-84DBEE4AC195}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.433710939000036,
+    "longitude": 12.320577153000045,
+    "properties": {
+      "globalid": "{669FA5A7-CC83-4380-9394-84DBEE4AC195}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 14:08:53+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:29:48+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "669fa5a7-cc83-4380-9394-84dbee4ac195",
+    "images": [
+      "images/artwork_150_01.jpg"
+    ],
+    "primaryImage": "images/artwork_150_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{68BB9354-7363-49AE-A7B1-C1D4D1C81269}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.438212270000065,
+    "longitude": 12.331878140000072,
+    "properties": {
+      "globalid": "{68BB9354-7363-49AE-A7B1-C1D4D1C81269}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "2 statues\n2 big reliefs\nMany small reliefs",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:18+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:55:09+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "68bb9354-7363-49ae-a7b1-c1d4d1c81269",
+    "images": [
+      "images/artwork_151_01.jpg",
+      "images/artwork_151_02.jpg"
+    ],
+    "primaryImage": "images/artwork_151_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{694130CE-440F-4F9E-9A70-FD2FCBA7862F}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43509684800006,
+    "longitude": 12.334964884000044,
+    "properties": {
+      "globalid": "{694130CE-440F-4F9E-9A70-FD2FCBA7862F}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:11:00+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:49:18+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "694130ce-440f-4f9e-9a70-fd2fcba7862f",
+    "images": [
+      "images/artwork_152_01.jpg"
+    ],
+    "primaryImage": "images/artwork_152_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{6A42E0E2-92CC-4426-AB5D-FB251BBF647A}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.49850081400007,
+    "longitude": 12.418536302000064,
+    "properties": {
+      "globalid": "{6A42E0E2-92CC-4426-AB5D-FB251BBF647A}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/17 18:58:05+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:26:04+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Torcello"
+    },
+    "id": "6a42e0e2-92cc-4426-ab5d-fb251bbf647a",
+    "images": [
+      "images/artwork_153_01.jpg"
+    ],
+    "primaryImage": "images/artwork_153_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{6A86FA87-5F4B-4739-952F-0EF1DBC9D671}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.45733419000004,
+    "longitude": 12.357571590000077,
+    "properties": {
+      "globalid": "{6A86FA87-5F4B-4739-952F-0EF1DBC9D671}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/03 15:18:33+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:27:43+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Murano"
+    },
+    "id": "6a86fa87-5f4b-4739-952f-0ef1dbc9d671",
+    "images": [
+      "images/artwork_154_01.jpg"
+    ],
+    "primaryImage": "images/artwork_154_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{6AB134E8-EC1C-45FD-A649-8DD2B63C546F}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42928260900004,
+    "longitude": 12.344955894000066,
+    "properties": {
+      "globalid": "{6AB134E8-EC1C-45FD-A649-8DD2B63C546F}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/12 14:16:50+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:58:38+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "6ab134e8-ec1c-45fd-a649-8dd2b63c546f",
+    "images": [
+      "images/artwork_155_01.jpg"
+    ],
+    "primaryImage": "images/artwork_155_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{6AFC7F0A-652F-4E8B-9798-F71FA66C5816}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43966196000008,
+    "longitude": 12.330549890000043,
+    "properties": {
+      "globalid": "{6AFC7F0A-652F-4E8B-9798-F71FA66C5816}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:45+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:03:01+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "6afc7f0a-652f-4e8b-9798-f71fa66c5816",
+    "images": [
+      "images/artwork_156_01.jpg"
+    ],
+    "primaryImage": "images/artwork_156_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{6B46AB3B-B00D-4016-9DA2-EFF32F3816B5}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43827102000006,
+    "longitude": 12.335287770000036,
+    "properties": {
+      "globalid": "{6B46AB3B-B00D-4016-9DA2-EFF32F3816B5}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:29+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:55:44+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "6b46ab3b-b00d-4016-9da2-eff32f3816b5",
+    "images": [
+      "images/artwork_157_01.jpg"
+    ],
+    "primaryImage": "images/artwork_157_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{6BC06D26-D8D0-4176-B739-E187B72B3706}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43430936300007,
+    "longitude": 12.339295469000035,
+    "properties": {
+      "globalid": "{6BC06D26-D8D0-4176-B739-E187B72B3706}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:38+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:40:53+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "6bc06d26-d8d0-4176-b739-e187b72b3706",
+    "images": [
+      "images/artwork_158_01.jpg"
+    ],
+    "primaryImage": "images/artwork_158_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{6BE387DA-04EB-4324-B5C0-B6F1174EE649}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43448100000006,
+    "longitude": 12.330642730000022,
+    "properties": {
+      "globalid": "{6BE387DA-04EB-4324-B5C0-B6F1174EE649}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:29:06+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:14+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "6be387da-04eb-4324-b5c0-b6f1174ee649",
+    "images": [
+      "images/artwork_159_01.jpg"
+    ],
+    "primaryImage": "images/artwork_159_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{6CA8A221-95EF-4DCA-992F-3B648885870D}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43632733000004,
+    "longitude": 12.322630300000071,
+    "properties": {
+      "globalid": "{6CA8A221-95EF-4DCA-992F-3B648885870D}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:35:21+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:44:41+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "6ca8a221-95ef-4dca-992f-3b648885870d",
+    "images": [
+      "images/artwork_160_01.jpg"
+    ],
+    "primaryImage": "images/artwork_160_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{6E2B53A2-A7C3-4636-B12E-AD07103EA905}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43798856800004,
+    "longitude": 12.336601658000063,
+    "properties": {
+      "globalid": "{6E2B53A2-A7C3-4636-B12E-AD07103EA905}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:10:22+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:42:40+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "6e2b53a2-a7c3-4636-b12e-ad07103ea905",
+    "images": [
+      "images/artwork_161_01.jpg"
+    ],
+    "primaryImage": "images/artwork_161_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7153C2E8-87EA-4FEB-B562-9845D89DE87C}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.45759867000004,
+    "longitude": 12.356888680000054,
+    "properties": {
+      "globalid": "{7153C2E8-87EA-4FEB-B562-9845D89DE87C}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": "George Bartati",
+      "artworks_date": null,
+      "general_notes": "Date: 1901",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/03 15:18:36+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:28:35+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Murano"
+    },
+    "id": "7153c2e8-87ea-4feb-b562-9845d89de87c",
+    "images": [
+      "images/artwork_162_01.jpg"
+    ],
+    "primaryImage": "images/artwork_162_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{71E0FC90-9890-4863-A04C-C68E3400D485}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43711542900007,
+    "longitude": 12.33037181700007,
+    "properties": {
+      "globalid": "{71E0FC90-9890-4863-A04C-C68E3400D485}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/11 13:14:41+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:51:17+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "71e0fc90-9890-4863-a04c-c68e3400d485",
+    "images": [
+      "images/artwork_163_01.jpg"
+    ],
+    "primaryImage": "images/artwork_163_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{72132AEC-9478-4EC8-B9F8-9B7B571E9DE1}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43208188500006,
+    "longitude": 12.320389633000048,
+    "properties": {
+      "globalid": "{72132AEC-9478-4EC8-B9F8-9B7B571E9DE1}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "4 on a wall ",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:52:34+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:32:56+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "72132aec-9478-4ec8-b9f8-9b7b571e9de1",
+    "images": [
+      "images/artwork_164_01.jpg"
+    ],
+    "primaryImage": "images/artwork_164_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{735EC671-68EA-4116-B436-01DF08A48A4A}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43364050000008,
+    "longitude": 12.330551640000067,
+    "properties": {
+      "globalid": "{735EC671-68EA-4116-B436-01DF08A48A4A}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:25:52+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:39:36+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "735ec671-68ea-4116-b436-01df08a48a4a",
+    "images": [
+      "images/artwork_165_01.jpg"
+    ],
+    "primaryImage": "images/artwork_165_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{73A25B56-13B2-4E63-B6D4-231ECECC5AFF}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.429787084000054,
+    "longitude": 12.325297997000064,
+    "properties": {
+      "globalid": "{73A25B56-13B2-4E63-B6D4-231ECECC5AFF}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "all over building",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:52:49+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:11+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "73a25b56-13b2-4e63-b6d4-231ececc5aff",
+    "images": [
+      "images/artwork_166_01.jpg"
+    ],
+    "primaryImage": "images/artwork_166_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{74745000-12A2-4549-ABE1-7D8EC01FA18D}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43561946800003,
+    "longitude": 12.338330684000027,
+    "properties": {
+      "globalid": "{74745000-12A2-4549-ABE1-7D8EC01FA18D}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:58+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:41:49+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "74745000-12a2-4549-abe1-7d8ec01fa18d",
+    "images": [
+      "images/artwork_167_01.jpg"
+    ],
+    "primaryImage": "images/artwork_167_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{74BB1C21-8299-46F1-946A-0D1D1948185A}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.452457896000055,
+    "longitude": 12.350927396000031,
+    "properties": {
+      "globalid": "{74BB1C21-8299-46F1-946A-0D1D1948185A}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/03 17:22:49+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:25:03+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Murano"
+    },
+    "id": "74bb1c21-8299-46f1-946a-0d1d1948185a",
+    "images": [
+      "images/artwork_168_01.jpg"
+    ],
+    "primaryImage": "images/artwork_168_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{74CE24A5-507A-41B5-81ED-6BBADFB461AE}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43910961000006,
+    "longitude": 12.334362510000062,
+    "properties": {
+      "globalid": "{74CE24A5-507A-41B5-81ED-6BBADFB461AE}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:39+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:00:33+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "74ce24a5-507a-41b5-81ed-6bbadfb461ae",
+    "images": [
+      "images/artwork_169_01.jpg",
+      "images/artwork_169_02.jpg"
+    ],
+    "primaryImage": "images/artwork_169_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{75562597-35E4-4F12-977C-40C8446E77AC}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43739589000006,
+    "longitude": 12.333020110000064,
+    "properties": {
+      "globalid": "{75562597-35E4-4F12-977C-40C8446E77AC}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:10+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:54:39+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "75562597-35e4-4f12-977c-40c8446e77ac",
+    "images": [
+      "images/artwork_170_01.jpg"
+    ],
+    "primaryImage": "images/artwork_170_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{767E6335-579C-4D40-AEEB-9B031D0A6110}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.424084253000046,
+    "longitude": 12.339270804000023,
+    "properties": {
+      "globalid": "{767E6335-579C-4D40-AEEB-9B031D0A6110}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "all over walls",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:16:46+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:58:32+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "767e6335-579c-4d40-aeeb-9b031d0a6110",
+    "images": [
+      "images/artwork_171_01.jpg"
+    ],
+    "primaryImage": "images/artwork_171_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{771DB429-5265-4F8B-BA1B-2152E49F2B8F}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43409668800007,
+    "longitude": 12.322191239000063,
+    "properties": {
+      "globalid": "{771DB429-5265-4F8B-BA1B-2152E49F2B8F}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "There are 8 on this wall",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:37:26+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:27:54+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "771db429-5265-4f8b-ba1b-2152e49f2b8f",
+    "images": [
+      "images/artwork_172_01.jpg"
+    ],
+    "primaryImage": "images/artwork_172_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{77A3E50B-9245-4F7C-8FF0-B4EBD72608C3}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43507056000004,
+    "longitude": 12.320367930000032,
+    "properties": {
+      "globalid": "{77A3E50B-9245-4F7C-8FF0-B4EBD72608C3}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:35:13+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:44:25+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "77a3e50b-9245-4f7c-8ff0-b4ebd72608c3",
+    "images": [
+      "images/artwork_173_01.jpg"
+    ],
+    "primaryImage": "images/artwork_173_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{77AB94B1-62A5-4F90-A860-E8F45CAE4BD4}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.432285300000046,
+    "longitude": 12.315915910000058,
+    "properties": {
+      "globalid": "{77AB94B1-62A5-4F90-A860-E8F45CAE4BD4}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "2 reliefs",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 15:06:36+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:33:42+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "77ab94b1-62a5-4f90-a860-e8f45cae4bd4",
+    "images": [
+      "images/artwork_174_01.jpg",
+      "images/artwork_174_02.jpg"
+    ],
+    "primaryImage": "images/artwork_174_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{77B2D742-0AB0-4EC6-88CB-1FCD93FE3F38}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43409685000006,
+    "longitude": 12.329210540000076,
+    "properties": {
+      "globalid": "{77B2D742-0AB0-4EC6-88CB-1FCD93FE3F38}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:26:35+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:47:24+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "77b2d742-0ab0-4ec6-88cb-1fcd93fe3f38",
+    "images": [
+      "images/artwork_175_01.jpg"
+    ],
+    "primaryImage": "images/artwork_175_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{78F53B42-46C1-432F-A75E-9230D94C0533}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42550607000004,
+    "longitude": 12.32790349000004,
+    "properties": {
+      "globalid": "{78F53B42-46C1-432F-A75E-9230D94C0533}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/05 12:46:04+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:47:22+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "78f53b42-46c1-432f-a75e-9230d94c0533",
+    "images": [
+      "images/artwork_176_01.jpg"
+    ],
+    "primaryImage": "images/artwork_176_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{79AFE4C1-71B5-4ABC-80CF-983377911345}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.435798394000074,
+    "longitude": 12.33525178800005,
+    "properties": {
+      "globalid": "{79AFE4C1-71B5-4ABC-80CF-983377911345}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:10:48+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:49+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "79afe4c1-71b5-4abc-80cf-983377911345",
+    "images": [
+      "images/artwork_177_01.jpg"
+    ],
+    "primaryImage": "images/artwork_177_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{79D32EA7-76D2-495F-9C3B-4B6886BA96E6}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.430208994000054,
+    "longitude": 12.333740394000074,
+    "properties": {
+      "globalid": "{79D32EA7-76D2-495F-9C3B-4B6886BA96E6}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:54:01+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:49:41+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "79d32ea7-76d2-495f-9c3b-4b6886ba96e6",
+    "images": [
+      "images/artwork_178_01.jpg"
+    ],
+    "primaryImage": "images/artwork_178_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7B2E095B-02BD-4609-901B-5F1AD9D85CF7}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43779359600006,
+    "longitude": 12.335961868000027,
+    "properties": {
+      "globalid": "{7B2E095B-02BD-4609-901B-5F1AD9D85CF7}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:10:29+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:42:52+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "7b2e095b-02bd-4609-901b-5f1ad9d85cf7",
+    "images": [
+      "images/artwork_179_01.jpg"
+    ],
+    "primaryImage": "images/artwork_179_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7B77191F-0E4B-4A24-A905-19ABA10F0C62}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42925001000003,
+    "longitude": 12.330817533000072,
+    "properties": {
+      "globalid": "{7B77191F-0E4B-4A24-A905-19ABA10F0C62}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 15:14:12+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:34:27+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "7b77191f-0e4b-4a24-a905-19aba10f0c62",
+    "images": [
+      "images/artwork_180_01.jpg"
+    ],
+    "primaryImage": "images/artwork_180_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7C1829CD-7E94-43CE-AF5F-BC89115D0D64}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42525877200006,
+    "longitude": 12.363616512000021,
+    "properties": {
+      "globalid": "{7C1829CD-7E94-43CE-AF5F-BC89115D0D64}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:16:53+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:58:42+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Castello"
+    },
+    "id": "7c1829cd-7e94-43ce-af5f-bc89115d0d64",
+    "images": [
+      "images/artwork_181_01.jpg"
+    ],
+    "primaryImage": "images/artwork_181_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7C47ADFA-A044-4E47-BF01-BACC6997E152}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.45292735400005,
+    "longitude": 12.353972056000032,
+    "properties": {
+      "globalid": "{7C47ADFA-A044-4E47-BF01-BACC6997E152}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/03 13:16:04+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:22:40+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Murano"
+    },
+    "id": "7c47adfa-a044-4e47-bf01-bacc6997e152",
+    "images": [
+      "images/artwork_182_01.jpg"
+    ],
+    "primaryImage": "images/artwork_182_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7CA5EDD0-BAD2-45B8-9AE5-E5E1032A4C37}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.454535186000044,
+    "longitude": 12.353212349000046,
+    "properties": {
+      "globalid": "{7CA5EDD0-BAD2-45B8-9AE5-E5E1032A4C37}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/03 17:22:39+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:26:14+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Murano"
+    },
+    "id": "7ca5edd0-bad2-45b8-9ae5-e5e1032a4c37",
+    "images": [
+      "images/artwork_183_01.jpg"
+    ],
+    "primaryImage": "images/artwork_183_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7D8A7202-89BC-4199-81DD-80870D29E688}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43631910600004,
+    "longitude": 12.334918048000077,
+    "properties": {
+      "globalid": "{7D8A7202-89BC-4199-81DD-80870D29E688}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:10:40+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:43:12+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "7d8a7202-89bc-4199-81dd-80870d29e688",
+    "images": [
+      "images/artwork_184_01.jpg"
+    ],
+    "primaryImage": "images/artwork_184_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7E208272-05F8-4AA9-97E1-C44C945C3DE1}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.425565480000046,
+    "longitude": 12.322771040000077,
+    "properties": {
+      "globalid": "{7E208272-05F8-4AA9-97E1-C44C945C3DE1}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/05 12:46:15+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:51:12+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "7e208272-05f8-4aa9-97e1-c44c945c3de1",
+    "images": [
+      "images/artwork_185_01.jpg"
+    ],
+    "primaryImage": "images/artwork_185_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7E6D614E-91A8-4BB1-85BC-32D95A42A9FF}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43049384100004,
+    "longitude": 12.33344900000003,
+    "properties": {
+      "globalid": "{7E6D614E-91A8-4BB1-85BC-32D95A42A9FF}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:54:12+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:49:57+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "7e6d614e-91a8-4bb1-85bc-32d95a42a9ff",
+    "images": [
+      "images/artwork_186_01.jpg"
+    ],
+    "primaryImage": "images/artwork_186_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7F09F8B1-AF15-4560-94EF-C867C12DB552}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43248747000007,
+    "longitude": 12.334252690000028,
+    "properties": {
+      "globalid": "{7F09F8B1-AF15-4560-94EF-C867C12DB552}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:23:21+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:38:52+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "7f09f8b1-af15-4560-94ef-c867c12db552",
+    "images": [
+      "images/artwork_187_01.jpg",
+      "images/artwork_187_02.jpg"
+    ],
+    "primaryImage": "images/artwork_187_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7F0A3847-285E-46AE-9D44-25E2354FC923}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43596960000008,
+    "longitude": 12.331895190000068,
+    "properties": {
+      "globalid": "{7F0A3847-285E-46AE-9D44-25E2354FC923}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:30:00+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:30+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "7f0a3847-285e-46ae-9d44-25e2354fc923",
+    "images": [
+      "images/artwork_188_01.jpg"
+    ],
+    "primaryImage": "images/artwork_188_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7FBBA6A0-8826-4E2D-B4F2-56015E02AD43}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43498308000005,
+    "longitude": 12.323978700000055,
+    "properties": {
+      "globalid": "{7FBBA6A0-8826-4E2D-B4F2-56015E02AD43}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:26:38+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:23:50+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "7fbba6a0-8826-4e2d-b4f2-56015e02ad43",
+    "images": [
+      "images/artwork_189_01.jpg"
+    ],
+    "primaryImage": "images/artwork_189_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7FC145BB-58C8-4CE6-9947-73F117949ABC}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43536081700006,
+    "longitude": 12.327905165000061,
+    "properties": {
+      "globalid": "{7FC145BB-58C8-4CE6-9947-73F117949ABC}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/11 13:00:28+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:58:01+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "7fc145bb-58c8-4ce6-9947-73f117949abc",
+    "images": [
+      "images/artwork_190_01.jpg"
+    ],
+    "primaryImage": "images/artwork_190_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7FFDECD6-70AB-40CB-AC58-0AB2F8059C3B}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43201717000005,
+    "longitude": 12.320442980000053,
+    "properties": {
+      "globalid": "{7FFDECD6-70AB-40CB-AC58-0AB2F8059C3B}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 14:20:38+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:39:29+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "7ffdecd6-70ab-40cb-ac58-0ab2f8059c3b",
+    "images": [
+      "images/artwork_191_01.jpg"
+    ],
+    "primaryImage": "images/artwork_191_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{8093FF1C-2CF2-42DE-AC57-1DF2A9190C4E}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.45606389000005,
+    "longitude": 12.355976130000045,
+    "properties": {
+      "globalid": "{8093FF1C-2CF2-42DE-AC57-1DF2A9190C4E}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/03 15:18:31+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:26:36+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Murano"
+    },
+    "id": "8093ff1c-2cf2-42de-ac57-1df2a9190c4e",
+    "images": [
+      "images/artwork_192_01.jpg",
+      "images/artwork_192_02.jpg",
+      "images/artwork_192_03.jpg"
+    ],
+    "primaryImage": "images/artwork_192_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{822D885E-D8AE-45A1-9960-D7E5352C2CE7}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43626566800003,
+    "longitude": 12.328042587000027,
+    "properties": {
+      "globalid": "{822D885E-D8AE-45A1-9960-D7E5352C2CE7}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/11 13:01:06+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:59:51+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "822d885e-d8ae-45a1-9960-d7e5352c2ce7",
+    "images": [
+      "images/artwork_193_01.jpg"
+    ],
+    "primaryImage": "images/artwork_193_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{8316DDEC-F829-468C-94DD-94D800EF2D2E}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.44018367000007,
+    "longitude": 12.332573050000065,
+    "properties": {
+      "globalid": "{8316DDEC-F829-468C-94DD-94D800EF2D2E}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:42+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:02:51+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "8316ddec-f829-468c-94dd-94d800ef2d2e",
+    "images": [
+      "images/artwork_194_01.jpg"
+    ],
+    "primaryImage": "images/artwork_194_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{8450E147-F002-40E5-BA89-240084641890}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42610393800004,
+    "longitude": 12.327829683000061,
+    "properties": {
+      "globalid": "{8450E147-F002-40E5-BA89-240084641890}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:16:15+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:55:44+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "8450e147-f002-40e5-ba89-240084641890",
+    "images": [
+      "images/artwork_195_01.jpg"
+    ],
+    "primaryImage": "images/artwork_195_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{84517065-C8D0-44C8-B3D8-B42AFC874016}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43648538600007,
+    "longitude": 12.335671534000028,
+    "properties": {
+      "globalid": "{84517065-C8D0-44C8-B3D8-B42AFC874016}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:10:35+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:43:05+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "84517065-c8d0-44c8-b3d8-b42afc874016",
+    "images": [
+      "images/artwork_196_01.jpg"
+    ],
+    "primaryImage": "images/artwork_196_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{84FC486C-7767-4CEE-BD5A-72EC897FD532}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43597194000006,
+    "longitude": 12.331877650000024,
+    "properties": {
+      "globalid": "{84FC486C-7767-4CEE-BD5A-72EC897FD532}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:30:07+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:32+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "84fc486c-7767-4cee-bd5a-72ec897fd532",
+    "images": [
+      "images/artwork_197_01.jpg"
+    ],
+    "primaryImage": "images/artwork_197_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{854D099A-53CE-4ED7-A5D7-E649308BB753}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43524890300006,
+    "longitude": 12.336313436000069,
+    "properties": {
+      "globalid": "{854D099A-53CE-4ED7-A5D7-E649308BB753}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 16:04:11+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:39:51+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "854d099a-53ce-4ed7-a5d7-e649308bb753",
+    "images": [
+      "images/artwork_198_01.jpg"
+    ],
+    "primaryImage": "images/artwork_198_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{85C4ED78-9C75-432E-A9D8-417440BE39AC}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.430580890000044,
+    "longitude": 12.355780410000023,
+    "properties": {
+      "globalid": "{85C4ED78-9C75-432E-A9D8-417440BE39AC}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:41:54+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:53:10+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Castello"
+    },
+    "id": "85c4ed78-9c75-432e-a9d8-417440be39ac",
+    "images": [
+      "images/artwork_199_01.jpg"
+    ],
+    "primaryImage": "images/artwork_199_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{85E90F67-62C9-430D-A09E-722A7C973C14}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.432703840000045,
+    "longitude": 12.331704030000026,
+    "properties": {
+      "globalid": "{85E90F67-62C9-430D-A09E-722A7C973C14}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:24:59+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:39:25+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "85e90f67-62c9-430d-a09e-722a7c973c14",
+    "images": [
+      "images/artwork_200_01.jpg"
+    ],
+    "primaryImage": "images/artwork_200_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{861CB8C9-5F0C-48C9-B650-5842E0047B04}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.432525257000066,
+    "longitude": 12.337083423000024,
+    "properties": {
+      "globalid": "{861CB8C9-5F0C-48C9-B650-5842E0047B04}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:10+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:40:13+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "861cb8c9-5f0c-48c9-b650-5842e0047b04",
+    "images": [
+      "images/artwork_201_01.jpg"
+    ],
+    "primaryImage": "images/artwork_201_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{868F39F2-307C-4F69-B42A-D623E08CD59A}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43251028000003,
+    "longitude": 12.317668080000033,
+    "properties": {
+      "globalid": "{868F39F2-307C-4F69-B42A-D623E08CD59A}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 15:05:32+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:33:05+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "868f39f2-307c-4f69-b42a-d623e08cd59a",
+    "images": [
+      "images/artwork_202_01.jpg"
+    ],
+    "primaryImage": "images/artwork_202_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{873A1F1A-9E0B-46B5-B8C4-53EC2FF8E476}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43574720000004,
+    "longitude": 12.335114045000068,
+    "properties": {
+      "globalid": "{873A1F1A-9E0B-46B5-B8C4-53EC2FF8E476}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:10:50+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:51+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "873a1f1a-9e0b-46b5-b8c4-53ec2ff8e476",
+    "images": [
+      "images/artwork_203_01.jpg",
+      "images/artwork_203_02.jpg"
+    ],
+    "primaryImage": "images/artwork_203_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{87C9C2C6-4F0E-40CE-8A07-5614160FA926}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43816496200003,
+    "longitude": 12.337393668000061,
+    "properties": {
+      "globalid": "{87C9C2C6-4F0E-40CE-8A07-5614160FA926}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:10:14+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:42:28+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "87c9c2c6-4f0e-40ce-8a07-5614160fa926",
+    "images": [
+      "images/artwork_204_01.jpg"
+    ],
+    "primaryImage": "images/artwork_204_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{88224B32-4D0F-426E-A5CB-01483C8A77F9}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43024435600006,
+    "longitude": 12.334453318000044,
+    "properties": {
+      "globalid": "{88224B32-4D0F-426E-A5CB-01483C8A77F9}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "multiple on wall",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:54:04+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:49:46+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "88224b32-4d0f-426e-a5cb-01483c8a77f9",
+    "images": [
+      "images/artwork_205_01.jpg"
+    ],
+    "primaryImage": "images/artwork_205_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{88840959-ECD9-4A44-98A8-BD9DEC5A4774}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.434066890000054,
+    "longitude": 12.327910460000055,
+    "properties": {
+      "globalid": "{88840959-ECD9-4A44-98A8-BD9DEC5A4774}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:27:50+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:47:51+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "88840959-ecd9-4a44-98a8-bd9dec5a4774",
+    "images": [
+      "images/artwork_206_01.jpg"
+    ],
+    "primaryImage": "images/artwork_206_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{88C6D3DA-538F-41D7-8B39-37494FB6E256}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.438327350000066,
+    "longitude": 12.335050740000042,
+    "properties": {
+      "globalid": "{88C6D3DA-538F-41D7-8B39-37494FB6E256}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:23+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:55:22+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "88c6d3da-538f-41d7-8b39-37494fb6e256",
+    "images": [
+      "images/artwork_207_01.jpg"
+    ],
+    "primaryImage": "images/artwork_207_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{8A43E09C-3F6E-46D0-BE48-095DEA3F5DF5}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.432683230000066,
+    "longitude": 12.332559200000048,
+    "properties": {
+      "globalid": "{8A43E09C-3F6E-46D0-BE48-095DEA3F5DF5}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:24:39+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:39:17+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "8a43e09c-3f6e-46d0-be48-095dea3f5df5",
+    "images": [
+      "images/artwork_208_01.jpg"
+    ],
+    "primaryImage": "images/artwork_208_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{8AD046F9-F0F4-429B-8328-7BC8529E9696}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43007967200003,
+    "longitude": 12.355938851000076,
+    "properties": {
+      "globalid": "{8AD046F9-F0F4-429B-8328-7BC8529E9696}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/10 12:50:45+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:57:04+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Castello"
+    },
+    "id": "8ad046f9-f0f4-429b-8328-7bc8529e9696",
+    "images": [
+      "images/artwork_209_01.jpg"
+    ],
+    "primaryImage": "images/artwork_209_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{8B938D2A-2D24-4BC8-BDD3-109635AC1878}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43239023000007,
+    "longitude": 12.334631410000043,
+    "properties": {
+      "globalid": "{8B938D2A-2D24-4BC8-BDD3-109635AC1878}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:22:10+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:38:38+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "8b938d2a-2d24-4bc8-bdd3-109635ac1878",
+    "images": [
+      "images/artwork_210_01.jpg"
+    ],
+    "primaryImage": "images/artwork_210_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{8BBC8D18-38D3-46F6-B7DA-3C6027D0C8E1}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42862052900006,
+    "longitude": 12.332798498000045,
+    "properties": {
+      "globalid": "{8BBC8D18-38D3-46F6-B7DA-3C6027D0C8E1}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "2 reliefs ",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:06:51+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:37:11+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "8bbc8d18-38d3-46f6-b7da-3c6027d0c8e1",
+    "images": [
+      "images/artwork_211_01.jpg"
+    ],
+    "primaryImage": "images/artwork_211_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{8D3D80D8-8033-492D-B11C-FE62F28EFB9D}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43981203000004,
+    "longitude": 12.330502280000076,
+    "properties": {
+      "globalid": "{8D3D80D8-8033-492D-B11C-FE62F28EFB9D}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:46+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:03:05+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "8d3d80d8-8033-492d-b11c-fe62f28efb9d",
+    "images": [
+      "images/artwork_212_01.jpg",
+      "images/artwork_212_02.jpg"
+    ],
+    "primaryImage": "images/artwork_212_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{8E4DE8A6-C504-4A70-AAB6-66AC086C8F36}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43102347000007,
+    "longitude": 12.32195973000006,
+    "properties": {
+      "globalid": "{8E4DE8A6-C504-4A70-AAB6-66AC086C8F36}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 14:21:09+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:41:08+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "8e4de8a6-c504-4a70-aab6-66ac086c8f36",
+    "images": [
+      "images/artwork_213_01.jpg"
+    ],
+    "primaryImage": "images/artwork_213_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{8FBBE644-17DA-45BD-933A-54D1AC6EB40A}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42836863000008,
+    "longitude": 12.360874544000069,
+    "properties": {
+      "globalid": "{8FBBE644-17DA-45BD-933A-54D1AC6EB40A}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:16:56+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:58:09+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Castello"
+    },
+    "id": "8fbbe644-17da-45bd-933a-54d1ac6eb40a",
+    "images": [
+      "images/artwork_214_01.jpg"
+    ],
+    "primaryImage": "images/artwork_214_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9022D815-E7AC-42D6-A590-C8C6336BDF02}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.431057174000046,
+    "longitude": 12.323660585000027,
+    "properties": {
+      "globalid": "{9022D815-E7AC-42D6-A590-C8C6336BDF02}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "multiple on wall",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 14:13:24+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:34:33+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "9022d815-e7ac-42d6-a590-c8c6336bdf02",
+    "images": [
+      "images/artwork_215_01.jpg"
+    ],
+    "primaryImage": "images/artwork_215_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9097C0C8-972B-4961-A74F-8ACEFF485B44}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43830760000003,
+    "longitude": 12.326719955000044,
+    "properties": {
+      "globalid": "{9097C0C8-972B-4961-A74F-8ACEFF485B44}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/11 13:00:50+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:59:43+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "9097c0c8-972b-4961-a74f-8aceff485b44",
+    "images": [
+      "images/artwork_216_01.jpg"
+    ],
+    "primaryImage": "images/artwork_216_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9149A57B-278A-4348-A62F-1618AC4A7771}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43376765000005,
+    "longitude": 12.32148705000003,
+    "properties": {
+      "globalid": "{9149A57B-278A-4348-A62F-1618AC4A7771}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:35:12+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:44:23+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "9149a57b-278a-4348-a62f-1618ac4a7771",
+    "images": [
+      "images/artwork_217_01.jpg"
+    ],
+    "primaryImage": "images/artwork_217_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{91914232-5DD4-4CA7-8CA1-C3D3DB745A46}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43242648000006,
+    "longitude": 12.334848660000034,
+    "properties": {
+      "globalid": "{91914232-5DD4-4CA7-8CA1-C3D3DB745A46}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:22:40+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:38:45+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "91914232-5dd4-4ca7-8ca1-c3d3db745a46",
+    "images": [
+      "images/artwork_218_01.jpg"
+    ],
+    "primaryImage": "images/artwork_218_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{929183D0-7868-4575-AACC-D3F0E65EC788}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43709100500007,
+    "longitude": 12.33661649100003,
+    "properties": {
+      "globalid": "{929183D0-7868-4575-AACC-D3F0E65EC788}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:10:10+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:42:22+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "929183d0-7868-4575-aacc-d3f0e65ec788",
+    "images": [
+      "images/artwork_219_01.jpg"
+    ],
+    "primaryImage": "images/artwork_219_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{92D275D8-5125-4F64-8977-BB560027A30A}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43235770000007,
+    "longitude": 12.321892160000061,
+    "properties": {
+      "globalid": "{92D275D8-5125-4F64-8977-BB560027A30A}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 14:20:08+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:38:47+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "92d275d8-5125-4f64-8977-bb560027a30a",
+    "images": [
+      "images/artwork_220_01.jpg"
+    ],
+    "primaryImage": "images/artwork_220_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{92F3B40E-5B92-46C0-89EA-33E5FE272A16}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42956979400003,
+    "longitude": 12.330882037000038,
+    "properties": {
+      "globalid": "{92F3B40E-5B92-46C0-89EA-33E5FE272A16}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:53:37+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:49:11+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "92f3b40e-5b92-46c0-89ea-33e5fe272a16",
+    "images": [
+      "images/artwork_221_01.jpg"
+    ],
+    "primaryImage": "images/artwork_221_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{931DEDD7-D133-4AE8-B53E-3A8F3F81E2AF}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43738025000005,
+    "longitude": 12.333237240000074,
+    "properties": {
+      "globalid": "{931DEDD7-D133-4AE8-B53E-3A8F3F81E2AF}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:12+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:54:57+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "931dedd7-d133-4ae8-b53e-3a8f3f81e2af",
+    "images": [
+      "images/artwork_222_01.jpg"
+    ],
+    "primaryImage": "images/artwork_222_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9369911D-1243-493C-9210-DA1388B5F73D}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43340588600006,
+    "longitude": 12.340592338000022,
+    "properties": {
+      "globalid": "{9369911D-1243-493C-9210-DA1388B5F73D}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:42+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:41:00+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "9369911d-1243-493c-9210-da1388b5f73d",
+    "images": [
+      "images/artwork_223_01.jpg"
+    ],
+    "primaryImage": "images/artwork_223_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{93913CC4-7246-44C1-AB94-D5AEA73C732D}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43627557900004,
+    "longitude": 12.32563002300003,
+    "properties": {
+      "globalid": "{93913CC4-7246-44C1-AB94-D5AEA73C732D}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:17:36+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:00:57+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "93913cc4-7246-44c1-ab94-d5aea73c732d",
+    "images": [
+      "images/artwork_224_01.jpg"
+    ],
+    "primaryImage": "images/artwork_224_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{939AE128-ED80-48D9-8620-9BBC8B8B842E}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43208295900007,
+    "longitude": 12.32561335400004,
+    "properties": {
+      "globalid": "{939AE128-ED80-48D9-8620-9BBC8B8B842E}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "2 in 1",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:52:33+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:47:46+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "939ae128-ed80-48d9-8620-9bbc8b8b842e",
+    "images": [
+      "images/artwork_225_01.jpg"
+    ],
+    "primaryImage": "images/artwork_225_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{95EAFDB8-B5B5-4E37-8CE3-321AE892DD25}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42640424000007,
+    "longitude": 12.323173040000029,
+    "properties": {
+      "globalid": "{95EAFDB8-B5B5-4E37-8CE3-321AE892DD25}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/05 12:46:12+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:05+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "95eafdb8-b5b5-4e37-8ce3-321ae892dd25",
+    "images": [
+      "images/artwork_226_01.jpg",
+      "images/artwork_226_02.jpg"
+    ],
+    "primaryImage": "images/artwork_226_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{96754920-043E-43E7-B3A6-7D91F10A1B1E}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43704787900003,
+    "longitude": 12.330496942000025,
+    "properties": {
+      "globalid": "{96754920-043E-43E7-B3A6-7D91F10A1B1E}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:18:08+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:01:21+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "96754920-043e-43e7-b3a6-7d91f10a1b1e",
+    "images": [
+      "images/artwork_227_01.jpg"
+    ],
+    "primaryImage": "images/artwork_227_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{97695DE7-6C7A-414F-9754-0232462F75A9}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43753476000006,
+    "longitude": 12.331696300000033,
+    "properties": {
+      "globalid": "{97695DE7-6C7A-414F-9754-0232462F75A9}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:02+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:53:52+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "97695de7-6c7a-414f-9754-0232462f75a9",
+    "images": [
+      "images/artwork_228_01.jpg"
+    ],
+    "primaryImage": "images/artwork_228_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{981B90CD-3E36-43B7-B51D-DA44403AE3B2}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42938685000007,
+    "longitude": 12.332955320000053,
+    "properties": {
+      "globalid": "{981B90CD-3E36-43B7-B51D-DA44403AE3B2}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:36:22+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:46:14+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "981b90cd-3e36-43b7-b51d-da44403ae3b2",
+    "images": [
+      "images/artwork_229_01.jpg"
+    ],
+    "primaryImage": "images/artwork_229_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{992DA602-635F-4453-A81D-30DB8CB8401A}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42948194100006,
+    "longitude": 12.326450187000034,
+    "properties": {
+      "globalid": "{992DA602-635F-4453-A81D-30DB8CB8401A}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:52:53+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:15+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "992da602-635f-4453-a81d-30db8cb8401a",
+    "images": [
+      "images/artwork_230_01.jpg"
+    ],
+    "primaryImage": "images/artwork_230_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{996360AA-C830-49CD-9BEB-FDBC94F873C0}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43370736000003,
+    "longitude": 12.32062424000003,
+    "properties": {
+      "globalid": "{996360AA-C830-49CD-9BEB-FDBC94F873C0}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:35:07+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:44:12+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "996360aa-c830-49cd-9beb-fdbc94f873c0",
+    "images": [
+      "images/artwork_231_01.jpg"
+    ],
+    "primaryImage": "images/artwork_231_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{99BF8603-DDAA-4AA5-8617-E9963378B977}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43813817200004,
+    "longitude": 12.336842856000032,
+    "properties": {
+      "globalid": "{99BF8603-DDAA-4AA5-8617-E9963378B977}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:10:21+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:42:37+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "99bf8603-ddaa-4aa5-8617-e9963378b977",
+    "images": [
+      "images/artwork_232_01.jpg"
+    ],
+    "primaryImage": "images/artwork_232_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9A1DA4FA-6317-4CD9-974C-A44FE411088E}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.432637466000074,
+    "longitude": 12.337768393000033,
+    "properties": {
+      "globalid": "{9A1DA4FA-6317-4CD9-974C-A44FE411088E}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "Come back w selfie stick. Many statues up high",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:16+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:40:20+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "9a1da4fa-6317-4cd9-974c-a44fe411088e",
+    "images": [
+      "images/artwork_233_01.jpg"
+    ],
+    "primaryImage": "images/artwork_233_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9AEECB8D-37C2-42CD-B0DF-C7B4224769E0}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43642510600006,
+    "longitude": 12.326417596000056,
+    "properties": {
+      "globalid": "{9AEECB8D-37C2-42CD-B0DF-C7B4224769E0}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:17:33+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:00:52+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "9aeecb8d-37c2-42cd-b0df-c7b4224769e0",
+    "images": [
+      "images/artwork_234_01.jpg"
+    ],
+    "primaryImage": "images/artwork_234_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9C634262-037E-4D87-9B09-680683195FF9}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.430186615000025,
+    "longitude": 12.329489251000041,
+    "properties": {
+      "globalid": "{9C634262-037E-4D87-9B09-680683195FF9}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:53:14+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:42+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "9c634262-037e-4d87-9b09-680683195ff9",
+    "images": [
+      "images/artwork_235_01.jpg"
+    ],
+    "primaryImage": "images/artwork_235_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9CD4BF04-8E94-4EE1-A05C-63F90C16DEFF}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43627737400004,
+    "longitude": 12.325752022000074,
+    "properties": {
+      "globalid": "{9CD4BF04-8E94-4EE1-A05C-63F90C16DEFF}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:17:34+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:00:54+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "9cd4bf04-8e94-4ee1-a05c-63f90c16deff",
+    "images": [
+      "images/artwork_236_01.jpg"
+    ],
+    "primaryImage": "images/artwork_236_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9E47A074-0593-4B3F-9EF3-029E01CF3B4E}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42769404100005,
+    "longitude": 12.36149565900007,
+    "properties": {
+      "globalid": "{9E47A074-0593-4B3F-9EF3-029E01CF3B4E}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:16:59+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:58:47+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Castello"
+    },
+    "id": "9e47a074-0593-4b3f-9ef3-029e01cf3b4e",
+    "images": [
+      "images/artwork_237_01.jpg"
+    ],
+    "primaryImage": "images/artwork_237_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9E663F8C-5EF8-43D4-A2AB-80F630B2D916}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.436498947000075,
+    "longitude": 12.326387570000065,
+    "properties": {
+      "globalid": "{9E663F8C-5EF8-43D4-A2AB-80F630B2D916}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:17:29+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:00:48+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "9e663f8c-5ef8-43d4-a2ab-80f630b2d916",
+    "images": [
+      "images/artwork_238_01.jpg"
+    ],
+    "primaryImage": "images/artwork_238_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9EF098D3-7154-4E47-8DB5-E249C21617D9}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43386243000003,
+    "longitude": 12.319351740000059,
+    "properties": {
+      "globalid": "{9EF098D3-7154-4E47-8DB5-E249C21617D9}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:34:50+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:44:01+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "9ef098d3-7154-4e47-8db5-e249c21617d9",
+    "images": [
+      "images/artwork_239_01.jpg"
+    ],
+    "primaryImage": "images/artwork_239_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9EF972C3-B6C8-4E1D-A383-2329DFBAC0CA}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.433856150000054,
+    "longitude": 12.319396330000075,
+    "properties": {
+      "globalid": "{9EF972C3-B6C8-4E1D-A383-2329DFBAC0CA}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:34:52+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:44:04+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "9ef972c3-b6c8-4e1d-a383-2329dfbac0ca",
+    "images": [
+      "images/artwork_240_01.jpg"
+    ],
+    "primaryImage": "images/artwork_240_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9F03BBF3-770F-493F-B41C-9538E2EABD60}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.425014160000046,
+    "longitude": 12.333518771000058,
+    "properties": {
+      "globalid": "{9F03BBF3-770F-493F-B41C-9538E2EABD60}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:16:24+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:56:06+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "9f03bbf3-770f-493f-b41c-9538e2eabd60",
+    "images": [
+      "images/artwork_241_01.jpg"
+    ],
+    "primaryImage": "images/artwork_241_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9F1A823B-FDFA-4B04-BCFB-E27E973573B1}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.45888739000003,
+    "longitude": 12.353107650000027,
+    "properties": {
+      "globalid": "{9F1A823B-FDFA-4B04-BCFB-E27E973573B1}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/03 15:18:28+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:29:49+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Murano"
+    },
+    "id": "9f1a823b-fdfa-4b04-bcfb-e27e973573b1",
+    "images": [
+      "images/artwork_242_01.jpg"
+    ],
+    "primaryImage": "images/artwork_242_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9FFDA6E2-0B0C-4C47-944C-918AE361D6F4}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43412894800008,
+    "longitude": 12.323540939000054,
+    "properties": {
+      "globalid": "{9FFDA6E2-0B0C-4C47-944C-918AE361D6F4}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:20:41+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:21:12+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "9ffda6e2-0b0c-4c47-944c-918ae361d6f4",
+    "images": [
+      "images/artwork_243_01.jpg"
+    ],
+    "primaryImage": "images/artwork_243_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A082D296-DB6F-4AA2-98A1-F8A7A820632F}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42919715600004,
+    "longitude": 12.332871571000055,
+    "properties": {
+      "globalid": "{A082D296-DB6F-4AA2-98A1-F8A7A820632F}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "multiple on wall",
+      "_3d_model_captured": null,
+      "CreationDate": "2026/10/27 16:53:55+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:49:36+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "a082d296-db6f-4aa2-98a1-f8a7a820632f",
+    "images": [
+      "images/artwork_244_01.jpg"
+    ],
+    "primaryImage": "images/artwork_244_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A14C519E-3ECB-47A2-A4EA-E5DECB4DAD3C}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43264658000004,
+    "longitude": 12.329571890000068,
+    "properties": {
+      "globalid": "{A14C519E-3ECB-47A2-A4EA-E5DECB4DAD3C}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:25:33+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:39:32+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "a14c519e-3ecb-47a2-a4ea-e5decb4dad3c",
+    "images": [
+      "images/artwork_245_01.jpg"
+    ],
+    "primaryImage": "images/artwork_245_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A1E05A70-B3BF-46E6-8FF3-B111ED52D628}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42562556400003,
+    "longitude": 12.329983984000023,
+    "properties": {
+      "globalid": "{A1E05A70-B3BF-46E6-8FF3-B111ED52D628}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:16:21+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:55:49+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "a1e05a70-b3bf-46e6-8ff3-b111ed52d628",
+    "images": [
+      "images/artwork_246_01.jpg"
+    ],
+    "primaryImage": "images/artwork_246_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A1EAF466-829E-498B-A603-745744F18157}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43055236300006,
+    "longitude": 12.331043237000074,
+    "properties": {
+      "globalid": "{A1EAF466-829E-498B-A603-745744F18157}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:53:22+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:52+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "a1eaf466-829e-498b-a603-745744f18157",
+    "images": [
+      "images/artwork_247_01.jpg"
+    ],
+    "primaryImage": "images/artwork_247_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A286B3F5-85AE-4DF6-BDAC-07F463DE3D3E}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.484972199000026,
+    "longitude": 12.406274899000039,
+    "properties": {
+      "globalid": "{A286B3F5-85AE-4DF6-BDAC-07F463DE3D3E}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/17 15:23:50+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:32:15+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Mazzorbo"
+    },
+    "id": "a286b3f5-85ae-4df6-bdac-07f463de3d3e",
+    "images": [
+      "images/artwork_248_01.jpg"
+    ],
+    "primaryImage": "images/artwork_248_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A43148FF-1846-45B0-AD3E-6E5FFAD00EAC}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43851131000008,
+    "longitude": 12.33466253000006,
+    "properties": {
+      "globalid": "{A43148FF-1846-45B0-AD3E-6E5FFAD00EAC}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:28+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:55:41+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "a43148ff-1846-45b0-ad3e-6e5ffad00eac",
+    "images": [
+      "images/artwork_249_01.jpg"
+    ],
+    "primaryImage": "images/artwork_249_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A44D8625-AC89-4269-8E7C-B8D89A229DDD}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43028715100007,
+    "longitude": 12.334254396000063,
+    "properties": {
+      "globalid": "{A44D8625-AC89-4269-8E7C-B8D89A229DDD}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:54:02+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:49:43+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "a44d8625-ac89-4269-8e7c-b8d89a229ddd",
+    "images": [
+      "images/artwork_250_01.jpg"
+    ],
+    "primaryImage": "images/artwork_250_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A4B72EE9-9949-475B-8C07-4C47C8F0674D}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.429558443000076,
+    "longitude": 12.32902864500005,
+    "properties": {
+      "globalid": "{A4B72EE9-9949-475B-8C07-4C47C8F0674D}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:19:33+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:37:28+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "a4b72ee9-9949-475b-8c07-4c47c8f0674d",
+    "images": [
+      "images/artwork_251_01.jpg"
+    ],
+    "primaryImage": "images/artwork_251_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A63208CE-A2B6-4661-8CC9-64A29E5CE807}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43054727700007,
+    "longitude": 12.33214502900006,
+    "properties": {
+      "globalid": "{A63208CE-A2B6-4661-8CC9-64A29E5CE807}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:53:53+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:49:31+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "a63208ce-a2b6-4661-8cc9-64a29e5ce807",
+    "images": [
+      "images/artwork_252_01.jpg"
+    ],
+    "primaryImage": "images/artwork_252_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A6E472B7-654A-4FB7-B199-6B3973D189DC}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43332857000007,
+    "longitude": 12.329105900000059,
+    "properties": {
+      "globalid": "{A6E472B7-654A-4FB7-B199-6B3973D189DC}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:27:36+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:47:46+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "a6e472b7-654a-4fb7-b199-6b3973d189dc",
+    "images": [
+      "images/artwork_253_01.jpg"
+    ],
+    "primaryImage": "images/artwork_253_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A73E0578-D0F6-4300-A5CC-047DFE8B3F49}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.430948200000046,
+    "longitude": 12.322910290000038,
+    "properties": {
+      "globalid": "{A73E0578-D0F6-4300-A5CC-047DFE8B3F49}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 14:21:24+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:42:43+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "a73e0578-d0f6-4300-a5cc-047dfe8b3f49",
+    "images": [
+      "images/artwork_254_01.jpg"
+    ],
+    "primaryImage": "images/artwork_254_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A8512DEC-6E24-4EEC-A471-48DA9BFC9D52}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.440671440000074,
+    "longitude": 12.330934240000033,
+    "properties": {
+      "globalid": "{A8512DEC-6E24-4EEC-A471-48DA9BFC9D52}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:43+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:02:53+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "a8512dec-6e24-4eec-a471-48da9bfc9d52",
+    "images": [
+      "images/artwork_255_01.jpg"
+    ],
+    "primaryImage": "images/artwork_255_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A907AE96-522C-4879-8CBB-42255EA63B2B}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42993924000007,
+    "longitude": 12.334367230000055,
+    "properties": {
+      "globalid": "{A907AE96-522C-4879-8CBB-42255EA63B2B}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:35:30+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:44:56+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "a907ae96-522c-4879-8cbb-42255ea63b2b",
+    "images": [
+      "images/artwork_256_01.jpg",
+      "images/artwork_256_02.jpg",
+      "images/artwork_256_03.jpg",
+      "images/artwork_256_04.jpg"
+    ],
+    "primaryImage": "images/artwork_256_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A91A018D-40FC-4975-B004-46D38A59F611}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43865771000003,
+    "longitude": 12.335139780000077,
+    "properties": {
+      "globalid": "{A91A018D-40FC-4975-B004-46D38A59F611}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:32+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:55:51+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "a91a018d-40fc-4975-b004-46d38a59f611",
+    "images": [
+      "images/artwork_257_01.jpg"
+    ],
+    "primaryImage": "images/artwork_257_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A92DEB11-7C77-4D4C-8B6E-6142B9FA535D}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43124886000004,
+    "longitude": 12.322713750000048,
+    "properties": {
+      "globalid": "{A92DEB11-7C77-4D4C-8B6E-6142B9FA535D}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "1 statue 2 reliefs",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 14:21:48+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:43:40+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "a92deb11-7c77-4d4c-8b6e-6142b9fa535d",
+    "images": [
+      "images/artwork_258_01.jpg",
+      "images/artwork_258_02.jpg"
+    ],
+    "primaryImage": "images/artwork_258_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A9419F25-5C36-4B4D-B31E-CDEFA76A0E6D}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.48540221500008,
+    "longitude": 12.416356998000026,
+    "properties": {
+      "globalid": "{A9419F25-5C36-4B4D-B31E-CDEFA76A0E6D}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/17 18:57:36+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:34:01+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Burano"
+    },
+    "id": "a9419f25-5c36-4b4d-b31e-cdefa76a0e6d",
+    "images": [
+      "images/artwork_259_01.jpg"
+    ],
+    "primaryImage": "images/artwork_259_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A9B761FF-2FAB-4AB8-B73D-AB837D7CF1B5}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42540324000004,
+    "longitude": 12.333997125000053,
+    "properties": {
+      "globalid": "{A9B761FF-2FAB-4AB8-B73D-AB837D7CF1B5}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/05 10:38:29+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:46:16+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "a9b761ff-2fab-4ab8-b73d-ab837d7cf1b5",
+    "images": [
+      "images/artwork_260_01.jpg"
+    ],
+    "primaryImage": "images/artwork_260_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{AA77FF96-DC3D-4388-9D41-1CD51611267D}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.458418470000026,
+    "longitude": 12.35743425000004,
+    "properties": {
+      "globalid": "{AA77FF96-DC3D-4388-9D41-1CD51611267D}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/03 15:18:36+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:28:57+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Murano"
+    },
+    "id": "aa77ff96-dc3d-4388-9d41-1cd51611267d",
+    "images": [
+      "images/artwork_261_01.jpg"
+    ],
+    "primaryImage": "images/artwork_261_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{AB362B87-4AEA-4ABD-8679-8D3B50A33078}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.435282605000054,
+    "longitude": 12.340535746000057,
+    "properties": {
+      "globalid": "{AB362B87-4AEA-4ABD-8679-8D3B50A33078}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:49+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:41:22+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "ab362b87-4aea-4abd-8679-8d3b50a33078",
+    "images": [
+      "images/artwork_262_01.jpg"
+    ],
+    "primaryImage": "images/artwork_262_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{AC03CA42-4EA2-457C-9EEE-208A4324F437}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.429274502000055,
+    "longitude": 12.333819168000048,
+    "properties": {
+      "globalid": "{AC03CA42-4EA2-457C-9EEE-208A4324F437}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "4 reliefs ",
+      "_3d_model_captured": null,
+      "CreationDate": "2026/10/27 15:37:27+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:35:08+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "ac03ca42-4ea2-457c-9eee-208a4324f437",
+    "images": [
+      "images/artwork_263_01.jpg"
+    ],
+    "primaryImage": "images/artwork_263_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{AC24C918-EC43-4705-A575-EFBA910F0232}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43608745500006,
+    "longitude": 12.327314380000075,
+    "properties": {
+      "globalid": "{AC24C918-EC43-4705-A575-EFBA910F0232}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:17:18+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:00:30+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "ac24c918-ec43-4705-a575-efba910f0232",
+    "images": [
+      "images/artwork_264_01.jpg"
+    ],
+    "primaryImage": "images/artwork_264_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{AC86CF3C-DE12-4B11-ACAA-63D42EE9EDDB}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.433938510000075,
+    "longitude": 12.33351134000003,
+    "properties": {
+      "globalid": "{AC86CF3C-DE12-4B11-ACAA-63D42EE9EDDB}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:29:47+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:25+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "ac86cf3c-de12-4b11-acaa-63d42ee9eddb",
+    "images": [
+      "images/artwork_265_01.jpg"
+    ],
+    "primaryImage": "images/artwork_265_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{AF8068D0-2037-4C83-9B99-06A76C68C20C}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42404114500005,
+    "longitude": 12.339363074000062,
+    "properties": {
+      "globalid": "{AF8068D0-2037-4C83-9B99-06A76C68C20C}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/05 11:03:40+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:47:10+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "af8068d0-2037-4c83-9b99-06a76c68c20c",
+    "images": [
+      "images/artwork_266_01.jpg",
+      "images/artwork_266_02.jpg",
+      "images/artwork_266_03.jpg"
+    ],
+    "primaryImage": "images/artwork_266_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B08C682F-551F-462D-B3E9-FBADC0CE2180}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43377007300006,
+    "longitude": 12.339551817000029,
+    "properties": {
+      "globalid": "{B08C682F-551F-462D-B3E9-FBADC0CE2180}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "statues and reliefs",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:27+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:40:35+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "b08c682f-551f-462d-b3e9-fbadc0ce2180",
+    "images": [
+      "images/artwork_267_01.jpg"
+    ],
+    "primaryImage": "images/artwork_267_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B0B96E56-8189-4834-B1F0-0317327BE43E}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43329200200003,
+    "longitude": 12.33676082200003,
+    "properties": {
+      "globalid": "{B0B96E56-8189-4834-B1F0-0317327BE43E}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:09+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:40:06+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "b0b96e56-8189-4834-b1f0-0317327be43e",
+    "images": [
+      "images/artwork_268_01.jpg"
+    ],
+    "primaryImage": "images/artwork_268_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B14ECFEB-D105-42E6-8E03-1CE2865AD80A}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.431013051000036,
+    "longitude": 12.326666162000038,
+    "properties": {
+      "globalid": "{B14ECFEB-D105-42E6-8E03-1CE2865AD80A}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "multiple on building",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:52:41+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:47:57+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "b14ecfeb-d105-42e6-8e03-1ce2865ad80a",
+    "images": [
+      "images/artwork_269_01.jpg"
+    ],
+    "primaryImage": "images/artwork_269_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B1F1F8F8-4C42-4F99-9813-BB4920C9D284}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.430147040000065,
+    "longitude": 12.35566343000005,
+    "properties": {
+      "globalid": "{B1F1F8F8-4C42-4F99-9813-BB4920C9D284}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:41:44+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:52:18+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Castello"
+    },
+    "id": "b1f1f8f8-4c42-4f99-9813-bb4920c9d284",
+    "images": [
+      "images/artwork_270_01.jpg"
+    ],
+    "primaryImage": "images/artwork_270_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B2C18635-4124-481B-8F4D-C9975AD49862}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.434497890000046,
+    "longitude": 12.330614560000072,
+    "properties": {
+      "globalid": "{B2C18635-4124-481B-8F4D-C9975AD49862}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:28:52+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:11+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "b2c18635-4124-481b-8f4d-c9975ad49862",
+    "images": [
+      "images/artwork_271_01.jpg"
+    ],
+    "primaryImage": "images/artwork_271_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B2E3C9DA-76ED-44E3-ACE9-23AE870DDFDD}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43372030300003,
+    "longitude": 12.339571300000046,
+    "properties": {
+      "globalid": "{B2E3C9DA-76ED-44E3-ACE9-23AE870DDFDD}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "part of other wall",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:24+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:40:30+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "b2e3c9da-76ed-44e3-ace9-23ae870ddfdd",
+    "images": [
+      "images/artwork_272_01.jpg"
+    ],
+    "primaryImage": "images/artwork_272_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B2E4DD3F-410C-43D3-9DAA-780D75C5B570}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43365557000004,
+    "longitude": 12.340917277000074,
+    "properties": {
+      "globalid": "{B2E4DD3F-410C-43D3-9DAA-780D75C5B570}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:43+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:41:02+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "b2e4dd3f-410c-43d3-9daa-780d75c5b570",
+    "images": [
+      "images/artwork_273_01.jpg"
+    ],
+    "primaryImage": "images/artwork_273_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B346215D-6F7E-4A89-AE8E-59D373A3C382}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.48501351200008,
+    "longitude": 12.41944675700006,
+    "properties": {
+      "globalid": "{B346215D-6F7E-4A89-AE8E-59D373A3C382}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/17 14:07:44+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:34:17+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Burano"
+    },
+    "id": "b346215d-6f7e-4a89-ae8e-59d373a3c382",
+    "images": [
+      "images/artwork_274_01.jpg"
+    ],
+    "primaryImage": "images/artwork_274_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B46F556B-2BB3-42AD-BECD-99C3610A8BF2}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43233264000003,
+    "longitude": 12.330411680000054,
+    "properties": {
+      "globalid": "{B46F556B-2BB3-42AD-BECD-99C3610A8BF2}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:31:08+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:43+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "b46f556b-2bb3-42ad-becd-99c3610a8bf2",
+    "images": [
+      "images/artwork_275_01.jpg",
+      "images/artwork_275_02.jpg"
+    ],
+    "primaryImage": "images/artwork_275_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B4F1C731-5600-4770-B345-288BB773C0F9}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43750002000007,
+    "longitude": 12.332590860000039,
+    "properties": {
+      "globalid": "{B4F1C731-5600-4770-B345-288BB773C0F9}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:07+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:54:25+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "b4f1c731-5600-4770-b345-288bb773c0f9",
+    "images": [
+      "images/artwork_276_01.jpg"
+    ],
+    "primaryImage": "images/artwork_276_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B589A786-D1F4-4528-98C2-8294DFD0F4BF}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43567367700007,
+    "longitude": 12.334122703000048,
+    "properties": {
+      "globalid": "{B589A786-D1F4-4528-98C2-8294DFD0F4BF}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:10:56+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:49:11+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "b589a786-d1f4-4528-98c2-8294dfd0f4bf",
+    "images": [
+      "images/artwork_277_01.jpg"
+    ],
+    "primaryImage": "images/artwork_277_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B6963ECF-D608-4283-AA39-D4C8C47DB8DA}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43640450700008,
+    "longitude": 12.326259693000054,
+    "properties": {
+      "globalid": "{B6963ECF-D608-4283-AA39-D4C8C47DB8DA}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:17:26+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:00:46+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "b6963ecf-d608-4283-aa39-d4c8c47db8da",
+    "images": [
+      "images/artwork_278_01.jpg"
+    ],
+    "primaryImage": "images/artwork_278_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B6A75011-FF35-4511-9180-FCDFAB8DE8F6}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.433738008000034,
+    "longitude": 12.322327994000034,
+    "properties": {
+      "globalid": "{B6A75011-FF35-4511-9180-FCDFAB8DE8F6}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "Smaller reliefs above",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:40:16+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:29:48+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "b6a75011-ff35-4511-9180-fcdfab8de8f6",
+    "images": [
+      "images/artwork_279_01.jpg"
+    ],
+    "primaryImage": "images/artwork_279_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B74FA816-3210-4EFB-A854-6BEB16A2FB98}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.434129950000056,
+    "longitude": 12.333069840000064,
+    "properties": {
+      "globalid": "{B74FA816-3210-4EFB-A854-6BEB16A2FB98}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:29:39+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:23+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "b74fa816-3210-4efb-a854-6beb16a2fb98",
+    "images": [
+      "images/artwork_280_01.jpg",
+      "images/artwork_280_02.jpg"
+    ],
+    "primaryImage": "images/artwork_280_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B7D2D5BF-8BCA-45C2-8457-94691E5E6996}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.432907440000065,
+    "longitude": 12.328646740000067,
+    "properties": {
+      "globalid": "{B7D2D5BF-8BCA-45C2-8457-94691E5E6996}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:27:07+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:47:37+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "b7d2d5bf-8bca-45c2-8457-94691e5e6996",
+    "images": [
+      "images/artwork_281_01.jpg"
+    ],
+    "primaryImage": "images/artwork_281_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B8042EA5-7798-4701-B5F6-A111D256FF39}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.434813492000046,
+    "longitude": 12.336531196000067,
+    "properties": {
+      "globalid": "{B8042EA5-7798-4701-B5F6-A111D256FF39}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:11:03+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:49:32+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "b8042ea5-7798-4701-b5f6-a111d256ff39",
+    "images": [
+      "images/artwork_282_01.jpg"
+    ],
+    "primaryImage": "images/artwork_282_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B8C7743F-3571-43F6-A33A-3B20AE0959BF}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43832296000005,
+    "longitude": 12.33621246000007,
+    "properties": {
+      "globalid": "{B8C7743F-3571-43F6-A33A-3B20AE0959BF}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:34+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:00:11+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "b8c7743f-3571-43f6-a33a-3b20ae0959bf",
+    "images": [
+      "images/artwork_283_01.jpg",
+      "images/artwork_283_02.jpg"
+    ],
+    "primaryImage": "images/artwork_283_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B982E952-92A3-4A54-9AE8-670E26904676}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.438299044000075,
+    "longitude": 12.326731923000068,
+    "properties": {
+      "globalid": "{B982E952-92A3-4A54-9AE8-670E26904676}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:17:52+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:01:11+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "b982e952-92a3-4a54-9ae8-670e26904676",
+    "images": [
+      "images/artwork_284_01.jpg"
+    ],
+    "primaryImage": "images/artwork_284_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{BAFF92F1-E03F-4E8F-BCF2-7AD1B85CF051}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43208825000005,
+    "longitude": 12.325592407000045,
+    "properties": {
+      "globalid": "{BAFF92F1-E03F-4E8F-BCF2-7AD1B85CF051}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "3 patere also on wall",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:52:32+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:47:33+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "baff92f1-e03f-4e8f-bcf2-7ad1b85cf051",
+    "images": [
+      "images/artwork_285_01.jpg"
+    ],
+    "primaryImage": "images/artwork_285_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{BB098D57-AABC-452F-8386-F691C8856B14}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.436719837000055,
+    "longitude": 12.337370602000021,
+    "properties": {
+      "globalid": "{BB098D57-AABC-452F-8386-F691C8856B14}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:10:02+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:41:55+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "bb098d57-aabc-452f-8386-f691c8856b14",
+    "images": [
+      "images/artwork_286_01.jpg"
+    ],
+    "primaryImage": "images/artwork_286_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{BCB82EEA-2D12-4E82-A9B7-888D1D2125F5}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.429808792000074,
+    "longitude": 12.328770845000065,
+    "properties": {
+      "globalid": "{BCB82EEA-2D12-4E82-A9B7-888D1D2125F5}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:53:02+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:28+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "bcb82eea-2d12-4e82-a9b7-888d1d2125f5",
+    "images": [
+      "images/artwork_287_01.jpg"
+    ],
+    "primaryImage": "images/artwork_287_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{BCE6EC74-D184-4A08-A3B3-D21A79243D1C}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43533529800004,
+    "longitude": 12.340121299000032,
+    "properties": {
+      "globalid": "{BCE6EC74-D184-4A08-A3B3-D21A79243D1C}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:53+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:41:29+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "bce6ec74-d184-4a08-a3b3-d21a79243d1c",
+    "images": [
+      "images/artwork_288_01.jpg"
+    ],
+    "primaryImage": "images/artwork_288_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{BD0BDA94-864C-4350-99F5-8F78CE00E70E}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43815913600008,
+    "longitude": 12.337410462000037,
+    "properties": {
+      "globalid": "{BD0BDA94-864C-4350-99F5-8F78CE00E70E}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "3 in 1",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:10:19+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:42:35+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "bd0bda94-864c-4350-99f5-8f78ce00e70e",
+    "images": [
+      "images/artwork_289_01.jpg"
+    ],
+    "primaryImage": "images/artwork_289_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{BD2C3C79-E966-488D-99BD-50E72EEE5CD5}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43716380200004,
+    "longitude": 12.324302702000068,
+    "properties": {
+      "globalid": "{BD2C3C79-E966-488D-99BD-50E72EEE5CD5}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:17:44+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:01:03+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "bd2c3c79-e966-488d-99bd-50e72eee5cd5",
+    "images": [
+      "images/artwork_290_01.jpg"
+    ],
+    "primaryImage": "images/artwork_290_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{BFD7E40F-87B0-4652-8F1D-EE87D4FA7881}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43103411900006,
+    "longitude": 12.330334316000062,
+    "properties": {
+      "globalid": "{BFD7E40F-87B0-4652-8F1D-EE87D4FA7881}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "across the big canal",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:53:18+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:48+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "bfd7e40f-87b0-4652-8f1d-ee87d4fa7881",
+    "images": [
+      "images/artwork_291_01.jpg"
+    ],
+    "primaryImage": "images/artwork_291_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C08CBF09-7865-4DAE-AEF1-78D559FBA977}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.45746874000008,
+    "longitude": 12.356769300000053,
+    "properties": {
+      "globalid": "{C08CBF09-7865-4DAE-AEF1-78D559FBA977}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/03 15:18:35+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:28:19+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Murano"
+    },
+    "id": "c08cbf09-7865-4dae-aef1-78d559fba977",
+    "images": [
+      "images/artwork_292_01.jpg"
+    ],
+    "primaryImage": "images/artwork_292_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C282E4D4-C65A-4DA3-8916-28428865ADE8}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43748709000005,
+    "longitude": 12.331657490000055,
+    "properties": {
+      "globalid": "{C282E4D4-C65A-4DA3-8916-28428865ADE8}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:03+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:54:09+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "c282e4d4-c65a-4da3-8916-28428865ade8",
+    "images": [
+      "images/artwork_293_01.jpg"
+    ],
+    "primaryImage": "images/artwork_293_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C2C7E1DF-0136-4CE8-B966-A641F575AF10}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43944478000003,
+    "longitude": 12.33404224000003,
+    "properties": {
+      "globalid": "{C2C7E1DF-0136-4CE8-B966-A641F575AF10}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:40+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:00:37+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "c2c7e1df-0136-4ce8-b966-a641f575af10",
+    "images": [
+      "images/artwork_294_01.jpg"
+    ],
+    "primaryImage": "images/artwork_294_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C347ACCC-58E3-4C10-8D07-E10B235D58D3}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.430937630000074,
+    "longitude": 12.336956560000033,
+    "properties": {
+      "globalid": "{C347ACCC-58E3-4C10-8D07-E10B235D58D3}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:35:33+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:45:03+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "c347accc-58e3-4c10-8d07-e10b235d58d3",
+    "images": [
+      "images/artwork_295_01.jpg"
+    ],
+    "primaryImage": "images/artwork_295_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C3921844-FD99-4236-A209-9DC1E32F7482}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.436355390000074,
+    "longitude": 12.331408090000025,
+    "properties": {
+      "globalid": "{C3921844-FD99-4236-A209-9DC1E32F7482}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:00+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:53:48+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "c3921844-fd99-4236-a209-9dc1e32f7482",
+    "images": [
+      "images/artwork_296_01.jpg"
+    ],
+    "primaryImage": "images/artwork_296_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C436C3CC-5AFD-444A-BA64-6149309EF30E}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43539204600006,
+    "longitude": 12.324233288000073,
+    "properties": {
+      "globalid": "{C436C3CC-5AFD-444A-BA64-6149309EF30E}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "across canal",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:17:04+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:00:13+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "c436c3cc-5afd-444a-ba64-6149309ef30e",
+    "images": [
+      "images/artwork_297_01.jpg"
+    ],
+    "primaryImage": "images/artwork_297_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C463943F-4640-41DF-B21D-1F763751354C}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.430591710000044,
+    "longitude": 12.32199010000005,
+    "properties": {
+      "globalid": "{C463943F-4640-41DF-B21D-1F763751354C}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "3 reliefs of heads next to it",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 14:20:53+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:40:49+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "c463943f-4640-41df-b21d-1f763751354c",
+    "images": [
+      "images/artwork_298_01.jpg"
+    ],
+    "primaryImage": "images/artwork_298_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C612E400-9036-48AD-809A-062EE7A4465E}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43029356800008,
+    "longitude": 12.334098964000077,
+    "properties": {
+      "globalid": "{C612E400-9036-48AD-809A-062EE7A4465E}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "7 heads",
+      "_3d_model_captured": null,
+      "CreationDate": "2026/10/27 15:40:32+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:36:20+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "c612e400-9036-48ad-809a-062ee7a4465e",
+    "images": [
+      "images/artwork_299_01.jpg"
+    ],
+    "primaryImage": "images/artwork_299_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C6AA1298-FF03-4D0E-89E6-1DD0615B4DBB}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.436189805000026,
+    "longitude": 12.327907716000027,
+    "properties": {
+      "globalid": "{C6AA1298-FF03-4D0E-89E6-1DD0615B4DBB}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/11 13:00:58+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:59:03+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "c6aa1298-ff03-4d0e-89e6-1dd0615b4dbb",
+    "images": [
+      "images/artwork_300_01.jpg"
+    ],
+    "primaryImage": "images/artwork_300_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C6E397CB-D460-4B48-B0E2-5777A5FCE67F}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43955612000008,
+    "longitude": 12.330905060000077,
+    "properties": {
+      "globalid": "{C6E397CB-D460-4B48-B0E2-5777A5FCE67F}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:47+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:03:08+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "c6e397cb-d460-4b48-b0e2-5777a5fce67f",
+    "images": [
+      "images/artwork_301_01.jpg"
+    ],
+    "primaryImage": "images/artwork_301_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C6F3AA5A-4502-4EA7-9F64-F89EA56DD0DF}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42883039000003,
+    "longitude": 12.33221186000003,
+    "properties": {
+      "globalid": "{C6F3AA5A-4502-4EA7-9F64-F89EA56DD0DF}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:35:27+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:44:53+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "c6f3aa5a-4502-4ea7-9f64-f89ea56dd0df",
+    "images": [
+      "images/artwork_302_01.jpg"
+    ],
+    "primaryImage": "images/artwork_302_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C6F5A06C-DED1-4C87-BC77-9B70E09AD65C}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.424168982000026,
+    "longitude": 12.339000403000057,
+    "properties": {
+      "globalid": "{C6F5A06C-DED1-4C87-BC77-9B70E09AD65C}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/05 11:03:11+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:46:31+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "c6f5a06c-ded1-4c87-bc77-9b70e09ad65c",
+    "images": [
+      "images/artwork_303_01.jpg"
+    ],
+    "primaryImage": "images/artwork_303_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C901AD10-74F3-4AAB-9699-DB5AB7A6FBCC}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.427947860000074,
+    "longitude": 12.321068720000028,
+    "properties": {
+      "globalid": "{C901AD10-74F3-4AAB-9699-DB5AB7A6FBCC}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/05 12:46:14+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:51:10+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "c901ad10-74f3-4aab-9699-db5ab7a6fbcc",
+    "images": [
+      "images/artwork_304_01.jpg"
+    ],
+    "primaryImage": "images/artwork_304_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C97CE642-F866-4FB2-92FA-A5E6D374DF14}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43436514000007,
+    "longitude": 12.317756300000042,
+    "properties": {
+      "globalid": "{C97CE642-F866-4FB2-92FA-A5E6D374DF14}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:34:44+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:43:42+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "c97ce642-f866-4fb2-92fa-a5e6d374df14",
+    "images": [
+      "images/artwork_305_01.jpg"
+    ],
+    "primaryImage": "images/artwork_305_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C9C9150D-8878-48BD-B4CA-605847D24E39}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43390064000005,
+    "longitude": 12.321724710000069,
+    "properties": {
+      "globalid": "{C9C9150D-8878-48BD-B4CA-605847D24E39}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:35:11+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:44:20+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "c9c9150d-8878-48bd-b4ca-605847d24e39",
+    "images": [
+      "images/artwork_306_01.jpg",
+      "images/artwork_306_02.jpg"
+    ],
+    "primaryImage": "images/artwork_306_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{CB1FB2EC-0DC9-481D-B376-9961EDE80F88}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43241923000005,
+    "longitude": 12.33485440000004,
+    "properties": {
+      "globalid": "{CB1FB2EC-0DC9-481D-B376-9961EDE80F88}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:22:58+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:38:49+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "cb1fb2ec-0dc9-481d-b376-9961ede80f88",
+    "images": [
+      "images/artwork_307_01.jpg"
+    ],
+    "primaryImage": "images/artwork_307_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{CBE4A83E-9F29-44FB-981A-B75E4965A477}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.435723144000065,
+    "longitude": 12.338908547000074,
+    "properties": {
+      "globalid": "{CBE4A83E-9F29-44FB-981A-B75E4965A477}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:55+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:41:37+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "cbe4a83e-9f29-44fb-981a-b75e4965a477",
+    "images": [
+      "images/artwork_308_01.jpg"
+    ],
+    "primaryImage": "images/artwork_308_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{CCA0376B-8F45-4314-B15F-4E30D112E116}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43808855000003,
+    "longitude": 12.334994510000058,
+    "properties": {
+      "globalid": "{CCA0376B-8F45-4314-B15F-4E30D112E116}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:20+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:55:15+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "cca0376b-8f45-4314-b15f-4e30d112e116",
+    "images": [
+      "images/artwork_309_01.jpg"
+    ],
+    "primaryImage": "images/artwork_309_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{CDCE3168-2A4E-48E7-8AE7-EB6BF8EA53E0}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42459445000003,
+    "longitude": 12.325965670000073,
+    "properties": {
+      "globalid": "{CDCE3168-2A4E-48E7-8AE7-EB6BF8EA53E0}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/05 12:46:07+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:47:45+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "cdce3168-2a4e-48e7-8ae7-eb6bf8ea53e0",
+    "images": [
+      "images/artwork_310_01.jpg"
+    ],
+    "primaryImage": "images/artwork_310_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{CDEFCB4F-BAAD-4BE0-9590-7A01A0DBCCB6}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.433358670000075,
+    "longitude": 12.329080180000062,
+    "properties": {
+      "globalid": "{CDEFCB4F-BAAD-4BE0-9590-7A01A0DBCCB6}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:27:27+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:47:43+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "cdefcb4f-baad-4be0-9590-7a01a0dbccb6",
+    "images": [
+      "images/artwork_311_01.jpg"
+    ],
+    "primaryImage": "images/artwork_311_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{CEC0C0A7-81A8-4022-AC2C-54E0668FBA42}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42409704900007,
+    "longitude": 12.339451060000044,
+    "properties": {
+      "globalid": "{CEC0C0A7-81A8-4022-AC2C-54E0668FBA42}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:16:40+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:56:42+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "cec0c0a7-81a8-4022-ac2c-54e0668fba42",
+    "images": [
+      "images/artwork_312_01.jpg"
+    ],
+    "primaryImage": "images/artwork_312_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{CF19D10B-6F46-432D-8B88-504778D14613}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43612032000004,
+    "longitude": 12.321653550000065,
+    "properties": {
+      "globalid": "{CF19D10B-6F46-432D-8B88-504778D14613}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:35:18+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:44:33+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "cf19d10b-6f46-432d-8b88-504778d14613",
+    "images": [
+      "images/artwork_313_01.jpg"
+    ],
+    "primaryImage": "images/artwork_313_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{CF2EA4D7-BAB6-4742-BB07-BFF6D809E0C8}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.435379229000034,
+    "longitude": 12.33406930800004,
+    "properties": {
+      "globalid": "{CF2EA4D7-BAB6-4742-BB07-BFF6D809E0C8}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:10:59+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:49:15+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "cf2ea4d7-bab6-4742-bb07-bff6d809e0c8",
+    "images": [
+      "images/artwork_314_01.jpg"
+    ],
+    "primaryImage": "images/artwork_314_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D03BFD73-E478-4D97-B5E6-AAA60BEF8303}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43412818000007,
+    "longitude": 12.329931330000022,
+    "properties": {
+      "globalid": "{D03BFD73-E478-4D97-B5E6-AAA60BEF8303}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:26:14+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:39:43+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "d03bfd73-e478-4d97-b5e6-aaa60bef8303",
+    "images": [
+      "images/artwork_315_01.jpg"
+    ],
+    "primaryImage": "images/artwork_315_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D0B80BDB-E814-4561-B01B-06E023534A3B}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.428628400000036,
+    "longitude": 12.380879411000024,
+    "properties": {
+      "globalid": "{D0B80BDB-E814-4561-B01B-06E023534A3B}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:16:52+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:21:13+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Lido"
+    },
+    "id": "d0b80bdb-e814-4561-b01b-06e023534a3b",
+    "images": [
+      "images/artwork_316_01.jpg"
+    ],
+    "primaryImage": "images/artwork_316_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D1454F1C-90C0-4D8D-B36A-82FFCD829F36}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.434927456000025,
+    "longitude": 12.324161283000024,
+    "properties": {
+      "globalid": "{D1454F1C-90C0-4D8D-B36A-82FFCD829F36}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:24:22+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:22:31+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "d1454f1c-90c0-4d8d-b36a-82ffcd829f36",
+    "images": [
+      "images/artwork_317_01.jpg"
+    ],
+    "primaryImage": "images/artwork_317_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D2183590-6D98-494D-9CCE-73CF54F3EE60}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42628763000005,
+    "longitude": 12.324001930000065,
+    "properties": {
+      "globalid": "{D2183590-6D98-494D-9CCE-73CF54F3EE60}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/05 12:46:13+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:51:08+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "d2183590-6d98-494d-9cce-73cf54f3ee60",
+    "images": [
+      "images/artwork_318_01.jpg"
+    ],
+    "primaryImage": "images/artwork_318_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D31F22A9-77FC-4FF2-8927-E07159A2173B}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43481082000005,
+    "longitude": 12.324024555000051,
+    "properties": {
+      "globalid": "{D31F22A9-77FC-4FF2-8927-E07159A2173B}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:23:26+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:21:42+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "d31f22a9-77fc-4ff2-8927-e07159a2173b",
+    "images": [
+      "images/artwork_319_01.jpg"
+    ],
+    "primaryImage": "images/artwork_319_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D3512E37-2C1F-45FC-B6CD-8D0F5C370ADA}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.437728425000046,
+    "longitude": 12.329510613000025,
+    "properties": {
+      "globalid": "{D3512E37-2C1F-45FC-B6CD-8D0F5C370ADA}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:18:01+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:01:16+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "d3512e37-2c1f-45fc-b6cd-8d0f5c370ada",
+    "images": [
+      "images/artwork_320_01.jpg",
+      "images/artwork_320_02.jpg",
+      "images/artwork_320_03.jpg",
+      "images/artwork_320_04.jpg",
+      "images/artwork_320_05.jpg",
+      "images/artwork_320_06.jpg"
+    ],
+    "primaryImage": "images/artwork_320_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D4F91AA7-DE45-44BE-A6B1-C583852794C3}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43765864300008,
+    "longitude": 12.337811895000073,
+    "properties": {
+      "globalid": "{D4F91AA7-DE45-44BE-A6B1-C583852794C3}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:10:13+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:42:25+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "d4f91aa7-de45-44be-a6b1-c583852794c3",
+    "images": [
+      "images/artwork_321_01.jpg"
+    ],
+    "primaryImage": "images/artwork_321_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D50D4ECC-7A84-4187-BFA3-18FC223D5263}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.433620285000075,
+    "longitude": 12.33969378300003,
+    "properties": {
+      "globalid": "{D50D4ECC-7A84-4187-BFA3-18FC223D5263}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:34+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:40:46+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "d50d4ecc-7a84-4187-bfa3-18fc223d5263",
+    "images": [
+      "images/artwork_322_01.jpg"
+    ],
+    "primaryImage": "images/artwork_322_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D5799C9E-EF48-49FD-9F4A-92952E26D5B6}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.432642060000035,
+    "longitude": 12.318594480000058,
+    "properties": {
+      "globalid": "{D5799C9E-EF48-49FD-9F4A-92952E26D5B6}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 15:04:51+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:31:55+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "d5799c9e-ef48-49fd-9f4a-92952e26d5b6",
+    "images": [
+      "images/artwork_323_01.jpg"
+    ],
+    "primaryImage": "images/artwork_323_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D5A825C7-0CB1-41B8-92E5-21CC28BBE02D}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43565771600004,
+    "longitude": 12.33852231000003,
+    "properties": {
+      "globalid": "{D5A825C7-0CB1-41B8-92E5-21CC28BBE02D}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:56+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:41:40+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "d5a825c7-0cb1-41b8-92e5-21cc28bbe02d",
+    "images": [
+      "images/artwork_324_01.jpg"
+    ],
+    "primaryImage": "images/artwork_324_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D6A3A3C7-01EE-45CB-8AFC-8F799BFFCB4D}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42958956900003,
+    "longitude": 12.331180116000041,
+    "properties": {
+      "globalid": "{D6A3A3C7-01EE-45CB-8AFC-8F799BFFCB4D}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:53:38+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:49:13+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "d6a3a3c7-01ee-45cb-8afc-8f799bffcb4d",
+    "images": [
+      "images/artwork_325_01.jpg"
+    ],
+    "primaryImage": "images/artwork_325_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D6B09302-00AA-474C-AD8A-CBA1227E457E}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.458204840000064,
+    "longitude": 12.351379210000061,
+    "properties": {
+      "globalid": "{D6B09302-00AA-474C-AD8A-CBA1227E457E}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/03 15:18:27+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:30:15+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Murano"
+    },
+    "id": "d6b09302-00aa-474c-ad8a-cba1227e457e",
+    "images": [
+      "images/artwork_326_01.jpg"
+    ],
+    "primaryImage": "images/artwork_326_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D6F4F1F3-E4DA-44E3-8D06-26585B4332D0}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43639582900005,
+    "longitude": 12.337062668000044,
+    "properties": {
+      "globalid": "{D6F4F1F3-E4DA-44E3-8D06-26585B4332D0}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:10:03+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:41:58+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "d6f4f1f3-e4da-44e3-8d06-26585b4332d0",
+    "images": [
+      "images/artwork_327_01.jpg"
+    ],
+    "primaryImage": "images/artwork_327_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D820775C-A0C7-4F69-99B0-39430A3C75ED}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43466952000006,
+    "longitude": 12.319122870000058,
+    "properties": {
+      "globalid": "{D820775C-A0C7-4F69-99B0-39430A3C75ED}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:34:48+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:43:48+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "d820775c-a0c7-4f69-99b0-39430a3c75ed",
+    "images": [
+      "images/artwork_328_01.jpg",
+      "images/artwork_328_02.jpg"
+    ],
+    "primaryImage": "images/artwork_328_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D989995E-12CE-441D-AF88-0417BDCF22FD}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42936849200004,
+    "longitude": 12.345110756000054,
+    "properties": {
+      "globalid": "{D989995E-12CE-441D-AF88-0417BDCF22FD}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "Many around the building of the same ",
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/05 11:51:02+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:47:19+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "d989995e-12ce-441d-af88-0417bdcf22fd",
+    "images": [
+      "images/artwork_329_01.jpg",
+      "images/artwork_329_02.jpg"
+    ],
+    "primaryImage": "images/artwork_329_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D99E0EF8-C195-4C2F-BB51-3242BF7227A9}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43079548800006,
+    "longitude": 12.331136404000063,
+    "properties": {
+      "globalid": "{D99E0EF8-C195-4C2F-BB51-3242BF7227A9}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:53:23+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:55+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "d99e0ef8-c195-4c2f-bb51-3242bf7227a9",
+    "images": [
+      "images/artwork_330_01.jpg"
+    ],
+    "primaryImage": "images/artwork_330_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D9BAD18B-9543-4E19-BD28-3F27FDB1621B}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43328882900005,
+    "longitude": 12.339828390000037,
+    "properties": {
+      "globalid": "{D9BAD18B-9543-4E19-BD28-3F27FDB1621B}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:31+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:40:43+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "d9bad18b-9543-4e19-bd28-3f27fdb1621b",
+    "images": [
+      "images/artwork_331_01.jpg"
+    ],
+    "primaryImage": "images/artwork_331_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DA42B463-4B15-4F1A-B1B1-01BFC1EABD32}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43578749900007,
+    "longitude": 12.338851867000074,
+    "properties": {
+      "globalid": "{DA42B463-4B15-4F1A-B1B1-01BFC1EABD32}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:54+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:41:32+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "da42b463-4b15-4f1a-b1b1-01bfc1eabd32",
+    "images": [
+      "images/artwork_332_01.jpg"
+    ],
+    "primaryImage": "images/artwork_332_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DB029AA7-C444-496E-A3A7-EAB8517599BF}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.428609470000026,
+    "longitude": 12.329994030000023,
+    "properties": {
+      "globalid": "{DB029AA7-C444-496E-A3A7-EAB8517599BF}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:36:23+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:46:33+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "db029aa7-c444-496e-a3a7-eab8517599bf",
+    "images": [
+      "images/artwork_333_01.jpg"
+    ],
+    "primaryImage": "images/artwork_333_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DB62D24B-FD29-42AA-83FC-7B0B598A7E8F}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43459184000005,
+    "longitude": 12.318973930000027,
+    "properties": {
+      "globalid": "{DB62D24B-FD29-42AA-83FC-7B0B598A7E8F}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:34:45+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:43:46+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "db62d24b-fd29-42aa-83fc-7b0b598a7e8f",
+    "images": [
+      "images/artwork_334_01.jpg"
+    ],
+    "primaryImage": "images/artwork_334_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DBAB3112-1AB7-40A0-9951-33E9467B106D}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42955795600005,
+    "longitude": 12.33275418200003,
+    "properties": {
+      "globalid": "{DBAB3112-1AB7-40A0-9951-33E9467B106D}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:53:54+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:49:33+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "dbab3112-1ab7-40a0-9951-33e9467b106d",
+    "images": [
+      "images/artwork_335_01.jpg"
+    ],
+    "primaryImage": "images/artwork_335_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DC8B781A-E7E7-4B2F-BB93-22EA265E225E}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43238442000006,
+    "longitude": 12.334615340000028,
+    "properties": {
+      "globalid": "{DC8B781A-E7E7-4B2F-BB93-22EA265E225E}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:22:22+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:38:42+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "dc8b781a-e7e7-4b2f-bb93-22ea265e225e",
+    "images": [
+      "images/artwork_336_01.jpg"
+    ],
+    "primaryImage": "images/artwork_336_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DCEB3C66-84A1-40A3-846A-4144B6686FB0}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43018859000006,
+    "longitude": 12.358333250000044,
+    "properties": {
+      "globalid": "{DCEB3C66-84A1-40A3-846A-4144B6686FB0}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:41:51+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:52:50+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Castello"
+    },
+    "id": "dceb3c66-84a1-40a3-846a-4144b6686fb0",
+    "images": [
+      "images/artwork_337_01.jpg"
+    ],
+    "primaryImage": "images/artwork_337_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DD0C8833-C020-4DFC-89F9-F5D834C1475F}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43775274400008,
+    "longitude": 12.330301016000021,
+    "properties": {
+      "globalid": "{DD0C8833-C020-4DFC-89F9-F5D834C1475F}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:18:04+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:01:19+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "dd0c8833-c020-4dfc-89f9-f5d834c1475f",
+    "images": [
+      "images/artwork_338_01.jpg",
+      "images/artwork_338_02.jpg"
+    ],
+    "primaryImage": "images/artwork_338_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DD0FE7A8-08CB-4091-9FB4-9252F443C96F}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43384472000008,
+    "longitude": 12.319387320000033,
+    "properties": {
+      "globalid": "{DD0FE7A8-08CB-4091-9FB4-9252F443C96F}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:35:04+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:44:06+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "dd0fe7a8-08cb-4091-9fb4-9252f443c96f",
+    "images": [
+      "images/artwork_339_01.jpg",
+      "images/artwork_339_02.jpg",
+      "images/artwork_339_03.jpg",
+      "images/artwork_339_04.jpg",
+      "images/artwork_339_05.jpg",
+      "images/artwork_339_06.jpg",
+      "images/artwork_339_07.jpg",
+      "images/artwork_339_08.jpg",
+      "images/artwork_339_09.jpg",
+      "images/artwork_339_10.jpg",
+      "images/artwork_339_11.jpg",
+      "images/artwork_339_12.jpg",
+      "images/artwork_339_13.jpg",
+      "images/artwork_339_14.jpg",
+      "images/artwork_339_15.jpg",
+      "images/artwork_339_16.jpg",
+      "images/artwork_339_17.jpg"
+    ],
+    "primaryImage": "images/artwork_339_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DE19B876-9D9A-481D-8CB0-5485C42D27B5}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43582255900003,
+    "longitude": 12.326399453000022,
+    "properties": {
+      "globalid": "{DE19B876-9D9A-481D-8CB0-5485C42D27B5}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:17:23+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:00:38+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "de19b876-9d9a-481d-8cb0-5485c42d27b5",
+    "images": [
+      "images/artwork_340_01.jpg"
+    ],
+    "primaryImage": "images/artwork_340_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DEF9863D-4B7A-4759-8AB9-5D064FEC4A34}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42949282300003,
+    "longitude": 12.326446425000029,
+    "properties": {
+      "globalid": "{DEF9863D-4B7A-4759-8AB9-5D064FEC4A34}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:52:55+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:17+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "def9863d-4b7a-4759-8ab9-5d064fec4a34",
+    "images": [
+      "images/artwork_341_01.jpg"
+    ],
+    "primaryImage": "images/artwork_341_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DF9BBF7D-0932-4A51-803B-DFA5B7D927F6}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43259311000003,
+    "longitude": 12.315592540000068,
+    "properties": {
+      "globalid": "{DF9BBF7D-0932-4A51-803B-DFA5B7D927F6}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:34:40+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:43:33+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "df9bbf7d-0932-4a51-803b-dfa5b7d927f6",
+    "images": [
+      "images/artwork_342_01.jpg"
+    ],
+    "primaryImage": "images/artwork_342_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E029CF4E-4546-4E5F-9118-32F25FD16D47}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42458546000006,
+    "longitude": 12.322051560000034,
+    "properties": {
+      "globalid": "{E029CF4E-4546-4E5F-9118-32F25FD16D47}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/05 12:46:16+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:51:14+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "e029cf4e-4546-4e5f-9118-32f25fd16d47",
+    "images": [
+      "images/artwork_343_01.jpg",
+      "images/artwork_343_02.jpg"
+    ],
+    "primaryImage": "images/artwork_343_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E03437B0-4C76-4B4E-9863-4DE967BB8E65}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.424532430000056,
+    "longitude": 12.328071730000033,
+    "properties": {
+      "globalid": "{E03437B0-4C76-4B4E-9863-4DE967BB8E65}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/05 12:46:06+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:47:27+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "e03437b0-4c76-4b4e-9863-4de967bb8e65",
+    "images": [
+      "images/artwork_344_01.jpg"
+    ],
+    "primaryImage": "images/artwork_344_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E03A05D8-1BE6-43DE-808E-24DF3675FB7A}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43259493000005,
+    "longitude": 12.329953230000058,
+    "properties": {
+      "globalid": "{E03A05D8-1BE6-43DE-808E-24DF3675FB7A}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:25:22+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:39:29+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "e03a05d8-1be6-43de-808e-24df3675fb7a",
+    "images": [
+      "images/artwork_345_01.jpg",
+      "images/artwork_345_02.jpg"
+    ],
+    "primaryImage": "images/artwork_345_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E0DD57CF-C215-41CF-8196-C7083EC82709}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.452938334000066,
+    "longitude": 12.351267224000026,
+    "properties": {
+      "globalid": "{E0DD57CF-C215-41CF-8196-C7083EC82709}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/03 17:22:44+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:23:46+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Murano"
+    },
+    "id": "e0dd57cf-c215-41cf-8196-c7083ec82709",
+    "images": [
+      "images/artwork_346_01.jpg"
+    ],
+    "primaryImage": "images/artwork_346_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E15F389C-7BA1-4CA6-B3B9-871FE0543856}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43098013900004,
+    "longitude": 12.326621414000044,
+    "properties": {
+      "globalid": "{E15F389C-7BA1-4CA6-B3B9-871FE0543856}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "Tons of patere on building too",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:52:40+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:47:54+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "e15f389c-7ba1-4ca6-b3b9-871fe0543856",
+    "images": [
+      "images/artwork_347_01.jpg"
+    ],
+    "primaryImage": "images/artwork_347_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E1B4C38F-902A-4ED4-A0A1-2BA08E994C21}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43516829300006,
+    "longitude": 12.326121569000065,
+    "properties": {
+      "globalid": "{E1B4C38F-902A-4ED4-A0A1-2BA08E994C21}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:17:14+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:00:24+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "e1b4c38f-902a-4ed4-a0a1-2ba08e994c21",
+    "images": [
+      "images/artwork_348_01.jpg",
+      "images/artwork_348_02.jpg"
+    ],
+    "primaryImage": "images/artwork_348_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E4077D0E-BFD3-45E7-90AF-12A4361FE942}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43365383200006,
+    "longitude": 12.320656764000034,
+    "properties": {
+      "globalid": "{E4077D0E-BFD3-45E7-90AF-12A4361FE942}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 14:10:03+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:30:46+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "e4077d0e-bfd3-45e7-90af-12a4361fe942",
+    "images": [
+      "images/artwork_349_01.jpg",
+      "images/artwork_349_02.jpg",
+      "images/artwork_349_03.jpg"
+    ],
+    "primaryImage": "images/artwork_349_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E463F7A5-8F52-4100-9FAD-0BDCF2A64E1F}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43830441000006,
+    "longitude": 12.33091268000004,
+    "properties": {
+      "globalid": "{E463F7A5-8F52-4100-9FAD-0BDCF2A64E1F}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:48+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:03:11+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "e463f7a5-8f52-4100-9fad-0bdcf2a64e1f",
+    "images": [
+      "images/artwork_350_01.jpg"
+    ],
+    "primaryImage": "images/artwork_350_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E591556E-F62D-4407-BFE4-D4D6CA7A75D3}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.437790774000064,
+    "longitude": 12.336552493000056,
+    "properties": {
+      "globalid": "{E591556E-F62D-4407-BFE4-D4D6CA7A75D3}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:10:24+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:42:44+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "e591556e-f62d-4407-bfe4-d4d6ca7a75d3",
+    "images": [
+      "images/artwork_351_01.jpg"
+    ],
+    "primaryImage": "images/artwork_351_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E615A8CC-686F-41FC-9F03-D9503789DA96}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43486463800008,
+    "longitude": 12.338867977000064,
+    "properties": {
+      "globalid": "{E615A8CC-686F-41FC-9F03-D9503789DA96}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:57+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:41:44+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "e615a8cc-686f-41fc-9f03-d9503789da96",
+    "images": [
+      "images/artwork_352_01.jpg"
+    ],
+    "primaryImage": "images/artwork_352_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E692D620-F78B-4D8A-994D-E64933F19C4B}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43617198000004,
+    "longitude": 12.322869280000077,
+    "properties": {
+      "globalid": "{E692D620-F78B-4D8A-994D-E64933F19C4B}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:35:22+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:44:42+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "e692d620-f78b-4d8a-994d-e64933f19c4b",
+    "images": [
+      "images/artwork_353_01.jpg"
+    ],
+    "primaryImage": "images/artwork_353_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E7AE6EC4-0AAB-4425-A771-D6D45F09750C}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43078040100005,
+    "longitude": 12.32660405200005,
+    "properties": {
+      "globalid": "{E7AE6EC4-0AAB-4425-A771-D6D45F09750C}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "multiple on wall",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:52:47+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:08+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "e7ae6ec4-0aab-4425-a771-d6d45f09750c",
+    "images": [
+      "images/artwork_354_01.jpg"
+    ],
+    "primaryImage": "images/artwork_354_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E7B521A9-7652-456D-8BF6-FBE13671276C}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.436217302000045,
+    "longitude": 12.334544438000023,
+    "properties": {
+      "globalid": "{E7B521A9-7652-456D-8BF6-FBE13671276C}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "2 sides of wall",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:10:51+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:49:01+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "e7b521a9-7652-456d-8bf6-fbe13671276c",
+    "images": [
+      "images/artwork_355_01.jpg"
+    ],
+    "primaryImage": "images/artwork_355_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E928C851-E1C3-4C01-9CA8-1DD9C2361730}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.433219370000074,
+    "longitude": 12.333044620000067,
+    "properties": {
+      "globalid": "{E928C851-E1C3-4C01-9CA8-1DD9C2361730}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:24:29+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:39:13+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "e928c851-e1c3-4c01-9ca8-1dd9c2361730",
+    "images": [
+      "images/artwork_356_01.jpg"
+    ],
+    "primaryImage": "images/artwork_356_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E98BB032-41D4-43F8-9208-693C3FD70C16}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.438307800000075,
+    "longitude": 12.335041740000065,
+    "properties": {
+      "globalid": "{E98BB032-41D4-43F8-9208-693C3FD70C16}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:24+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:55:24+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "e98bb032-41d4-43f8-9208-693c3fd70c16",
+    "images": [
+      "images/artwork_357_01.jpg"
+    ],
+    "primaryImage": "images/artwork_357_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{EA290E17-78C1-452B-859D-80DF3908E89C}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43637671500005,
+    "longitude": 12.325763898000048,
+    "properties": {
+      "globalid": "{EA290E17-78C1-452B-859D-80DF3908E89C}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/11 13:00:35+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:58:25+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "ea290e17-78c1-452b-859d-80df3908e89c",
+    "images": [
+      "images/artwork_358_01.jpg"
+    ],
+    "primaryImage": "images/artwork_358_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{EADEEC25-555E-4A4E-A06D-8F9C7D1D31BE}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43494763000007,
+    "longitude": 12.324159360000067,
+    "properties": {
+      "globalid": "{EADEEC25-555E-4A4E-A06D-8F9C7D1D31BE}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:24:11+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:22:06+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "eadeec25-555e-4a4e-a06d-8f9c7d1d31be",
+    "images": [
+      "images/artwork_359_01.jpg"
+    ],
+    "primaryImage": "images/artwork_359_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{EB39AC02-2AAE-4768-8FDD-9A0DB5B9F69E}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.431054360000076,
+    "longitude": 12.334315870000069,
+    "properties": {
+      "globalid": "{EB39AC02-2AAE-4768-8FDD-9A0DB5B9F69E}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "Across canal",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:35:32+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:45:00+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "eb39ac02-2aae-4768-8fdd-9a0db5b9f69e",
+    "images": [
+      "images/artwork_360_01.jpg"
+    ],
+    "primaryImage": "images/artwork_360_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{EC5EFCF2-2FE9-4AA9-8E3C-AF308863917C}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.429587870000034,
+    "longitude": 12.332752630000073,
+    "properties": {
+      "globalid": "{EC5EFCF2-2FE9-4AA9-8E3C-AF308863917C}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:35:24+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:44:47+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "ec5efcf2-2fe9-4aa9-8e3c-af308863917c",
+    "images": [
+      "images/artwork_361_01.jpg"
+    ],
+    "primaryImage": "images/artwork_361_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{ECF511BB-C67A-482A-9998-DF76C3386B4C}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43169121400007,
+    "longitude": 12.32588165900006,
+    "properties": {
+      "globalid": "{ECF511BB-C67A-482A-9998-DF76C3386B4C}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "2 next to eachother",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:52:37+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:47:49+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "ecf511bb-c67a-482a-9998-df76c3386b4c",
+    "images": [
+      "images/artwork_362_01.jpg"
+    ],
+    "primaryImage": "images/artwork_362_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{ED7FB2A2-9491-4E18-8659-4EF4617CC788}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43876852000005,
+    "longitude": 12.334407770000041,
+    "properties": {
+      "globalid": "{ED7FB2A2-9491-4E18-8659-4EF4617CC788}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:36+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:00:16+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "ed7fb2a2-9491-4e18-8659-4ef4617cc788",
+    "images": [
+      "images/artwork_363_01.jpg",
+      "images/artwork_363_02.jpg"
+    ],
+    "primaryImage": "images/artwork_363_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{EDDB028F-953C-4308-B21B-A1A065C1E4A6}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42507530000006,
+    "longitude": 12.324938230000043,
+    "properties": {
+      "globalid": "{EDDB028F-953C-4308-B21B-A1A065C1E4A6}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/05 12:46:10+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:47:56+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "eddb028f-953c-4308-b21b-a1a065c1e4a6",
+    "images": [
+      "images/artwork_364_01.jpg"
+    ],
+    "primaryImage": "images/artwork_364_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{EE94A587-F67E-4F52-B540-3407FAADA765}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43841578000007,
+    "longitude": 12.336360640000066,
+    "properties": {
+      "globalid": "{EE94A587-F67E-4F52-B540-3407FAADA765}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:33+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:57:28+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "ee94a587-f67e-4f52-b540-3407faada765",
+    "images": [
+      "images/artwork_365_01.jpg"
+    ],
+    "primaryImage": "images/artwork_365_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{EFD9FE97-5D94-4724-B6C7-E5E70247E990}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.45247826600007,
+    "longitude": 12.350883277000037,
+    "properties": {
+      "globalid": "{EFD9FE97-5D94-4724-B6C7-E5E70247E990}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/03 17:22:48+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:24:40+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Murano"
+    },
+    "id": "efd9fe97-5d94-4724-b6c7-e5e70247e990",
+    "images": [
+      "images/artwork_366_01.jpg"
+    ],
+    "primaryImage": "images/artwork_366_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F00A61BF-BAFA-42C2-BE09-D22DE1D86B77}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.484393811000075,
+    "longitude": 12.419210250000049,
+    "properties": {
+      "globalid": "{F00A61BF-BAFA-42C2-BE09-D22DE1D86B77}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/17 18:57:41+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:35:17+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Burano"
+    },
+    "id": "f00a61bf-bafa-42c2-be09-d22de1d86b77",
+    "images": [
+      "images/artwork_367_01.jpg"
+    ],
+    "primaryImage": "images/artwork_367_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F0632E01-E07C-4CEC-9AA8-C1883A72AD8D}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.430293909000056,
+    "longitude": 12.33148241400005,
+    "properties": {
+      "globalid": "{F0632E01-E07C-4CEC-9AA8-C1883A72AD8D}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:53:27+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:58+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "f0632e01-e07c-4cec-9aa8-c1883a72ad8d",
+    "images": [
+      "images/artwork_368_01.jpg"
+    ],
+    "primaryImage": "images/artwork_368_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F0C47E2D-9527-4810-A75B-5A1C369F60E3}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43778124600004,
+    "longitude": 12.335953816000028,
+    "properties": {
+      "globalid": "{F0C47E2D-9527-4810-A75B-5A1C369F60E3}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "across a canal",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:10:31+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:42:56+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "f0c47e2d-9527-4810-a75b-5a1c369f60e3",
+    "images": [
+      "images/artwork_369_01.jpg"
+    ],
+    "primaryImage": "images/artwork_369_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F204D0B0-AEC8-4BBA-AB06-50F6227418E3}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.48436155100006,
+    "longitude": 12.418726310000068,
+    "properties": {
+      "globalid": "{F204D0B0-AEC8-4BBA-AB06-50F6227418E3}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/17 19:16:16+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:34:57+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Burano"
+    },
+    "id": "f204d0b0-aec8-4bba-ab06-50f6227418e3",
+    "images": [
+      "images/artwork_370_01.jpg"
+    ],
+    "primaryImage": "images/artwork_370_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F207FE91-896C-4FB8-846E-EFFCFA6AFCA0}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43664024100008,
+    "longitude": 12.329658576000043,
+    "properties": {
+      "globalid": "{F207FE91-896C-4FB8-846E-EFFCFA6AFCA0}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/11 13:02:39+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:51:05+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "f207fe91-896c-4fb8-846e-effcfa6afca0",
+    "images": [
+      "images/artwork_371_01.jpg",
+      "images/artwork_371_02.jpg"
+    ],
+    "primaryImage": "images/artwork_371_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F3B26623-414C-46F2-A427-18A582B9D7AA}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43149655500008,
+    "longitude": 12.326931295000065,
+    "properties": {
+      "globalid": "{F3B26623-414C-46F2-A427-18A582B9D7AA}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "Plenty on building",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:52:39+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:47:51+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "f3b26623-414c-46f2-a427-18a582b9d7aa",
+    "images": [
+      "images/artwork_372_01.jpg"
+    ],
+    "primaryImage": "images/artwork_372_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F46449D5-B3A8-49D4-A7D4-4EA8E766AA66}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43237035000004,
+    "longitude": 12.33350949000004,
+    "properties": {
+      "globalid": "{F46449D5-B3A8-49D4-A7D4-4EA8E766AA66}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:23:35+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:38:59+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "f46449d5-b3a8-49d4-a7d4-4ea8e766aa66",
+    "images": [
+      "images/artwork_373_01.jpg"
+    ],
+    "primaryImage": "images/artwork_373_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F46A9E8D-31C6-4B73-839D-A80D1F63674A}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.44043080000006,
+    "longitude": 12.331477520000021,
+    "properties": {
+      "globalid": "{F46A9E8D-31C6-4B73-839D-A80D1F63674A}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/11 13:42:44+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:02:59+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "f46a9e8d-31c6-4b73-839d-a80d1f63674a",
+    "images": [
+      "images/artwork_374_01.jpg"
+    ],
+    "primaryImage": "images/artwork_374_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F4F02735-E723-49C4-A921-8279C2CDBD48}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43222270000007,
+    "longitude": 12.321166660000074,
+    "properties": {
+      "globalid": "{F4F02735-E723-49C4-A921-8279C2CDBD48}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 14:20:25+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:39:11+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "f4f02735-e723-49c4-a921-8279c2cdbd48",
+    "images": [
+      "images/artwork_375_01.jpg"
+    ],
+    "primaryImage": "images/artwork_375_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F536709D-7B6B-4244-841D-EC1B0FDAE69D}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42679344000004,
+    "longitude": 12.313330330000042,
+    "properties": {
+      "globalid": "{F536709D-7B6B-4244-841D-EC1B0FDAE69D}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/05 12:46:17+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:51:16+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "f536709d-7b6b-4244-841d-ec1b0fdae69d",
+    "images": [
+      "images/artwork_376_01.jpg"
+    ],
+    "primaryImage": "images/artwork_376_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F59CF3EE-69A3-4DFE-9DBC-3A67BF435AC2}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43527276900005,
+    "longitude": 12.327951591000044,
+    "properties": {
+      "globalid": "{F59CF3EE-69A3-4DFE-9DBC-3A67BF435AC2}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "multiple along wall across the canal",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:17:16+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:00:28+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "f59cf3ee-69a3-4dfe-9dbc-3a67bf435ac2",
+    "images": [
+      "images/artwork_377_01.jpg"
+    ],
+    "primaryImage": "images/artwork_377_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F5F2221F-7FA1-404D-953C-CD4E1CAE02C7}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.435086170000034,
+    "longitude": 12.320462711000062,
+    "properties": {
+      "globalid": "{F5F2221F-7FA1-404D-953C-CD4E1CAE02C7}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 14:23:36+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:31:36+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "f5f2221f-7fa1-404d-953c-cd4e1cae02c7",
+    "images": [
+      "images/artwork_378_01.jpg"
+    ],
+    "primaryImage": "images/artwork_378_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F750D885-1A46-4A42-B21D-1D084C84EA03}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43178991000008,
+    "longitude": 12.33303187000007,
+    "properties": {
+      "globalid": "{F750D885-1A46-4A42-B21D-1D084C84EA03}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:24:06+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:39:06+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "f750d885-1a46-4a42-b21d-1d084c84ea03",
+    "images": [
+      "images/artwork_379_01.jpg",
+      "images/artwork_379_02.jpg"
+    ],
+    "primaryImage": "images/artwork_379_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F7626824-984A-45EF-88A5-2547690C7243}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42920239000006,
+    "longitude": 12.332288510000069,
+    "properties": {
+      "globalid": "{F7626824-984A-45EF-88A5-2547690C7243}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:35:26+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:44:49+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "f7626824-984a-45ef-88a5-2547690c7243",
+    "images": [
+      "images/artwork_380_01.jpg"
+    ],
+    "primaryImage": "images/artwork_380_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F76655EC-F06B-4F6A-8898-C7495BCD110C}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.436632419000034,
+    "longitude": 12.33732070900004,
+    "properties": {
+      "globalid": "{F76655EC-F06B-4F6A-8898-C7495BCD110C}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:10:06+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:42:01+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "f76655ec-f06b-4f6a-8898-c7495bcd110c",
+    "images": [
+      "images/artwork_381_01.jpg"
+    ],
+    "primaryImage": "images/artwork_381_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F8743A32-F101-48BE-B91D-B8F34C41BB4D}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43652302500004,
+    "longitude": 12.32957232800004,
+    "properties": {
+      "globalid": "{F8743A32-F101-48BE-B91D-B8F34C41BB4D}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/11 13:14:37+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:51:14+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "f8743a32-f101-48be-b91d-b8f34c41bb4d",
+    "images": [
+      "images/artwork_382_01.jpg"
+    ],
+    "primaryImage": "images/artwork_382_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F877C560-47EA-4177-873E-57BBC9140532}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.436143479000066,
+    "longitude": 12.337682277000056,
+    "properties": {
+      "globalid": "{F877C560-47EA-4177-873E-57BBC9140532}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 22:09:59+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:41:53+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "f877c560-47ea-4177-873e-57bbc9140532",
+    "images": [
+      "images/artwork_383_01.jpg"
+    ],
+    "primaryImage": "images/artwork_383_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F89ECA17-EF2C-4B19-9A3E-DAA5218A9188}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.49846704500004,
+    "longitude": 12.418595522000032,
+    "properties": {
+      "globalid": "{F89ECA17-EF2C-4B19-9A3E-DAA5218A9188}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/17 18:58:24+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:25:13+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Torcello"
+    },
+    "id": "f89eca17-ef2c-4b19-9a3e-daa5218a9188",
+    "images": [
+      "images/artwork_384_01.jpg"
+    ],
+    "primaryImage": "images/artwork_384_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F8CD56A6-BB6E-4328-A83B-0D2140D06B55}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42864769300007,
+    "longitude": 12.330032755000047,
+    "properties": {
+      "globalid": "{F8CD56A6-BB6E-4328-A83B-0D2140D06B55}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:54:14+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:50:00+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "f8cd56a6-bb6e-4328-a83b-0d2140d06b55",
+    "images": [
+      "images/artwork_385_01.jpg"
+    ],
+    "primaryImage": "images/artwork_385_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F8D25D3F-C9E3-4B4E-8A20-744771E2547C}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43429773200006,
+    "longitude": 12.322825287000057,
+    "properties": {
+      "globalid": "{F8D25D3F-C9E3-4B4E-8A20-744771E2547C}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:35:57+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:26:31+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "f8d25d3f-c9e3-4b4e-8a20-744771e2547c",
+    "images": [
+      "images/artwork_386_01.jpg"
+    ],
+    "primaryImage": "images/artwork_386_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F95486B9-E2CC-4446-8138-CFEA832EF1B9}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.45966036000004,
+    "longitude": 12.355169130000036,
+    "properties": {
+      "globalid": "{F95486B9-E2CC-4446-8138-CFEA832EF1B9}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/03 15:18:30+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:29:18+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Murano"
+    },
+    "id": "f95486b9-e2cc-4446-8138-cfea832ef1b9",
+    "images": [
+      "images/artwork_387_01.jpg"
+    ],
+    "primaryImage": "images/artwork_387_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F9B53B5A-33EA-4C22-8D57-964F0EDA7825}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43424838000004,
+    "longitude": 12.328622490000043,
+    "properties": {
+      "globalid": "{F9B53B5A-33EA-4C22-8D57-964F0EDA7825}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:28:13+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:48:00+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "f9b53b5a-33ea-4c22-8d57-964f0eda7825",
+    "images": [
+      "images/artwork_388_01.jpg"
+    ],
+    "primaryImage": "images/artwork_388_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FBF458E1-AF24-4D62-A7C1-50AF85D8F200}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42416825200007,
+    "longitude": 12.339034952000077,
+    "properties": {
+      "globalid": "{FBF458E1-AF24-4D62-A7C1-50AF85D8F200}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/05 11:03:27+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:47:05+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Guidecca"
+    },
+    "id": "fbf458e1-af24-4d62-a7c1-50af85d8f200",
+    "images": [
+      "images/artwork_389_01.jpg",
+      "images/artwork_389_02.jpg"
+    ],
+    "primaryImage": "images/artwork_389_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FC02C546-F569-4152-B86A-E4B1F710618E}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.434995600000036,
+    "longitude": 12.32387656000003,
+    "properties": {
+      "globalid": "{FC02C546-F569-4152-B86A-E4B1F710618E}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:29:16+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:24:24+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "fc02c546-f569-4152-b86a-e4b1f710618e",
+    "images": [
+      "images/artwork_390_01.jpg"
+    ],
+    "primaryImage": "images/artwork_390_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FC55B6B1-69F9-4CA6-98E3-8D0D32004EB8}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42675719600004,
+    "longitude": 12.363120911000067,
+    "properties": {
+      "globalid": "{FC55B6B1-69F9-4CA6-98E3-8D0D32004EB8}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/10 12:27:13+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:56:38+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Castello"
+    },
+    "id": "fc55b6b1-69f9-4ca6-98e3-8d0d32004eb8",
+    "images": [
+      "images/artwork_391_01.jpg"
+    ],
+    "primaryImage": "images/artwork_391_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FC680F39-FD0B-4A2B-AC2A-C1603BD907C9}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42931456000008,
+    "longitude": 12.333871995000038,
+    "properties": {
+      "globalid": "{FC680F39-FD0B-4A2B-AC2A-C1603BD907C9}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:53:57+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:49:39+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "fc680f39-fd0b-4a2b-ac2a-c1603bd907c9",
+    "images": [
+      "images/artwork_392_01.jpg"
+    ],
+    "primaryImage": "images/artwork_392_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FC706AC2-5A4C-4F78-B29A-F4CBB2609B96}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.457360030000075,
+    "longitude": 12.357209650000073,
+    "properties": {
+      "globalid": "{FC706AC2-5A4C-4F78-B29A-F4CBB2609B96}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/03 15:18:32+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:27:25+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Murano"
+    },
+    "id": "fc706ac2-5a4c-4f78-b29a-f4cbb2609b96",
+    "images": [
+      "images/artwork_393_01.jpg"
+    ],
+    "primaryImage": "images/artwork_393_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FDF6D2CA-404C-4495-B106-78F5B74CF264}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43211848000004,
+    "longitude": 12.315879650000056,
+    "properties": {
+      "globalid": "{FDF6D2CA-404C-4495-B106-78F5B74CF264}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 15:05:53+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:33:23+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "fdf6d2ca-404c-4495-b106-78f5b74cf264",
+    "images": [
+      "images/artwork_394_01.jpg"
+    ],
+    "primaryImage": "images/artwork_394_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FE36EDF0-4172-4EEE-9B78-1F7B1392B878}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.42959261000004,
+    "longitude": 12.330820257000028,
+    "properties": {
+      "globalid": "{FE36EDF0-4172-4EEE-9B78-1F7B1392B878}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:53:34+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:49:09+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "fe36edf0-4172-4eee-9b78-1f7b1392b878",
+    "images": [
+      "images/artwork_395_01.jpg"
+    ],
+    "primaryImage": "images/artwork_395_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FE6A72E9-61F7-402F-9FC2-F71AEE3B2999}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43267510000004,
+    "longitude": 12.333070680000048,
+    "properties": {
+      "globalid": "{FE6A72E9-61F7-402F-9FC2-F71AEE3B2999}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/02 15:24:15+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:39:10+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Marco"
+    },
+    "id": "fe6a72e9-61f7-402f-9fc2-f71aee3b2999",
+    "images": [
+      "images/artwork_396_01.jpg"
+    ],
+    "primaryImage": "images/artwork_396_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FE9749EE-6288-4F8C-BE32-4BAF9DD1D3EB}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43531254000004,
+    "longitude": 12.324987504000035,
+    "properties": {
+      "globalid": "{FE9749EE-6288-4F8C-BE32-4BAF9DD1D3EB}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": null,
+      "CreationDate": "2026/11/11 13:00:24+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:57:53+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "fe9749ee-6288-4f8c-be32-4baf9dd1d3eb",
+    "images": [
+      "images/artwork_397_01.jpg"
+    ],
+    "primaryImage": "images/artwork_397_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FF0BD287-235B-4E74-A16E-B0113F4733C5}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43702346900005,
+    "longitude": 12.324751926000033,
+    "properties": {
+      "globalid": "{FF0BD287-235B-4E74-A16E-B0113F4733C5}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:17:41+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:01:01+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "ff0bd287-235b-4e74-a16e-b0113f4733c5",
+    "images": [
+      "images/artwork_398_01.jpg"
+    ],
+    "primaryImage": "images/artwork_398_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FF16870C-F6F3-4AD3-8298-347B01A53239}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43433275000007,
+    "longitude": 12.32268066000006,
+    "properties": {
+      "globalid": "{FF16870C-F6F3-4AD3-8298-347B01A53239}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 13:38:23+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:28:34+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "ff16870c-f6f3-4ad3-8298-347b01a53239",
+    "images": [
+      "images/artwork_399_01.jpg"
+    ],
+    "primaryImage": "images/artwork_399_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FFE3F2DA-E84A-4ADB-B750-C419212771A8}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.438317323000035,
+    "longitude": 12.326743402000034,
+    "properties": {
+      "globalid": "{FFE3F2DA-E84A-4ADB-B750-C419212771A8}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/11/12 14:17:55+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 20:01:14+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "San Polo"
+    },
+    "id": "ffe3f2da-e84a-4adb-b750-c419212771a8",
+    "images": [
+      "images/artwork_400_01.jpg"
+    ],
+    "primaryImage": "images/artwork_400_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FFE71277-EACA-498F-988F-3F7EE32B4DD2}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43128677200008,
+    "longitude": 12.322398299000042,
+    "properties": {
+      "globalid": "{FFE71277-EACA-498F-988F-3F7EE32B4DD2}",
+      "what_type_of_artwork_are_you_lo": "Reliefs",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": "Lions above too",
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/26 14:08:33+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:34:14+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "ffe71277-eaca-498f-988f-3f7ee32b4dd2",
+    "images": [
+      "images/artwork_401_01.jpg"
+    ],
+    "primaryImage": "images/artwork_401_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FFF7336A-4E42-49AF-BA8F-C6A26BB6B0E9}",
+    "arcgisObjectId": null,
+    "category": "Unclassified",
+    "latitude": 45.43364460000004,
+    "longitude": 12.320700270000032,
+    "properties": {
+      "globalid": "{FFF7336A-4E42-49AF-BA8F-C6A26BB6B0E9}",
+      "what_type_of_artwork_are_you_lo": "Statues",
+      "artist": null,
+      "artworks_date": null,
+      "general_notes": null,
+      "_3d_model_captured": "No",
+      "CreationDate": "2026/10/27 16:35:06+00",
+      "Creator": "v26b.MONU_serendpt",
+      "EditDate": "2026/11/17 19:44:09+00",
+      "Editor": "alirezadehghan_serendpt",
+      "region": "Dorsoduro"
+    },
+    "id": "fff7336a-4e42-49af-ba8f-c6a26bb6b0e9",
+    "images": [
+      "images/artwork_402_01.jpg"
+    ],
+    "primaryImage": "images/artwork_402_01.jpg"
+  }
+];
+
+export const RAW_IMAGE_MANIFEST: RawImageManifestEntry[] = [
+  {
+    "arcgisGlobalId": "{54372240-3C26-49BD-B2E6-7440E1A290C7}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-131829.jpg",
+    "imagePath": "images/artwork_119_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9FFDA6E2-0B0C-4C47-944C-918AE361D6F4}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-132029.jpg",
+    "imagePath": "images/artwork_243_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D31F22A9-77FC-4FF2-8927-E07159A2173B}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-132304.jpg",
+    "imagePath": "images/artwork_319_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{EADEEC25-555E-4A4E-A06D-8F9C7D1D31BE}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-132345.jpg",
+    "imagePath": "images/artwork_359_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D1454F1C-90C0-4D8D-B36A-82FFCD829F36}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-132358.jpg",
+    "imagePath": "images/artwork_317_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0A304AEE-6F4A-4688-80B8-2081C9D869F4}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-132454.jpg",
+    "imagePath": "images/artwork_016_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4E9B9D93-6484-4152-9031-85F4184992D1}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-132504.jpg",
+    "imagePath": "images/artwork_109_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7FBBA6A0-8826-4E2D-B4F2-56015E02AD43}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-132614.jpg",
+    "imagePath": "images/artwork_189_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FC02C546-F569-4152-B86A-E4B1F710618E}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-132836.jpg",
+    "imagePath": "images/artwork_390_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4D851475-851B-47EF-B570-BC5D4F7863A9}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-132940.jpg",
+    "imagePath": "images/artwork_107_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{636B86E9-C203-431A-9401-7DE4381DD10B}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-133244.jpg",
+    "imagePath": "images/artwork_145_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F8D25D3F-C9E3-4B4E-8A20-744771E2547C}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-133545.jpg",
+    "imagePath": "images/artwork_386_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{771DB429-5265-4F8B-BA1B-2152E49F2B8F}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-133702.jpg",
+    "imagePath": "images/artwork_172_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FF16870C-F6F3-4AD3-8298-347B01A53239}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-133523.jpg",
+    "imagePath": "images/artwork_399_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4DE68C62-DCEA-4A36-BB95-65DCB84E7A84}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-133655.jpg",
+    "imagePath": "images/artwork_108_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{16EEA23F-F225-488B-B11B-A7AB91177B65}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-133719.jpg",
+    "imagePath": "images/artwork_037_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B6A75011-FF35-4511-9180-FCDFAB8DE8F6}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-133955.jpg",
+    "imagePath": "images/artwork_279_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0983980F-FE3C-4D03-8C0E-54222F6A06A4}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-134703.jpg",
+    "imagePath": "images/artwork_015_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{1B350784-6E65-40E8-9DE7-C71FB61B4582}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-134918.jpg",
+    "imagePath": "images/artwork_042_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{3D26EF79-601D-44EE-934D-0C5A2AE6AA3D}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-135026.jpg",
+    "imagePath": "images/artwork_077_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{72132AEC-9478-4EC8-B9F8-9B7B571E9DE1}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-135216.jpg",
+    "imagePath": "images/artwork_164_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5DEF2281-7B8D-4524-995A-D9E604ADE96B}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-135628.jpg",
+    "imagePath": "images/artwork_132_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4C5A2957-D8CA-4D88-9B8B-AA283D6CDB63}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-140119.jpg",
+    "imagePath": "images/artwork_105_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FFE71277-EACA-498F-988F-3F7EE32B4DD2}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-140805.jpg",
+    "imagePath": "images/artwork_401_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9022D815-E7AC-42D6-A590-C8C6336BDF02}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-141304.jpg",
+    "imagePath": "images/artwork_215_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{120D5292-944F-4D3D-B165-C6D285250B2F}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-133908.jpg",
+    "imagePath": "images/artwork_029_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{2927CE4E-E138-4671-A51D-F48B32940A83}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-134352.jpg",
+    "imagePath": "images/artwork_055_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{92D275D8-5125-4F64-8977-BB560027A30A}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-134641.jpg",
+    "imagePath": "images/artwork_220_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F4F02735-E723-49C4-A921-8279C2CDBD48}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-134828.jpg",
+    "imagePath": "images/artwork_375_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7FFDECD6-70AB-40CB-AC58-0AB2F8059C3B}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-135135.jpg",
+    "imagePath": "images/artwork_191_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C463943F-4640-41DF-B21D-1F763751354C}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-140028.jpg",
+    "imagePath": "images/artwork_298_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{8E4DE8A6-C504-4A70-AAB6-66AC086C8F36}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-140249.jpg",
+    "imagePath": "images/artwork_213_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{3971E738-0D4B-4519-AB09-9A289ED32B11}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-140907.jpg",
+    "imagePath": "images/artwork_073_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{3BCFF81F-B529-4252-9AED-70761D5E57DC}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-141253.jpg",
+    "imagePath": "images/artwork_075_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{3BCFF81F-B529-4252-9AED-70761D5E57DC}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-141303.jpg",
+    "imagePath": "images/artwork_075_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A73E0578-D0F6-4300-A5CC-047DFE8B3F49}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-141502.jpg",
+    "imagePath": "images/artwork_254_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{04052A64-5FEB-4DBC-A78F-B3E0BE637EF9}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-141722.jpg",
+    "imagePath": "images/artwork_007_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A92DEB11-7C77-4D4C-8B6E-6142B9FA535D}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-140808.jpg",
+    "imagePath": "images/artwork_258_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A92DEB11-7C77-4D4C-8B6E-6142B9FA535D}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261026-140817.jpg",
+    "imagePath": "images/artwork_258_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{669FA5A7-CC83-4380-9394-84DBEE4AC195}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140821.jpg",
+    "imagePath": "images/artwork_150_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E4077D0E-BFD3-45E7-90AF-12A4361FE942}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140927.jpg",
+    "imagePath": "images/artwork_349_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E4077D0E-BFD3-45E7-90AF-12A4361FE942}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140937.jpg",
+    "imagePath": "images/artwork_349_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E4077D0E-BFD3-45E7-90AF-12A4361FE942}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140944.jpg",
+    "imagePath": "images/artwork_349_03.jpg"
+  },
+  {
+    "arcgisGlobalId": "{46038A6F-D35E-4EF0-913E-07FBF3381054}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-142006.jpg",
+    "imagePath": "images/artwork_087_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F5F2221F-7FA1-404D-953C-CD4E1CAE02C7}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-142043.jpg",
+    "imagePath": "images/artwork_378_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D5799C9E-EF48-49FD-9F4A-92952E26D5B6}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-133603.jpg",
+    "imagePath": "images/artwork_323_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{2A6930E8-7967-4A32-9472-88C3A0C347A1}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-133711.jpg",
+    "imagePath": "images/artwork_056_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{1D50BAB3-96D5-4927-9D40-FA174D65A776}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-133737.jpg",
+    "imagePath": "images/artwork_045_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{868F39F2-307C-4F69-B42A-D623E08CD59A}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-133833.jpg",
+    "imagePath": "images/artwork_202_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FDF6D2CA-404C-4495-B106-78F5B74CF264}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-134114.jpg",
+    "imagePath": "images/artwork_394_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{77AB94B1-62A5-4F90-A860-E8F45CAE4BD4}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-134144.jpg",
+    "imagePath": "images/artwork_174_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{77AB94B1-62A5-4F90-A860-E8F45CAE4BD4}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-134150.jpg",
+    "imagePath": "images/artwork_174_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{6531B31E-94B3-44F1-A422-660A0C61CC28}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-134223.jpg",
+    "imagePath": "images/artwork_149_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7B77191F-0E4B-4A24-A905-19ABA10F0C62}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-151343.jpg",
+    "imagePath": "images/artwork_180_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5DDDC2B3-E156-40F6-8972-897164485548}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-152710.jpg",
+    "imagePath": "images/artwork_131_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{AC03CA42-4EA2-457C-9EEE-208A4324F437}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-153659.jpg",
+    "imagePath": "images/artwork_263_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C612E400-9036-48AD-809A-062EE7A4465E}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-154009.jpg",
+    "imagePath": "images/artwork_299_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{163DCA4A-0FE8-498E-9E41-6AF429CA7174}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-154045.jpg",
+    "imagePath": "images/artwork_035_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5946D50F-705B-4BDC-9554-B3BFCB5AEEEB}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-160237.jpg",
+    "imagePath": "images/artwork_124_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{8BBC8D18-38D3-46F6-B7DA-3C6027D0C8E1}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-160626.jpg",
+    "imagePath": "images/artwork_211_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A4B72EE9-9949-475B-8C07-4C47C8F0674D}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-161911.jpg",
+    "imagePath": "images/artwork_251_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DF9BBF7D-0932-4A51-803B-DFA5B7D927F6}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-134319.jpg",
+    "imagePath": "images/artwork_342_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{1A7372FC-45D6-4327-8969-952E9BF9EDFC}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-134520.jpg",
+    "imagePath": "images/artwork_040_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{02EC60C9-B6C3-406D-8F67-9494D9EA0C33}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-134711.jpg",
+    "imagePath": "images/artwork_004_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C97CE642-F866-4FB2-92FA-A5E6D374DF14}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-135621.jpg",
+    "imagePath": "images/artwork_305_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DB62D24B-FD29-42AA-83FC-7B0B598A7E8F}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-135756.jpg",
+    "imagePath": "images/artwork_334_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D820775C-A0C7-4F69-99B0-39430A3C75ED}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-135831.jpg",
+    "imagePath": "images/artwork_328_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D820775C-A0C7-4F69-99B0-39430A3C75ED}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-135842.jpg",
+    "imagePath": "images/artwork_328_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{45376A79-F0A4-4EFC-B542-4B58B83913DA}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-135943.jpg",
+    "imagePath": "images/artwork_085_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9EF098D3-7154-4E47-8DB5-E249C21617D9}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140333.jpg",
+    "imagePath": "images/artwork_239_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9EF972C3-B6C8-4E1D-A383-2329DFBAC0CA}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140351.jpg",
+    "imagePath": "images/artwork_240_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DD0FE7A8-08CB-4091-9FB4-9252F443C96F}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140407.jpg",
+    "imagePath": "images/artwork_339_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DD0FE7A8-08CB-4091-9FB4-9252F443C96F}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140410.jpg",
+    "imagePath": "images/artwork_339_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DD0FE7A8-08CB-4091-9FB4-9252F443C96F}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140414.jpg",
+    "imagePath": "images/artwork_339_03.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DD0FE7A8-08CB-4091-9FB4-9252F443C96F}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140420.jpg",
+    "imagePath": "images/artwork_339_04.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DD0FE7A8-08CB-4091-9FB4-9252F443C96F}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140424.jpg",
+    "imagePath": "images/artwork_339_05.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DD0FE7A8-08CB-4091-9FB4-9252F443C96F}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140426.jpg",
+    "imagePath": "images/artwork_339_06.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DD0FE7A8-08CB-4091-9FB4-9252F443C96F}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140437.jpg",
+    "imagePath": "images/artwork_339_07.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DD0FE7A8-08CB-4091-9FB4-9252F443C96F}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140441.jpg",
+    "imagePath": "images/artwork_339_08.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DD0FE7A8-08CB-4091-9FB4-9252F443C96F}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140451.jpg",
+    "imagePath": "images/artwork_339_09.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DD0FE7A8-08CB-4091-9FB4-9252F443C96F}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140455.jpg",
+    "imagePath": "images/artwork_339_10.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DD0FE7A8-08CB-4091-9FB4-9252F443C96F}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140458.jpg",
+    "imagePath": "images/artwork_339_11.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DD0FE7A8-08CB-4091-9FB4-9252F443C96F}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140500.jpg",
+    "imagePath": "images/artwork_339_12.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DD0FE7A8-08CB-4091-9FB4-9252F443C96F}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140504.jpg",
+    "imagePath": "images/artwork_339_13.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DD0FE7A8-08CB-4091-9FB4-9252F443C96F}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140512.jpg",
+    "imagePath": "images/artwork_339_14.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DD0FE7A8-08CB-4091-9FB4-9252F443C96F}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140515.jpg",
+    "imagePath": "images/artwork_339_15.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DD0FE7A8-08CB-4091-9FB4-9252F443C96F}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140521.jpg",
+    "imagePath": "images/artwork_339_16.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DD0FE7A8-08CB-4091-9FB4-9252F443C96F}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140524.jpg",
+    "imagePath": "images/artwork_339_17.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FFF7336A-4E42-49AF-BA8F-C6A26BB6B0E9}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140732.jpg",
+    "imagePath": "images/artwork_402_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{996360AA-C830-49CD-9BEB-FDBC94F873C0}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140813.jpg",
+    "imagePath": "images/artwork_231_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{2C4DBF8A-2F79-4D1C-B917-7203C01870D3}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140904.jpg",
+    "imagePath": "images/artwork_060_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C9C9150D-8878-48BD-B4CA-605847D24E39}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-141146.jpg",
+    "imagePath": "images/artwork_306_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C9C9150D-8878-48BD-B4CA-605847D24E39}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-141155.jpg",
+    "imagePath": "images/artwork_306_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9149A57B-278A-4348-A62F-1618AC4A7771}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-141300.jpg",
+    "imagePath": "images/artwork_217_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{77A3E50B-9245-4F7C-8FF0-B4EBD72608C3}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-142003.jpg",
+    "imagePath": "images/artwork_173_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{15F0E12B-9D45-4347-8575-8429C503AD04}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-142355.jpg",
+    "imagePath": "images/artwork_034_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{52E51C27-5A97-4231-A24D-77C6DD7F30FA}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-142504.jpg",
+    "imagePath": "images/artwork_118_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{52E51C27-5A97-4231-A24D-77C6DD7F30FA}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-142510.jpg",
+    "imagePath": "images/artwork_118_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{CF19D10B-6F46-432D-8B88-504778D14613}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-142641.jpg",
+    "imagePath": "images/artwork_313_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{62523D44-1E9C-4DFA-9058-77509504D235}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-142721.jpg",
+    "imagePath": "images/artwork_143_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{6CA8A221-95EF-4DCA-992F-3B648885870D}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-142850.jpg",
+    "imagePath": "images/artwork_160_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E692D620-F78B-4D8A-994D-E64933F19C4B}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-142928.jpg",
+    "imagePath": "images/artwork_353_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4AA7FD76-AFEB-4A40-ADF5-5F4C8C5525E4}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-143004.jpg",
+    "imagePath": "images/artwork_101_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{EC5EFCF2-2FE9-4AA9-8E3C-AF308863917C}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-152539.jpg",
+    "imagePath": "images/artwork_361_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F7626824-984A-45EF-88A5-2547690C7243}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-152709.jpg",
+    "imagePath": "images/artwork_380_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C6F3AA5A-4502-4EA7-9F64-F89EA56DD0DF}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-153059.jpg",
+    "imagePath": "images/artwork_302_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A907AE96-522C-4879-8CBB-42255EA63B2B}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-154017.jpg",
+    "imagePath": "images/artwork_256_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A907AE96-522C-4879-8CBB-42255EA63B2B}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-154026.jpg",
+    "imagePath": "images/artwork_256_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A907AE96-522C-4879-8CBB-42255EA63B2B}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-154034.jpg",
+    "imagePath": "images/artwork_256_03.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A907AE96-522C-4879-8CBB-42255EA63B2B}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-154038.jpg",
+    "imagePath": "images/artwork_256_04.jpg"
+  },
+  {
+    "arcgisGlobalId": "{EB39AC02-2AAE-4768-8FDD-9A0DB5B9F69E}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-154518.jpg",
+    "imagePath": "images/artwork_360_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C347ACCC-58E3-4C10-8D07-E10B235D58D3}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-154947.jpg",
+    "imagePath": "images/artwork_295_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{08E55971-C2B0-4017-AE8B-6DDA124235A2}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-155926.jpg",
+    "imagePath": "images/artwork_013_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{3CA68CFC-F260-4841-8446-E7175D2F1550}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-160031.jpg",
+    "imagePath": "images/artwork_076_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{981B90CD-3E36-43B7-B51D-DA44403AE3B2}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-160453.jpg",
+    "imagePath": "images/artwork_229_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DB029AA7-C444-496E-A3A7-EAB8517599BF}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-161615.jpg",
+    "imagePath": "images/artwork_333_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0C471CFC-8FC5-466F-B5D1-163F66F0BD26}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-132956.jpg",
+    "imagePath": "images/artwork_022_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5142CDBA-BEF2-4A58-A6A7-63CC327D64F1}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-133108.jpg",
+    "imagePath": "images/artwork_114_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{BAFF92F1-E03F-4E8F-BCF2-7AD1B85CF051}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-133411.jpg",
+    "imagePath": "images/artwork_285_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{939AE128-ED80-48D9-8620-9BBC8B8B842E}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-133509.jpg",
+    "imagePath": "images/artwork_225_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{ECF511BB-C67A-482A-9998-DF76C3386B4C}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-134102.jpg",
+    "imagePath": "images/artwork_362_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F3B26623-414C-46F2-A427-18A582B9D7AA}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-134650.jpg",
+    "imagePath": "images/artwork_372_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E15F389C-7BA1-4CA6-B3B9-871FE0543856}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-134924.jpg",
+    "imagePath": "images/artwork_347_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B14ECFEB-D105-42E6-8E03-1CE2865AD80A}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-135036.jpg",
+    "imagePath": "images/artwork_269_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5A560534-BEC1-4CB0-A698-AEF1A1D89050}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-135127.jpg",
+    "imagePath": "images/artwork_127_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0B6A8108-E065-4CDE-84B0-1BC3120AFF1C}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-135152.jpg",
+    "imagePath": "images/artwork_018_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E7AE6EC4-0AAB-4425-A771-D6D45F09750C}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-135234.jpg",
+    "imagePath": "images/artwork_354_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{73A25B56-13B2-4E63-B6D4-231ECECC5AFF}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-135834.jpg",
+    "imagePath": "images/artwork_166_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0F6B83F8-0F3D-432B-BDEF-69CB0A2C6630}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-135948.jpg",
+    "imagePath": "images/artwork_025_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{992DA602-635F-4453-A81D-30DB8CB8401A}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140516.jpg",
+    "imagePath": "images/artwork_230_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DEF9863D-4B7A-4759-8AB9-5D064FEC4A34}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140543.jpg",
+    "imagePath": "images/artwork_341_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{343AF465-6E78-469B-A534-613475EA0215}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140614.jpg",
+    "imagePath": "images/artwork_070_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{252E0BD1-136F-4EDD-B9CE-67BBA9A07D00}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140708.jpg",
+    "imagePath": "images/artwork_053_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{182CF0C1-B902-4434-9FDF-486C2D562FB5}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-140729.jpg",
+    "imagePath": "images/artwork_038_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{BCB82EEA-2D12-4E82-A9B7-888D1D2125F5}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-141914.jpg",
+    "imagePath": "images/artwork_287_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{640322C9-96FE-4C63-B766-ADF05FE4B32B}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-142039.jpg",
+    "imagePath": "images/artwork_147_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5D626C01-A17D-4E05-BE9F-7508026E08D9}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-142528.jpg",
+    "imagePath": "images/artwork_130_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{32E4F574-5229-4D73-95AE-17B2F94FEBBF}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-142556.jpg",
+    "imagePath": "images/artwork_067_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5286F8AF-87F8-4F3D-9F8A-271F4ADAC33E}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-143923.jpg",
+    "imagePath": "images/artwork_117_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9C634262-037E-4D87-9B09-680683195FF9}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-144235.jpg",
+    "imagePath": "images/artwork_235_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{12E44EBF-DDB1-4D5F-A0AC-40C1A64FE02E}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-144251.jpg",
+    "imagePath": "images/artwork_032_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{BFD7E40F-87B0-4652-8F1D-EE87D4FA7881}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-144934.jpg",
+    "imagePath": "images/artwork_291_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A1EAF466-829E-498B-A603-745744F18157}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-145347.jpg",
+    "imagePath": "images/artwork_247_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D99E0EF8-C195-4C2F-BB51-3242BF7227A9}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-145446.jpg",
+    "imagePath": "images/artwork_330_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F0632E01-E07C-4CEC-9AA8-C1883A72AD8D}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-145636.jpg",
+    "imagePath": "images/artwork_368_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{1F74308E-5071-4FEE-8B2B-CA002CBE3398}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-150007.jpg",
+    "imagePath": "images/artwork_047_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{1BFE874A-D473-49EE-977A-F722B4777DA9}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-150406.jpg",
+    "imagePath": "images/artwork_044_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FE36EDF0-4172-4EEE-9B78-1F7B1392B878}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-150437.jpg",
+    "imagePath": "images/artwork_395_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{92F3B40E-5B92-46C0-89EA-33E5FE272A16}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-150529.jpg",
+    "imagePath": "images/artwork_221_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D6A3A3C7-01EE-45CB-8AFC-8F799BFFCB4D}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-150654.jpg",
+    "imagePath": "images/artwork_325_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{2BD93D15-53FA-42CE-B0C0-4C88621CADA0}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-151201.jpg",
+    "imagePath": "images/artwork_059_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{2BD93D15-53FA-42CE-B0C0-4C88621CADA0}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-151206.jpg",
+    "imagePath": "images/artwork_059_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{2BD93D15-53FA-42CE-B0C0-4C88621CADA0}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-151215.jpg",
+    "imagePath": "images/artwork_059_03.jpg"
+  },
+  {
+    "arcgisGlobalId": "{2D8F9A0C-ABC5-47AB-A22F-762EDC151E46}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-151325.jpg",
+    "imagePath": "images/artwork_061_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A63208CE-A2B6-4661-8CC9-64A29E5CE807}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-152117.jpg",
+    "imagePath": "images/artwork_252_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DBAB3112-1AB7-40A0-9951-33E9467B106D}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-152508.jpg",
+    "imagePath": "images/artwork_335_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A082D296-DB6F-4AA2-98A1-F8A7A820632F}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-152644.jpg",
+    "imagePath": "images/artwork_244_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FC680F39-FD0B-4A2B-AC2A-C1603BD907C9}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-153644.jpg",
+    "imagePath": "images/artwork_392_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{79D32EA7-76D2-495F-9C3B-4B6886BA96E6}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-153908.jpg",
+    "imagePath": "images/artwork_178_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A44D8625-AC89-4269-8E7C-B8D89A229DDD}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-153958.jpg",
+    "imagePath": "images/artwork_250_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{88224B32-4D0F-426E-A5CB-01483C8A77F9}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-154218.jpg",
+    "imagePath": "images/artwork_205_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{403D10A2-6C82-4023-A2B0-E07703A055C6}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-154521.jpg",
+    "imagePath": "images/artwork_080_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{403D10A2-6C82-4023-A2B0-E07703A055C6}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-154528.jpg",
+    "imagePath": "images/artwork_080_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{6165A111-CDC4-48F6-818C-40A0254D6D90}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-154910.jpg",
+    "imagePath": "images/artwork_141_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7E6D614E-91A8-4BB1-85BC-32D95A42A9FF}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-155911.jpg",
+    "imagePath": "images/artwork_186_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F8CD56A6-BB6E-4328-A83B-0D2140D06B55}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-161620.jpg",
+    "imagePath": "images/artwork_385_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0E3344A3-97A4-4060-B275-87A8D1206A9C}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261027-162510.jpg",
+    "imagePath": "images/artwork_024_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{8B938D2A-2D24-4BC8-BDD3-109635AC1878}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-124000.jpg",
+    "imagePath": "images/artwork_210_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DC8B781A-E7E7-4B2F-BB93-22EA265E225E}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-124037.jpg",
+    "imagePath": "images/artwork_336_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{91914232-5DD4-4CA7-8CA1-C3D3DB745A46}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-124142.jpg",
+    "imagePath": "images/artwork_218_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{CB1FB2EC-0DC9-481D-B376-9961EDE80F88}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-124226.jpg",
+    "imagePath": "images/artwork_307_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7F09F8B1-AF15-4560-94EF-C867C12DB552}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-124929.jpg",
+    "imagePath": "images/artwork_187_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7F09F8B1-AF15-4560-94EF-C867C12DB552}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-124938.jpg",
+    "imagePath": "images/artwork_187_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{2E4B2D49-1981-45F4-A3A9-489449F449D8}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-125256.jpg",
+    "imagePath": "images/artwork_064_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F46449D5-B3A8-49D4-A7D4-4EA8E766AA66}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-125443.jpg",
+    "imagePath": "images/artwork_373_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{43C04BC9-A53D-4588-B732-9724BB3DCDBB}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-125548.jpg",
+    "imagePath": "images/artwork_084_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F750D885-1A46-4A42-B21D-1D084C84EA03}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-125920.jpg",
+    "imagePath": "images/artwork_379_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F750D885-1A46-4A42-B21D-1D084C84EA03}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-125928.jpg",
+    "imagePath": "images/artwork_379_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FE6A72E9-61F7-402F-9FC2-F71AEE3B2999}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-130542.jpg",
+    "imagePath": "images/artwork_396_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E928C851-E1C3-4C01-9CA8-1DD9C2361730}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-130840.jpg",
+    "imagePath": "images/artwork_356_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{8A43E09C-3F6E-46D0-BE48-095DEA3F5DF5}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-131356.jpg",
+    "imagePath": "images/artwork_208_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{85E90F67-62C9-430D-A09E-722A7C973C14}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-131844.jpg",
+    "imagePath": "images/artwork_200_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E03A05D8-1BE6-43DE-808E-24DF3675FB7A}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-132442.jpg",
+    "imagePath": "images/artwork_345_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E03A05D8-1BE6-43DE-808E-24DF3675FB7A}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-132458.jpg",
+    "imagePath": "images/artwork_345_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A14C519E-3ECB-47A2-A4EA-E5DECB4DAD3C}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-132541.jpg",
+    "imagePath": "images/artwork_245_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{735EC671-68EA-4116-B436-01DF08A48A4A}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-132907.jpg",
+    "imagePath": "images/artwork_165_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0D4F17BD-40B2-4C59-B49F-940CE767E879}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-132935.jpg",
+    "imagePath": "images/artwork_023_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D03BFD73-E478-4D97-B5E6-AAA60BEF8303}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-133052.jpg",
+    "imagePath": "images/artwork_315_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{1894BA93-23EC-4D59-BC43-A33735B6CA28}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-133259.jpg",
+    "imagePath": "images/artwork_039_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{77B2D742-0AB0-4EC6-88CB-1FCD93FE3F38}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-133337.jpg",
+    "imagePath": "images/artwork_175_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{525FB39B-98F9-4B34-BF23-D173CD228CBD}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-134117.jpg",
+    "imagePath": "images/artwork_116_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B7D2D5BF-8BCA-45C2-8457-94691E5E6996}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-134650.jpg",
+    "imagePath": "images/artwork_281_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{549C4677-DE1B-4A99-92D3-7CA1C25CA4C3}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-134729.jpg",
+    "imagePath": "images/artwork_121_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{CDEFCB4F-BAAD-4BE0-9590-7A01A0DBCCB6}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-135013.jpg",
+    "imagePath": "images/artwork_311_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A6E472B7-654A-4FB7-B199-6B3973D189DC}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-135052.jpg",
+    "imagePath": "images/artwork_253_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{88840959-ECD9-4A44-98A8-BD9DEC5A4774}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-135639.jpg",
+    "imagePath": "images/artwork_206_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5E3C6D3D-B4BB-40B5-B0DF-E5E1D2D64A0C}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-135854.jpg",
+    "imagePath": "images/artwork_133_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F9B53B5A-33EA-4C22-8D57-964F0EDA7825}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-140020.jpg",
+    "imagePath": "images/artwork_388_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0A5B334B-63A4-4026-A998-22BC2060538E}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-140139.jpg",
+    "imagePath": "images/artwork_017_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5FC73BD0-46B0-4F49-A160-42C38F852C6B}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-141029.jpg",
+    "imagePath": "images/artwork_138_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B2C18635-4124-481B-8F4D-C9975AD49862}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-141357.jpg",
+    "imagePath": "images/artwork_271_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{6BE387DA-04EB-4324-B5C0-B6F1174EE649}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-141511.jpg",
+    "imagePath": "images/artwork_159_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{00B704C6-4DE2-48C3-9BD9-F9BEA8C6BCBF}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-141951.jpg",
+    "imagePath": "images/artwork_001_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{2BC081D7-F974-4792-833B-763490F55420}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-142337.jpg",
+    "imagePath": "images/artwork_058_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B74FA816-3210-4EFB-A854-6BEB16A2FB98}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-143456.jpg",
+    "imagePath": "images/artwork_280_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B74FA816-3210-4EFB-A854-6BEB16A2FB98}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-143502.jpg",
+    "imagePath": "images/artwork_280_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{AC86CF3C-DE12-4B11-ACAA-63D42EE9EDDB}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-143635.jpg",
+    "imagePath": "images/artwork_265_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{6098C9D3-389F-4345-BF32-844BA8DFDFD1}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-143707.jpg",
+    "imagePath": "images/artwork_139_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7F0A3847-285E-46AE-9D44-25E2354FC923}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-144508.jpg",
+    "imagePath": "images/artwork_188_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{84FC486C-7767-4CEE-BD5A-72EC897FD532}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-144527.jpg",
+    "imagePath": "images/artwork_197_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5099AF4E-A67F-4876-951B-2E9FA46BB6D4}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-144831.jpg",
+    "imagePath": "images/artwork_113_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{499139F5-586A-4465-905E-F4853433510C}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-145057.jpg",
+    "imagePath": "images/artwork_095_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B46F556B-2BB3-42AD-BECD-99C3610A8BF2}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-132703.jpg",
+    "imagePath": "images/artwork_275_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B46F556B-2BB3-42AD-BECD-99C3610A8BF2}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-132711.jpg",
+    "imagePath": "images/artwork_275_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{854D099A-53CE-4ED7-A5D7-E649308BB753}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-160350.jpg",
+    "imagePath": "images/artwork_198_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{54E58F89-9DC7-4F46-9D42-EF3437EBD036}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-123811.jpg",
+    "imagePath": "images/artwork_122_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B0B96E56-8189-4834-B1F0-0317327BE43E}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-124447.jpg",
+    "imagePath": "images/artwork_268_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{861CB8C9-5F0C-48C9-B650-5842E0047B04}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-124635.jpg",
+    "imagePath": "images/artwork_201_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4BC77DF9-D632-4C49-8694-59DCBD29450E}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-124927.jpg",
+    "imagePath": "images/artwork_104_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4BC77DF9-D632-4C49-8694-59DCBD29450E}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-124951.jpg",
+    "imagePath": "images/artwork_104_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4BC77DF9-D632-4C49-8694-59DCBD29450E}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-125006.jpg",
+    "imagePath": "images/artwork_104_03.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9A1DA4FA-6317-4CD9-974C-A44FE411088E}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-125038.jpg",
+    "imagePath": "images/artwork_233_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4091CA2F-24DB-46F6-8C73-126555AD92CB}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-125352.jpg",
+    "imagePath": "images/artwork_082_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{06DF9DDD-43C9-4D19-99C5-56E685200A41}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-125607.jpg",
+    "imagePath": "images/artwork_009_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B2E3C9DA-76ED-44E3-ACE9-23AE870DDFDD}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-125654.jpg",
+    "imagePath": "images/artwork_272_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B08C682F-551F-462D-B3E9-FBADC0CE2180}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-125748.jpg",
+    "imagePath": "images/artwork_267_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5BB85057-5F58-488F-BD97-04404B746F87}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-125830.jpg",
+    "imagePath": "images/artwork_129_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D9BAD18B-9543-4E19-BD28-3F27FDB1621B}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-130001.jpg",
+    "imagePath": "images/artwork_331_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D50D4ECC-7A84-4187-BFA3-18FC223D5263}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-130103.jpg",
+    "imagePath": "images/artwork_322_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0C0E6161-94A7-4B4A-814F-DE92372F07DF}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-130239.jpg",
+    "imagePath": "images/artwork_020_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{6BC06D26-D8D0-4176-B739-E187B72B3706}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-130408.jpg",
+    "imagePath": "images/artwork_158_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{2AA97C5A-AAB7-4B6A-BE6E-C8DA2422B77B}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-130650.jpg",
+    "imagePath": "images/artwork_057_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9369911D-1243-493C-9210-DA1388B5F73D}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-131152.jpg",
+    "imagePath": "images/artwork_223_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B2E4DD3F-410C-43D3-9DAA-780D75C5B570}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-131329.jpg",
+    "imagePath": "images/artwork_273_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{3E5F8552-E875-4946-A657-D10D7220F551}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-131358.jpg",
+    "imagePath": "images/artwork_078_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4A19A0E6-33A4-4EAC-98A5-2BA4535819B1}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-132240.jpg",
+    "imagePath": "images/artwork_098_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{49AEE689-7642-4D79-90BA-1351B4374EF0}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-132418.jpg",
+    "imagePath": "images/artwork_097_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{AB362B87-4AEA-4ABD-8679-8D3B50A33078}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-132441.jpg",
+    "imagePath": "images/artwork_262_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{054C8F19-8A3C-4B1D-A26E-8ECC52599B05}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-132522.jpg",
+    "imagePath": "images/artwork_008_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{BCE6EC74-D184-4A08-A3B3-D21A79243D1C}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-132714.jpg",
+    "imagePath": "images/artwork_288_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DA42B463-4B15-4F1A-B1B1-01BFC1EABD32}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-133150.jpg",
+    "imagePath": "images/artwork_332_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{CBE4A83E-9F29-44FB-981A-B75E4965A477}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-133211.jpg",
+    "imagePath": "images/artwork_308_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D5A825C7-0CB1-41B8-92E5-21CC28BBE02D}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-133304.jpg",
+    "imagePath": "images/artwork_324_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E615A8CC-686F-41FC-9F03-D9503789DA96}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-133920.jpg",
+    "imagePath": "images/artwork_352_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{74745000-12A2-4549-ABE1-7D8EC01FA18D}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-134515.jpg",
+    "imagePath": "images/artwork_167_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F877C560-47EA-4177-873E-57BBC9140532}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-134852.jpg",
+    "imagePath": "images/artwork_383_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{BB098D57-AABC-452F-8386-F691C8856B14}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-135329.jpg",
+    "imagePath": "images/artwork_286_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D6F4F1F3-E4DA-44E3-8D06-26585B4332D0}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-135510.jpg",
+    "imagePath": "images/artwork_327_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F76655EC-F06B-4F6A-8898-C7495BCD110C}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-140252.jpg",
+    "imagePath": "images/artwork_381_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0877D3E2-E85B-4CC0-A0C9-F0CBFB695CE1}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-140700.jpg",
+    "imagePath": "images/artwork_012_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{1B83843A-3F47-4815-8CBB-626FE70947DA}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-140840.jpg",
+    "imagePath": "images/artwork_043_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{929183D0-7868-4575-AACC-D3F0E65EC788}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-140955.jpg",
+    "imagePath": "images/artwork_219_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D4F91AA7-DE45-44BE-A6B1-C583852794C3}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-141843.jpg",
+    "imagePath": "images/artwork_321_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{87C9C2C6-4F0E-40CE-8A07-5614160FA926}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-142224.jpg",
+    "imagePath": "images/artwork_204_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4B612CB5-ACEF-4486-8360-AD4A563EE2EC}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-142238.jpg",
+    "imagePath": "images/artwork_103_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{BD0BDA94-864C-4350-99F5-8F78CE00E70E}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-142308.jpg",
+    "imagePath": "images/artwork_289_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{99BF8603-DDAA-4AA5-8617-E9963378B977}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-142617.jpg",
+    "imagePath": "images/artwork_232_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{6E2B53A2-A7C3-4636-B12E-AD07103EA905}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-142853.jpg",
+    "imagePath": "images/artwork_161_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E591556E-F62D-4407-BFE4-D4D6CA7A75D3}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-142930.jpg",
+    "imagePath": "images/artwork_351_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{364FAC29-D910-4A65-AE6C-0C90BF74F43E}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-143009.jpg",
+    "imagePath": "images/artwork_071_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7B2E095B-02BD-4609-901B-5F1AD9D85CF7}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-143223.jpg",
+    "imagePath": "images/artwork_179_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F0C47E2D-9527-4810-A75B-5A1C369F60E3}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-143253.jpg",
+    "imagePath": "images/artwork_369_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{400E4AB5-B590-4AF3-875E-65C0568E6775}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-143426.jpg",
+    "imagePath": "images/artwork_079_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{84517065-C8D0-44C8-B3D8-B42AFC874016}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-143805.jpg",
+    "imagePath": "images/artwork_196_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{366FAB3F-953C-4604-89CD-5C0BAC42D74A}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-143924.jpg",
+    "imagePath": "images/artwork_072_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7D8A7202-89BC-4199-81DD-80870D29E688}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-144617.jpg",
+    "imagePath": "images/artwork_184_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{23C6E7C5-1D24-46DD-9AEA-FB79F6511403}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-144819.jpg",
+    "imagePath": "images/artwork_051_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{23C6E7C5-1D24-46DD-9AEA-FB79F6511403}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-144828.jpg",
+    "imagePath": "images/artwork_051_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{79AFE4C1-71B5-4ABC-80CF-983377911345}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-144859.jpg",
+    "imagePath": "images/artwork_177_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{873A1F1A-9E0B-46B5-B8C4-53EC2FF8E476}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-144919.jpg",
+    "imagePath": "images/artwork_203_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{873A1F1A-9E0B-46B5-B8C4-53EC2FF8E476}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-144928.jpg",
+    "imagePath": "images/artwork_203_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E7B521A9-7652-456D-8BF6-FBE13671276C}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-145204.jpg",
+    "imagePath": "images/artwork_355_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{62AF9F24-C25D-493B-B870-1FF20A343BD8}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-145419.jpg",
+    "imagePath": "images/artwork_144_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B589A786-D1F4-4528-98C2-8294DFD0F4BF}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-145433.jpg",
+    "imagePath": "images/artwork_277_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{CF2EA4D7-BAB6-4742-BB07-BFF6D809E0C8}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-150045.jpg",
+    "imagePath": "images/artwork_314_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{694130CE-440F-4F9E-9A70-FD2FCBA7862F}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-150712.jpg",
+    "imagePath": "images/artwork_152_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{49A3DD4A-BBF4-43CB-8D86-FA0BEBD739CD}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-160032.jpg",
+    "imagePath": "images/artwork_096_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B8042EA5-7798-4701-B5F6-A111D256FF39}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-160054.jpg",
+    "imagePath": "images/artwork_282_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{02C36CE3-04DF-44A4-A5F0-F02E5117DD5D}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-160237.jpg",
+    "imagePath": "images/artwork_003_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4FAFACA6-080C-4A73-A48C-563A45CDCD42}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261102-160257.jpg",
+    "imagePath": "images/artwork_110_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7C47ADFA-A044-4E47-BF01-BACC6997E152}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261103-131541.jpg",
+    "imagePath": "images/artwork_182_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{1EA5E277-6D53-42CC-B0CC-7B980AF66257}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261103-114833.jpg",
+    "imagePath": "images/artwork_046_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{243127F9-3280-46DC-9DF1-FB27158F284E}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261103-115313.jpg",
+    "imagePath": "images/artwork_052_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{63C964B8-B4DA-4EAA-B0B1-686DB8EB8CBC}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261103-115431.jpg",
+    "imagePath": "images/artwork_146_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D6B09302-00AA-474C-AD8A-CBA1227E457E}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261103-121259.jpg",
+    "imagePath": "images/artwork_326_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9F1A823B-FDFA-4B04-BCFB-E27E973573B1}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261103-122034.jpg",
+    "imagePath": "images/artwork_242_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{27477BCD-C71D-4B61-A0B1-81515A87BCB4}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261103-122253.jpg",
+    "imagePath": "images/artwork_054_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F95486B9-E2CC-4446-8138-CFEA832EF1B9}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261103-122445.jpg",
+    "imagePath": "images/artwork_387_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{8093FF1C-2CF2-42DE-AC57-1DF2A9190C4E}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261103-124723.jpg",
+    "imagePath": "images/artwork_192_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{8093FF1C-2CF2-42DE-AC57-1DF2A9190C4E}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261103-124727.jpg",
+    "imagePath": "images/artwork_192_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{8093FF1C-2CF2-42DE-AC57-1DF2A9190C4E}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261103-124730.jpg",
+    "imagePath": "images/artwork_192_03.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FC706AC2-5A4C-4F78-B29A-F4CBB2609B96}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261103-125821.jpg",
+    "imagePath": "images/artwork_393_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{6A86FA87-5F4B-4739-952F-0EF1DBC9D671}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261103-125913.jpg",
+    "imagePath": "images/artwork_154_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{1689FBB2-A234-41A3-990B-994AB15D74DE}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261103-130042.jpg",
+    "imagePath": "images/artwork_036_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C08CBF09-7865-4DAE-AEF1-78D559FBA977}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261103-130230.jpg",
+    "imagePath": "images/artwork_292_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7153C2E8-87EA-4FEB-B562-9845D89DE87C}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261103-130300.jpg",
+    "imagePath": "images/artwork_162_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{AA77FF96-DC3D-4388-9D41-1CD51611267D}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261103-132420.jpg",
+    "imagePath": "images/artwork_261_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7CA5EDD0-BAD2-45B8-9AE5-E5E1032A4C37}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261103-114610.jpg",
+    "imagePath": "images/artwork_183_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{524A3079-4F2F-424F-B874-BC40E4A3AC5C}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261103-120015.jpg",
+    "imagePath": "images/artwork_115_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E0DD57CF-C215-41CF-8196-C7083EC82709}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261103-120202.jpg",
+    "imagePath": "images/artwork_346_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{59E2F898-B26F-49A0-926C-0FF1D487FD15}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261103-120233.jpg",
+    "imagePath": "images/artwork_126_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{EFD9FE97-5D94-4724-B6C7-E5E70247E990}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261103-120412.jpg",
+    "imagePath": "images/artwork_366_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{74BB1C21-8299-46F1-946A-0D1D1948185A}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261103-120425.jpg",
+    "imagePath": "images/artwork_168_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{03574FD6-11F9-45AA-AF22-D3D185D069ED}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261103-120600.jpg",
+    "imagePath": "images/artwork_005_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0C2FB14A-948D-4DA3-A982-DD7A1964137A}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261103-131605.jpg",
+    "imagePath": "images/artwork_021_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{2DF4CE92-1FCA-4FF5-A9C1-297E076A0FAF}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-103131.jpg",
+    "imagePath": "images/artwork_062_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{1576C170-B138-49DF-99FB-E106093908BA}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-103729.jpg",
+    "imagePath": "images/artwork_033_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A9B761FF-2FAB-4AB8-B73D-AB837D7CF1B5}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-103812.jpg",
+    "imagePath": "images/artwork_260_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{342C760F-3EB4-46F3-8CBD-462A8C3BE10A}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-105756.jpg",
+    "imagePath": "images/artwork_069_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C6F5A06C-DED1-4C87-BC77-9B70E09AD65C}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-105837.jpg",
+    "imagePath": "images/artwork_303_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FBF458E1-AF24-4D62-A7C1-50AF85D8F200}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-105904.jpg",
+    "imagePath": "images/artwork_389_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FBF458E1-AF24-4D62-A7C1-50AF85D8F200}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-105909.jpg",
+    "imagePath": "images/artwork_389_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{AF8068D0-2037-4C83-9B99-06A76C68C20C}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-110136.jpg",
+    "imagePath": "images/artwork_266_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{AF8068D0-2037-4C83-9B99-06A76C68C20C}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-110153.jpg",
+    "imagePath": "images/artwork_266_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{AF8068D0-2037-4C83-9B99-06A76C68C20C}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-110202.jpg",
+    "imagePath": "images/artwork_266_03.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D989995E-12CE-441D-AF88-0417BDCF22FD}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-114949.jpg",
+    "imagePath": "images/artwork_329_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D989995E-12CE-441D-AF88-0417BDCF22FD}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-115021.jpg",
+    "imagePath": "images/artwork_329_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{78F53B42-46C1-432F-A75E-9230D94C0533}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-104300.jpg",
+    "imagePath": "images/artwork_176_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E03437B0-4C76-4B4E-9863-4DE967BB8E65}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-104906.jpg",
+    "imagePath": "images/artwork_344_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{2E1BA89E-63D6-4CBE-995D-7A4A6D4AA127}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-105647.jpg",
+    "imagePath": "images/artwork_063_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{CDCE3168-2A4E-48E7-8AE7-EB6BF8EA53E0}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-105714.jpg",
+    "imagePath": "images/artwork_310_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{47213C70-78C6-426B-A61C-0A24812C1CD6}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-110419.jpg",
+    "imagePath": "images/artwork_090_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{11598798-62CD-44B9-8950-2083045EE5EF}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-110605.jpg",
+    "imagePath": "images/artwork_028_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{EDDB028F-953C-4308-B21B-A1A065C1E4A6}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-111045.jpg",
+    "imagePath": "images/artwork_364_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{025DD28E-62F1-48A8-BD48-65BC1C48D375}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-112125.jpg",
+    "imagePath": "images/artwork_002_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{025DD28E-62F1-48A8-BD48-65BC1C48D375}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-112130.jpg",
+    "imagePath": "images/artwork_002_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{95EAFDB8-B5B5-4E37-8CE3-321AE892DD25}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-112413.jpg",
+    "imagePath": "images/artwork_226_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{95EAFDB8-B5B5-4E37-8CE3-321AE892DD25}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-112418.jpg",
+    "imagePath": "images/artwork_226_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D2183590-6D98-494D-9CCE-73CF54F3EE60}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-112854.jpg",
+    "imagePath": "images/artwork_318_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C901AD10-74F3-4AAB-9699-DB5AB7A6FBCC}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-113355.jpg",
+    "imagePath": "images/artwork_304_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7E208272-05F8-4AA9-97E1-C44C945C3DE1}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-114943.jpg",
+    "imagePath": "images/artwork_185_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E029CF4E-4546-4E5F-9118-32F25FD16D47}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-115337.jpg",
+    "imagePath": "images/artwork_343_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E029CF4E-4546-4E5F-9118-32F25FD16D47}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-115341.jpg",
+    "imagePath": "images/artwork_343_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F536709D-7B6B-4244-841D-EC1B0FDAE69D}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-120802.jpg",
+    "imagePath": "images/artwork_376_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FC55B6B1-69F9-4CA6-98E3-8D0D32004EB8}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261110-122656.jpg",
+    "imagePath": "images/artwork_391_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{3A41D946-72B2-4C3F-A143-D59E259ACC56}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261110-124447.jpg",
+    "imagePath": "images/artwork_074_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{8AD046F9-F0F4-429B-8328-7BC8529E9696}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261110-124715.jpg",
+    "imagePath": "images/artwork_209_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{1F93976F-A255-492F-9AE5-E71657247C2E}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261110-125152.jpg",
+    "imagePath": "images/artwork_048_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{2ED876F0-8020-4557-8500-A8C2B88344A5}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-115802.jpg",
+    "imagePath": "images/artwork_065_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FE9749EE-6288-4F8C-BE32-4BAF9DD1D3EB}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-112734.jpg",
+    "imagePath": "images/artwork_397_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7FC145BB-58C8-4CE6-9947-73F117949ABC}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-114207.jpg",
+    "imagePath": "images/artwork_190_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0FD06CA2-71BA-4414-8D8F-33E7FA7CDFF8}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-114452.jpg",
+    "imagePath": "images/artwork_026_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{EA290E17-78C1-452B-859D-80DF3908E89C}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-115149.jpg",
+    "imagePath": "images/artwork_358_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{49424E31-DE07-4A9C-A84E-B59682FEF4C9}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-115355.jpg",
+    "imagePath": "images/artwork_094_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9097C0C8-972B-4961-A74F-8ACEFF485B44}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-121231.jpg",
+    "imagePath": "images/artwork_216_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C6AA1298-FF03-4D0E-89E6-1DD0615B4DBB}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-123453.jpg",
+    "imagePath": "images/artwork_300_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{822D885E-D8AE-45A1-9960-D7E5352C2CE7}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-123509.jpg",
+    "imagePath": "images/artwork_193_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{32E69126-BB5C-4774-B4B2-6005BFD59612}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-124632.jpg",
+    "imagePath": "images/artwork_068_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{32E69126-BB5C-4774-B4B2-6005BFD59612}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-124650.jpg",
+    "imagePath": "images/artwork_068_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{58CCB3BD-B647-4AE8-99E8-8181404D91FC}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-124800.jpg",
+    "imagePath": "images/artwork_123_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F207FE91-896C-4FB8-846E-EFFCFA6AFCA0}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-124853.jpg",
+    "imagePath": "images/artwork_371_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F207FE91-896C-4FB8-846E-EFFCFA6AFCA0}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-124858.jpg",
+    "imagePath": "images/artwork_371_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F8743A32-F101-48BE-B91D-B8F34C41BB4D}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-124935.jpg",
+    "imagePath": "images/artwork_382_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{71E0FC90-9890-4863-A04C-C68E3400D485}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-125351.jpg",
+    "imagePath": "images/artwork_163_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{595C3A20-11A5-454E-BBD2-8C1DE22388F0}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261110-105915.jpg",
+    "imagePath": "images/artwork_125_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{595C3A20-11A5-454E-BBD2-8C1DE22388F0}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261110-105919.jpg",
+    "imagePath": "images/artwork_125_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{595C3A20-11A5-454E-BBD2-8C1DE22388F0}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261110-105923.jpg",
+    "imagePath": "images/artwork_125_03.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4075EFBA-DBD4-473A-AA92-71356DFA82EE}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261110-110341.jpg",
+    "imagePath": "images/artwork_081_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4A3F1C57-2342-4B45-B5CE-1300A911664B}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261110-124215.jpg",
+    "imagePath": "images/artwork_099_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4C9B4F72-1166-4A7B-BF4A-570BA83068AF}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261110-124326.jpg",
+    "imagePath": "images/artwork_106_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{42737E41-10E0-4253-AF0B-3281E6FED60C}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261110-124357.jpg",
+    "imagePath": "images/artwork_083_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{643CD7AF-7CDA-4F79-BEB1-28444F2F93D0}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261110-124522.jpg",
+    "imagePath": "images/artwork_148_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{643CD7AF-7CDA-4F79-BEB1-28444F2F93D0}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261110-124537.jpg",
+    "imagePath": "images/artwork_148_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{643CD7AF-7CDA-4F79-BEB1-28444F2F93D0}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261110-124555.jpg",
+    "imagePath": "images/artwork_148_03.jpg"
+  },
+  {
+    "arcgisGlobalId": "{643CD7AF-7CDA-4F79-BEB1-28444F2F93D0}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261110-124612.jpg",
+    "imagePath": "images/artwork_148_04.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B1F1F8F8-4C42-4F99-9813-BB4920C9D284}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261110-124701.jpg",
+    "imagePath": "images/artwork_270_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4664476D-D5F1-4826-8F5B-77BD65512626}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261110-124741.jpg",
+    "imagePath": "images/artwork_089_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{1261FDE9-7DE0-49D2-9B97-70DDF567A4F7}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261110-125110.jpg",
+    "imagePath": "images/artwork_030_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DCEB3C66-84A1-40A3-846A-4144B6686FB0}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261110-125621.jpg",
+    "imagePath": "images/artwork_337_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4FFD1B13-2485-4248-99CE-FE51C2D72BE5}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261110-125717.jpg",
+    "imagePath": "images/artwork_112_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{85C4ED78-9C75-432E-A9D8-417440BE39AC}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261110-130503.jpg",
+    "imagePath": "images/artwork_199_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5F07360A-4942-43D8-A586-32386F42C3DB}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261110-130622.jpg",
+    "imagePath": "images/artwork_135_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C3921844-FD99-4236-A209-9DC1E32F7482}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-113522.jpg",
+    "imagePath": "images/artwork_296_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{97695DE7-6C7A-414F-9754-0232462F75A9}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-113821.jpg",
+    "imagePath": "images/artwork_228_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C282E4D4-C65A-4DA3-8916-28428865ADE8}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-113843.jpg",
+    "imagePath": "images/artwork_293_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{490C0E1A-8B2E-42B4-8E19-61F5DE30AB29}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-113937.jpg",
+    "imagePath": "images/artwork_093_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B4F1C731-5600-4770-B345-288BB773C0F9}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-114527.jpg",
+    "imagePath": "images/artwork_276_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{75562597-35E4-4F12-977C-40C8446E77AC}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-115127.jpg",
+    "imagePath": "images/artwork_170_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{931DEDD7-D133-4AE8-B53E-3A8F3F81E2AF}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-115246.jpg",
+    "imagePath": "images/artwork_222_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{03A15660-F321-41D1-B392-5AFF98E79CEB}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-115308.jpg",
+    "imagePath": "images/artwork_006_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{68BB9354-7363-49AE-A7B1-C1D4D1C81269}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-115715.jpg",
+    "imagePath": "images/artwork_151_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{68BB9354-7363-49AE-A7B1-C1D4D1C81269}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-115750.jpg",
+    "imagePath": "images/artwork_151_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{CCA0376B-8F45-4314-B15F-4E30D112E116}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-120833.jpg",
+    "imagePath": "images/artwork_309_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4652E559-E820-493D-8E4C-82CCE112E373}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-120916.jpg",
+    "imagePath": "images/artwork_088_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4652E559-E820-493D-8E4C-82CCE112E373}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-120923.jpg",
+    "imagePath": "images/artwork_088_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{88C6D3DA-538F-41D7-8B39-37494FB6E256}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-121027.jpg",
+    "imagePath": "images/artwork_207_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E98BB032-41D4-43F8-9208-693C3FD70C16}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-121040.jpg",
+    "imagePath": "images/artwork_357_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{12D0BD40-ACB9-4BEB-BA5C-D54C01124542}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-121114.jpg",
+    "imagePath": "images/artwork_031_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{48500D82-43E9-4DF9-A5B1-F0C5B2E3A881}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-121129.jpg",
+    "imagePath": "images/artwork_092_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{48500D82-43E9-4DF9-A5B1-F0C5B2E3A881}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-121140.jpg",
+    "imagePath": "images/artwork_092_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A43148FF-1846-45B0-AD3E-6E5FFAD00EAC}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-121204.jpg",
+    "imagePath": "images/artwork_249_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{6B46AB3B-B00D-4016-9DA2-EFF32F3816B5}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-121443.jpg",
+    "imagePath": "images/artwork_157_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5F14CF6D-6668-4998-86D4-87E7C2E7FE28}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-121604.jpg",
+    "imagePath": "images/artwork_136_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A91A018D-40FC-4975-B004-46D38A59F611}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-121822.jpg",
+    "imagePath": "images/artwork_257_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{EE94A587-F67E-4F52-B540-3407FAADA765}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-122052.jpg",
+    "imagePath": "images/artwork_365_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B8C7743F-3571-43F6-A33A-3B20AE0959BF}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-122115.jpg",
+    "imagePath": "images/artwork_283_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B8C7743F-3571-43F6-A33A-3B20AE0959BF}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-122120.jpg",
+    "imagePath": "images/artwork_283_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{543D7392-844D-4E73-9D43-2C64745C2A34}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-122131.jpg",
+    "imagePath": "images/artwork_120_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{ED7FB2A2-9491-4E18-8659-4EF4617CC788}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-122715.jpg",
+    "imagePath": "images/artwork_363_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{ED7FB2A2-9491-4E18-8659-4EF4617CC788}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-122723.jpg",
+    "imagePath": "images/artwork_363_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{078FDE6B-DFAB-4990-AEF2-11BC1B62B853}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-122835.jpg",
+    "imagePath": "images/artwork_010_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{74CE24A5-507A-41B5-81ED-6BBADFB461AE}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-123129.jpg",
+    "imagePath": "images/artwork_169_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{74CE24A5-507A-41B5-81ED-6BBADFB461AE}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-123136.jpg",
+    "imagePath": "images/artwork_169_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C2C7E1DF-0136-4CE8-B966-A641F575AF10}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-124010.jpg",
+    "imagePath": "images/artwork_294_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5E7073A2-64E9-4588-92E7-5986E67070AA}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-124322.jpg",
+    "imagePath": "images/artwork_134_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{8316DDEC-F829-468C-94DD-94D800EF2D2E}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-124640.jpg",
+    "imagePath": "images/artwork_194_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A8512DEC-6E24-4EEC-A471-48DA9BFC9D52}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-125639.jpg",
+    "imagePath": "images/artwork_255_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F46A9E8D-31C6-4B73-839D-A80D1F63674A}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-125742.jpg",
+    "imagePath": "images/artwork_374_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{6AFC7F0A-652F-4E8B-9798-F71FA66C5816}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-130148.jpg",
+    "imagePath": "images/artwork_156_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{8D3D80D8-8033-492D-B11C-FE62F28EFB9D}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-130844.jpg",
+    "imagePath": "images/artwork_212_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{8D3D80D8-8033-492D-B11C-FE62F28EFB9D}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-130850.jpg",
+    "imagePath": "images/artwork_212_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C6E397CB-D460-4B48-B0E2-5777A5FCE67F}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-131041.jpg",
+    "imagePath": "images/artwork_301_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E463F7A5-8F52-4100-9FAD-0BDCF2A64E1F}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-131742.jpg",
+    "imagePath": "images/artwork_350_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{8450E147-F002-40E5-BA89-240084641890}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-101736.jpg",
+    "imagePath": "images/artwork_195_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A1E05A70-B3BF-46E6-8FF3-B111ED52D628}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-102022.jpg",
+    "imagePath": "images/artwork_246_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9F03BBF3-770F-493F-B41C-9538E2EABD60}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-102916.jpg",
+    "imagePath": "images/artwork_241_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{61436E09-2990-4880-B4DD-B458B0B99809}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-103538.jpg",
+    "imagePath": "images/artwork_140_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{61436E09-2990-4880-B4DD-B458B0B99809}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-103555.jpg",
+    "imagePath": "images/artwork_140_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{45F75B84-5EE8-4084-8A69-9E4E44E009F6}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-110312.jpg",
+    "imagePath": "images/artwork_086_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{CEC0C0A7-81A8-4022-AC2C-54E0668FBA42}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-110327.jpg",
+    "imagePath": "images/artwork_312_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{767E6335-579C-4D40-AEEB-9B031D0A6110}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-110400.jpg",
+    "imagePath": "images/artwork_171_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{6AB134E8-EC1C-45FD-A649-8DD2B63C546F}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261105-114956.jpg",
+    "imagePath": "images/artwork_155_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D0B80BDB-E814-4561-B01B-06E023534A3B}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261110-113927.jpg",
+    "imagePath": "images/artwork_316_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{7C1829CD-7E94-43CE-AF5F-BC89115D0D64}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261110-122317.jpg",
+    "imagePath": "images/artwork_181_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{8FBBE644-17DA-45BD-933A-54D1AC6EB40A}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261110-124437.jpg",
+    "imagePath": "images/artwork_214_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9E47A074-0593-4B3F-9EF3-029E01CF3B4E}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261110-125328.jpg",
+    "imagePath": "images/artwork_237_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4FF56EC8-6B69-496F-83F8-9E06B262ED52}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261110-125357.jpg",
+    "imagePath": "images/artwork_111_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{C436C3CC-5AFD-444A-BA64-6149309EF30E}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-112304.jpg",
+    "imagePath": "images/artwork_297_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{0BFD96AA-E7C4-4B0C-BB83-9F0613E53BDC}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-112739.jpg",
+    "imagePath": "images/artwork_019_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{10F7F55A-11AE-46E4-B9B9-069B8FE487A1}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-113316.jpg",
+    "imagePath": "images/artwork_027_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E1B4C38F-902A-4ED4-A0A1-2BA08E994C21}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-113550.jpg",
+    "imagePath": "images/artwork_348_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{E1B4C38F-902A-4ED4-A0A1-2BA08E994C21}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-113559.jpg",
+    "imagePath": "images/artwork_348_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F59CF3EE-69A3-4DFE-9DBC-3A67BF435AC2}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-114213.jpg",
+    "imagePath": "images/artwork_377_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{AC24C918-EC43-4705-A575-EFBA910F0232}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-114411.jpg",
+    "imagePath": "images/artwork_264_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4A42C5C6-3728-433A-B901-7636FCB805FD}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-114445.jpg",
+    "imagePath": "images/artwork_100_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DE19B876-9D9A-481D-8CB0-5485C42D27B5}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-114814.jpg",
+    "imagePath": "images/artwork_340_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B6963ECF-D608-4283-AA39-D4C8C47DB8DA}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-114938.jpg",
+    "imagePath": "images/artwork_278_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9E663F8C-5EF8-43D4-A2AB-80F630B2D916}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-115003.jpg",
+    "imagePath": "images/artwork_238_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9AEECB8D-37C2-42CD-B0DF-C7B4224769E0}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-115023.jpg",
+    "imagePath": "images/artwork_234_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{9CD4BF04-8E94-4EE1-A05C-63F90C16DEFF}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-115159.jpg",
+    "imagePath": "images/artwork_236_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{93913CC4-7246-44C1-AB94-D5AEA73C732D}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-115225.jpg",
+    "imagePath": "images/artwork_224_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FF0BD287-235B-4E74-A16E-B0113F4733C5}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-115641.jpg",
+    "imagePath": "images/artwork_398_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{BD2C3C79-E966-488D-99BD-50E72EEE5CD5}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-115724.jpg",
+    "imagePath": "images/artwork_290_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{08124E77-B778-46EC-985A-24F83F074482}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-121045.jpg",
+    "imagePath": "images/artwork_011_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{08124E77-B778-46EC-985A-24F83F074482}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-121052.jpg",
+    "imagePath": "images/artwork_011_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{08124E77-B778-46EC-985A-24F83F074482}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-121059.jpg",
+    "imagePath": "images/artwork_011_03.jpg"
+  },
+  {
+    "arcgisGlobalId": "{317695C9-18D7-436D-BCBF-D980E360D8B6}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-121313.jpg",
+    "imagePath": "images/artwork_066_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B982E952-92A3-4A54-9AE8-670E26904676}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-121412.jpg",
+    "imagePath": "images/artwork_284_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{FFE3F2DA-E84A-4ADB-B750-C419212771A8}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-121432.jpg",
+    "imagePath": "images/artwork_400_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D3512E37-2C1F-45FC-B6CD-8D0F5C370ADA}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-124928.jpg",
+    "imagePath": "images/artwork_320_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D3512E37-2C1F-45FC-B6CD-8D0F5C370ADA}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-124933.jpg",
+    "imagePath": "images/artwork_320_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D3512E37-2C1F-45FC-B6CD-8D0F5C370ADA}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-124942.jpg",
+    "imagePath": "images/artwork_320_03.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D3512E37-2C1F-45FC-B6CD-8D0F5C370ADA}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-124951.jpg",
+    "imagePath": "images/artwork_320_04.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D3512E37-2C1F-45FC-B6CD-8D0F5C370ADA}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-125001.jpg",
+    "imagePath": "images/artwork_320_05.jpg"
+  },
+  {
+    "arcgisGlobalId": "{D3512E37-2C1F-45FC-B6CD-8D0F5C370ADA}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-125008.jpg",
+    "imagePath": "images/artwork_320_06.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DD0C8833-C020-4DFC-89F9-F5D834C1475F}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-125801.jpg",
+    "imagePath": "images/artwork_338_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{DD0C8833-C020-4DFC-89F9-F5D834C1475F}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-125811.jpg",
+    "imagePath": "images/artwork_338_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{96754920-043E-43E7-B3A6-7D91F10A1B1E}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261111-130228.jpg",
+    "imagePath": "images/artwork_227_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{B346215D-6F7E-4A89-AE8E-59D373A3C382}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261117-134344.jpg",
+    "imagePath": "images/artwork_274_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{096E4FE9-B890-452A-8730-0B1720739255}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261117-145150.jpg",
+    "imagePath": "images/artwork_014_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{096E4FE9-B890-452A-8730-0B1720739255}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261117-145206.jpg",
+    "imagePath": "images/artwork_014_02.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A286B3F5-85AE-4DF6-BDAC-07F463DE3D3E}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261117-145610.jpg",
+    "imagePath": "images/artwork_248_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{A9419F25-5C36-4B4D-B31E-CDEFA76A0E6D}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261117-132617.jpg",
+    "imagePath": "images/artwork_259_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F00A61BF-BAFA-42C2-BE09-D22DE1D86B77}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261117-134221.jpg",
+    "imagePath": "images/artwork_367_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{224696F2-A686-40C4-8381-42676C821E3E}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261117-144721.jpg",
+    "imagePath": "images/artwork_049_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{1AF1230A-A91E-4401-A771-A91F8BE17DA8}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261117-144737.jpg",
+    "imagePath": "images/artwork_041_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{6A42E0E2-92CC-4426-AB5D-FB251BBF647A}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261117-144808.jpg",
+    "imagePath": "images/artwork_153_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{61C0AC56-4748-464B-8117-6363D002C414}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261117-144830.jpg",
+    "imagePath": "images/artwork_142_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F89ECA17-EF2C-4B19-9A3E-DAA5218A9188}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261117-144843.jpg",
+    "imagePath": "images/artwork_384_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5A8DB99F-FA2D-4673-B517-7293A75EF132}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261117-144932.jpg",
+    "imagePath": "images/artwork_128_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{476B750B-2830-4669-A762-47C0CBF18895}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261117-145006.jpg",
+    "imagePath": "images/artwork_091_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{2375A13D-7C37-43C6-8D0E-6E52CEB3B34D}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261117-145650.jpg",
+    "imagePath": "images/artwork_050_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{5F835D83-7F68-4930-916C-8D8430971C56}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261117-145752.jpg",
+    "imagePath": "images/artwork_137_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{4AFFC815-9DB9-4A07-BCD1-15038AF77E0A}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261117-133609.jpg",
+    "imagePath": "images/artwork_102_01.jpg"
+  },
+  {
+    "arcgisGlobalId": "{F204D0B0-AEC8-4BBA-AB06-50F6227418E3}",
+    "attachmentId": null,
+    "originalFilename": "photos-20261117-133953.jpg",
+    "imagePath": "images/artwork_370_01.jpg"
+  }
+];
+
+export const RAW_LENS_TEST_CASES: RawLensTestCase[] = [
+  {
+    "testImage": "images/artwork_001_01.jpg",
+    "expectedArtworkId": "00b704c6-4de2-48c3-9bd9-f9bea8c6bcbf",
+    "latitude": 45.43504643000006,
+    "longitude": 12.330620920000058
+  },
+  {
+    "testImage": "images/artwork_002_01.jpg",
+    "expectedArtworkId": "025dd28e-62f1-48a8-bd48-65bc1c48d375",
+    "latitude": 45.42611728000003,
+    "longitude": 12.324204450000025
+  },
+  {
+    "testImage": "images/artwork_003_01.jpg",
+    "expectedArtworkId": "02c36ce3-04df-44a4-a5f0-f02e5117dd5d",
+    "latitude": 45.43513796000008,
+    "longitude": 12.336185834000048
+  },
+  {
+    "testImage": "images/artwork_004_01.jpg",
+    "expectedArtworkId": "02ec60c9-b6c3-406d-8f67-9494d9ea0c33",
+    "latitude": 45.43362250000007,
+    "longitude": 12.317072150000058
+  },
+  {
+    "testImage": "images/artwork_005_01.jpg",
+    "expectedArtworkId": "03574fd6-11f9-45aa-af22-d3d185d069ed",
+    "latitude": 45.45202457000005,
+    "longitude": 12.350284700000032
+  },
+  {
+    "testImage": "images/artwork_006_01.jpg",
+    "expectedArtworkId": "03a15660-f321-41d1-b392-5aff98e79ceb",
+    "latitude": 45.43748100000005,
+    "longitude": 12.33314475000003
+  },
+  {
+    "testImage": "images/artwork_007_01.jpg",
+    "expectedArtworkId": "04052a64-5feb-4dbc-a78f-b3e0be637ef9",
+    "latitude": 45.430906880000066,
+    "longitude": 12.32390262000007
+  },
+  {
+    "testImage": "images/artwork_008_01.jpg",
+    "expectedArtworkId": "054c8f19-8a3c-4b1d-a26e-8ecc52599b05",
+    "latitude": 45.43517749200004,
+    "longitude": 12.34064759000006
+  },
+  {
+    "testImage": "images/artwork_009_01.jpg",
+    "expectedArtworkId": "06df9ddd-43c9-4d19-99c5-56e685200a41",
+    "latitude": 45.43344033100004,
+    "longitude": 12.33977187000005
+  },
+  {
+    "testImage": "images/artwork_010_01.jpg",
+    "expectedArtworkId": "078fde6b-dfab-4990-aef2-11bc1b62b853",
+    "latitude": 45.43894992000003,
+    "longitude": 12.334237040000062
+  },
+  {
+    "testImage": "images/artwork_011_01.jpg",
+    "expectedArtworkId": "08124e77-b778-46ec-985a-24f83f074482",
+    "latitude": 45.43767445900005,
+    "longitude": 12.32652121700005
+  },
+  {
+    "testImage": "images/artwork_012_01.jpg",
+    "expectedArtworkId": "0877d3e2-e85b-4cc0-a0c9-f0cbfb695ce1",
+    "latitude": 45.43690574800007,
+    "longitude": 12.336341084000026
+  },
+  {
+    "testImage": "images/artwork_013_01.jpg",
+    "expectedArtworkId": "08e55971-c2b0-4017-ae8b-6dda124235a2",
+    "latitude": 45.430688230000044,
+    "longitude": 12.333634540000048
+  },
+  {
+    "testImage": "images/artwork_014_01.jpg",
+    "expectedArtworkId": "096e4fe9-b890-452a-8730-0b1720739255",
+    "latitude": 45.48523327500004,
+    "longitude": 12.408745709000073
+  },
+  {
+    "testImage": "images/artwork_015_01.jpg",
+    "expectedArtworkId": "0983980f-fe3c-4d03-8c0e-54222f6a06a4",
+    "latitude": 45.43233209300007,
+    "longitude": 12.321879810000041
+  },
+  {
+    "testImage": "images/artwork_016_01.jpg",
+    "expectedArtworkId": "0a304aee-6f4a-4688-80b8-2081c9d869f4",
+    "latitude": 45.43494381000005,
+    "longitude": 12.324016070000027
+  },
+  {
+    "testImage": "images/artwork_017_01.jpg",
+    "expectedArtworkId": "0a5b334b-63a4-4026-a998-22bc2060538e",
+    "latitude": 45.434366200000056,
+    "longitude": 12.328232810000031
+  },
+  {
+    "testImage": "images/artwork_018_01.jpg",
+    "expectedArtworkId": "0b6a8108-e065-4cde-84b0-1bc3120aff1c",
+    "latitude": 45.430948269000055,
+    "longitude": 12.326369045000035
+  },
+  {
+    "testImage": "images/artwork_019_01.jpg",
+    "expectedArtworkId": "0bfd96aa-e7c4-4b0c-bb83-9f0613e53bdc",
+    "latitude": 45.43540584100003,
+    "longitude": 12.325122315000044
+  },
+  {
+    "testImage": "images/artwork_020_01.jpg",
+    "expectedArtworkId": "0c0e6161-94a7-4b4a-814f-de92372f07df",
+    "latitude": 45.43416099900003,
+    "longitude": 12.339510321000034
+  },
+  {
+    "testImage": "images/artwork_021_01.jpg",
+    "expectedArtworkId": "0c2fb14a-948d-4da3-a982-dd7a1964137a",
+    "latitude": 45.45327073200008,
+    "longitude": 12.353484318000028
+  },
+  {
+    "testImage": "images/artwork_022_01.jpg",
+    "expectedArtworkId": "0c471cfc-8fc5-466f-b5d1-163f66f0bd26",
+    "latitude": 45.432371887000045,
+    "longitude": 12.324600890000056
+  },
+  {
+    "testImage": "images/artwork_023_01.jpg",
+    "expectedArtworkId": "0d4f17bd-40b2-4c59-b49f-940ce767e879",
+    "latitude": 45.43380712000004,
+    "longitude": 12.33079353000005
+  },
+  {
+    "testImage": "images/artwork_024_01.jpg",
+    "expectedArtworkId": "0e3344a3-97a4-4060-b275-87a8d1206a9c",
+    "latitude": 45.431060184000046,
+    "longitude": 12.32859056500007
+  },
+  {
+    "testImage": "images/artwork_025_01.jpg",
+    "expectedArtworkId": "0f6b83f8-0f3d-432b-bdef-69cb0a2c6630",
+    "latitude": 45.42994602300007,
+    "longitude": 12.324533701000064
+  },
+  {
+    "testImage": "images/artwork_026_01.jpg",
+    "expectedArtworkId": "0fd06ca2-71ba-4414-8d8f-33e7fa7cdff8",
+    "latitude": 45.43612164100006,
+    "longitude": 12.32723320100007
+  },
+  {
+    "testImage": "images/artwork_027_01.jpg",
+    "expectedArtworkId": "10f7f55a-11ae-46e4-b9b9-069b8fe487a1",
+    "latitude": 45.43552142300007,
+    "longitude": 12.325797648000048
+  },
+  {
+    "testImage": "images/artwork_028_01.jpg",
+    "expectedArtworkId": "11598798-62cd-44b9-8950-2083045ee5ef",
+    "latitude": 45.42490479000003,
+    "longitude": 12.325283800000022
+  },
+  {
+    "testImage": "images/artwork_029_01.jpg",
+    "expectedArtworkId": "120d5292-944f-4d3d-b165-c6d285250b2f",
+    "latitude": 45.43363677000008,
+    "longitude": 12.322349750000058
+  },
+  {
+    "testImage": "images/artwork_030_01.jpg",
+    "expectedArtworkId": "1261fde9-7de0-49d2-9b97-70ddf567a4f7",
+    "latitude": 45.43042373000003,
+    "longitude": 12.356877820000022
+  },
+  {
+    "testImage": "images/artwork_031_01.jpg",
+    "expectedArtworkId": "12d0bd40-acb9-4beb-ba5c-d54c01124542",
+    "latitude": 45.438467900000035,
+    "longitude": 12.334870040000055
+  },
+  {
+    "testImage": "images/artwork_032_01.jpg",
+    "expectedArtworkId": "12e44ebf-ddb1-4d5f-a0ac-40c1a64fe02e",
+    "latitude": 45.43018773400007,
+    "longitude": 12.329546195000034
+  },
+  {
+    "testImage": "images/artwork_033_01.jpg",
+    "expectedArtworkId": "1576c170-b138-49df-99fb-e106093908ba",
+    "latitude": 45.425222631000054,
+    "longitude": 12.333739523000077
+  },
+  {
+    "testImage": "images/artwork_034_01.jpg",
+    "expectedArtworkId": "15f0e12b-9d45-4347-8575-8429c503ad04",
+    "latitude": 45.43577940000006,
+    "longitude": 12.321592750000036
+  },
+  {
+    "testImage": "images/artwork_035_01.jpg",
+    "expectedArtworkId": "163dca4a-0fe8-498e-9e41-6af429ca7174",
+    "latitude": 45.43028781900006,
+    "longitude": 12.334114295000063
+  },
+  {
+    "testImage": "images/artwork_036_01.jpg",
+    "expectedArtworkId": "1689fbb2-a234-41a3-990b-994ab15d74de",
+    "latitude": 45.45749276000004,
+    "longitude": 12.357527740000023
+  },
+  {
+    "testImage": "images/artwork_037_01.jpg",
+    "expectedArtworkId": "16eea23f-f225-488b-b11b-a7ab91177b65",
+    "latitude": 45.43404558000003,
+    "longitude": 12.322061330000054
+  },
+  {
+    "testImage": "images/artwork_038_01.jpg",
+    "expectedArtworkId": "182cf0c1-b902-4434-9fdf-486c2d562fb5",
+    "latitude": 45.429438066000046,
+    "longitude": 12.32655519900004
+  },
+  {
+    "testImage": "images/artwork_039_01.jpg",
+    "expectedArtworkId": "1894ba93-23ec-4d59-bc43-a33735b6ca28",
+    "latitude": 45.43412878000004,
+    "longitude": 12.32934873000005
+  },
+  {
+    "testImage": "images/artwork_040_01.jpg",
+    "expectedArtworkId": "1a7372fc-45d6-4327-8969-952e9bf9edfc",
+    "latitude": 45.43303613000006,
+    "longitude": 12.316287550000027
+  },
+  {
+    "testImage": "images/artwork_041_01.jpg",
+    "expectedArtworkId": "1af1230a-a91e-4401-a771-a91f8be17da8",
+    "latitude": 45.498524505000034,
+    "longitude": 12.418449132000035
+  },
+  {
+    "testImage": "images/artwork_042_01.jpg",
+    "expectedArtworkId": "1b350784-6e65-40e8-9de7-c71fb61b4582",
+    "latitude": 45.43216204400005,
+    "longitude": 12.32107972600005
+  },
+  {
+    "testImage": "images/artwork_043_01.jpg",
+    "expectedArtworkId": "1b83843a-3f47-4815-8cbb-626fe70947da",
+    "latitude": 45.43690329900005,
+    "longitude": 12.336321630000043
+  },
+  {
+    "testImage": "images/artwork_044_01.jpg",
+    "expectedArtworkId": "1bfe874a-d473-49ee-977a-f722b4777da9",
+    "latitude": 45.42958293200007,
+    "longitude": 12.330957368000043
+  },
+  {
+    "testImage": "images/artwork_045_01.jpg",
+    "expectedArtworkId": "1d50bab3-96d5-4927-9d40-fa174d65a776",
+    "latitude": 45.432632510000076,
+    "longitude": 12.318046250000066
+  },
+  {
+    "testImage": "images/artwork_046_01.jpg",
+    "expectedArtworkId": "1ea5e277-6d53-42cc-b0cc-7b980af66257",
+    "latitude": 45.456165490000046,
+    "longitude": 12.352549510000074
+  },
+  {
+    "testImage": "images/artwork_047_01.jpg",
+    "expectedArtworkId": "1f74308e-5071-4fee-8b2b-ca002cbe3398",
+    "latitude": 45.42977877700008,
+    "longitude": 12.330688079000026
+  },
+  {
+    "testImage": "images/artwork_048_01.jpg",
+    "expectedArtworkId": "1f93976f-a255-492f-9ae5-e71657247c2e",
+    "latitude": 45.427341424000076,
+    "longitude": 12.361133503000076
+  },
+  {
+    "testImage": "images/artwork_049_01.jpg",
+    "expectedArtworkId": "224696f2-a686-40c4-8381-42676c821e3e",
+    "latitude": 45.498496395000075,
+    "longitude": 12.418480329000033
+  },
+  {
+    "testImage": "images/artwork_050_01.jpg",
+    "expectedArtworkId": "2375a13d-7c37-43c6-8d0e-6e52ceb3b34d",
+    "latitude": 45.49810228900003,
+    "longitude": 12.418648229000041
+  },
+  {
+    "testImage": "images/artwork_051_01.jpg",
+    "expectedArtworkId": "23c6e7c5-1d24-46dd-9aea-fb79f6511403",
+    "latitude": 45.435877864000076,
+    "longitude": 12.335373554000057
+  },
+  {
+    "testImage": "images/artwork_052_01.jpg",
+    "expectedArtworkId": "243127f9-3280-46dc-9df1-fb27158f284e",
+    "latitude": 45.45831578000008,
+    "longitude": 12.34922989000006
+  },
+  {
+    "testImage": "images/artwork_053_01.jpg",
+    "expectedArtworkId": "252e0bd1-136f-4edd-b9ce-67bba9a07d00",
+    "latitude": 45.42940493900005,
+    "longitude": 12.326666640000042
+  },
+  {
+    "testImage": "images/artwork_054_01.jpg",
+    "expectedArtworkId": "27477bcd-c71d-4b61-a0b1-81515a87bcb4",
+    "latitude": 45.45971861000004,
+    "longitude": 12.354283060000057
+  },
+  {
+    "testImage": "images/artwork_055_01.jpg",
+    "expectedArtworkId": "2927ce4e-e138-4671-a51d-f48b32940a83",
+    "latitude": 45.43243946000007,
+    "longitude": 12.322220150000021
+  },
+  {
+    "testImage": "images/artwork_056_01.jpg",
+    "expectedArtworkId": "2a6930e8-7967-4a32-9472-88c3a0c347a1",
+    "latitude": 45.43259093000006,
+    "longitude": 12.318246680000073
+  },
+  {
+    "testImage": "images/artwork_057_01.jpg",
+    "expectedArtworkId": "2aa97c5a-aab7-4b6a-be6e-c8da2422b77b",
+    "latitude": 45.43379281800003,
+    "longitude": 12.337870524000039
+  },
+  {
+    "testImage": "images/artwork_058_01.jpg",
+    "expectedArtworkId": "2bc081d7-f974-4792-833b-763490f55420",
+    "latitude": 45.43481881000008,
+    "longitude": 12.331575120000025
+  },
+  {
+    "testImage": "images/artwork_059_01.jpg",
+    "expectedArtworkId": "2bd93d15-53fa-42ce-b0c0-4c88621cada0",
+    "latitude": 45.42933230500006,
+    "longitude": 12.33041062600006
+  },
+  {
+    "testImage": "images/artwork_060_01.jpg",
+    "expectedArtworkId": "2c4dbf8a-2f79-4d1c-b917-7203c01870d3",
+    "latitude": 45.43371040000005,
+    "longitude": 12.320598490000066
+  },
+  {
+    "testImage": "images/artwork_061_01.jpg",
+    "expectedArtworkId": "2d8f9a0c-abc5-47ab-a22f-762edc151e46",
+    "latitude": 45.42919462800006,
+    "longitude": 12.33076241200007
+  },
+  {
+    "testImage": "images/artwork_062_01.jpg",
+    "expectedArtworkId": "2df4ce92-1fca-4ff5-a9c1-297e076a0faf",
+    "latitude": 45.423984732000065,
+    "longitude": 12.33342006600003
+  },
+  {
+    "testImage": "images/artwork_063_01.jpg",
+    "expectedArtworkId": "2e1ba89e-63d6-4cbe-995d-7a4a6d4aa127",
+    "latitude": 45.42440411000007,
+    "longitude": 12.32585032000003
+  },
+  {
+    "testImage": "images/artwork_064_01.jpg",
+    "expectedArtworkId": "2e4b2d49-1981-45f4-a3a9-489449f449d8",
+    "latitude": 45.43218575000003,
+    "longitude": 12.333753240000021
+  },
+  {
+    "testImage": "images/artwork_065_01.jpg",
+    "expectedArtworkId": "2ed876f0-8020-4557-8500-a8c2b88344a5",
+    "latitude": 45.438204564000046,
+    "longitude": 12.331797616000074
+  },
+  {
+    "testImage": "images/artwork_066_01.jpg",
+    "expectedArtworkId": "317695c9-18d7-436d-bcbf-d980e360d8b6",
+    "latitude": 45.43805034900004,
+    "longitude": 12.32653102200004
+  },
+  {
+    "testImage": "images/artwork_067_01.jpg",
+    "expectedArtworkId": "32e4f574-5229-4d73-95ae-17b2f94febbf",
+    "latitude": 45.43083557300008,
+    "longitude": 12.328882820000047
+  },
+  {
+    "testImage": "images/artwork_068_01.jpg",
+    "expectedArtworkId": "32e69126-bb5c-4774-b4b2-6005bfd59612",
+    "latitude": 45.436966907000055,
+    "longitude": 12.329581166000025
+  },
+  {
+    "testImage": "images/artwork_069_01.jpg",
+    "expectedArtworkId": "342c760f-3eb4-46f3-8cbd-462a8c3be10a",
+    "latitude": 45.424201649000054,
+    "longitude": 12.338972095000031
+  },
+  {
+    "testImage": "images/artwork_070_01.jpg",
+    "expectedArtworkId": "343af465-6e78-469b-a534-613475ea0215",
+    "latitude": 45.42949264100008,
+    "longitude": 12.326509571000031
+  },
+  {
+    "testImage": "images/artwork_071_01.jpg",
+    "expectedArtworkId": "364fac29-d910-4a65-ae6c-0c90bf74f43e",
+    "latitude": 45.43803991200008,
+    "longitude": 12.33669900700005
+  },
+  {
+    "testImage": "images/artwork_072_01.jpg",
+    "expectedArtworkId": "366fab3f-953c-4604-89cd-5c0bac42d74a",
+    "latitude": 45.43655503600007,
+    "longitude": 12.33537601100005
+  },
+  {
+    "testImage": "images/artwork_073_01.jpg",
+    "expectedArtworkId": "3971e738-0d4b-4519-ab09-9a289ed32b11",
+    "latitude": 45.43119701000006,
+    "longitude": 12.322947750000026
+  },
+  {
+    "testImage": "images/artwork_074_01.jpg",
+    "expectedArtworkId": "3a41d946-72b2-4c3f-a143-d59e259acc56",
+    "latitude": 45.42848049600008,
+    "longitude": 12.361024314000076
+  },
+  {
+    "testImage": "images/artwork_075_01.jpg",
+    "expectedArtworkId": "3bcff81f-b529-4252-9aed-70761d5e57dc",
+    "latitude": 45.43109307000003,
+    "longitude": 12.323411770000064
+  },
+  {
+    "testImage": "images/artwork_076_01.jpg",
+    "expectedArtworkId": "3ca68cfc-f260-4841-8446-e7175d2f1550",
+    "latitude": 45.430765370000074,
+    "longitude": 12.333895470000073
+  },
+  {
+    "testImage": "images/artwork_077_01.jpg",
+    "expectedArtworkId": "3d26ef79-601d-44ee-934d-0c5a2ae6aa3d",
+    "latitude": 45.43209893400007,
+    "longitude": 12.320941051000034
+  },
+  {
+    "testImage": "images/artwork_078_01.jpg",
+    "expectedArtworkId": "3e5f8552-e875-4946-a657-d10d7220f551",
+    "latitude": 45.43368526300003,
+    "longitude": 12.34092862700004
+  },
+  {
+    "testImage": "images/artwork_079_01.jpg",
+    "expectedArtworkId": "400e4ab5-b590-4af3-875e-65c0568e6775",
+    "latitude": 45.43728198300005,
+    "longitude": 12.335562758000037
+  },
+  {
+    "testImage": "images/artwork_080_01.jpg",
+    "expectedArtworkId": "403d10a2-6c82-4023-a2b0-e07703a055c6",
+    "latitude": 45.43106627000003,
+    "longitude": 12.334290152000051
+  },
+  {
+    "testImage": "images/artwork_081_01.jpg",
+    "expectedArtworkId": "4075efba-dbd4-473a-aa92-71356dfa82ee",
+    "latitude": 45.41817974000003,
+    "longitude": 12.371535720000054
+  },
+  {
+    "testImage": "images/artwork_082_01.jpg",
+    "expectedArtworkId": "4091ca2f-24db-46f6-8c73-126555ad92cb",
+    "latitude": 45.433131855000056,
+    "longitude": 12.33948050600003
+  },
+  {
+    "testImage": "images/artwork_083_01.jpg",
+    "expectedArtworkId": "42737e41-10e0-4253-af0b-3281e6fed60c",
+    "latitude": 45.429131280000036,
+    "longitude": 12.356781290000072
+  },
+  {
+    "testImage": "images/artwork_084_01.jpg",
+    "expectedArtworkId": "43c04bc9-a53d-4588-b732-9724bb3dcdbb",
+    "latitude": 45.432474470000045,
+    "longitude": 12.333505380000076
+  },
+  {
+    "testImage": "images/artwork_085_01.jpg",
+    "expectedArtworkId": "45376a79-f0a4-4efc-b542-4b58b83913da",
+    "latitude": 45.434572770000045,
+    "longitude": 12.319536570000025
+  },
+  {
+    "testImage": "images/artwork_086_01.jpg",
+    "expectedArtworkId": "45f75b84-5ee8-4084-8a69-9e4e44e009f6",
+    "latitude": 45.424107794000065,
+    "longitude": 12.339485762000038
+  },
+  {
+    "testImage": "images/artwork_087_01.jpg",
+    "expectedArtworkId": "46038a6f-d35e-4ef0-913e-07fbf3381054",
+    "latitude": 45.43507314900006,
+    "longitude": 12.320464294000033
+  },
+  {
+    "testImage": "images/artwork_088_01.jpg",
+    "expectedArtworkId": "4652e559-e820-493d-8e4c-82cce112e373",
+    "latitude": 45.438069590000055,
+    "longitude": 12.33499973000005
+  },
+  {
+    "testImage": "images/artwork_089_01.jpg",
+    "expectedArtworkId": "4664476d-d5f1-4826-8f5b-77bd65512626",
+    "latitude": 45.43015557000007,
+    "longitude": 12.35595703000007
+  },
+  {
+    "testImage": "images/artwork_090_01.jpg",
+    "expectedArtworkId": "47213c70-78c6-426b-a61c-0a24812c1cd6",
+    "latitude": 45.425247220000074,
+    "longitude": 12.325232700000072
+  },
+  {
+    "testImage": "images/artwork_091_01.jpg",
+    "expectedArtworkId": "476b750b-2830-4669-a762-47c0cbf18895",
+    "latitude": 45.498258245000045,
+    "longitude": 12.418598491000068
+  },
+  {
+    "testImage": "images/artwork_092_01.jpg",
+    "expectedArtworkId": "48500d82-43e9-4df9-a5b1-f0c5b2e3a881",
+    "latitude": 45.43845587000004,
+    "longitude": 12.334860440000057
+  },
+  {
+    "testImage": "images/artwork_093_01.jpg",
+    "expectedArtworkId": "490c0e1a-8b2e-42b4-8e19-61f5de30ab29",
+    "latitude": 45.437498090000076,
+    "longitude": 12.33165665000007
+  },
+  {
+    "testImage": "images/artwork_094_01.jpg",
+    "expectedArtworkId": "49424e31-de07-4a9c-a84e-b59682fef4c9",
+    "latitude": 45.43674751000003,
+    "longitude": 12.325471873000026
+  },
+  {
+    "testImage": "images/artwork_095_01.jpg",
+    "expectedArtworkId": "499139f5-586a-4465-905e-f4853433510c",
+    "latitude": 45.435282880000045,
+    "longitude": 12.33382849000003
+  },
+  {
+    "testImage": "images/artwork_096_01.jpg",
+    "expectedArtworkId": "49a3dd4a-bbf4-43cb-8d86-fa0bebd739cd",
+    "latitude": 45.43484505500004,
+    "longitude": 12.336651654000036
+  },
+  {
+    "testImage": "images/artwork_097_01.jpg",
+    "expectedArtworkId": "49aee689-7642-4d79-90ba-1351b4374ef0",
+    "latitude": 45.43527124700006,
+    "longitude": 12.340584857000067
+  },
+  {
+    "testImage": "images/artwork_098_01.jpg",
+    "expectedArtworkId": "4a19a0e6-33a4-4eac-98a5-2ba4535819b1",
+    "latitude": 45.43481070200005,
+    "longitude": 12.340577565000046
+  },
+  {
+    "testImage": "images/artwork_099_01.jpg",
+    "expectedArtworkId": "4a3f1c57-2342-4b45-b5ce-1300a911664b",
+    "latitude": 45.42840859000006,
+    "longitude": 12.357074330000046
+  },
+  {
+    "testImage": "images/artwork_100_01.jpg",
+    "expectedArtworkId": "4a42c5c6-3728-433a-b901-7636fcb805fd",
+    "latitude": 45.435959479000076,
+    "longitude": 12.327486373000056
+  },
+  {
+    "testImage": "images/artwork_101_01.jpg",
+    "expectedArtworkId": "4aa7fd76-afeb-4a40-adf5-5f4c8c5525e4",
+    "latitude": 45.43625866000008,
+    "longitude": 12.32285956000004
+  },
+  {
+    "testImage": "images/artwork_102_01.jpg",
+    "expectedArtworkId": "4affc815-9db9-4a07-bcd1-15038af77e0a",
+    "latitude": 45.484492759000034,
+    "longitude": 12.418930209000052
+  },
+  {
+    "testImage": "images/artwork_103_01.jpg",
+    "expectedArtworkId": "4b612cb5-acef-4486-8360-ad4a563ee2ec",
+    "latitude": 45.43817671700003,
+    "longitude": 12.337393271000053
+  },
+  {
+    "testImage": "images/artwork_104_01.jpg",
+    "expectedArtworkId": "4bc77df9-d632-4c49-8694-59dcbd29450e",
+    "latitude": 45.43246773000004,
+    "longitude": 12.337602581000056
+  },
+  {
+    "testImage": "images/artwork_105_01.jpg",
+    "expectedArtworkId": "4c5a2957-d8ca-4d88-9b8b-aa283d6cdb63",
+    "latitude": 45.43063078000006,
+    "longitude": 12.321961654000063
+  },
+  {
+    "testImage": "images/artwork_106_01.jpg",
+    "expectedArtworkId": "4c9b4f72-1166-4a7b-bf4a-570ba83068af",
+    "latitude": 45.42901424000007,
+    "longitude": 12.356927150000047
+  },
+  {
+    "testImage": "images/artwork_107_01.jpg",
+    "expectedArtworkId": "4d851475-851b-47ef-b570-bc5d4f7863a9",
+    "latitude": 45.435088380000025,
+    "longitude": 12.323918840000033
+  },
+  {
+    "testImage": "images/artwork_108_01.jpg",
+    "expectedArtworkId": "4de68c62-dcea-4a36-bb95-65dcb84e7a84",
+    "latitude": 45.43404036000004,
+    "longitude": 12.322068440000066
+  },
+  {
+    "testImage": "images/artwork_109_01.jpg",
+    "expectedArtworkId": "4e9b9d93-6484-4152-9031-85f4184992d1",
+    "latitude": 45.434940296000036,
+    "longitude": 12.324035543000036
+  },
+  {
+    "testImage": "images/artwork_110_01.jpg",
+    "expectedArtworkId": "4fafaca6-080c-4a73-a48c-563a45cdcd42",
+    "latitude": 45.43513524100007,
+    "longitude": 12.336305712000069
+  },
+  {
+    "testImage": "images/artwork_111_01.jpg",
+    "expectedArtworkId": "4ff56ec8-6b69-496f-83f8-9e06b262ed52",
+    "latitude": 45.42775100400007,
+    "longitude": 12.361398741000073
+  },
+  {
+    "testImage": "images/artwork_112_01.jpg",
+    "expectedArtworkId": "4ffd1b13-2485-4248-99ce-fe51c2d72be5",
+    "latitude": 45.43009911000007,
+    "longitude": 12.357942510000044
+  },
+  {
+    "testImage": "images/artwork_113_01.jpg",
+    "expectedArtworkId": "5099af4e-a67f-4876-951b-2e9fa46bb6d4",
+    "latitude": 45.43536247000003,
+    "longitude": 12.332697750000023
+  },
+  {
+    "testImage": "images/artwork_114_01.jpg",
+    "expectedArtworkId": "5142cdba-bef2-4a58-a6a7-63cc327d64f1",
+    "latitude": 45.432463487000064,
+    "longitude": 12.32470673000006
+  },
+  {
+    "testImage": "images/artwork_115_01.jpg",
+    "expectedArtworkId": "524a3079-4f2f-424f-b874-bc40e4a3ac5c",
+    "latitude": 45.45351280600005,
+    "longitude": 12.351858510000056
+  },
+  {
+    "testImage": "images/artwork_116_01.jpg",
+    "expectedArtworkId": "525fb39b-98f9-4b34-bf23-d173cd228cbd",
+    "latitude": 45.43362329000007,
+    "longitude": 12.328054560000055
+  },
+  {
+    "testImage": "images/artwork_117_01.jpg",
+    "expectedArtworkId": "5286f8af-87f8-4f3d-9f8a-271f4adac33e",
+    "latitude": 45.430449330000044,
+    "longitude": 12.329874552000035
+  },
+  {
+    "testImage": "images/artwork_118_01.jpg",
+    "expectedArtworkId": "52e51c27-5a97-4231-a24d-77c6dd7f30fa",
+    "latitude": 45.435764670000026,
+    "longitude": 12.321387810000033
+  },
+  {
+    "testImage": "images/artwork_119_01.jpg",
+    "expectedArtworkId": "54372240-3c26-49bd-b2e6-7440e1a290c7",
+    "latitude": 45.43379547200004,
+    "longitude": 12.32334140200004
+  },
+  {
+    "testImage": "images/artwork_120_01.jpg",
+    "expectedArtworkId": "543d7392-844d-4e73-9d43-2c64745c2a34",
+    "latitude": 45.43832984000005,
+    "longitude": 12.336192410000024
+  },
+  {
+    "testImage": "images/artwork_121_01.jpg",
+    "expectedArtworkId": "549c4677-de1b-4a99-92d3-7ca1c25ca4c3",
+    "latitude": 45.43273257000004,
+    "longitude": 12.32817244000006
+  },
+  {
+    "testImage": "images/artwork_122_01.jpg",
+    "expectedArtworkId": "54e58f89-9dc7-4f46-9d42-ef3437ebd036",
+    "latitude": 45.43300685500003,
+    "longitude": 12.336411830000031
+  },
+  {
+    "testImage": "images/artwork_123_01.jpg",
+    "expectedArtworkId": "58ccb3bd-b647-4ae8-99e8-8181404d91fc",
+    "latitude": 45.436848558000065,
+    "longitude": 12.329617184000028
+  },
+  {
+    "testImage": "images/artwork_124_01.jpg",
+    "expectedArtworkId": "5946d50f-705b-4bdc-9554-b3bfcb5aeeeb",
+    "latitude": 45.43038632100007,
+    "longitude": 12.333160173000067
+  },
+  {
+    "testImage": "images/artwork_125_01.jpg",
+    "expectedArtworkId": "595c3a20-11a5-454e-bbd2-8c1de22388f0",
+    "latitude": 45.41807674000006,
+    "longitude": 12.371503060000066
+  },
+  {
+    "testImage": "images/artwork_126_01.jpg",
+    "expectedArtworkId": "59e2f898-b26f-49a0-926c-0ff1d487fd15",
+    "latitude": 45.45287974400003,
+    "longitude": 12.351259212000059
+  },
+  {
+    "testImage": "images/artwork_127_01.jpg",
+    "expectedArtworkId": "5a560534-bec1-4cb0-a698-aef1a1d89050",
+    "latitude": 45.43090867800004,
+    "longitude": 12.326457968000057
+  },
+  {
+    "testImage": "images/artwork_128_01.jpg",
+    "expectedArtworkId": "5a8db99f-fa2d-4673-b517-7293a75ef132",
+    "latitude": 45.49833577100003,
+    "longitude": 12.418552012000077
+  },
+  {
+    "testImage": "images/artwork_129_01.jpg",
+    "expectedArtworkId": "5bb85057-5f58-488f-bd97-04404b746f87",
+    "latitude": 45.433809445000065,
+    "longitude": 12.339743181000074
+  },
+  {
+    "testImage": "images/artwork_130_01.jpg",
+    "expectedArtworkId": "5d626c01-a17d-4e05-be9f-7508026e08d9",
+    "latitude": 45.43089061100005,
+    "longitude": 12.328701920000071
+  },
+  {
+    "testImage": "images/artwork_131_01.jpg",
+    "expectedArtworkId": "5dddc2b3-e156-40f6-8972-897164485548",
+    "latitude": 45.42889810600008,
+    "longitude": 12.332924548000051
+  },
+  {
+    "testImage": "images/artwork_132_01.jpg",
+    "expectedArtworkId": "5def2281-7b8d-4524-995a-d9e604ade96b",
+    "latitude": 45.43122828400004,
+    "longitude": 12.320663098000068
+  },
+  {
+    "testImage": "images/artwork_133_01.jpg",
+    "expectedArtworkId": "5e3c6d3d-b4bb-40b5-b0df-e5e1d2d64a0c",
+    "latitude": 45.43389712000004,
+    "longitude": 12.328830840000023
+  },
+  {
+    "testImage": "images/artwork_134_01.jpg",
+    "expectedArtworkId": "5e7073a2-64e9-4588-92e7-5986e67070aa",
+    "latitude": 45.43948153000008,
+    "longitude": 12.332854410000039
+  },
+  {
+    "testImage": "images/artwork_135_01.jpg",
+    "expectedArtworkId": "5f07360a-4942-43d8-a586-32386f42c3db",
+    "latitude": 45.43099237000007,
+    "longitude": 12.355972680000036
+  },
+  {
+    "testImage": "images/artwork_136_01.jpg",
+    "expectedArtworkId": "5f14cf6d-6668-4998-86d4-87e7c2e7fe28",
+    "latitude": 45.43807016000005,
+    "longitude": 12.335624650000057
+  },
+  {
+    "testImage": "images/artwork_137_01.jpg",
+    "expectedArtworkId": "5f835d83-7f68-4930-916c-8d8430971c56",
+    "latitude": 45.498228089000065,
+    "longitude": 12.418986872000062
+  },
+  {
+    "testImage": "images/artwork_138_01.jpg",
+    "expectedArtworkId": "5fc73bd0-46b0-4f49-a160-42c38f852c6b",
+    "latitude": 45.43532341000008,
+    "longitude": 12.329564800000071
+  },
+  {
+    "testImage": "images/artwork_139_01.jpg",
+    "expectedArtworkId": "6098c9d3-389f-4345-bf32-844ba8dfdfd1",
+    "latitude": 45.43383477000003,
+    "longitude": 12.33351287000005
+  },
+  {
+    "testImage": "images/artwork_140_01.jpg",
+    "expectedArtworkId": "61436e09-2990-4880-b4dd-b458b0b99809",
+    "latitude": 45.42511940300005,
+    "longitude": 12.333386849000021
+  },
+  {
+    "testImage": "images/artwork_141_01.jpg",
+    "expectedArtworkId": "6165a111-cdc4-48f6-818c-40a0254d6d90",
+    "latitude": 45.43098586100007,
+    "longitude": 12.336525408000057
+  },
+  {
+    "testImage": "images/artwork_142_01.jpg",
+    "expectedArtworkId": "61c0ac56-4748-464b-8117-6363d002c414",
+    "latitude": 45.49848407200005,
+    "longitude": 12.418614526000056
+  },
+  {
+    "testImage": "images/artwork_143_01.jpg",
+    "expectedArtworkId": "62523d44-1e9c-4dfa-9058-77509504d235",
+    "latitude": 45.43625663000006,
+    "longitude": 12.321790690000057
+  },
+  {
+    "testImage": "images/artwork_144_01.jpg",
+    "expectedArtworkId": "62af9f24-c25d-493b-b870-1ff20a343bd8",
+    "latitude": 45.43569413300003,
+    "longitude": 12.334169297000074
+  },
+  {
+    "testImage": "images/artwork_145_01.jpg",
+    "expectedArtworkId": "636b86e9-c203-431a-9401-7de4381dd10b",
+    "latitude": 45.435016430000076,
+    "longitude": 12.323112610000067
+  },
+  {
+    "testImage": "images/artwork_146_01.jpg",
+    "expectedArtworkId": "63c964b8-b4da-4eaa-b0b1-686db8eb8cbc",
+    "latitude": 45.45836976000004,
+    "longitude": 12.348565930000063
+  },
+  {
+    "testImage": "images/artwork_147_01.jpg",
+    "expectedArtworkId": "640322c9-96fe-4c63-b766-adf05fe4b32b",
+    "latitude": 45.430282386000044,
+    "longitude": 12.32900617200005
+  },
+  {
+    "testImage": "images/artwork_148_01.jpg",
+    "expectedArtworkId": "643cd7af-7cda-4f79-beb1-28444f2f93d0",
+    "latitude": 45.42969897000006,
+    "longitude": 12.356055190000063
+  },
+  {
+    "testImage": "images/artwork_149_01.jpg",
+    "expectedArtworkId": "6531b31e-94b3-44f1-a422-660a0c61cc28",
+    "latitude": 45.43235310000006,
+    "longitude": 12.315735000000075
+  },
+  {
+    "testImage": "images/artwork_150_01.jpg",
+    "expectedArtworkId": "669fa5a7-cc83-4380-9394-84dbee4ac195",
+    "latitude": 45.433710939000036,
+    "longitude": 12.320577153000045
+  },
+  {
+    "testImage": "images/artwork_151_01.jpg",
+    "expectedArtworkId": "68bb9354-7363-49ae-a7b1-c1d4d1c81269",
+    "latitude": 45.438212270000065,
+    "longitude": 12.331878140000072
+  },
+  {
+    "testImage": "images/artwork_152_01.jpg",
+    "expectedArtworkId": "694130ce-440f-4f9e-9a70-fd2fcba7862f",
+    "latitude": 45.43509684800006,
+    "longitude": 12.334964884000044
+  },
+  {
+    "testImage": "images/artwork_153_01.jpg",
+    "expectedArtworkId": "6a42e0e2-92cc-4426-ab5d-fb251bbf647a",
+    "latitude": 45.49850081400007,
+    "longitude": 12.418536302000064
+  },
+  {
+    "testImage": "images/artwork_154_01.jpg",
+    "expectedArtworkId": "6a86fa87-5f4b-4739-952f-0ef1dbc9d671",
+    "latitude": 45.45733419000004,
+    "longitude": 12.357571590000077
+  },
+  {
+    "testImage": "images/artwork_155_01.jpg",
+    "expectedArtworkId": "6ab134e8-ec1c-45fd-a649-8dd2b63c546f",
+    "latitude": 45.42928260900004,
+    "longitude": 12.344955894000066
+  },
+  {
+    "testImage": "images/artwork_156_01.jpg",
+    "expectedArtworkId": "6afc7f0a-652f-4e8b-9798-f71fa66c5816",
+    "latitude": 45.43966196000008,
+    "longitude": 12.330549890000043
+  },
+  {
+    "testImage": "images/artwork_157_01.jpg",
+    "expectedArtworkId": "6b46ab3b-b00d-4016-9da2-eff32f3816b5",
+    "latitude": 45.43827102000006,
+    "longitude": 12.335287770000036
+  },
+  {
+    "testImage": "images/artwork_158_01.jpg",
+    "expectedArtworkId": "6bc06d26-d8d0-4176-b739-e187b72b3706",
+    "latitude": 45.43430936300007,
+    "longitude": 12.339295469000035
+  },
+  {
+    "testImage": "images/artwork_159_01.jpg",
+    "expectedArtworkId": "6be387da-04eb-4324-b5c0-b6f1174ee649",
+    "latitude": 45.43448100000006,
+    "longitude": 12.330642730000022
+  },
+  {
+    "testImage": "images/artwork_160_01.jpg",
+    "expectedArtworkId": "6ca8a221-95ef-4dca-992f-3b648885870d",
+    "latitude": 45.43632733000004,
+    "longitude": 12.322630300000071
+  },
+  {
+    "testImage": "images/artwork_161_01.jpg",
+    "expectedArtworkId": "6e2b53a2-a7c3-4636-b12e-ad07103ea905",
+    "latitude": 45.43798856800004,
+    "longitude": 12.336601658000063
+  },
+  {
+    "testImage": "images/artwork_162_01.jpg",
+    "expectedArtworkId": "7153c2e8-87ea-4feb-b562-9845d89de87c",
+    "latitude": 45.45759867000004,
+    "longitude": 12.356888680000054
+  },
+  {
+    "testImage": "images/artwork_163_01.jpg",
+    "expectedArtworkId": "71e0fc90-9890-4863-a04c-c68e3400d485",
+    "latitude": 45.43711542900007,
+    "longitude": 12.33037181700007
+  },
+  {
+    "testImage": "images/artwork_164_01.jpg",
+    "expectedArtworkId": "72132aec-9478-4ec8-b9f8-9b7b571e9de1",
+    "latitude": 45.43208188500006,
+    "longitude": 12.320389633000048
+  },
+  {
+    "testImage": "images/artwork_165_01.jpg",
+    "expectedArtworkId": "735ec671-68ea-4116-b436-01df08a48a4a",
+    "latitude": 45.43364050000008,
+    "longitude": 12.330551640000067
+  },
+  {
+    "testImage": "images/artwork_166_01.jpg",
+    "expectedArtworkId": "73a25b56-13b2-4e63-b6d4-231ececc5aff",
+    "latitude": 45.429787084000054,
+    "longitude": 12.325297997000064
+  },
+  {
+    "testImage": "images/artwork_167_01.jpg",
+    "expectedArtworkId": "74745000-12a2-4549-abe1-7d8ec01fa18d",
+    "latitude": 45.43561946800003,
+    "longitude": 12.338330684000027
+  },
+  {
+    "testImage": "images/artwork_168_01.jpg",
+    "expectedArtworkId": "74bb1c21-8299-46f1-946a-0d1d1948185a",
+    "latitude": 45.452457896000055,
+    "longitude": 12.350927396000031
+  },
+  {
+    "testImage": "images/artwork_169_01.jpg",
+    "expectedArtworkId": "74ce24a5-507a-41b5-81ed-6bbadfb461ae",
+    "latitude": 45.43910961000006,
+    "longitude": 12.334362510000062
+  },
+  {
+    "testImage": "images/artwork_170_01.jpg",
+    "expectedArtworkId": "75562597-35e4-4f12-977c-40c8446e77ac",
+    "latitude": 45.43739589000006,
+    "longitude": 12.333020110000064
+  },
+  {
+    "testImage": "images/artwork_171_01.jpg",
+    "expectedArtworkId": "767e6335-579c-4d40-aeeb-9b031d0a6110",
+    "latitude": 45.424084253000046,
+    "longitude": 12.339270804000023
+  },
+  {
+    "testImage": "images/artwork_172_01.jpg",
+    "expectedArtworkId": "771db429-5265-4f8b-ba1b-2152e49f2b8f",
+    "latitude": 45.43409668800007,
+    "longitude": 12.322191239000063
+  },
+  {
+    "testImage": "images/artwork_173_01.jpg",
+    "expectedArtworkId": "77a3e50b-9245-4f7c-8ff0-b4ebd72608c3",
+    "latitude": 45.43507056000004,
+    "longitude": 12.320367930000032
+  },
+  {
+    "testImage": "images/artwork_174_01.jpg",
+    "expectedArtworkId": "77ab94b1-62a5-4f90-a860-e8f45cae4bd4",
+    "latitude": 45.432285300000046,
+    "longitude": 12.315915910000058
+  },
+  {
+    "testImage": "images/artwork_175_01.jpg",
+    "expectedArtworkId": "77b2d742-0ab0-4ec6-88cb-1fcd93fe3f38",
+    "latitude": 45.43409685000006,
+    "longitude": 12.329210540000076
+  },
+  {
+    "testImage": "images/artwork_176_01.jpg",
+    "expectedArtworkId": "78f53b42-46c1-432f-a75e-9230d94c0533",
+    "latitude": 45.42550607000004,
+    "longitude": 12.32790349000004
+  },
+  {
+    "testImage": "images/artwork_177_01.jpg",
+    "expectedArtworkId": "79afe4c1-71b5-4abc-80cf-983377911345",
+    "latitude": 45.435798394000074,
+    "longitude": 12.33525178800005
+  },
+  {
+    "testImage": "images/artwork_178_01.jpg",
+    "expectedArtworkId": "79d32ea7-76d2-495f-9c3b-4b6886ba96e6",
+    "latitude": 45.430208994000054,
+    "longitude": 12.333740394000074
+  },
+  {
+    "testImage": "images/artwork_179_01.jpg",
+    "expectedArtworkId": "7b2e095b-02bd-4609-901b-5f1ad9d85cf7",
+    "latitude": 45.43779359600006,
+    "longitude": 12.335961868000027
+  },
+  {
+    "testImage": "images/artwork_180_01.jpg",
+    "expectedArtworkId": "7b77191f-0e4b-4a24-a905-19aba10f0c62",
+    "latitude": 45.42925001000003,
+    "longitude": 12.330817533000072
+  },
+  {
+    "testImage": "images/artwork_181_01.jpg",
+    "expectedArtworkId": "7c1829cd-7e94-43ce-af5f-bc89115d0d64",
+    "latitude": 45.42525877200006,
+    "longitude": 12.363616512000021
+  },
+  {
+    "testImage": "images/artwork_182_01.jpg",
+    "expectedArtworkId": "7c47adfa-a044-4e47-bf01-bacc6997e152",
+    "latitude": 45.45292735400005,
+    "longitude": 12.353972056000032
+  },
+  {
+    "testImage": "images/artwork_183_01.jpg",
+    "expectedArtworkId": "7ca5edd0-bad2-45b8-9ae5-e5e1032a4c37",
+    "latitude": 45.454535186000044,
+    "longitude": 12.353212349000046
+  },
+  {
+    "testImage": "images/artwork_184_01.jpg",
+    "expectedArtworkId": "7d8a7202-89bc-4199-81dd-80870d29e688",
+    "latitude": 45.43631910600004,
+    "longitude": 12.334918048000077
+  },
+  {
+    "testImage": "images/artwork_185_01.jpg",
+    "expectedArtworkId": "7e208272-05f8-4aa9-97e1-c44c945c3de1",
+    "latitude": 45.425565480000046,
+    "longitude": 12.322771040000077
+  },
+  {
+    "testImage": "images/artwork_186_01.jpg",
+    "expectedArtworkId": "7e6d614e-91a8-4bb1-85bc-32d95a42a9ff",
+    "latitude": 45.43049384100004,
+    "longitude": 12.33344900000003
+  },
+  {
+    "testImage": "images/artwork_187_01.jpg",
+    "expectedArtworkId": "7f09f8b1-af15-4560-94ef-c867c12db552",
+    "latitude": 45.43248747000007,
+    "longitude": 12.334252690000028
+  },
+  {
+    "testImage": "images/artwork_188_01.jpg",
+    "expectedArtworkId": "7f0a3847-285e-46ae-9d44-25e2354fc923",
+    "latitude": 45.43596960000008,
+    "longitude": 12.331895190000068
+  },
+  {
+    "testImage": "images/artwork_189_01.jpg",
+    "expectedArtworkId": "7fbba6a0-8826-4e2d-b4f2-56015e02ad43",
+    "latitude": 45.43498308000005,
+    "longitude": 12.323978700000055
+  },
+  {
+    "testImage": "images/artwork_190_01.jpg",
+    "expectedArtworkId": "7fc145bb-58c8-4ce6-9947-73f117949abc",
+    "latitude": 45.43536081700006,
+    "longitude": 12.327905165000061
+  },
+  {
+    "testImage": "images/artwork_191_01.jpg",
+    "expectedArtworkId": "7ffdecd6-70ab-40cb-ac58-0ab2f8059c3b",
+    "latitude": 45.43201717000005,
+    "longitude": 12.320442980000053
+  },
+  {
+    "testImage": "images/artwork_192_01.jpg",
+    "expectedArtworkId": "8093ff1c-2cf2-42de-ac57-1df2a9190c4e",
+    "latitude": 45.45606389000005,
+    "longitude": 12.355976130000045
+  },
+  {
+    "testImage": "images/artwork_193_01.jpg",
+    "expectedArtworkId": "822d885e-d8ae-45a1-9960-d7e5352c2ce7",
+    "latitude": 45.43626566800003,
+    "longitude": 12.328042587000027
+  },
+  {
+    "testImage": "images/artwork_194_01.jpg",
+    "expectedArtworkId": "8316ddec-f829-468c-94dd-94d800ef2d2e",
+    "latitude": 45.44018367000007,
+    "longitude": 12.332573050000065
+  },
+  {
+    "testImage": "images/artwork_195_01.jpg",
+    "expectedArtworkId": "8450e147-f002-40e5-ba89-240084641890",
+    "latitude": 45.42610393800004,
+    "longitude": 12.327829683000061
+  },
+  {
+    "testImage": "images/artwork_196_01.jpg",
+    "expectedArtworkId": "84517065-c8d0-44c8-b3d8-b42afc874016",
+    "latitude": 45.43648538600007,
+    "longitude": 12.335671534000028
+  },
+  {
+    "testImage": "images/artwork_197_01.jpg",
+    "expectedArtworkId": "84fc486c-7767-4cee-bd5a-72ec897fd532",
+    "latitude": 45.43597194000006,
+    "longitude": 12.331877650000024
+  },
+  {
+    "testImage": "images/artwork_198_01.jpg",
+    "expectedArtworkId": "854d099a-53ce-4ed7-a5d7-e649308bb753",
+    "latitude": 45.43524890300006,
+    "longitude": 12.336313436000069
+  },
+  {
+    "testImage": "images/artwork_199_01.jpg",
+    "expectedArtworkId": "85c4ed78-9c75-432e-a9d8-417440be39ac",
+    "latitude": 45.430580890000044,
+    "longitude": 12.355780410000023
+  },
+  {
+    "testImage": "images/artwork_200_01.jpg",
+    "expectedArtworkId": "85e90f67-62c9-430d-a09e-722a7c973c14",
+    "latitude": 45.432703840000045,
+    "longitude": 12.331704030000026
+  },
+  {
+    "testImage": "images/artwork_201_01.jpg",
+    "expectedArtworkId": "861cb8c9-5f0c-48c9-b650-5842e0047b04",
+    "latitude": 45.432525257000066,
+    "longitude": 12.337083423000024
+  },
+  {
+    "testImage": "images/artwork_202_01.jpg",
+    "expectedArtworkId": "868f39f2-307c-4f69-b42a-d623e08cd59a",
+    "latitude": 45.43251028000003,
+    "longitude": 12.317668080000033
+  },
+  {
+    "testImage": "images/artwork_203_01.jpg",
+    "expectedArtworkId": "873a1f1a-9e0b-46b5-b8c4-53ec2ff8e476",
+    "latitude": 45.43574720000004,
+    "longitude": 12.335114045000068
+  },
+  {
+    "testImage": "images/artwork_204_01.jpg",
+    "expectedArtworkId": "87c9c2c6-4f0e-40ce-8a07-5614160fa926",
+    "latitude": 45.43816496200003,
+    "longitude": 12.337393668000061
+  },
+  {
+    "testImage": "images/artwork_205_01.jpg",
+    "expectedArtworkId": "88224b32-4d0f-426e-a5cb-01483c8a77f9",
+    "latitude": 45.43024435600006,
+    "longitude": 12.334453318000044
+  },
+  {
+    "testImage": "images/artwork_206_01.jpg",
+    "expectedArtworkId": "88840959-ecd9-4a44-98a8-bd9dec5a4774",
+    "latitude": 45.434066890000054,
+    "longitude": 12.327910460000055
+  },
+  {
+    "testImage": "images/artwork_207_01.jpg",
+    "expectedArtworkId": "88c6d3da-538f-41d7-8b39-37494fb6e256",
+    "latitude": 45.438327350000066,
+    "longitude": 12.335050740000042
+  },
+  {
+    "testImage": "images/artwork_208_01.jpg",
+    "expectedArtworkId": "8a43e09c-3f6e-46d0-be48-095dea3f5df5",
+    "latitude": 45.432683230000066,
+    "longitude": 12.332559200000048
+  },
+  {
+    "testImage": "images/artwork_209_01.jpg",
+    "expectedArtworkId": "8ad046f9-f0f4-429b-8328-7bc8529e9696",
+    "latitude": 45.43007967200003,
+    "longitude": 12.355938851000076
+  },
+  {
+    "testImage": "images/artwork_210_01.jpg",
+    "expectedArtworkId": "8b938d2a-2d24-4bc8-bdd3-109635ac1878",
+    "latitude": 45.43239023000007,
+    "longitude": 12.334631410000043
+  },
+  {
+    "testImage": "images/artwork_211_01.jpg",
+    "expectedArtworkId": "8bbc8d18-38d3-46f6-b7da-3c6027d0c8e1",
+    "latitude": 45.42862052900006,
+    "longitude": 12.332798498000045
+  },
+  {
+    "testImage": "images/artwork_212_01.jpg",
+    "expectedArtworkId": "8d3d80d8-8033-492d-b11c-fe62f28efb9d",
+    "latitude": 45.43981203000004,
+    "longitude": 12.330502280000076
+  },
+  {
+    "testImage": "images/artwork_213_01.jpg",
+    "expectedArtworkId": "8e4de8a6-c504-4a70-aab6-66ac086c8f36",
+    "latitude": 45.43102347000007,
+    "longitude": 12.32195973000006
+  },
+  {
+    "testImage": "images/artwork_214_01.jpg",
+    "expectedArtworkId": "8fbbe644-17da-45bd-933a-54d1ac6eb40a",
+    "latitude": 45.42836863000008,
+    "longitude": 12.360874544000069
+  },
+  {
+    "testImage": "images/artwork_215_01.jpg",
+    "expectedArtworkId": "9022d815-e7ac-42d6-a590-c8c6336bdf02",
+    "latitude": 45.431057174000046,
+    "longitude": 12.323660585000027
+  },
+  {
+    "testImage": "images/artwork_216_01.jpg",
+    "expectedArtworkId": "9097c0c8-972b-4961-a74f-8aceff485b44",
+    "latitude": 45.43830760000003,
+    "longitude": 12.326719955000044
+  },
+  {
+    "testImage": "images/artwork_217_01.jpg",
+    "expectedArtworkId": "9149a57b-278a-4348-a62f-1618ac4a7771",
+    "latitude": 45.43376765000005,
+    "longitude": 12.32148705000003
+  },
+  {
+    "testImage": "images/artwork_218_01.jpg",
+    "expectedArtworkId": "91914232-5dd4-4ca7-8ca1-c3d3db745a46",
+    "latitude": 45.43242648000006,
+    "longitude": 12.334848660000034
+  },
+  {
+    "testImage": "images/artwork_219_01.jpg",
+    "expectedArtworkId": "929183d0-7868-4575-aacc-d3f0e65ec788",
+    "latitude": 45.43709100500007,
+    "longitude": 12.33661649100003
+  },
+  {
+    "testImage": "images/artwork_220_01.jpg",
+    "expectedArtworkId": "92d275d8-5125-4f64-8977-bb560027a30a",
+    "latitude": 45.43235770000007,
+    "longitude": 12.321892160000061
+  },
+  {
+    "testImage": "images/artwork_221_01.jpg",
+    "expectedArtworkId": "92f3b40e-5b92-46c0-89ea-33e5fe272a16",
+    "latitude": 45.42956979400003,
+    "longitude": 12.330882037000038
+  },
+  {
+    "testImage": "images/artwork_222_01.jpg",
+    "expectedArtworkId": "931dedd7-d133-4ae8-b53e-3a8f3f81e2af",
+    "latitude": 45.43738025000005,
+    "longitude": 12.333237240000074
+  },
+  {
+    "testImage": "images/artwork_223_01.jpg",
+    "expectedArtworkId": "9369911d-1243-493c-9210-da1388b5f73d",
+    "latitude": 45.43340588600006,
+    "longitude": 12.340592338000022
+  },
+  {
+    "testImage": "images/artwork_224_01.jpg",
+    "expectedArtworkId": "93913cc4-7246-44c1-ab94-d5aea73c732d",
+    "latitude": 45.43627557900004,
+    "longitude": 12.32563002300003
+  },
+  {
+    "testImage": "images/artwork_225_01.jpg",
+    "expectedArtworkId": "939ae128-ed80-48d9-8620-9bbc8b8b842e",
+    "latitude": 45.43208295900007,
+    "longitude": 12.32561335400004
+  },
+  {
+    "testImage": "images/artwork_226_01.jpg",
+    "expectedArtworkId": "95eafdb8-b5b5-4e37-8ce3-321ae892dd25",
+    "latitude": 45.42640424000007,
+    "longitude": 12.323173040000029
+  },
+  {
+    "testImage": "images/artwork_227_01.jpg",
+    "expectedArtworkId": "96754920-043e-43e7-b3a6-7d91f10a1b1e",
+    "latitude": 45.43704787900003,
+    "longitude": 12.330496942000025
+  },
+  {
+    "testImage": "images/artwork_228_01.jpg",
+    "expectedArtworkId": "97695de7-6c7a-414f-9754-0232462f75a9",
+    "latitude": 45.43753476000006,
+    "longitude": 12.331696300000033
+  },
+  {
+    "testImage": "images/artwork_229_01.jpg",
+    "expectedArtworkId": "981b90cd-3e36-43b7-b51d-da44403ae3b2",
+    "latitude": 45.42938685000007,
+    "longitude": 12.332955320000053
+  },
+  {
+    "testImage": "images/artwork_230_01.jpg",
+    "expectedArtworkId": "992da602-635f-4453-a81d-30db8cb8401a",
+    "latitude": 45.42948194100006,
+    "longitude": 12.326450187000034
+  },
+  {
+    "testImage": "images/artwork_231_01.jpg",
+    "expectedArtworkId": "996360aa-c830-49cd-9beb-fdbc94f873c0",
+    "latitude": 45.43370736000003,
+    "longitude": 12.32062424000003
+  },
+  {
+    "testImage": "images/artwork_232_01.jpg",
+    "expectedArtworkId": "99bf8603-ddaa-4aa5-8617-e9963378b977",
+    "latitude": 45.43813817200004,
+    "longitude": 12.336842856000032
+  },
+  {
+    "testImage": "images/artwork_233_01.jpg",
+    "expectedArtworkId": "9a1da4fa-6317-4cd9-974c-a44fe411088e",
+    "latitude": 45.432637466000074,
+    "longitude": 12.337768393000033
+  },
+  {
+    "testImage": "images/artwork_234_01.jpg",
+    "expectedArtworkId": "9aeecb8d-37c2-42cd-b0df-c7b4224769e0",
+    "latitude": 45.43642510600006,
+    "longitude": 12.326417596000056
+  },
+  {
+    "testImage": "images/artwork_235_01.jpg",
+    "expectedArtworkId": "9c634262-037e-4d87-9b09-680683195ff9",
+    "latitude": 45.430186615000025,
+    "longitude": 12.329489251000041
+  },
+  {
+    "testImage": "images/artwork_236_01.jpg",
+    "expectedArtworkId": "9cd4bf04-8e94-4ee1-a05c-63f90c16deff",
+    "latitude": 45.43627737400004,
+    "longitude": 12.325752022000074
+  },
+  {
+    "testImage": "images/artwork_237_01.jpg",
+    "expectedArtworkId": "9e47a074-0593-4b3f-9ef3-029e01cf3b4e",
+    "latitude": 45.42769404100005,
+    "longitude": 12.36149565900007
+  },
+  {
+    "testImage": "images/artwork_238_01.jpg",
+    "expectedArtworkId": "9e663f8c-5ef8-43d4-a2ab-80f630b2d916",
+    "latitude": 45.436498947000075,
+    "longitude": 12.326387570000065
+  },
+  {
+    "testImage": "images/artwork_239_01.jpg",
+    "expectedArtworkId": "9ef098d3-7154-4e47-8db5-e249c21617d9",
+    "latitude": 45.43386243000003,
+    "longitude": 12.319351740000059
+  },
+  {
+    "testImage": "images/artwork_240_01.jpg",
+    "expectedArtworkId": "9ef972c3-b6c8-4e1d-a383-2329dfbac0ca",
+    "latitude": 45.433856150000054,
+    "longitude": 12.319396330000075
+  },
+  {
+    "testImage": "images/artwork_241_01.jpg",
+    "expectedArtworkId": "9f03bbf3-770f-493f-b41c-9538e2eabd60",
+    "latitude": 45.425014160000046,
+    "longitude": 12.333518771000058
+  },
+  {
+    "testImage": "images/artwork_242_01.jpg",
+    "expectedArtworkId": "9f1a823b-fdfa-4b04-bcfb-e27e973573b1",
+    "latitude": 45.45888739000003,
+    "longitude": 12.353107650000027
+  },
+  {
+    "testImage": "images/artwork_243_01.jpg",
+    "expectedArtworkId": "9ffda6e2-0b0c-4c47-944c-918ae361d6f4",
+    "latitude": 45.43412894800008,
+    "longitude": 12.323540939000054
+  },
+  {
+    "testImage": "images/artwork_244_01.jpg",
+    "expectedArtworkId": "a082d296-db6f-4aa2-98a1-f8a7a820632f",
+    "latitude": 45.42919715600004,
+    "longitude": 12.332871571000055
+  },
+  {
+    "testImage": "images/artwork_245_01.jpg",
+    "expectedArtworkId": "a14c519e-3ecb-47a2-a4ea-e5decb4dad3c",
+    "latitude": 45.43264658000004,
+    "longitude": 12.329571890000068
+  },
+  {
+    "testImage": "images/artwork_246_01.jpg",
+    "expectedArtworkId": "a1e05a70-b3bf-46e6-8ff3-b111ed52d628",
+    "latitude": 45.42562556400003,
+    "longitude": 12.329983984000023
+  },
+  {
+    "testImage": "images/artwork_247_01.jpg",
+    "expectedArtworkId": "a1eaf466-829e-498b-a603-745744f18157",
+    "latitude": 45.43055236300006,
+    "longitude": 12.331043237000074
+  },
+  {
+    "testImage": "images/artwork_248_01.jpg",
+    "expectedArtworkId": "a286b3f5-85ae-4df6-bdac-07f463de3d3e",
+    "latitude": 45.484972199000026,
+    "longitude": 12.406274899000039
+  },
+  {
+    "testImage": "images/artwork_249_01.jpg",
+    "expectedArtworkId": "a43148ff-1846-45b0-ad3e-6e5ffad00eac",
+    "latitude": 45.43851131000008,
+    "longitude": 12.33466253000006
+  },
+  {
+    "testImage": "images/artwork_250_01.jpg",
+    "expectedArtworkId": "a44d8625-ac89-4269-8e7c-b8d89a229ddd",
+    "latitude": 45.43028715100007,
+    "longitude": 12.334254396000063
+  },
+  {
+    "testImage": "images/artwork_251_01.jpg",
+    "expectedArtworkId": "a4b72ee9-9949-475b-8c07-4c47c8f0674d",
+    "latitude": 45.429558443000076,
+    "longitude": 12.32902864500005
+  },
+  {
+    "testImage": "images/artwork_252_01.jpg",
+    "expectedArtworkId": "a63208ce-a2b6-4661-8cc9-64a29e5ce807",
+    "latitude": 45.43054727700007,
+    "longitude": 12.33214502900006
+  },
+  {
+    "testImage": "images/artwork_253_01.jpg",
+    "expectedArtworkId": "a6e472b7-654a-4fb7-b199-6b3973d189dc",
+    "latitude": 45.43332857000007,
+    "longitude": 12.329105900000059
+  },
+  {
+    "testImage": "images/artwork_254_01.jpg",
+    "expectedArtworkId": "a73e0578-d0f6-4300-a5cc-047dfe8b3f49",
+    "latitude": 45.430948200000046,
+    "longitude": 12.322910290000038
+  },
+  {
+    "testImage": "images/artwork_255_01.jpg",
+    "expectedArtworkId": "a8512dec-6e24-4eec-a471-48da9bfc9d52",
+    "latitude": 45.440671440000074,
+    "longitude": 12.330934240000033
+  },
+  {
+    "testImage": "images/artwork_256_01.jpg",
+    "expectedArtworkId": "a907ae96-522c-4879-8cbb-42255ea63b2b",
+    "latitude": 45.42993924000007,
+    "longitude": 12.334367230000055
+  },
+  {
+    "testImage": "images/artwork_257_01.jpg",
+    "expectedArtworkId": "a91a018d-40fc-4975-b004-46d38a59f611",
+    "latitude": 45.43865771000003,
+    "longitude": 12.335139780000077
+  },
+  {
+    "testImage": "images/artwork_258_01.jpg",
+    "expectedArtworkId": "a92deb11-7c77-4d4c-8b6e-6142b9fa535d",
+    "latitude": 45.43124886000004,
+    "longitude": 12.322713750000048
+  },
+  {
+    "testImage": "images/artwork_259_01.jpg",
+    "expectedArtworkId": "a9419f25-5c36-4b4d-b31e-cdefa76a0e6d",
+    "latitude": 45.48540221500008,
+    "longitude": 12.416356998000026
+  },
+  {
+    "testImage": "images/artwork_260_01.jpg",
+    "expectedArtworkId": "a9b761ff-2fab-4ab8-b73d-ab837d7cf1b5",
+    "latitude": 45.42540324000004,
+    "longitude": 12.333997125000053
+  },
+  {
+    "testImage": "images/artwork_261_01.jpg",
+    "expectedArtworkId": "aa77ff96-dc3d-4388-9d41-1cd51611267d",
+    "latitude": 45.458418470000026,
+    "longitude": 12.35743425000004
+  },
+  {
+    "testImage": "images/artwork_262_01.jpg",
+    "expectedArtworkId": "ab362b87-4aea-4abd-8679-8d3b50a33078",
+    "latitude": 45.435282605000054,
+    "longitude": 12.340535746000057
+  },
+  {
+    "testImage": "images/artwork_263_01.jpg",
+    "expectedArtworkId": "ac03ca42-4ea2-457c-9eee-208a4324f437",
+    "latitude": 45.429274502000055,
+    "longitude": 12.333819168000048
+  },
+  {
+    "testImage": "images/artwork_264_01.jpg",
+    "expectedArtworkId": "ac24c918-ec43-4705-a575-efba910f0232",
+    "latitude": 45.43608745500006,
+    "longitude": 12.327314380000075
+  },
+  {
+    "testImage": "images/artwork_265_01.jpg",
+    "expectedArtworkId": "ac86cf3c-de12-4b11-acaa-63d42ee9eddb",
+    "latitude": 45.433938510000075,
+    "longitude": 12.33351134000003
+  },
+  {
+    "testImage": "images/artwork_266_01.jpg",
+    "expectedArtworkId": "af8068d0-2037-4c83-9b99-06a76c68c20c",
+    "latitude": 45.42404114500005,
+    "longitude": 12.339363074000062
+  },
+  {
+    "testImage": "images/artwork_267_01.jpg",
+    "expectedArtworkId": "b08c682f-551f-462d-b3e9-fbadc0ce2180",
+    "latitude": 45.43377007300006,
+    "longitude": 12.339551817000029
+  },
+  {
+    "testImage": "images/artwork_268_01.jpg",
+    "expectedArtworkId": "b0b96e56-8189-4834-b1f0-0317327be43e",
+    "latitude": 45.43329200200003,
+    "longitude": 12.33676082200003
+  },
+  {
+    "testImage": "images/artwork_269_01.jpg",
+    "expectedArtworkId": "b14ecfeb-d105-42e6-8e03-1ce2865ad80a",
+    "latitude": 45.431013051000036,
+    "longitude": 12.326666162000038
+  },
+  {
+    "testImage": "images/artwork_270_01.jpg",
+    "expectedArtworkId": "b1f1f8f8-4c42-4f99-9813-bb4920c9d284",
+    "latitude": 45.430147040000065,
+    "longitude": 12.35566343000005
+  },
+  {
+    "testImage": "images/artwork_271_01.jpg",
+    "expectedArtworkId": "b2c18635-4124-481b-8f4d-c9975ad49862",
+    "latitude": 45.434497890000046,
+    "longitude": 12.330614560000072
+  },
+  {
+    "testImage": "images/artwork_272_01.jpg",
+    "expectedArtworkId": "b2e3c9da-76ed-44e3-ace9-23ae870ddfdd",
+    "latitude": 45.43372030300003,
+    "longitude": 12.339571300000046
+  },
+  {
+    "testImage": "images/artwork_273_01.jpg",
+    "expectedArtworkId": "b2e4dd3f-410c-43d3-9daa-780d75c5b570",
+    "latitude": 45.43365557000004,
+    "longitude": 12.340917277000074
+  },
+  {
+    "testImage": "images/artwork_274_01.jpg",
+    "expectedArtworkId": "b346215d-6f7e-4a89-ae8e-59d373a3c382",
+    "latitude": 45.48501351200008,
+    "longitude": 12.41944675700006
+  },
+  {
+    "testImage": "images/artwork_275_01.jpg",
+    "expectedArtworkId": "b46f556b-2bb3-42ad-becd-99c3610a8bf2",
+    "latitude": 45.43233264000003,
+    "longitude": 12.330411680000054
+  },
+  {
+    "testImage": "images/artwork_276_01.jpg",
+    "expectedArtworkId": "b4f1c731-5600-4770-b345-288bb773c0f9",
+    "latitude": 45.43750002000007,
+    "longitude": 12.332590860000039
+  },
+  {
+    "testImage": "images/artwork_277_01.jpg",
+    "expectedArtworkId": "b589a786-d1f4-4528-98c2-8294dfd0f4bf",
+    "latitude": 45.43567367700007,
+    "longitude": 12.334122703000048
+  },
+  {
+    "testImage": "images/artwork_278_01.jpg",
+    "expectedArtworkId": "b6963ecf-d608-4283-aa39-d4c8c47db8da",
+    "latitude": 45.43640450700008,
+    "longitude": 12.326259693000054
+  },
+  {
+    "testImage": "images/artwork_279_01.jpg",
+    "expectedArtworkId": "b6a75011-ff35-4511-9180-fcdfab8de8f6",
+    "latitude": 45.433738008000034,
+    "longitude": 12.322327994000034
+  },
+  {
+    "testImage": "images/artwork_280_01.jpg",
+    "expectedArtworkId": "b74fa816-3210-4efb-a854-6beb16a2fb98",
+    "latitude": 45.434129950000056,
+    "longitude": 12.333069840000064
+  },
+  {
+    "testImage": "images/artwork_281_01.jpg",
+    "expectedArtworkId": "b7d2d5bf-8bca-45c2-8457-94691e5e6996",
+    "latitude": 45.432907440000065,
+    "longitude": 12.328646740000067
+  },
+  {
+    "testImage": "images/artwork_282_01.jpg",
+    "expectedArtworkId": "b8042ea5-7798-4701-b5f6-a111d256ff39",
+    "latitude": 45.434813492000046,
+    "longitude": 12.336531196000067
+  },
+  {
+    "testImage": "images/artwork_283_01.jpg",
+    "expectedArtworkId": "b8c7743f-3571-43f6-a33a-3b20ae0959bf",
+    "latitude": 45.43832296000005,
+    "longitude": 12.33621246000007
+  },
+  {
+    "testImage": "images/artwork_284_01.jpg",
+    "expectedArtworkId": "b982e952-92a3-4a54-9ae8-670e26904676",
+    "latitude": 45.438299044000075,
+    "longitude": 12.326731923000068
+  },
+  {
+    "testImage": "images/artwork_285_01.jpg",
+    "expectedArtworkId": "baff92f1-e03f-4e8f-bcf2-7ad1b85cf051",
+    "latitude": 45.43208825000005,
+    "longitude": 12.325592407000045
+  },
+  {
+    "testImage": "images/artwork_286_01.jpg",
+    "expectedArtworkId": "bb098d57-aabc-452f-8386-f691c8856b14",
+    "latitude": 45.436719837000055,
+    "longitude": 12.337370602000021
+  },
+  {
+    "testImage": "images/artwork_287_01.jpg",
+    "expectedArtworkId": "bcb82eea-2d12-4e82-a9b7-888d1d2125f5",
+    "latitude": 45.429808792000074,
+    "longitude": 12.328770845000065
+  },
+  {
+    "testImage": "images/artwork_288_01.jpg",
+    "expectedArtworkId": "bce6ec74-d184-4a08-a3b3-d21a79243d1c",
+    "latitude": 45.43533529800004,
+    "longitude": 12.340121299000032
+  },
+  {
+    "testImage": "images/artwork_289_01.jpg",
+    "expectedArtworkId": "bd0bda94-864c-4350-99f5-8f78ce00e70e",
+    "latitude": 45.43815913600008,
+    "longitude": 12.337410462000037
+  },
+  {
+    "testImage": "images/artwork_290_01.jpg",
+    "expectedArtworkId": "bd2c3c79-e966-488d-99bd-50e72eee5cd5",
+    "latitude": 45.43716380200004,
+    "longitude": 12.324302702000068
+  },
+  {
+    "testImage": "images/artwork_291_01.jpg",
+    "expectedArtworkId": "bfd7e40f-87b0-4652-8f1d-ee87d4fa7881",
+    "latitude": 45.43103411900006,
+    "longitude": 12.330334316000062
+  },
+  {
+    "testImage": "images/artwork_292_01.jpg",
+    "expectedArtworkId": "c08cbf09-7865-4dae-aef1-78d559fba977",
+    "latitude": 45.45746874000008,
+    "longitude": 12.356769300000053
+  },
+  {
+    "testImage": "images/artwork_293_01.jpg",
+    "expectedArtworkId": "c282e4d4-c65a-4da3-8916-28428865ade8",
+    "latitude": 45.43748709000005,
+    "longitude": 12.331657490000055
+  },
+  {
+    "testImage": "images/artwork_294_01.jpg",
+    "expectedArtworkId": "c2c7e1df-0136-4ce8-b966-a641f575af10",
+    "latitude": 45.43944478000003,
+    "longitude": 12.33404224000003
+  },
+  {
+    "testImage": "images/artwork_295_01.jpg",
+    "expectedArtworkId": "c347accc-58e3-4c10-8d07-e10b235d58d3",
+    "latitude": 45.430937630000074,
+    "longitude": 12.336956560000033
+  },
+  {
+    "testImage": "images/artwork_296_01.jpg",
+    "expectedArtworkId": "c3921844-fd99-4236-a209-9dc1e32f7482",
+    "latitude": 45.436355390000074,
+    "longitude": 12.331408090000025
+  },
+  {
+    "testImage": "images/artwork_297_01.jpg",
+    "expectedArtworkId": "c436c3cc-5afd-444a-ba64-6149309ef30e",
+    "latitude": 45.43539204600006,
+    "longitude": 12.324233288000073
+  },
+  {
+    "testImage": "images/artwork_298_01.jpg",
+    "expectedArtworkId": "c463943f-4640-41df-b21d-1f763751354c",
+    "latitude": 45.430591710000044,
+    "longitude": 12.32199010000005
+  },
+  {
+    "testImage": "images/artwork_299_01.jpg",
+    "expectedArtworkId": "c612e400-9036-48ad-809a-062ee7a4465e",
+    "latitude": 45.43029356800008,
+    "longitude": 12.334098964000077
+  },
+  {
+    "testImage": "images/artwork_300_01.jpg",
+    "expectedArtworkId": "c6aa1298-ff03-4d0e-89e6-1dd0615b4dbb",
+    "latitude": 45.436189805000026,
+    "longitude": 12.327907716000027
+  },
+  {
+    "testImage": "images/artwork_301_01.jpg",
+    "expectedArtworkId": "c6e397cb-d460-4b48-b0e2-5777a5fce67f",
+    "latitude": 45.43955612000008,
+    "longitude": 12.330905060000077
+  },
+  {
+    "testImage": "images/artwork_302_01.jpg",
+    "expectedArtworkId": "c6f3aa5a-4502-4ea7-9f64-f89ea56dd0df",
+    "latitude": 45.42883039000003,
+    "longitude": 12.33221186000003
+  },
+  {
+    "testImage": "images/artwork_303_01.jpg",
+    "expectedArtworkId": "c6f5a06c-ded1-4c87-bc77-9b70e09ad65c",
+    "latitude": 45.424168982000026,
+    "longitude": 12.339000403000057
+  },
+  {
+    "testImage": "images/artwork_304_01.jpg",
+    "expectedArtworkId": "c901ad10-74f3-4aab-9699-db5ab7a6fbcc",
+    "latitude": 45.427947860000074,
+    "longitude": 12.321068720000028
+  },
+  {
+    "testImage": "images/artwork_305_01.jpg",
+    "expectedArtworkId": "c97ce642-f866-4fb2-92fa-a5e6d374df14",
+    "latitude": 45.43436514000007,
+    "longitude": 12.317756300000042
+  },
+  {
+    "testImage": "images/artwork_306_01.jpg",
+    "expectedArtworkId": "c9c9150d-8878-48bd-b4ca-605847d24e39",
+    "latitude": 45.43390064000005,
+    "longitude": 12.321724710000069
+  },
+  {
+    "testImage": "images/artwork_307_01.jpg",
+    "expectedArtworkId": "cb1fb2ec-0dc9-481d-b376-9961ede80f88",
+    "latitude": 45.43241923000005,
+    "longitude": 12.33485440000004
+  },
+  {
+    "testImage": "images/artwork_308_01.jpg",
+    "expectedArtworkId": "cbe4a83e-9f29-44fb-981a-b75e4965a477",
+    "latitude": 45.435723144000065,
+    "longitude": 12.338908547000074
+  },
+  {
+    "testImage": "images/artwork_309_01.jpg",
+    "expectedArtworkId": "cca0376b-8f45-4314-b15f-4e30d112e116",
+    "latitude": 45.43808855000003,
+    "longitude": 12.334994510000058
+  },
+  {
+    "testImage": "images/artwork_310_01.jpg",
+    "expectedArtworkId": "cdce3168-2a4e-48e7-8ae7-eb6bf8ea53e0",
+    "latitude": 45.42459445000003,
+    "longitude": 12.325965670000073
+  },
+  {
+    "testImage": "images/artwork_311_01.jpg",
+    "expectedArtworkId": "cdefcb4f-baad-4be0-9590-7a01a0dbccb6",
+    "latitude": 45.433358670000075,
+    "longitude": 12.329080180000062
+  },
+  {
+    "testImage": "images/artwork_312_01.jpg",
+    "expectedArtworkId": "cec0c0a7-81a8-4022-ac2c-54e0668fba42",
+    "latitude": 45.42409704900007,
+    "longitude": 12.339451060000044
+  },
+  {
+    "testImage": "images/artwork_313_01.jpg",
+    "expectedArtworkId": "cf19d10b-6f46-432d-8b88-504778d14613",
+    "latitude": 45.43612032000004,
+    "longitude": 12.321653550000065
+  },
+  {
+    "testImage": "images/artwork_314_01.jpg",
+    "expectedArtworkId": "cf2ea4d7-bab6-4742-bb07-bff6d809e0c8",
+    "latitude": 45.435379229000034,
+    "longitude": 12.33406930800004
+  },
+  {
+    "testImage": "images/artwork_315_01.jpg",
+    "expectedArtworkId": "d03bfd73-e478-4d97-b5e6-aaa60bef8303",
+    "latitude": 45.43412818000007,
+    "longitude": 12.329931330000022
+  },
+  {
+    "testImage": "images/artwork_316_01.jpg",
+    "expectedArtworkId": "d0b80bdb-e814-4561-b01b-06e023534a3b",
+    "latitude": 45.428628400000036,
+    "longitude": 12.380879411000024
+  },
+  {
+    "testImage": "images/artwork_317_01.jpg",
+    "expectedArtworkId": "d1454f1c-90c0-4d8d-b36a-82ffcd829f36",
+    "latitude": 45.434927456000025,
+    "longitude": 12.324161283000024
+  },
+  {
+    "testImage": "images/artwork_318_01.jpg",
+    "expectedArtworkId": "d2183590-6d98-494d-9cce-73cf54f3ee60",
+    "latitude": 45.42628763000005,
+    "longitude": 12.324001930000065
+  },
+  {
+    "testImage": "images/artwork_319_01.jpg",
+    "expectedArtworkId": "d31f22a9-77fc-4ff2-8927-e07159a2173b",
+    "latitude": 45.43481082000005,
+    "longitude": 12.324024555000051
+  },
+  {
+    "testImage": "images/artwork_320_01.jpg",
+    "expectedArtworkId": "d3512e37-2c1f-45fc-b6cd-8d0f5c370ada",
+    "latitude": 45.437728425000046,
+    "longitude": 12.329510613000025
+  },
+  {
+    "testImage": "images/artwork_321_01.jpg",
+    "expectedArtworkId": "d4f91aa7-de45-44be-a6b1-c583852794c3",
+    "latitude": 45.43765864300008,
+    "longitude": 12.337811895000073
+  },
+  {
+    "testImage": "images/artwork_322_01.jpg",
+    "expectedArtworkId": "d50d4ecc-7a84-4187-bfa3-18fc223d5263",
+    "latitude": 45.433620285000075,
+    "longitude": 12.33969378300003
+  },
+  {
+    "testImage": "images/artwork_323_01.jpg",
+    "expectedArtworkId": "d5799c9e-ef48-49fd-9f4a-92952e26d5b6",
+    "latitude": 45.432642060000035,
+    "longitude": 12.318594480000058
+  },
+  {
+    "testImage": "images/artwork_324_01.jpg",
+    "expectedArtworkId": "d5a825c7-0cb1-41b8-92e5-21cc28bbe02d",
+    "latitude": 45.43565771600004,
+    "longitude": 12.33852231000003
+  },
+  {
+    "testImage": "images/artwork_325_01.jpg",
+    "expectedArtworkId": "d6a3a3c7-01ee-45cb-8afc-8f799bffcb4d",
+    "latitude": 45.42958956900003,
+    "longitude": 12.331180116000041
+  },
+  {
+    "testImage": "images/artwork_326_01.jpg",
+    "expectedArtworkId": "d6b09302-00aa-474c-ad8a-cba1227e457e",
+    "latitude": 45.458204840000064,
+    "longitude": 12.351379210000061
+  },
+  {
+    "testImage": "images/artwork_327_01.jpg",
+    "expectedArtworkId": "d6f4f1f3-e4da-44e3-8d06-26585b4332d0",
+    "latitude": 45.43639582900005,
+    "longitude": 12.337062668000044
+  },
+  {
+    "testImage": "images/artwork_328_01.jpg",
+    "expectedArtworkId": "d820775c-a0c7-4f69-99b0-39430a3c75ed",
+    "latitude": 45.43466952000006,
+    "longitude": 12.319122870000058
+  },
+  {
+    "testImage": "images/artwork_329_01.jpg",
+    "expectedArtworkId": "d989995e-12ce-441d-af88-0417bdcf22fd",
+    "latitude": 45.42936849200004,
+    "longitude": 12.345110756000054
+  },
+  {
+    "testImage": "images/artwork_330_01.jpg",
+    "expectedArtworkId": "d99e0ef8-c195-4c2f-bb51-3242bf7227a9",
+    "latitude": 45.43079548800006,
+    "longitude": 12.331136404000063
+  },
+  {
+    "testImage": "images/artwork_331_01.jpg",
+    "expectedArtworkId": "d9bad18b-9543-4e19-bd28-3f27fdb1621b",
+    "latitude": 45.43328882900005,
+    "longitude": 12.339828390000037
+  },
+  {
+    "testImage": "images/artwork_332_01.jpg",
+    "expectedArtworkId": "da42b463-4b15-4f1a-b1b1-01bfc1eabd32",
+    "latitude": 45.43578749900007,
+    "longitude": 12.338851867000074
+  },
+  {
+    "testImage": "images/artwork_333_01.jpg",
+    "expectedArtworkId": "db029aa7-c444-496e-a3a7-eab8517599bf",
+    "latitude": 45.428609470000026,
+    "longitude": 12.329994030000023
+  },
+  {
+    "testImage": "images/artwork_334_01.jpg",
+    "expectedArtworkId": "db62d24b-fd29-42aa-83fc-7b0b598a7e8f",
+    "latitude": 45.43459184000005,
+    "longitude": 12.318973930000027
+  },
+  {
+    "testImage": "images/artwork_335_01.jpg",
+    "expectedArtworkId": "dbab3112-1ab7-40a0-9951-33e9467b106d",
+    "latitude": 45.42955795600005,
+    "longitude": 12.33275418200003
+  },
+  {
+    "testImage": "images/artwork_336_01.jpg",
+    "expectedArtworkId": "dc8b781a-e7e7-4b2f-bb93-22ea265e225e",
+    "latitude": 45.43238442000006,
+    "longitude": 12.334615340000028
+  },
+  {
+    "testImage": "images/artwork_337_01.jpg",
+    "expectedArtworkId": "dceb3c66-84a1-40a3-846a-4144b6686fb0",
+    "latitude": 45.43018859000006,
+    "longitude": 12.358333250000044
+  },
+  {
+    "testImage": "images/artwork_338_01.jpg",
+    "expectedArtworkId": "dd0c8833-c020-4dfc-89f9-f5d834c1475f",
+    "latitude": 45.43775274400008,
+    "longitude": 12.330301016000021
+  },
+  {
+    "testImage": "images/artwork_339_01.jpg",
+    "expectedArtworkId": "dd0fe7a8-08cb-4091-9fb4-9252f443c96f",
+    "latitude": 45.43384472000008,
+    "longitude": 12.319387320000033
+  },
+  {
+    "testImage": "images/artwork_340_01.jpg",
+    "expectedArtworkId": "de19b876-9d9a-481d-8cb0-5485c42d27b5",
+    "latitude": 45.43582255900003,
+    "longitude": 12.326399453000022
+  },
+  {
+    "testImage": "images/artwork_341_01.jpg",
+    "expectedArtworkId": "def9863d-4b7a-4759-8ab9-5d064fec4a34",
+    "latitude": 45.42949282300003,
+    "longitude": 12.326446425000029
+  },
+  {
+    "testImage": "images/artwork_342_01.jpg",
+    "expectedArtworkId": "df9bbf7d-0932-4a51-803b-dfa5b7d927f6",
+    "latitude": 45.43259311000003,
+    "longitude": 12.315592540000068
+  },
+  {
+    "testImage": "images/artwork_343_01.jpg",
+    "expectedArtworkId": "e029cf4e-4546-4e5f-9118-32f25fd16d47",
+    "latitude": 45.42458546000006,
+    "longitude": 12.322051560000034
+  },
+  {
+    "testImage": "images/artwork_344_01.jpg",
+    "expectedArtworkId": "e03437b0-4c76-4b4e-9863-4de967bb8e65",
+    "latitude": 45.424532430000056,
+    "longitude": 12.328071730000033
+  },
+  {
+    "testImage": "images/artwork_345_01.jpg",
+    "expectedArtworkId": "e03a05d8-1be6-43de-808e-24df3675fb7a",
+    "latitude": 45.43259493000005,
+    "longitude": 12.329953230000058
+  },
+  {
+    "testImage": "images/artwork_346_01.jpg",
+    "expectedArtworkId": "e0dd57cf-c215-41cf-8196-c7083ec82709",
+    "latitude": 45.452938334000066,
+    "longitude": 12.351267224000026
+  },
+  {
+    "testImage": "images/artwork_347_01.jpg",
+    "expectedArtworkId": "e15f389c-7ba1-4ca6-b3b9-871fe0543856",
+    "latitude": 45.43098013900004,
+    "longitude": 12.326621414000044
+  },
+  {
+    "testImage": "images/artwork_348_01.jpg",
+    "expectedArtworkId": "e1b4c38f-902a-4ed4-a0a1-2ba08e994c21",
+    "latitude": 45.43516829300006,
+    "longitude": 12.326121569000065
+  },
+  {
+    "testImage": "images/artwork_349_01.jpg",
+    "expectedArtworkId": "e4077d0e-bfd3-45e7-90af-12a4361fe942",
+    "latitude": 45.43365383200006,
+    "longitude": 12.320656764000034
+  },
+  {
+    "testImage": "images/artwork_350_01.jpg",
+    "expectedArtworkId": "e463f7a5-8f52-4100-9fad-0bdcf2a64e1f",
+    "latitude": 45.43830441000006,
+    "longitude": 12.33091268000004
+  },
+  {
+    "testImage": "images/artwork_351_01.jpg",
+    "expectedArtworkId": "e591556e-f62d-4407-bfe4-d4d6ca7a75d3",
+    "latitude": 45.437790774000064,
+    "longitude": 12.336552493000056
+  },
+  {
+    "testImage": "images/artwork_352_01.jpg",
+    "expectedArtworkId": "e615a8cc-686f-41fc-9f03-d9503789da96",
+    "latitude": 45.43486463800008,
+    "longitude": 12.338867977000064
+  },
+  {
+    "testImage": "images/artwork_353_01.jpg",
+    "expectedArtworkId": "e692d620-f78b-4d8a-994d-e64933f19c4b",
+    "latitude": 45.43617198000004,
+    "longitude": 12.322869280000077
+  },
+  {
+    "testImage": "images/artwork_354_01.jpg",
+    "expectedArtworkId": "e7ae6ec4-0aab-4425-a771-d6d45f09750c",
+    "latitude": 45.43078040100005,
+    "longitude": 12.32660405200005
+  },
+  {
+    "testImage": "images/artwork_355_01.jpg",
+    "expectedArtworkId": "e7b521a9-7652-456d-8bf6-fbe13671276c",
+    "latitude": 45.436217302000045,
+    "longitude": 12.334544438000023
+  },
+  {
+    "testImage": "images/artwork_356_01.jpg",
+    "expectedArtworkId": "e928c851-e1c3-4c01-9ca8-1dd9c2361730",
+    "latitude": 45.433219370000074,
+    "longitude": 12.333044620000067
+  },
+  {
+    "testImage": "images/artwork_357_01.jpg",
+    "expectedArtworkId": "e98bb032-41d4-43f8-9208-693c3fd70c16",
+    "latitude": 45.438307800000075,
+    "longitude": 12.335041740000065
+  },
+  {
+    "testImage": "images/artwork_358_01.jpg",
+    "expectedArtworkId": "ea290e17-78c1-452b-859d-80df3908e89c",
+    "latitude": 45.43637671500005,
+    "longitude": 12.325763898000048
+  },
+  {
+    "testImage": "images/artwork_359_01.jpg",
+    "expectedArtworkId": "eadeec25-555e-4a4e-a06d-8f9c7d1d31be",
+    "latitude": 45.43494763000007,
+    "longitude": 12.324159360000067
+  },
+  {
+    "testImage": "images/artwork_360_01.jpg",
+    "expectedArtworkId": "eb39ac02-2aae-4768-8fdd-9a0db5b9f69e",
+    "latitude": 45.431054360000076,
+    "longitude": 12.334315870000069
+  },
+  {
+    "testImage": "images/artwork_361_01.jpg",
+    "expectedArtworkId": "ec5efcf2-2fe9-4aa9-8e3c-af308863917c",
+    "latitude": 45.429587870000034,
+    "longitude": 12.332752630000073
+  },
+  {
+    "testImage": "images/artwork_362_01.jpg",
+    "expectedArtworkId": "ecf511bb-c67a-482a-9998-df76c3386b4c",
+    "latitude": 45.43169121400007,
+    "longitude": 12.32588165900006
+  },
+  {
+    "testImage": "images/artwork_363_01.jpg",
+    "expectedArtworkId": "ed7fb2a2-9491-4e18-8659-4ef4617cc788",
+    "latitude": 45.43876852000005,
+    "longitude": 12.334407770000041
+  },
+  {
+    "testImage": "images/artwork_364_01.jpg",
+    "expectedArtworkId": "eddb028f-953c-4308-b21b-a1a065c1e4a6",
+    "latitude": 45.42507530000006,
+    "longitude": 12.324938230000043
+  },
+  {
+    "testImage": "images/artwork_365_01.jpg",
+    "expectedArtworkId": "ee94a587-f67e-4f52-b540-3407faada765",
+    "latitude": 45.43841578000007,
+    "longitude": 12.336360640000066
+  },
+  {
+    "testImage": "images/artwork_366_01.jpg",
+    "expectedArtworkId": "efd9fe97-5d94-4724-b6c7-e5e70247e990",
+    "latitude": 45.45247826600007,
+    "longitude": 12.350883277000037
+  },
+  {
+    "testImage": "images/artwork_367_01.jpg",
+    "expectedArtworkId": "f00a61bf-bafa-42c2-be09-d22de1d86b77",
+    "latitude": 45.484393811000075,
+    "longitude": 12.419210250000049
+  },
+  {
+    "testImage": "images/artwork_368_01.jpg",
+    "expectedArtworkId": "f0632e01-e07c-4cec-9aa8-c1883a72ad8d",
+    "latitude": 45.430293909000056,
+    "longitude": 12.33148241400005
+  },
+  {
+    "testImage": "images/artwork_369_01.jpg",
+    "expectedArtworkId": "f0c47e2d-9527-4810-a75b-5a1c369f60e3",
+    "latitude": 45.43778124600004,
+    "longitude": 12.335953816000028
+  },
+  {
+    "testImage": "images/artwork_370_01.jpg",
+    "expectedArtworkId": "f204d0b0-aec8-4bba-ab06-50f6227418e3",
+    "latitude": 45.48436155100006,
+    "longitude": 12.418726310000068
+  },
+  {
+    "testImage": "images/artwork_371_01.jpg",
+    "expectedArtworkId": "f207fe91-896c-4fb8-846e-effcfa6afca0",
+    "latitude": 45.43664024100008,
+    "longitude": 12.329658576000043
+  },
+  {
+    "testImage": "images/artwork_372_01.jpg",
+    "expectedArtworkId": "f3b26623-414c-46f2-a427-18a582b9d7aa",
+    "latitude": 45.43149655500008,
+    "longitude": 12.326931295000065
+  },
+  {
+    "testImage": "images/artwork_373_01.jpg",
+    "expectedArtworkId": "f46449d5-b3a8-49d4-a7d4-4ea8e766aa66",
+    "latitude": 45.43237035000004,
+    "longitude": 12.33350949000004
+  },
+  {
+    "testImage": "images/artwork_374_01.jpg",
+    "expectedArtworkId": "f46a9e8d-31c6-4b73-839d-a80d1f63674a",
+    "latitude": 45.44043080000006,
+    "longitude": 12.331477520000021
+  },
+  {
+    "testImage": "images/artwork_375_01.jpg",
+    "expectedArtworkId": "f4f02735-e723-49c4-a921-8279c2cdbd48",
+    "latitude": 45.43222270000007,
+    "longitude": 12.321166660000074
+  },
+  {
+    "testImage": "images/artwork_376_01.jpg",
+    "expectedArtworkId": "f536709d-7b6b-4244-841d-ec1b0fdae69d",
+    "latitude": 45.42679344000004,
+    "longitude": 12.313330330000042
+  },
+  {
+    "testImage": "images/artwork_377_01.jpg",
+    "expectedArtworkId": "f59cf3ee-69a3-4dfe-9dbc-3a67bf435ac2",
+    "latitude": 45.43527276900005,
+    "longitude": 12.327951591000044
+  },
+  {
+    "testImage": "images/artwork_378_01.jpg",
+    "expectedArtworkId": "f5f2221f-7fa1-404d-953c-cd4e1cae02c7",
+    "latitude": 45.435086170000034,
+    "longitude": 12.320462711000062
+  },
+  {
+    "testImage": "images/artwork_379_01.jpg",
+    "expectedArtworkId": "f750d885-1a46-4a42-b21d-1d084c84ea03",
+    "latitude": 45.43178991000008,
+    "longitude": 12.33303187000007
+  },
+  {
+    "testImage": "images/artwork_380_01.jpg",
+    "expectedArtworkId": "f7626824-984a-45ef-88a5-2547690c7243",
+    "latitude": 45.42920239000006,
+    "longitude": 12.332288510000069
+  },
+  {
+    "testImage": "images/artwork_381_01.jpg",
+    "expectedArtworkId": "f76655ec-f06b-4f6a-8898-c7495bcd110c",
+    "latitude": 45.436632419000034,
+    "longitude": 12.33732070900004
+  },
+  {
+    "testImage": "images/artwork_382_01.jpg",
+    "expectedArtworkId": "f8743a32-f101-48be-b91d-b8f34c41bb4d",
+    "latitude": 45.43652302500004,
+    "longitude": 12.32957232800004
+  },
+  {
+    "testImage": "images/artwork_383_01.jpg",
+    "expectedArtworkId": "f877c560-47ea-4177-873e-57bbc9140532",
+    "latitude": 45.436143479000066,
+    "longitude": 12.337682277000056
+  },
+  {
+    "testImage": "images/artwork_384_01.jpg",
+    "expectedArtworkId": "f89eca17-ef2c-4b19-9a3e-daa5218a9188",
+    "latitude": 45.49846704500004,
+    "longitude": 12.418595522000032
+  },
+  {
+    "testImage": "images/artwork_385_01.jpg",
+    "expectedArtworkId": "f8cd56a6-bb6e-4328-a83b-0d2140d06b55",
+    "latitude": 45.42864769300007,
+    "longitude": 12.330032755000047
+  },
+  {
+    "testImage": "images/artwork_386_01.jpg",
+    "expectedArtworkId": "f8d25d3f-c9e3-4b4e-8a20-744771e2547c",
+    "latitude": 45.43429773200006,
+    "longitude": 12.322825287000057
+  },
+  {
+    "testImage": "images/artwork_387_01.jpg",
+    "expectedArtworkId": "f95486b9-e2cc-4446-8138-cfea832ef1b9",
+    "latitude": 45.45966036000004,
+    "longitude": 12.355169130000036
+  },
+  {
+    "testImage": "images/artwork_388_01.jpg",
+    "expectedArtworkId": "f9b53b5a-33ea-4c22-8d57-964f0eda7825",
+    "latitude": 45.43424838000004,
+    "longitude": 12.328622490000043
+  },
+  {
+    "testImage": "images/artwork_389_01.jpg",
+    "expectedArtworkId": "fbf458e1-af24-4d62-a7c1-50af85d8f200",
+    "latitude": 45.42416825200007,
+    "longitude": 12.339034952000077
+  },
+  {
+    "testImage": "images/artwork_390_01.jpg",
+    "expectedArtworkId": "fc02c546-f569-4152-b86a-e4b1f710618e",
+    "latitude": 45.434995600000036,
+    "longitude": 12.32387656000003
+  },
+  {
+    "testImage": "images/artwork_391_01.jpg",
+    "expectedArtworkId": "fc55b6b1-69f9-4ca6-98e3-8d0d32004eb8",
+    "latitude": 45.42675719600004,
+    "longitude": 12.363120911000067
+  },
+  {
+    "testImage": "images/artwork_392_01.jpg",
+    "expectedArtworkId": "fc680f39-fd0b-4a2b-ac2a-c1603bd907c9",
+    "latitude": 45.42931456000008,
+    "longitude": 12.333871995000038
+  },
+  {
+    "testImage": "images/artwork_393_01.jpg",
+    "expectedArtworkId": "fc706ac2-5a4c-4f78-b29a-f4cbb2609b96",
+    "latitude": 45.457360030000075,
+    "longitude": 12.357209650000073
+  },
+  {
+    "testImage": "images/artwork_394_01.jpg",
+    "expectedArtworkId": "fdf6d2ca-404c-4495-b106-78f5b74cf264",
+    "latitude": 45.43211848000004,
+    "longitude": 12.315879650000056
+  },
+  {
+    "testImage": "images/artwork_395_01.jpg",
+    "expectedArtworkId": "fe36edf0-4172-4eee-9b78-1f7b1392b878",
+    "latitude": 45.42959261000004,
+    "longitude": 12.330820257000028
+  },
+  {
+    "testImage": "images/artwork_396_01.jpg",
+    "expectedArtworkId": "fe6a72e9-61f7-402f-9fc2-f71aee3b2999",
+    "latitude": 45.43267510000004,
+    "longitude": 12.333070680000048
+  },
+  {
+    "testImage": "images/artwork_397_01.jpg",
+    "expectedArtworkId": "fe9749ee-6288-4f8c-be32-4baf9dd1d3eb",
+    "latitude": 45.43531254000004,
+    "longitude": 12.324987504000035
+  },
+  {
+    "testImage": "images/artwork_398_01.jpg",
+    "expectedArtworkId": "ff0bd287-235b-4e74-a16e-b0113f4733c5",
+    "latitude": 45.43702346900005,
+    "longitude": 12.324751926000033
+  },
+  {
+    "testImage": "images/artwork_399_01.jpg",
+    "expectedArtworkId": "ff16870c-f6f3-4ad3-8298-347b01a53239",
+    "latitude": 45.43433275000007,
+    "longitude": 12.32268066000006
+  },
+  {
+    "testImage": "images/artwork_400_01.jpg",
+    "expectedArtworkId": "ffe3f2da-e84a-4adb-b750-c419212771a8",
+    "latitude": 45.438317323000035,
+    "longitude": 12.326743402000034
+  },
+  {
+    "testImage": "images/artwork_401_01.jpg",
+    "expectedArtworkId": "ffe71277-eaca-498f-988f-3f7ee32b4dd2",
+    "latitude": 45.43128677200008,
+    "longitude": 12.322398299000042
+  },
+  {
+    "testImage": "images/artwork_402_01.jpg",
+    "expectedArtworkId": "fff7336a-4e42-49af-ba8f-c6a26bb6b0e9",
+    "latitude": 45.43364460000004,
+    "longitude": 12.320700270000032
+  }
+];

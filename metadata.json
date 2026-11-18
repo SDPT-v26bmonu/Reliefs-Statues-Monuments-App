@@ -1,0 +1,6 @@
+{
+  "name": "PreserVenice",
+  "description": "PreserVenice is a non-profit organization devoted to the preservation and restoration of public art in Venice, Italy with GIS cartography and restoration tracking.",
+  "requestFramePermissions": ["camera", "geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

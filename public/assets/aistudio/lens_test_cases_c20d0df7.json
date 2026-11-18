@@ -1,0 +1,2414 @@
+[
+  {
+    "testImage": "images/artwork_001_01.jpg",
+    "expectedArtworkId": "00b704c6-4de2-48c3-9bd9-f9bea8c6bcbf",
+    "latitude": 45.43504643000006,
+    "longitude": 12.330620920000058
+  },
+  {
+    "testImage": "images/artwork_002_01.jpg",
+    "expectedArtworkId": "025dd28e-62f1-48a8-bd48-65bc1c48d375",
+    "latitude": 45.42611728000003,
+    "longitude": 12.324204450000025
+  },
+  {
+    "testImage": "images/artwork_003_01.jpg",
+    "expectedArtworkId": "02c36ce3-04df-44a4-a5f0-f02e5117dd5d",
+    "latitude": 45.43513796000008,
+    "longitude": 12.336185834000048
+  },
+  {
+    "testImage": "images/artwork_004_01.jpg",
+    "expectedArtworkId": "02ec60c9-b6c3-406d-8f67-9494d9ea0c33",
+    "latitude": 45.43362250000007,
+    "longitude": 12.317072150000058
+  },
+  {
+    "testImage": "images/artwork_005_01.jpg",
+    "expectedArtworkId": "03574fd6-11f9-45aa-af22-d3d185d069ed",
+    "latitude": 45.45202457000005,
+    "longitude": 12.350284700000032
+  },
+  {
+    "testImage": "images/artwork_006_01.jpg",
+    "expectedArtworkId": "03a15660-f321-41d1-b392-5aff98e79ceb",
+    "latitude": 45.43748100000005,
+    "longitude": 12.33314475000003
+  },
+  {
+    "testImage": "images/artwork_007_01.jpg",
+    "expectedArtworkId": "04052a64-5feb-4dbc-a78f-b3e0be637ef9",
+    "latitude": 45.430906880000066,
+    "longitude": 12.32390262000007
+  },
+  {
+    "testImage": "images/artwork_008_01.jpg",
+    "expectedArtworkId": "054c8f19-8a3c-4b1d-a26e-8ecc52599b05",
+    "latitude": 45.43517749200004,
+    "longitude": 12.34064759000006
+  },
+  {
+    "testImage": "images/artwork_009_01.jpg",
+    "expectedArtworkId": "06df9ddd-43c9-4d19-99c5-56e685200a41",
+    "latitude": 45.43344033100004,
+    "longitude": 12.33977187000005
+  },
+  {
+    "testImage": "images/artwork_010_01.jpg",
+    "expectedArtworkId": "078fde6b-dfab-4990-aef2-11bc1b62b853",
+    "latitude": 45.43894992000003,
+    "longitude": 12.334237040000062
+  },
+  {
+    "testImage": "images/artwork_011_01.jpg",
+    "expectedArtworkId": "08124e77-b778-46ec-985a-24f83f074482",
+    "latitude": 45.43767445900005,
+    "longitude": 12.32652121700005
+  },
+  {
+    "testImage": "images/artwork_012_01.jpg",
+    "expectedArtworkId": "0877d3e2-e85b-4cc0-a0c9-f0cbfb695ce1",
+    "latitude": 45.43690574800007,
+    "longitude": 12.336341084000026
+  },
+  {
+    "testImage": "images/artwork_013_01.jpg",
+    "expectedArtworkId": "08e55971-c2b0-4017-ae8b-6dda124235a2",
+    "latitude": 45.430688230000044,
+    "longitude": 12.333634540000048
+  },
+  {
+    "testImage": "images/artwork_014_01.jpg",
+    "expectedArtworkId": "096e4fe9-b890-452a-8730-0b1720739255",
+    "latitude": 45.48523327500004,
+    "longitude": 12.408745709000073
+  },
+  {
+    "testImage": "images/artwork_015_01.jpg",
+    "expectedArtworkId": "0983980f-fe3c-4d03-8c0e-54222f6a06a4",
+    "latitude": 45.43233209300007,
+    "longitude": 12.321879810000041
+  },
+  {
+    "testImage": "images/artwork_016_01.jpg",
+    "expectedArtworkId": "0a304aee-6f4a-4688-80b8-2081c9d869f4",
+    "latitude": 45.43494381000005,
+    "longitude": 12.324016070000027
+  },
+  {
+    "testImage": "images/artwork_017_01.jpg",
+    "expectedArtworkId": "0a5b334b-63a4-4026-a998-22bc2060538e",
+    "latitude": 45.434366200000056,
+    "longitude": 12.328232810000031
+  },
+  {
+    "testImage": "images/artwork_018_01.jpg",
+    "expectedArtworkId": "0b6a8108-e065-4cde-84b0-1bc3120aff1c",
+    "latitude": 45.430948269000055,
+    "longitude": 12.326369045000035
+  },
+  {
+    "testImage": "images/artwork_019_01.jpg",
+    "expectedArtworkId": "0bfd96aa-e7c4-4b0c-bb83-9f0613e53bdc",
+    "latitude": 45.43540584100003,
+    "longitude": 12.325122315000044
+  },
+  {
+    "testImage": "images/artwork_020_01.jpg",
+    "expectedArtworkId": "0c0e6161-94a7-4b4a-814f-de92372f07df",
+    "latitude": 45.43416099900003,
+    "longitude": 12.339510321000034
+  },
+  {
+    "testImage": "images/artwork_021_01.jpg",
+    "expectedArtworkId": "0c2fb14a-948d-4da3-a982-dd7a1964137a",
+    "latitude": 45.45327073200008,
+    "longitude": 12.353484318000028
+  },
+  {
+    "testImage": "images/artwork_022_01.jpg",
+    "expectedArtworkId": "0c471cfc-8fc5-466f-b5d1-163f66f0bd26",
+    "latitude": 45.432371887000045,
+    "longitude": 12.324600890000056
+  },
+  {
+    "testImage": "images/artwork_023_01.jpg",
+    "expectedArtworkId": "0d4f17bd-40b2-4c59-b49f-940ce767e879",
+    "latitude": 45.43380712000004,
+    "longitude": 12.33079353000005
+  },
+  {
+    "testImage": "images/artwork_024_01.jpg",
+    "expectedArtworkId": "0e3344a3-97a4-4060-b275-87a8d1206a9c",
+    "latitude": 45.431060184000046,
+    "longitude": 12.32859056500007
+  },
+  {
+    "testImage": "images/artwork_025_01.jpg",
+    "expectedArtworkId": "0f6b83f8-0f3d-432b-bdef-69cb0a2c6630",
+    "latitude": 45.42994602300007,
+    "longitude": 12.324533701000064
+  },
+  {
+    "testImage": "images/artwork_026_01.jpg",
+    "expectedArtworkId": "0fd06ca2-71ba-4414-8d8f-33e7fa7cdff8",
+    "latitude": 45.43612164100006,
+    "longitude": 12.32723320100007
+  },
+  {
+    "testImage": "images/artwork_027_01.jpg",
+    "expectedArtworkId": "10f7f55a-11ae-46e4-b9b9-069b8fe487a1",
+    "latitude": 45.43552142300007,
+    "longitude": 12.325797648000048
+  },
+  {
+    "testImage": "images/artwork_028_01.jpg",
+    "expectedArtworkId": "11598798-62cd-44b9-8950-2083045ee5ef",
+    "latitude": 45.42490479000003,
+    "longitude": 12.325283800000022
+  },
+  {
+    "testImage": "images/artwork_029_01.jpg",
+    "expectedArtworkId": "120d5292-944f-4d3d-b165-c6d285250b2f",
+    "latitude": 45.43363677000008,
+    "longitude": 12.322349750000058
+  },
+  {
+    "testImage": "images/artwork_030_01.jpg",
+    "expectedArtworkId": "1261fde9-7de0-49d2-9b97-70ddf567a4f7",
+    "latitude": 45.43042373000003,
+    "longitude": 12.356877820000022
+  },
+  {
+    "testImage": "images/artwork_031_01.jpg",
+    "expectedArtworkId": "12d0bd40-acb9-4beb-ba5c-d54c01124542",
+    "latitude": 45.438467900000035,
+    "longitude": 12.334870040000055
+  },
+  {
+    "testImage": "images/artwork_032_01.jpg",
+    "expectedArtworkId": "12e44ebf-ddb1-4d5f-a0ac-40c1a64fe02e",
+    "latitude": 45.43018773400007,
+    "longitude": 12.329546195000034
+  },
+  {
+    "testImage": "images/artwork_033_01.jpg",
+    "expectedArtworkId": "1576c170-b138-49df-99fb-e106093908ba",
+    "latitude": 45.425222631000054,
+    "longitude": 12.333739523000077
+  },
+  {
+    "testImage": "images/artwork_034_01.jpg",
+    "expectedArtworkId": "15f0e12b-9d45-4347-8575-8429c503ad04",
+    "latitude": 45.43577940000006,
+    "longitude": 12.321592750000036
+  },
+  {
+    "testImage": "images/artwork_035_01.jpg",
+    "expectedArtworkId": "163dca4a-0fe8-498e-9e41-6af429ca7174",
+    "latitude": 45.43028781900006,
+    "longitude": 12.334114295000063
+  },
+  {
+    "testImage": "images/artwork_036_01.jpg",
+    "expectedArtworkId": "1689fbb2-a234-41a3-990b-994ab15d74de",
+    "latitude": 45.45749276000004,
+    "longitude": 12.357527740000023
+  },
+  {
+    "testImage": "images/artwork_037_01.jpg",
+    "expectedArtworkId": "16eea23f-f225-488b-b11b-a7ab91177b65",
+    "latitude": 45.43404558000003,
+    "longitude": 12.322061330000054
+  },
+  {
+    "testImage": "images/artwork_038_01.jpg",
+    "expectedArtworkId": "182cf0c1-b902-4434-9fdf-486c2d562fb5",
+    "latitude": 45.429438066000046,
+    "longitude": 12.32655519900004
+  },
+  {
+    "testImage": "images/artwork_039_01.jpg",
+    "expectedArtworkId": "1894ba93-23ec-4d59-bc43-a33735b6ca28",
+    "latitude": 45.43412878000004,
+    "longitude": 12.32934873000005
+  },
+  {
+    "testImage": "images/artwork_040_01.jpg",
+    "expectedArtworkId": "1a7372fc-45d6-4327-8969-952e9bf9edfc",
+    "latitude": 45.43303613000006,
+    "longitude": 12.316287550000027
+  },
+  {
+    "testImage": "images/artwork_041_01.jpg",
+    "expectedArtworkId": "1af1230a-a91e-4401-a771-a91f8be17da8",
+    "latitude": 45.498524505000034,
+    "longitude": 12.418449132000035
+  },
+  {
+    "testImage": "images/artwork_042_01.jpg",
+    "expectedArtworkId": "1b350784-6e65-40e8-9de7-c71fb61b4582",
+    "latitude": 45.43216204400005,
+    "longitude": 12.32107972600005
+  },
+  {
+    "testImage": "images/artwork_043_01.jpg",
+    "expectedArtworkId": "1b83843a-3f47-4815-8cbb-626fe70947da",
+    "latitude": 45.43690329900005,
+    "longitude": 12.336321630000043
+  },
+  {
+    "testImage": "images/artwork_044_01.jpg",
+    "expectedArtworkId": "1bfe874a-d473-49ee-977a-f722b4777da9",
+    "latitude": 45.42958293200007,
+    "longitude": 12.330957368000043
+  },
+  {
+    "testImage": "images/artwork_045_01.jpg",
+    "expectedArtworkId": "1d50bab3-96d5-4927-9d40-fa174d65a776",
+    "latitude": 45.432632510000076,
+    "longitude": 12.318046250000066
+  },
+  {
+    "testImage": "images/artwork_046_01.jpg",
+    "expectedArtworkId": "1ea5e277-6d53-42cc-b0cc-7b980af66257",
+    "latitude": 45.456165490000046,
+    "longitude": 12.352549510000074
+  },
+  {
+    "testImage": "images/artwork_047_01.jpg",
+    "expectedArtworkId": "1f74308e-5071-4fee-8b2b-ca002cbe3398",
+    "latitude": 45.42977877700008,
+    "longitude": 12.330688079000026
+  },
+  {
+    "testImage": "images/artwork_048_01.jpg",
+    "expectedArtworkId": "1f93976f-a255-492f-9ae5-e71657247c2e",
+    "latitude": 45.427341424000076,
+    "longitude": 12.361133503000076
+  },
+  {
+    "testImage": "images/artwork_049_01.jpg",
+    "expectedArtworkId": "224696f2-a686-40c4-8381-42676c821e3e",
+    "latitude": 45.498496395000075,
+    "longitude": 12.418480329000033
+  },
+  {
+    "testImage": "images/artwork_050_01.jpg",
+    "expectedArtworkId": "2375a13d-7c37-43c6-8d0e-6e52ceb3b34d",
+    "latitude": 45.49810228900003,
+    "longitude": 12.418648229000041
+  },
+  {
+    "testImage": "images/artwork_051_01.jpg",
+    "expectedArtworkId": "23c6e7c5-1d24-46dd-9aea-fb79f6511403",
+    "latitude": 45.435877864000076,
+    "longitude": 12.335373554000057
+  },
+  {
+    "testImage": "images/artwork_052_01.jpg",
+    "expectedArtworkId": "243127f9-3280-46dc-9df1-fb27158f284e",
+    "latitude": 45.45831578000008,
+    "longitude": 12.34922989000006
+  },
+  {
+    "testImage": "images/artwork_053_01.jpg",
+    "expectedArtworkId": "252e0bd1-136f-4edd-b9ce-67bba9a07d00",
+    "latitude": 45.42940493900005,
+    "longitude": 12.326666640000042
+  },
+  {
+    "testImage": "images/artwork_054_01.jpg",
+    "expectedArtworkId": "27477bcd-c71d-4b61-a0b1-81515a87bcb4",
+    "latitude": 45.45971861000004,
+    "longitude": 12.354283060000057
+  },
+  {
+    "testImage": "images/artwork_055_01.jpg",
+    "expectedArtworkId": "2927ce4e-e138-4671-a51d-f48b32940a83",
+    "latitude": 45.43243946000007,
+    "longitude": 12.322220150000021
+  },
+  {
+    "testImage": "images/artwork_056_01.jpg",
+    "expectedArtworkId": "2a6930e8-7967-4a32-9472-88c3a0c347a1",
+    "latitude": 45.43259093000006,
+    "longitude": 12.318246680000073
+  },
+  {
+    "testImage": "images/artwork_057_01.jpg",
+    "expectedArtworkId": "2aa97c5a-aab7-4b6a-be6e-c8da2422b77b",
+    "latitude": 45.43379281800003,
+    "longitude": 12.337870524000039
+  },
+  {
+    "testImage": "images/artwork_058_01.jpg",
+    "expectedArtworkId": "2bc081d7-f974-4792-833b-763490f55420",
+    "latitude": 45.43481881000008,
+    "longitude": 12.331575120000025
+  },
+  {
+    "testImage": "images/artwork_059_01.jpg",
+    "expectedArtworkId": "2bd93d15-53fa-42ce-b0c0-4c88621cada0",
+    "latitude": 45.42933230500006,
+    "longitude": 12.33041062600006
+  },
+  {
+    "testImage": "images/artwork_060_01.jpg",
+    "expectedArtworkId": "2c4dbf8a-2f79-4d1c-b917-7203c01870d3",
+    "latitude": 45.43371040000005,
+    "longitude": 12.320598490000066
+  },
+  {
+    "testImage": "images/artwork_061_01.jpg",
+    "expectedArtworkId": "2d8f9a0c-abc5-47ab-a22f-762edc151e46",
+    "latitude": 45.42919462800006,
+    "longitude": 12.33076241200007
+  },
+  {
+    "testImage": "images/artwork_062_01.jpg",
+    "expectedArtworkId": "2df4ce92-1fca-4ff5-a9c1-297e076a0faf",
+    "latitude": 45.423984732000065,
+    "longitude": 12.33342006600003
+  },
+  {
+    "testImage": "images/artwork_063_01.jpg",
+    "expectedArtworkId": "2e1ba89e-63d6-4cbe-995d-7a4a6d4aa127",
+    "latitude": 45.42440411000007,
+    "longitude": 12.32585032000003
+  },
+  {
+    "testImage": "images/artwork_064_01.jpg",
+    "expectedArtworkId": "2e4b2d49-1981-45f4-a3a9-489449f449d8",
+    "latitude": 45.43218575000003,
+    "longitude": 12.333753240000021
+  },
+  {
+    "testImage": "images/artwork_065_01.jpg",
+    "expectedArtworkId": "2ed876f0-8020-4557-8500-a8c2b88344a5",
+    "latitude": 45.438204564000046,
+    "longitude": 12.331797616000074
+  },
+  {
+    "testImage": "images/artwork_066_01.jpg",
+    "expectedArtworkId": "317695c9-18d7-436d-bcbf-d980e360d8b6",
+    "latitude": 45.43805034900004,
+    "longitude": 12.32653102200004
+  },
+  {
+    "testImage": "images/artwork_067_01.jpg",
+    "expectedArtworkId": "32e4f574-5229-4d73-95ae-17b2f94febbf",
+    "latitude": 45.43083557300008,
+    "longitude": 12.328882820000047
+  },
+  {
+    "testImage": "images/artwork_068_01.jpg",
+    "expectedArtworkId": "32e69126-bb5c-4774-b4b2-6005bfd59612",
+    "latitude": 45.436966907000055,
+    "longitude": 12.329581166000025
+  },
+  {
+    "testImage": "images/artwork_069_01.jpg",
+    "expectedArtworkId": "342c760f-3eb4-46f3-8cbd-462a8c3be10a",
+    "latitude": 45.424201649000054,
+    "longitude": 12.338972095000031
+  },
+  {
+    "testImage": "images/artwork_070_01.jpg",
+    "expectedArtworkId": "343af465-6e78-469b-a534-613475ea0215",
+    "latitude": 45.42949264100008,
+    "longitude": 12.326509571000031
+  },
+  {
+    "testImage": "images/artwork_071_01.jpg",
+    "expectedArtworkId": "364fac29-d910-4a65-ae6c-0c90bf74f43e",
+    "latitude": 45.43803991200008,
+    "longitude": 12.33669900700005
+  },
+  {
+    "testImage": "images/artwork_072_01.jpg",
+    "expectedArtworkId": "366fab3f-953c-4604-89cd-5c0bac42d74a",
+    "latitude": 45.43655503600007,
+    "longitude": 12.33537601100005
+  },
+  {
+    "testImage": "images/artwork_073_01.jpg",
+    "expectedArtworkId": "3971e738-0d4b-4519-ab09-9a289ed32b11",
+    "latitude": 45.43119701000006,
+    "longitude": 12.322947750000026
+  },
+  {
+    "testImage": "images/artwork_074_01.jpg",
+    "expectedArtworkId": "3a41d946-72b2-4c3f-a143-d59e259acc56",
+    "latitude": 45.42848049600008,
+    "longitude": 12.361024314000076
+  },
+  {
+    "testImage": "images/artwork_075_01.jpg",
+    "expectedArtworkId": "3bcff81f-b529-4252-9aed-70761d5e57dc",
+    "latitude": 45.43109307000003,
+    "longitude": 12.323411770000064
+  },
+  {
+    "testImage": "images/artwork_076_01.jpg",
+    "expectedArtworkId": "3ca68cfc-f260-4841-8446-e7175d2f1550",
+    "latitude": 45.430765370000074,
+    "longitude": 12.333895470000073
+  },
+  {
+    "testImage": "images/artwork_077_01.jpg",
+    "expectedArtworkId": "3d26ef79-601d-44ee-934d-0c5a2ae6aa3d",
+    "latitude": 45.43209893400007,
+    "longitude": 12.320941051000034
+  },
+  {
+    "testImage": "images/artwork_078_01.jpg",
+    "expectedArtworkId": "3e5f8552-e875-4946-a657-d10d7220f551",
+    "latitude": 45.43368526300003,
+    "longitude": 12.34092862700004
+  },
+  {
+    "testImage": "images/artwork_079_01.jpg",
+    "expectedArtworkId": "400e4ab5-b590-4af3-875e-65c0568e6775",
+    "latitude": 45.43728198300005,
+    "longitude": 12.335562758000037
+  },
+  {
+    "testImage": "images/artwork_080_01.jpg",
+    "expectedArtworkId": "403d10a2-6c82-4023-a2b0-e07703a055c6",
+    "latitude": 45.43106627000003,
+    "longitude": 12.334290152000051
+  },
+  {
+    "testImage": "images/artwork_081_01.jpg",
+    "expectedArtworkId": "4075efba-dbd4-473a-aa92-71356dfa82ee",
+    "latitude": 45.41817974000003,
+    "longitude": 12.371535720000054
+  },
+  {
+    "testImage": "images/artwork_082_01.jpg",
+    "expectedArtworkId": "4091ca2f-24db-46f6-8c73-126555ad92cb",
+    "latitude": 45.433131855000056,
+    "longitude": 12.33948050600003
+  },
+  {
+    "testImage": "images/artwork_083_01.jpg",
+    "expectedArtworkId": "42737e41-10e0-4253-af0b-3281e6fed60c",
+    "latitude": 45.429131280000036,
+    "longitude": 12.356781290000072
+  },
+  {
+    "testImage": "images/artwork_084_01.jpg",
+    "expectedArtworkId": "43c04bc9-a53d-4588-b732-9724bb3dcdbb",
+    "latitude": 45.432474470000045,
+    "longitude": 12.333505380000076
+  },
+  {
+    "testImage": "images/artwork_085_01.jpg",
+    "expectedArtworkId": "45376a79-f0a4-4efc-b542-4b58b83913da",
+    "latitude": 45.434572770000045,
+    "longitude": 12.319536570000025
+  },
+  {
+    "testImage": "images/artwork_086_01.jpg",
+    "expectedArtworkId": "45f75b84-5ee8-4084-8a69-9e4e44e009f6",
+    "latitude": 45.424107794000065,
+    "longitude": 12.339485762000038
+  },
+  {
+    "testImage": "images/artwork_087_01.jpg",
+    "expectedArtworkId": "46038a6f-d35e-4ef0-913e-07fbf3381054",
+    "latitude": 45.43507314900006,
+    "longitude": 12.320464294000033
+  },
+  {
+    "testImage": "images/artwork_088_01.jpg",
+    "expectedArtworkId": "4652e559-e820-493d-8e4c-82cce112e373",
+    "latitude": 45.438069590000055,
+    "longitude": 12.33499973000005
+  },
+  {
+    "testImage": "images/artwork_089_01.jpg",
+    "expectedArtworkId": "4664476d-d5f1-4826-8f5b-77bd65512626",
+    "latitude": 45.43015557000007,
+    "longitude": 12.35595703000007
+  },
+  {
+    "testImage": "images/artwork_090_01.jpg",
+    "expectedArtworkId": "47213c70-78c6-426b-a61c-0a24812c1cd6",
+    "latitude": 45.425247220000074,
+    "longitude": 12.325232700000072
+  },
+  {
+    "testImage": "images/artwork_091_01.jpg",
+    "expectedArtworkId": "476b750b-2830-4669-a762-47c0cbf18895",
+    "latitude": 45.498258245000045,
+    "longitude": 12.418598491000068
+  },
+  {
+    "testImage": "images/artwork_092_01.jpg",
+    "expectedArtworkId": "48500d82-43e9-4df9-a5b1-f0c5b2e3a881",
+    "latitude": 45.43845587000004,
+    "longitude": 12.334860440000057
+  },
+  {
+    "testImage": "images/artwork_093_01.jpg",
+    "expectedArtworkId": "490c0e1a-8b2e-42b4-8e19-61f5de30ab29",
+    "latitude": 45.437498090000076,
+    "longitude": 12.33165665000007
+  },
+  {
+    "testImage": "images/artwork_094_01.jpg",
+    "expectedArtworkId": "49424e31-de07-4a9c-a84e-b59682fef4c9",
+    "latitude": 45.43674751000003,
+    "longitude": 12.325471873000026
+  },
+  {
+    "testImage": "images/artwork_095_01.jpg",
+    "expectedArtworkId": "499139f5-586a-4465-905e-f4853433510c",
+    "latitude": 45.435282880000045,
+    "longitude": 12.33382849000003
+  },
+  {
+    "testImage": "images/artwork_096_01.jpg",
+    "expectedArtworkId": "49a3dd4a-bbf4-43cb-8d86-fa0bebd739cd",
+    "latitude": 45.43484505500004,
+    "longitude": 12.336651654000036
+  },
+  {
+    "testImage": "images/artwork_097_01.jpg",
+    "expectedArtworkId": "49aee689-7642-4d79-90ba-1351b4374ef0",
+    "latitude": 45.43527124700006,
+    "longitude": 12.340584857000067
+  },
+  {
+    "testImage": "images/artwork_098_01.jpg",
+    "expectedArtworkId": "4a19a0e6-33a4-4eac-98a5-2ba4535819b1",
+    "latitude": 45.43481070200005,
+    "longitude": 12.340577565000046
+  },
+  {
+    "testImage": "images/artwork_099_01.jpg",
+    "expectedArtworkId": "4a3f1c57-2342-4b45-b5ce-1300a911664b",
+    "latitude": 45.42840859000006,
+    "longitude": 12.357074330000046
+  },
+  {
+    "testImage": "images/artwork_100_01.jpg",
+    "expectedArtworkId": "4a42c5c6-3728-433a-b901-7636fcb805fd",
+    "latitude": 45.435959479000076,
+    "longitude": 12.327486373000056
+  },
+  {
+    "testImage": "images/artwork_101_01.jpg",
+    "expectedArtworkId": "4aa7fd76-afeb-4a40-adf5-5f4c8c5525e4",
+    "latitude": 45.43625866000008,
+    "longitude": 12.32285956000004
+  },
+  {
+    "testImage": "images/artwork_102_01.jpg",
+    "expectedArtworkId": "4affc815-9db9-4a07-bcd1-15038af77e0a",
+    "latitude": 45.484492759000034,
+    "longitude": 12.418930209000052
+  },
+  {
+    "testImage": "images/artwork_103_01.jpg",
+    "expectedArtworkId": "4b612cb5-acef-4486-8360-ad4a563ee2ec",
+    "latitude": 45.43817671700003,
+    "longitude": 12.337393271000053
+  },
+  {
+    "testImage": "images/artwork_104_01.jpg",
+    "expectedArtworkId": "4bc77df9-d632-4c49-8694-59dcbd29450e",
+    "latitude": 45.43246773000004,
+    "longitude": 12.337602581000056
+  },
+  {
+    "testImage": "images/artwork_105_01.jpg",
+    "expectedArtworkId": "4c5a2957-d8ca-4d88-9b8b-aa283d6cdb63",
+    "latitude": 45.43063078000006,
+    "longitude": 12.321961654000063
+  },
+  {
+    "testImage": "images/artwork_106_01.jpg",
+    "expectedArtworkId": "4c9b4f72-1166-4a7b-bf4a-570ba83068af",
+    "latitude": 45.42901424000007,
+    "longitude": 12.356927150000047
+  },
+  {
+    "testImage": "images/artwork_107_01.jpg",
+    "expectedArtworkId": "4d851475-851b-47ef-b570-bc5d4f7863a9",
+    "latitude": 45.435088380000025,
+    "longitude": 12.323918840000033
+  },
+  {
+    "testImage": "images/artwork_108_01.jpg",
+    "expectedArtworkId": "4de68c62-dcea-4a36-bb95-65dcb84e7a84",
+    "latitude": 45.43404036000004,
+    "longitude": 12.322068440000066
+  },
+  {
+    "testImage": "images/artwork_109_01.jpg",
+    "expectedArtworkId": "4e9b9d93-6484-4152-9031-85f4184992d1",
+    "latitude": 45.434940296000036,
+    "longitude": 12.324035543000036
+  },
+  {
+    "testImage": "images/artwork_110_01.jpg",
+    "expectedArtworkId": "4fafaca6-080c-4a73-a48c-563a45cdcd42",
+    "latitude": 45.43513524100007,
+    "longitude": 12.336305712000069
+  },
+  {
+    "testImage": "images/artwork_111_01.jpg",
+    "expectedArtworkId": "4ff56ec8-6b69-496f-83f8-9e06b262ed52",
+    "latitude": 45.42775100400007,
+    "longitude": 12.361398741000073
+  },
+  {
+    "testImage": "images/artwork_112_01.jpg",
+    "expectedArtworkId": "4ffd1b13-2485-4248-99ce-fe51c2d72be5",
+    "latitude": 45.43009911000007,
+    "longitude": 12.357942510000044
+  },
+  {
+    "testImage": "images/artwork_113_01.jpg",
+    "expectedArtworkId": "5099af4e-a67f-4876-951b-2e9fa46bb6d4",
+    "latitude": 45.43536247000003,
+    "longitude": 12.332697750000023
+  },
+  {
+    "testImage": "images/artwork_114_01.jpg",
+    "expectedArtworkId": "5142cdba-bef2-4a58-a6a7-63cc327d64f1",
+    "latitude": 45.432463487000064,
+    "longitude": 12.32470673000006
+  },
+  {
+    "testImage": "images/artwork_115_01.jpg",
+    "expectedArtworkId": "524a3079-4f2f-424f-b874-bc40e4a3ac5c",
+    "latitude": 45.45351280600005,
+    "longitude": 12.351858510000056
+  },
+  {
+    "testImage": "images/artwork_116_01.jpg",
+    "expectedArtworkId": "525fb39b-98f9-4b34-bf23-d173cd228cbd",
+    "latitude": 45.43362329000007,
+    "longitude": 12.328054560000055
+  },
+  {
+    "testImage": "images/artwork_117_01.jpg",
+    "expectedArtworkId": "5286f8af-87f8-4f3d-9f8a-271f4adac33e",
+    "latitude": 45.430449330000044,
+    "longitude": 12.329874552000035
+  },
+  {
+    "testImage": "images/artwork_118_01.jpg",
+    "expectedArtworkId": "52e51c27-5a97-4231-a24d-77c6dd7f30fa",
+    "latitude": 45.435764670000026,
+    "longitude": 12.321387810000033
+  },
+  {
+    "testImage": "images/artwork_119_01.jpg",
+    "expectedArtworkId": "54372240-3c26-49bd-b2e6-7440e1a290c7",
+    "latitude": 45.43379547200004,
+    "longitude": 12.32334140200004
+  },
+  {
+    "testImage": "images/artwork_120_01.jpg",
+    "expectedArtworkId": "543d7392-844d-4e73-9d43-2c64745c2a34",
+    "latitude": 45.43832984000005,
+    "longitude": 12.336192410000024
+  },
+  {
+    "testImage": "images/artwork_121_01.jpg",
+    "expectedArtworkId": "549c4677-de1b-4a99-92d3-7ca1c25ca4c3",
+    "latitude": 45.43273257000004,
+    "longitude": 12.32817244000006
+  },
+  {
+    "testImage": "images/artwork_122_01.jpg",
+    "expectedArtworkId": "54e58f89-9dc7-4f46-9d42-ef3437ebd036",
+    "latitude": 45.43300685500003,
+    "longitude": 12.336411830000031
+  },
+  {
+    "testImage": "images/artwork_123_01.jpg",
+    "expectedArtworkId": "58ccb3bd-b647-4ae8-99e8-8181404d91fc",
+    "latitude": 45.436848558000065,
+    "longitude": 12.329617184000028
+  },
+  {
+    "testImage": "images/artwork_124_01.jpg",
+    "expectedArtworkId": "5946d50f-705b-4bdc-9554-b3bfcb5aeeeb",
+    "latitude": 45.43038632100007,
+    "longitude": 12.333160173000067
+  },
+  {
+    "testImage": "images/artwork_125_01.jpg",
+    "expectedArtworkId": "595c3a20-11a5-454e-bbd2-8c1de22388f0",
+    "latitude": 45.41807674000006,
+    "longitude": 12.371503060000066
+  },
+  {
+    "testImage": "images/artwork_126_01.jpg",
+    "expectedArtworkId": "59e2f898-b26f-49a0-926c-0ff1d487fd15",
+    "latitude": 45.45287974400003,
+    "longitude": 12.351259212000059
+  },
+  {
+    "testImage": "images/artwork_127_01.jpg",
+    "expectedArtworkId": "5a560534-bec1-4cb0-a698-aef1a1d89050",
+    "latitude": 45.43090867800004,
+    "longitude": 12.326457968000057
+  },
+  {
+    "testImage": "images/artwork_128_01.jpg",
+    "expectedArtworkId": "5a8db99f-fa2d-4673-b517-7293a75ef132",
+    "latitude": 45.49833577100003,
+    "longitude": 12.418552012000077
+  },
+  {
+    "testImage": "images/artwork_129_01.jpg",
+    "expectedArtworkId": "5bb85057-5f58-488f-bd97-04404b746f87",
+    "latitude": 45.433809445000065,
+    "longitude": 12.339743181000074
+  },
+  {
+    "testImage": "images/artwork_130_01.jpg",
+    "expectedArtworkId": "5d626c01-a17d-4e05-be9f-7508026e08d9",
+    "latitude": 45.43089061100005,
+    "longitude": 12.328701920000071
+  },
+  {
+    "testImage": "images/artwork_131_01.jpg",
+    "expectedArtworkId": "5dddc2b3-e156-40f6-8972-897164485548",
+    "latitude": 45.42889810600008,
+    "longitude": 12.332924548000051
+  },
+  {
+    "testImage": "images/artwork_132_01.jpg",
+    "expectedArtworkId": "5def2281-7b8d-4524-995a-d9e604ade96b",
+    "latitude": 45.43122828400004,
+    "longitude": 12.320663098000068
+  },
+  {
+    "testImage": "images/artwork_133_01.jpg",
+    "expectedArtworkId": "5e3c6d3d-b4bb-40b5-b0df-e5e1d2d64a0c",
+    "latitude": 45.43389712000004,
+    "longitude": 12.328830840000023
+  },
+  {
+    "testImage": "images/artwork_134_01.jpg",
+    "expectedArtworkId": "5e7073a2-64e9-4588-92e7-5986e67070aa",
+    "latitude": 45.43948153000008,
+    "longitude": 12.332854410000039
+  },
+  {
+    "testImage": "images/artwork_135_01.jpg",
+    "expectedArtworkId": "5f07360a-4942-43d8-a586-32386f42c3db",
+    "latitude": 45.43099237000007,
+    "longitude": 12.355972680000036
+  },
+  {
+    "testImage": "images/artwork_136_01.jpg",
+    "expectedArtworkId": "5f14cf6d-6668-4998-86d4-87e7c2e7fe28",
+    "latitude": 45.43807016000005,
+    "longitude": 12.335624650000057
+  },
+  {
+    "testImage": "images/artwork_137_01.jpg",
+    "expectedArtworkId": "5f835d83-7f68-4930-916c-8d8430971c56",
+    "latitude": 45.498228089000065,
+    "longitude": 12.418986872000062
+  },
+  {
+    "testImage": "images/artwork_138_01.jpg",
+    "expectedArtworkId": "5fc73bd0-46b0-4f49-a160-42c38f852c6b",
+    "latitude": 45.43532341000008,
+    "longitude": 12.329564800000071
+  },
+  {
+    "testImage": "images/artwork_139_01.jpg",
+    "expectedArtworkId": "6098c9d3-389f-4345-bf32-844ba8dfdfd1",
+    "latitude": 45.43383477000003,
+    "longitude": 12.33351287000005
+  },
+  {
+    "testImage": "images/artwork_140_01.jpg",
+    "expectedArtworkId": "61436e09-2990-4880-b4dd-b458b0b99809",
+    "latitude": 45.42511940300005,
+    "longitude": 12.333386849000021
+  },
+  {
+    "testImage": "images/artwork_141_01.jpg",
+    "expectedArtworkId": "6165a111-cdc4-48f6-818c-40a0254d6d90",
+    "latitude": 45.43098586100007,
+    "longitude": 12.336525408000057
+  },
+  {
+    "testImage": "images/artwork_142_01.jpg",
+    "expectedArtworkId": "61c0ac56-4748-464b-8117-6363d002c414",
+    "latitude": 45.49848407200005,
+    "longitude": 12.418614526000056
+  },
+  {
+    "testImage": "images/artwork_143_01.jpg",
+    "expectedArtworkId": "62523d44-1e9c-4dfa-9058-77509504d235",
+    "latitude": 45.43625663000006,
+    "longitude": 12.321790690000057
+  },
+  {
+    "testImage": "images/artwork_144_01.jpg",
+    "expectedArtworkId": "62af9f24-c25d-493b-b870-1ff20a343bd8",
+    "latitude": 45.43569413300003,
+    "longitude": 12.334169297000074
+  },
+  {
+    "testImage": "images/artwork_145_01.jpg",
+    "expectedArtworkId": "636b86e9-c203-431a-9401-7de4381dd10b",
+    "latitude": 45.435016430000076,
+    "longitude": 12.323112610000067
+  },
+  {
+    "testImage": "images/artwork_146_01.jpg",
+    "expectedArtworkId": "63c964b8-b4da-4eaa-b0b1-686db8eb8cbc",
+    "latitude": 45.45836976000004,
+    "longitude": 12.348565930000063
+  },
+  {
+    "testImage": "images/artwork_147_01.jpg",
+    "expectedArtworkId": "640322c9-96fe-4c63-b766-adf05fe4b32b",
+    "latitude": 45.430282386000044,
+    "longitude": 12.32900617200005
+  },
+  {
+    "testImage": "images/artwork_148_01.jpg",
+    "expectedArtworkId": "643cd7af-7cda-4f79-beb1-28444f2f93d0",
+    "latitude": 45.42969897000006,
+    "longitude": 12.356055190000063
+  },
+  {
+    "testImage": "images/artwork_149_01.jpg",
+    "expectedArtworkId": "6531b31e-94b3-44f1-a422-660a0c61cc28",
+    "latitude": 45.43235310000006,
+    "longitude": 12.315735000000075
+  },
+  {
+    "testImage": "images/artwork_150_01.jpg",
+    "expectedArtworkId": "669fa5a7-cc83-4380-9394-84dbee4ac195",
+    "latitude": 45.433710939000036,
+    "longitude": 12.320577153000045
+  },
+  {
+    "testImage": "images/artwork_151_01.jpg",
+    "expectedArtworkId": "68bb9354-7363-49ae-a7b1-c1d4d1c81269",
+    "latitude": 45.438212270000065,
+    "longitude": 12.331878140000072
+  },
+  {
+    "testImage": "images/artwork_152_01.jpg",
+    "expectedArtworkId": "694130ce-440f-4f9e-9a70-fd2fcba7862f",
+    "latitude": 45.43509684800006,
+    "longitude": 12.334964884000044
+  },
+  {
+    "testImage": "images/artwork_153_01.jpg",
+    "expectedArtworkId": "6a42e0e2-92cc-4426-ab5d-fb251bbf647a",
+    "latitude": 45.49850081400007,
+    "longitude": 12.418536302000064
+  },
+  {
+    "testImage": "images/artwork_154_01.jpg",
+    "expectedArtworkId": "6a86fa87-5f4b-4739-952f-0ef1dbc9d671",
+    "latitude": 45.45733419000004,
+    "longitude": 12.357571590000077
+  },
+  {
+    "testImage": "images/artwork_155_01.jpg",
+    "expectedArtworkId": "6ab134e8-ec1c-45fd-a649-8dd2b63c546f",
+    "latitude": 45.42928260900004,
+    "longitude": 12.344955894000066
+  },
+  {
+    "testImage": "images/artwork_156_01.jpg",
+    "expectedArtworkId": "6afc7f0a-652f-4e8b-9798-f71fa66c5816",
+    "latitude": 45.43966196000008,
+    "longitude": 12.330549890000043
+  },
+  {
+    "testImage": "images/artwork_157_01.jpg",
+    "expectedArtworkId": "6b46ab3b-b00d-4016-9da2-eff32f3816b5",
+    "latitude": 45.43827102000006,
+    "longitude": 12.335287770000036
+  },
+  {
+    "testImage": "images/artwork_158_01.jpg",
+    "expectedArtworkId": "6bc06d26-d8d0-4176-b739-e187b72b3706",
+    "latitude": 45.43430936300007,
+    "longitude": 12.339295469000035
+  },
+  {
+    "testImage": "images/artwork_159_01.jpg",
+    "expectedArtworkId": "6be387da-04eb-4324-b5c0-b6f1174ee649",
+    "latitude": 45.43448100000006,
+    "longitude": 12.330642730000022
+  },
+  {
+    "testImage": "images/artwork_160_01.jpg",
+    "expectedArtworkId": "6ca8a221-95ef-4dca-992f-3b648885870d",
+    "latitude": 45.43632733000004,
+    "longitude": 12.322630300000071
+  },
+  {
+    "testImage": "images/artwork_161_01.jpg",
+    "expectedArtworkId": "6e2b53a2-a7c3-4636-b12e-ad07103ea905",
+    "latitude": 45.43798856800004,
+    "longitude": 12.336601658000063
+  },
+  {
+    "testImage": "images/artwork_162_01.jpg",
+    "expectedArtworkId": "7153c2e8-87ea-4feb-b562-9845d89de87c",
+    "latitude": 45.45759867000004,
+    "longitude": 12.356888680000054
+  },
+  {
+    "testImage": "images/artwork_163_01.jpg",
+    "expectedArtworkId": "71e0fc90-9890-4863-a04c-c68e3400d485",
+    "latitude": 45.43711542900007,
+    "longitude": 12.33037181700007
+  },
+  {
+    "testImage": "images/artwork_164_01.jpg",
+    "expectedArtworkId": "72132aec-9478-4ec8-b9f8-9b7b571e9de1",
+    "latitude": 45.43208188500006,
+    "longitude": 12.320389633000048
+  },
+  {
+    "testImage": "images/artwork_165_01.jpg",
+    "expectedArtworkId": "735ec671-68ea-4116-b436-01df08a48a4a",
+    "latitude": 45.43364050000008,
+    "longitude": 12.330551640000067
+  },
+  {
+    "testImage": "images/artwork_166_01.jpg",
+    "expectedArtworkId": "73a25b56-13b2-4e63-b6d4-231ececc5aff",
+    "latitude": 45.429787084000054,
+    "longitude": 12.325297997000064
+  },
+  {
+    "testImage": "images/artwork_167_01.jpg",
+    "expectedArtworkId": "74745000-12a2-4549-abe1-7d8ec01fa18d",
+    "latitude": 45.43561946800003,
+    "longitude": 12.338330684000027
+  },
+  {
+    "testImage": "images/artwork_168_01.jpg",
+    "expectedArtworkId": "74bb1c21-8299-46f1-946a-0d1d1948185a",
+    "latitude": 45.452457896000055,
+    "longitude": 12.350927396000031
+  },
+  {
+    "testImage": "images/artwork_169_01.jpg",
+    "expectedArtworkId": "74ce24a5-507a-41b5-81ed-6bbadfb461ae",
+    "latitude": 45.43910961000006,
+    "longitude": 12.334362510000062
+  },
+  {
+    "testImage": "images/artwork_170_01.jpg",
+    "expectedArtworkId": "75562597-35e4-4f12-977c-40c8446e77ac",
+    "latitude": 45.43739589000006,
+    "longitude": 12.333020110000064
+  },
+  {
+    "testImage": "images/artwork_171_01.jpg",
+    "expectedArtworkId": "767e6335-579c-4d40-aeeb-9b031d0a6110",
+    "latitude": 45.424084253000046,
+    "longitude": 12.339270804000023
+  },
+  {
+    "testImage": "images/artwork_172_01.jpg",
+    "expectedArtworkId": "771db429-5265-4f8b-ba1b-2152e49f2b8f",
+    "latitude": 45.43409668800007,
+    "longitude": 12.322191239000063
+  },
+  {
+    "testImage": "images/artwork_173_01.jpg",
+    "expectedArtworkId": "77a3e50b-9245-4f7c-8ff0-b4ebd72608c3",
+    "latitude": 45.43507056000004,
+    "longitude": 12.320367930000032
+  },
+  {
+    "testImage": "images/artwork_174_01.jpg",
+    "expectedArtworkId": "77ab94b1-62a5-4f90-a860-e8f45cae4bd4",
+    "latitude": 45.432285300000046,
+    "longitude": 12.315915910000058
+  },
+  {
+    "testImage": "images/artwork_175_01.jpg",
+    "expectedArtworkId": "77b2d742-0ab0-4ec6-88cb-1fcd93fe3f38",
+    "latitude": 45.43409685000006,
+    "longitude": 12.329210540000076
+  },
+  {
+    "testImage": "images/artwork_176_01.jpg",
+    "expectedArtworkId": "78f53b42-46c1-432f-a75e-9230d94c0533",
+    "latitude": 45.42550607000004,
+    "longitude": 12.32790349000004
+  },
+  {
+    "testImage": "images/artwork_177_01.jpg",
+    "expectedArtworkId": "79afe4c1-71b5-4abc-80cf-983377911345",
+    "latitude": 45.435798394000074,
+    "longitude": 12.33525178800005
+  },
+  {
+    "testImage": "images/artwork_178_01.jpg",
+    "expectedArtworkId": "79d32ea7-76d2-495f-9c3b-4b6886ba96e6",
+    "latitude": 45.430208994000054,
+    "longitude": 12.333740394000074
+  },
+  {
+    "testImage": "images/artwork_179_01.jpg",
+    "expectedArtworkId": "7b2e095b-02bd-4609-901b-5f1ad9d85cf7",
+    "latitude": 45.43779359600006,
+    "longitude": 12.335961868000027
+  },
+  {
+    "testImage": "images/artwork_180_01.jpg",
+    "expectedArtworkId": "7b77191f-0e4b-4a24-a905-19aba10f0c62",
+    "latitude": 45.42925001000003,
+    "longitude": 12.330817533000072
+  },
+  {
+    "testImage": "images/artwork_181_01.jpg",
+    "expectedArtworkId": "7c1829cd-7e94-43ce-af5f-bc89115d0d64",
+    "latitude": 45.42525877200006,
+    "longitude": 12.363616512000021
+  },
+  {
+    "testImage": "images/artwork_182_01.jpg",
+    "expectedArtworkId": "7c47adfa-a044-4e47-bf01-bacc6997e152",
+    "latitude": 45.45292735400005,
+    "longitude": 12.353972056000032
+  },
+  {
+    "testImage": "images/artwork_183_01.jpg",
+    "expectedArtworkId": "7ca5edd0-bad2-45b8-9ae5-e5e1032a4c37",
+    "latitude": 45.454535186000044,
+    "longitude": 12.353212349000046
+  },
+  {
+    "testImage": "images/artwork_184_01.jpg",
+    "expectedArtworkId": "7d8a7202-89bc-4199-81dd-80870d29e688",
+    "latitude": 45.43631910600004,
+    "longitude": 12.334918048000077
+  },
+  {
+    "testImage": "images/artwork_185_01.jpg",
+    "expectedArtworkId": "7e208272-05f8-4aa9-97e1-c44c945c3de1",
+    "latitude": 45.425565480000046,
+    "longitude": 12.322771040000077
+  },
+  {
+    "testImage": "images/artwork_186_01.jpg",
+    "expectedArtworkId": "7e6d614e-91a8-4bb1-85bc-32d95a42a9ff",
+    "latitude": 45.43049384100004,
+    "longitude": 12.33344900000003
+  },
+  {
+    "testImage": "images/artwork_187_01.jpg",
+    "expectedArtworkId": "7f09f8b1-af15-4560-94ef-c867c12db552",
+    "latitude": 45.43248747000007,
+    "longitude": 12.334252690000028
+  },
+  {
+    "testImage": "images/artwork_188_01.jpg",
+    "expectedArtworkId": "7f0a3847-285e-46ae-9d44-25e2354fc923",
+    "latitude": 45.43596960000008,
+    "longitude": 12.331895190000068
+  },
+  {
+    "testImage": "images/artwork_189_01.jpg",
+    "expectedArtworkId": "7fbba6a0-8826-4e2d-b4f2-56015e02ad43",
+    "latitude": 45.43498308000005,
+    "longitude": 12.323978700000055
+  },
+  {
+    "testImage": "images/artwork_190_01.jpg",
+    "expectedArtworkId": "7fc145bb-58c8-4ce6-9947-73f117949abc",
+    "latitude": 45.43536081700006,
+    "longitude": 12.327905165000061
+  },
+  {
+    "testImage": "images/artwork_191_01.jpg",
+    "expectedArtworkId": "7ffdecd6-70ab-40cb-ac58-0ab2f8059c3b",
+    "latitude": 45.43201717000005,
+    "longitude": 12.320442980000053
+  },
+  {
+    "testImage": "images/artwork_192_01.jpg",
+    "expectedArtworkId": "8093ff1c-2cf2-42de-ac57-1df2a9190c4e",
+    "latitude": 45.45606389000005,
+    "longitude": 12.355976130000045
+  },
+  {
+    "testImage": "images/artwork_193_01.jpg",
+    "expectedArtworkId": "822d885e-d8ae-45a1-9960-d7e5352c2ce7",
+    "latitude": 45.43626566800003,
+    "longitude": 12.328042587000027
+  },
+  {
+    "testImage": "images/artwork_194_01.jpg",
+    "expectedArtworkId": "8316ddec-f829-468c-94dd-94d800ef2d2e",
+    "latitude": 45.44018367000007,
+    "longitude": 12.332573050000065
+  },
+  {
+    "testImage": "images/artwork_195_01.jpg",
+    "expectedArtworkId": "8450e147-f002-40e5-ba89-240084641890",
+    "latitude": 45.42610393800004,
+    "longitude": 12.327829683000061
+  },
+  {
+    "testImage": "images/artwork_196_01.jpg",
+    "expectedArtworkId": "84517065-c8d0-44c8-b3d8-b42afc874016",
+    "latitude": 45.43648538600007,
+    "longitude": 12.335671534000028
+  },
+  {
+    "testImage": "images/artwork_197_01.jpg",
+    "expectedArtworkId": "84fc486c-7767-4cee-bd5a-72ec897fd532",
+    "latitude": 45.43597194000006,
+    "longitude": 12.331877650000024
+  },
+  {
+    "testImage": "images/artwork_198_01.jpg",
+    "expectedArtworkId": "854d099a-53ce-4ed7-a5d7-e649308bb753",
+    "latitude": 45.43524890300006,
+    "longitude": 12.336313436000069
+  },
+  {
+    "testImage": "images/artwork_199_01.jpg",
+    "expectedArtworkId": "85c4ed78-9c75-432e-a9d8-417440be39ac",
+    "latitude": 45.430580890000044,
+    "longitude": 12.355780410000023
+  },
+  {
+    "testImage": "images/artwork_200_01.jpg",
+    "expectedArtworkId": "85e90f67-62c9-430d-a09e-722a7c973c14",
+    "latitude": 45.432703840000045,
+    "longitude": 12.331704030000026
+  },
+  {
+    "testImage": "images/artwork_201_01.jpg",
+    "expectedArtworkId": "861cb8c9-5f0c-48c9-b650-5842e0047b04",
+    "latitude": 45.432525257000066,
+    "longitude": 12.337083423000024
+  },
+  {
+    "testImage": "images/artwork_202_01.jpg",
+    "expectedArtworkId": "868f39f2-307c-4f69-b42a-d623e08cd59a",
+    "latitude": 45.43251028000003,
+    "longitude": 12.317668080000033
+  },
+  {
+    "testImage": "images/artwork_203_01.jpg",
+    "expectedArtworkId": "873a1f1a-9e0b-46b5-b8c4-53ec2ff8e476",
+    "latitude": 45.43574720000004,
+    "longitude": 12.335114045000068
+  },
+  {
+    "testImage": "images/artwork_204_01.jpg",
+    "expectedArtworkId": "87c9c2c6-4f0e-40ce-8a07-5614160fa926",
+    "latitude": 45.43816496200003,
+    "longitude": 12.337393668000061
+  },
+  {
+    "testImage": "images/artwork_205_01.jpg",
+    "expectedArtworkId": "88224b32-4d0f-426e-a5cb-01483c8a77f9",
+    "latitude": 45.43024435600006,
+    "longitude": 12.334453318000044
+  },
+  {
+    "testImage": "images/artwork_206_01.jpg",
+    "expectedArtworkId": "88840959-ecd9-4a44-98a8-bd9dec5a4774",
+    "latitude": 45.434066890000054,
+    "longitude": 12.327910460000055
+  },
+  {
+    "testImage": "images/artwork_207_01.jpg",
+    "expectedArtworkId": "88c6d3da-538f-41d7-8b39-37494fb6e256",
+    "latitude": 45.438327350000066,
+    "longitude": 12.335050740000042
+  },
+  {
+    "testImage": "images/artwork_208_01.jpg",
+    "expectedArtworkId": "8a43e09c-3f6e-46d0-be48-095dea3f5df5",
+    "latitude": 45.432683230000066,
+    "longitude": 12.332559200000048
+  },
+  {
+    "testImage": "images/artwork_209_01.jpg",
+    "expectedArtworkId": "8ad046f9-f0f4-429b-8328-7bc8529e9696",
+    "latitude": 45.43007967200003,
+    "longitude": 12.355938851000076
+  },
+  {
+    "testImage": "images/artwork_210_01.jpg",
+    "expectedArtworkId": "8b938d2a-2d24-4bc8-bdd3-109635ac1878",
+    "latitude": 45.43239023000007,
+    "longitude": 12.334631410000043
+  },
+  {
+    "testImage": "images/artwork_211_01.jpg",
+    "expectedArtworkId": "8bbc8d18-38d3-46f6-b7da-3c6027d0c8e1",
+    "latitude": 45.42862052900006,
+    "longitude": 12.332798498000045
+  },
+  {
+    "testImage": "images/artwork_212_01.jpg",
+    "expectedArtworkId": "8d3d80d8-8033-492d-b11c-fe62f28efb9d",
+    "latitude": 45.43981203000004,
+    "longitude": 12.330502280000076
+  },
+  {
+    "testImage": "images/artwork_213_01.jpg",
+    "expectedArtworkId": "8e4de8a6-c504-4a70-aab6-66ac086c8f36",
+    "latitude": 45.43102347000007,
+    "longitude": 12.32195973000006
+  },
+  {
+    "testImage": "images/artwork_214_01.jpg",
+    "expectedArtworkId": "8fbbe644-17da-45bd-933a-54d1ac6eb40a",
+    "latitude": 45.42836863000008,
+    "longitude": 12.360874544000069
+  },
+  {
+    "testImage": "images/artwork_215_01.jpg",
+    "expectedArtworkId": "9022d815-e7ac-42d6-a590-c8c6336bdf02",
+    "latitude": 45.431057174000046,
+    "longitude": 12.323660585000027
+  },
+  {
+    "testImage": "images/artwork_216_01.jpg",
+    "expectedArtworkId": "9097c0c8-972b-4961-a74f-8aceff485b44",
+    "latitude": 45.43830760000003,
+    "longitude": 12.326719955000044
+  },
+  {
+    "testImage": "images/artwork_217_01.jpg",
+    "expectedArtworkId": "9149a57b-278a-4348-a62f-1618ac4a7771",
+    "latitude": 45.43376765000005,
+    "longitude": 12.32148705000003
+  },
+  {
+    "testImage": "images/artwork_218_01.jpg",
+    "expectedArtworkId": "91914232-5dd4-4ca7-8ca1-c3d3db745a46",
+    "latitude": 45.43242648000006,
+    "longitude": 12.334848660000034
+  },
+  {
+    "testImage": "images/artwork_219_01.jpg",
+    "expectedArtworkId": "929183d0-7868-4575-aacc-d3f0e65ec788",
+    "latitude": 45.43709100500007,
+    "longitude": 12.33661649100003
+  },
+  {
+    "testImage": "images/artwork_220_01.jpg",
+    "expectedArtworkId": "92d275d8-5125-4f64-8977-bb560027a30a",
+    "latitude": 45.43235770000007,
+    "longitude": 12.321892160000061
+  },
+  {
+    "testImage": "images/artwork_221_01.jpg",
+    "expectedArtworkId": "92f3b40e-5b92-46c0-89ea-33e5fe272a16",
+    "latitude": 45.42956979400003,
+    "longitude": 12.330882037000038
+  },
+  {
+    "testImage": "images/artwork_222_01.jpg",
+    "expectedArtworkId": "931dedd7-d133-4ae8-b53e-3a8f3f81e2af",
+    "latitude": 45.43738025000005,
+    "longitude": 12.333237240000074
+  },
+  {
+    "testImage": "images/artwork_223_01.jpg",
+    "expectedArtworkId": "9369911d-1243-493c-9210-da1388b5f73d",
+    "latitude": 45.43340588600006,
+    "longitude": 12.340592338000022
+  },
+  {
+    "testImage": "images/artwork_224_01.jpg",
+    "expectedArtworkId": "93913cc4-7246-44c1-ab94-d5aea73c732d",
+    "latitude": 45.43627557900004,
+    "longitude": 12.32563002300003
+  },
+  {
+    "testImage": "images/artwork_225_01.jpg",
+    "expectedArtworkId": "939ae128-ed80-48d9-8620-9bbc8b8b842e",
+    "latitude": 45.43208295900007,
+    "longitude": 12.32561335400004
+  },
+  {
+    "testImage": "images/artwork_226_01.jpg",
+    "expectedArtworkId": "95eafdb8-b5b5-4e37-8ce3-321ae892dd25",
+    "latitude": 45.42640424000007,
+    "longitude": 12.323173040000029
+  },
+  {
+    "testImage": "images/artwork_227_01.jpg",
+    "expectedArtworkId": "96754920-043e-43e7-b3a6-7d91f10a1b1e",
+    "latitude": 45.43704787900003,
+    "longitude": 12.330496942000025
+  },
+  {
+    "testImage": "images/artwork_228_01.jpg",
+    "expectedArtworkId": "97695de7-6c7a-414f-9754-0232462f75a9",
+    "latitude": 45.43753476000006,
+    "longitude": 12.331696300000033
+  },
+  {
+    "testImage": "images/artwork_229_01.jpg",
+    "expectedArtworkId": "981b90cd-3e36-43b7-b51d-da44403ae3b2",
+    "latitude": 45.42938685000007,
+    "longitude": 12.332955320000053
+  },
+  {
+    "testImage": "images/artwork_230_01.jpg",
+    "expectedArtworkId": "992da602-635f-4453-a81d-30db8cb8401a",
+    "latitude": 45.42948194100006,
+    "longitude": 12.326450187000034
+  },
+  {
+    "testImage": "images/artwork_231_01.jpg",
+    "expectedArtworkId": "996360aa-c830-49cd-9beb-fdbc94f873c0",
+    "latitude": 45.43370736000003,
+    "longitude": 12.32062424000003
+  },
+  {
+    "testImage": "images/artwork_232_01.jpg",
+    "expectedArtworkId": "99bf8603-ddaa-4aa5-8617-e9963378b977",
+    "latitude": 45.43813817200004,
+    "longitude": 12.336842856000032
+  },
+  {
+    "testImage": "images/artwork_233_01.jpg",
+    "expectedArtworkId": "9a1da4fa-6317-4cd9-974c-a44fe411088e",
+    "latitude": 45.432637466000074,
+    "longitude": 12.337768393000033
+  },
+  {
+    "testImage": "images/artwork_234_01.jpg",
+    "expectedArtworkId": "9aeecb8d-37c2-42cd-b0df-c7b4224769e0",
+    "latitude": 45.43642510600006,
+    "longitude": 12.326417596000056
+  },
+  {
+    "testImage": "images/artwork_235_01.jpg",
+    "expectedArtworkId": "9c634262-037e-4d87-9b09-680683195ff9",
+    "latitude": 45.430186615000025,
+    "longitude": 12.329489251000041
+  },
+  {
+    "testImage": "images/artwork_236_01.jpg",
+    "expectedArtworkId": "9cd4bf04-8e94-4ee1-a05c-63f90c16deff",
+    "latitude": 45.43627737400004,
+    "longitude": 12.325752022000074
+  },
+  {
+    "testImage": "images/artwork_237_01.jpg",
+    "expectedArtworkId": "9e47a074-0593-4b3f-9ef3-029e01cf3b4e",
+    "latitude": 45.42769404100005,
+    "longitude": 12.36149565900007
+  },
+  {
+    "testImage": "images/artwork_238_01.jpg",
+    "expectedArtworkId": "9e663f8c-5ef8-43d4-a2ab-80f630b2d916",
+    "latitude": 45.436498947000075,
+    "longitude": 12.326387570000065
+  },
+  {
+    "testImage": "images/artwork_239_01.jpg",
+    "expectedArtworkId": "9ef098d3-7154-4e47-8db5-e249c21617d9",
+    "latitude": 45.43386243000003,
+    "longitude": 12.319351740000059
+  },
+  {
+    "testImage": "images/artwork_240_01.jpg",
+    "expectedArtworkId": "9ef972c3-b6c8-4e1d-a383-2329dfbac0ca",
+    "latitude": 45.433856150000054,
+    "longitude": 12.319396330000075
+  },
+  {
+    "testImage": "images/artwork_241_01.jpg",
+    "expectedArtworkId": "9f03bbf3-770f-493f-b41c-9538e2eabd60",
+    "latitude": 45.425014160000046,
+    "longitude": 12.333518771000058
+  },
+  {
+    "testImage": "images/artwork_242_01.jpg",
+    "expectedArtworkId": "9f1a823b-fdfa-4b04-bcfb-e27e973573b1",
+    "latitude": 45.45888739000003,
+    "longitude": 12.353107650000027
+  },
+  {
+    "testImage": "images/artwork_243_01.jpg",
+    "expectedArtworkId": "9ffda6e2-0b0c-4c47-944c-918ae361d6f4",
+    "latitude": 45.43412894800008,
+    "longitude": 12.323540939000054
+  },
+  {
+    "testImage": "images/artwork_244_01.jpg",
+    "expectedArtworkId": "a082d296-db6f-4aa2-98a1-f8a7a820632f",
+    "latitude": 45.42919715600004,
+    "longitude": 12.332871571000055
+  },
+  {
+    "testImage": "images/artwork_245_01.jpg",
+    "expectedArtworkId": "a14c519e-3ecb-47a2-a4ea-e5decb4dad3c",
+    "latitude": 45.43264658000004,
+    "longitude": 12.329571890000068
+  },
+  {
+    "testImage": "images/artwork_246_01.jpg",
+    "expectedArtworkId": "a1e05a70-b3bf-46e6-8ff3-b111ed52d628",
+    "latitude": 45.42562556400003,
+    "longitude": 12.329983984000023
+  },
+  {
+    "testImage": "images/artwork_247_01.jpg",
+    "expectedArtworkId": "a1eaf466-829e-498b-a603-745744f18157",
+    "latitude": 45.43055236300006,
+    "longitude": 12.331043237000074
+  },
+  {
+    "testImage": "images/artwork_248_01.jpg",
+    "expectedArtworkId": "a286b3f5-85ae-4df6-bdac-07f463de3d3e",
+    "latitude": 45.484972199000026,
+    "longitude": 12.406274899000039
+  },
+  {
+    "testImage": "images/artwork_249_01.jpg",
+    "expectedArtworkId": "a43148ff-1846-45b0-ad3e-6e5ffad00eac",
+    "latitude": 45.43851131000008,
+    "longitude": 12.33466253000006
+  },
+  {
+    "testImage": "images/artwork_250_01.jpg",
+    "expectedArtworkId": "a44d8625-ac89-4269-8e7c-b8d89a229ddd",
+    "latitude": 45.43028715100007,
+    "longitude": 12.334254396000063
+  },
+  {
+    "testImage": "images/artwork_251_01.jpg",
+    "expectedArtworkId": "a4b72ee9-9949-475b-8c07-4c47c8f0674d",
+    "latitude": 45.429558443000076,
+    "longitude": 12.32902864500005
+  },
+  {
+    "testImage": "images/artwork_252_01.jpg",
+    "expectedArtworkId": "a63208ce-a2b6-4661-8cc9-64a29e5ce807",
+    "latitude": 45.43054727700007,
+    "longitude": 12.33214502900006
+  },
+  {
+    "testImage": "images/artwork_253_01.jpg",
+    "expectedArtworkId": "a6e472b7-654a-4fb7-b199-6b3973d189dc",
+    "latitude": 45.43332857000007,
+    "longitude": 12.329105900000059
+  },
+  {
+    "testImage": "images/artwork_254_01.jpg",
+    "expectedArtworkId": "a73e0578-d0f6-4300-a5cc-047dfe8b3f49",
+    "latitude": 45.430948200000046,
+    "longitude": 12.322910290000038
+  },
+  {
+    "testImage": "images/artwork_255_01.jpg",
+    "expectedArtworkId": "a8512dec-6e24-4eec-a471-48da9bfc9d52",
+    "latitude": 45.440671440000074,
+    "longitude": 12.330934240000033
+  },
+  {
+    "testImage": "images/artwork_256_01.jpg",
+    "expectedArtworkId": "a907ae96-522c-4879-8cbb-42255ea63b2b",
+    "latitude": 45.42993924000007,
+    "longitude": 12.334367230000055
+  },
+  {
+    "testImage": "images/artwork_257_01.jpg",
+    "expectedArtworkId": "a91a018d-40fc-4975-b004-46d38a59f611",
+    "latitude": 45.43865771000003,
+    "longitude": 12.335139780000077
+  },
+  {
+    "testImage": "images/artwork_258_01.jpg",
+    "expectedArtworkId": "a92deb11-7c77-4d4c-8b6e-6142b9fa535d",
+    "latitude": 45.43124886000004,
+    "longitude": 12.322713750000048
+  },
+  {
+    "testImage": "images/artwork_259_01.jpg",
+    "expectedArtworkId": "a9419f25-5c36-4b4d-b31e-cdefa76a0e6d",
+    "latitude": 45.48540221500008,
+    "longitude": 12.416356998000026
+  },
+  {
+    "testImage": "images/artwork_260_01.jpg",
+    "expectedArtworkId": "a9b761ff-2fab-4ab8-b73d-ab837d7cf1b5",
+    "latitude": 45.42540324000004,
+    "longitude": 12.333997125000053
+  },
+  {
+    "testImage": "images/artwork_261_01.jpg",
+    "expectedArtworkId": "aa77ff96-dc3d-4388-9d41-1cd51611267d",
+    "latitude": 45.458418470000026,
+    "longitude": 12.35743425000004
+  },
+  {
+    "testImage": "images/artwork_262_01.jpg",
+    "expectedArtworkId": "ab362b87-4aea-4abd-8679-8d3b50a33078",
+    "latitude": 45.435282605000054,
+    "longitude": 12.340535746000057
+  },
+  {
+    "testImage": "images/artwork_263_01.jpg",
+    "expectedArtworkId": "ac03ca42-4ea2-457c-9eee-208a4324f437",
+    "latitude": 45.429274502000055,
+    "longitude": 12.333819168000048
+  },
+  {
+    "testImage": "images/artwork_264_01.jpg",
+    "expectedArtworkId": "ac24c918-ec43-4705-a575-efba910f0232",
+    "latitude": 45.43608745500006,
+    "longitude": 12.327314380000075
+  },
+  {
+    "testImage": "images/artwork_265_01.jpg",
+    "expectedArtworkId": "ac86cf3c-de12-4b11-acaa-63d42ee9eddb",
+    "latitude": 45.433938510000075,
+    "longitude": 12.33351134000003
+  },
+  {
+    "testImage": "images/artwork_266_01.jpg",
+    "expectedArtworkId": "af8068d0-2037-4c83-9b99-06a76c68c20c",
+    "latitude": 45.42404114500005,
+    "longitude": 12.339363074000062
+  },
+  {
+    "testImage": "images/artwork_267_01.jpg",
+    "expectedArtworkId": "b08c682f-551f-462d-b3e9-fbadc0ce2180",
+    "latitude": 45.43377007300006,
+    "longitude": 12.339551817000029
+  },
+  {
+    "testImage": "images/artwork_268_01.jpg",
+    "expectedArtworkId": "b0b96e56-8189-4834-b1f0-0317327be43e",
+    "latitude": 45.43329200200003,
+    "longitude": 12.33676082200003
+  },
+  {
+    "testImage": "images/artwork_269_01.jpg",
+    "expectedArtworkId": "b14ecfeb-d105-42e6-8e03-1ce2865ad80a",
+    "latitude": 45.431013051000036,
+    "longitude": 12.326666162000038
+  },
+  {
+    "testImage": "images/artwork_270_01.jpg",
+    "expectedArtworkId": "b1f1f8f8-4c42-4f99-9813-bb4920c9d284",
+    "latitude": 45.430147040000065,
+    "longitude": 12.35566343000005
+  },
+  {
+    "testImage": "images/artwork_271_01.jpg",
+    "expectedArtworkId": "b2c18635-4124-481b-8f4d-c9975ad49862",
+    "latitude": 45.434497890000046,
+    "longitude": 12.330614560000072
+  },
+  {
+    "testImage": "images/artwork_272_01.jpg",
+    "expectedArtworkId": "b2e3c9da-76ed-44e3-ace9-23ae870ddfdd",
+    "latitude": 45.43372030300003,
+    "longitude": 12.339571300000046
+  },
+  {
+    "testImage": "images/artwork_273_01.jpg",
+    "expectedArtworkId": "b2e4dd3f-410c-43d3-9daa-780d75c5b570",
+    "latitude": 45.43365557000004,
+    "longitude": 12.340917277000074
+  },
+  {
+    "testImage": "images/artwork_274_01.jpg",
+    "expectedArtworkId": "b346215d-6f7e-4a89-ae8e-59d373a3c382",
+    "latitude": 45.48501351200008,
+    "longitude": 12.41944675700006
+  },
+  {
+    "testImage": "images/artwork_275_01.jpg",
+    "expectedArtworkId": "b46f556b-2bb3-42ad-becd-99c3610a8bf2",
+    "latitude": 45.43233264000003,
+    "longitude": 12.330411680000054
+  },
+  {
+    "testImage": "images/artwork_276_01.jpg",
+    "expectedArtworkId": "b4f1c731-5600-4770-b345-288bb773c0f9",
+    "latitude": 45.43750002000007,
+    "longitude": 12.332590860000039
+  },
+  {
+    "testImage": "images/artwork_277_01.jpg",
+    "expectedArtworkId": "b589a786-d1f4-4528-98c2-8294dfd0f4bf",
+    "latitude": 45.43567367700007,
+    "longitude": 12.334122703000048
+  },
+  {
+    "testImage": "images/artwork_278_01.jpg",
+    "expectedArtworkId": "b6963ecf-d608-4283-aa39-d4c8c47db8da",
+    "latitude": 45.43640450700008,
+    "longitude": 12.326259693000054
+  },
+  {
+    "testImage": "images/artwork_279_01.jpg",
+    "expectedArtworkId": "b6a75011-ff35-4511-9180-fcdfab8de8f6",
+    "latitude": 45.433738008000034,
+    "longitude": 12.322327994000034
+  },
+  {
+    "testImage": "images/artwork_280_01.jpg",
+    "expectedArtworkId": "b74fa816-3210-4efb-a854-6beb16a2fb98",
+    "latitude": 45.434129950000056,
+    "longitude": 12.333069840000064
+  },
+  {
+    "testImage": "images/artwork_281_01.jpg",
+    "expectedArtworkId": "b7d2d5bf-8bca-45c2-8457-94691e5e6996",
+    "latitude": 45.432907440000065,
+    "longitude": 12.328646740000067
+  },
+  {
+    "testImage": "images/artwork_282_01.jpg",
+    "expectedArtworkId": "b8042ea5-7798-4701-b5f6-a111d256ff39",
+    "latitude": 45.434813492000046,
+    "longitude": 12.336531196000067
+  },
+  {
+    "testImage": "images/artwork_283_01.jpg",
+    "expectedArtworkId": "b8c7743f-3571-43f6-a33a-3b20ae0959bf",
+    "latitude": 45.43832296000005,
+    "longitude": 12.33621246000007
+  },
+  {
+    "testImage": "images/artwork_284_01.jpg",
+    "expectedArtworkId": "b982e952-92a3-4a54-9ae8-670e26904676",
+    "latitude": 45.438299044000075,
+    "longitude": 12.326731923000068
+  },
+  {
+    "testImage": "images/artwork_285_01.jpg",
+    "expectedArtworkId": "baff92f1-e03f-4e8f-bcf2-7ad1b85cf051",
+    "latitude": 45.43208825000005,
+    "longitude": 12.325592407000045
+  },
+  {
+    "testImage": "images/artwork_286_01.jpg",
+    "expectedArtworkId": "bb098d57-aabc-452f-8386-f691c8856b14",
+    "latitude": 45.436719837000055,
+    "longitude": 12.337370602000021
+  },
+  {
+    "testImage": "images/artwork_287_01.jpg",
+    "expectedArtworkId": "bcb82eea-2d12-4e82-a9b7-888d1d2125f5",
+    "latitude": 45.429808792000074,
+    "longitude": 12.328770845000065
+  },
+  {
+    "testImage": "images/artwork_288_01.jpg",
+    "expectedArtworkId": "bce6ec74-d184-4a08-a3b3-d21a79243d1c",
+    "latitude": 45.43533529800004,
+    "longitude": 12.340121299000032
+  },
+  {
+    "testImage": "images/artwork_289_01.jpg",
+    "expectedArtworkId": "bd0bda94-864c-4350-99f5-8f78ce00e70e",
+    "latitude": 45.43815913600008,
+    "longitude": 12.337410462000037
+  },
+  {
+    "testImage": "images/artwork_290_01.jpg",
+    "expectedArtworkId": "bd2c3c79-e966-488d-99bd-50e72eee5cd5",
+    "latitude": 45.43716380200004,
+    "longitude": 12.324302702000068
+  },
+  {
+    "testImage": "images/artwork_291_01.jpg",
+    "expectedArtworkId": "bfd7e40f-87b0-4652-8f1d-ee87d4fa7881",
+    "latitude": 45.43103411900006,
+    "longitude": 12.330334316000062
+  },
+  {
+    "testImage": "images/artwork_292_01.jpg",
+    "expectedArtworkId": "c08cbf09-7865-4dae-aef1-78d559fba977",
+    "latitude": 45.45746874000008,
+    "longitude": 12.356769300000053
+  },
+  {
+    "testImage": "images/artwork_293_01.jpg",
+    "expectedArtworkId": "c282e4d4-c65a-4da3-8916-28428865ade8",
+    "latitude": 45.43748709000005,
+    "longitude": 12.331657490000055
+  },
+  {
+    "testImage": "images/artwork_294_01.jpg",
+    "expectedArtworkId": "c2c7e1df-0136-4ce8-b966-a641f575af10",
+    "latitude": 45.43944478000003,
+    "longitude": 12.33404224000003
+  },
+  {
+    "testImage": "images/artwork_295_01.jpg",
+    "expectedArtworkId": "c347accc-58e3-4c10-8d07-e10b235d58d3",
+    "latitude": 45.430937630000074,
+    "longitude": 12.336956560000033
+  },
+  {
+    "testImage": "images/artwork_296_01.jpg",
+    "expectedArtworkId": "c3921844-fd99-4236-a209-9dc1e32f7482",
+    "latitude": 45.436355390000074,
+    "longitude": 12.331408090000025
+  },
+  {
+    "testImage": "images/artwork_297_01.jpg",
+    "expectedArtworkId": "c436c3cc-5afd-444a-ba64-6149309ef30e",
+    "latitude": 45.43539204600006,
+    "longitude": 12.324233288000073
+  },
+  {
+    "testImage": "images/artwork_298_01.jpg",
+    "expectedArtworkId": "c463943f-4640-41df-b21d-1f763751354c",
+    "latitude": 45.430591710000044,
+    "longitude": 12.32199010000005
+  },
+  {
+    "testImage": "images/artwork_299_01.jpg",
+    "expectedArtworkId": "c612e400-9036-48ad-809a-062ee7a4465e",
+    "latitude": 45.43029356800008,
+    "longitude": 12.334098964000077
+  },
+  {
+    "testImage": "images/artwork_300_01.jpg",
+    "expectedArtworkId": "c6aa1298-ff03-4d0e-89e6-1dd0615b4dbb",
+    "latitude": 45.436189805000026,
+    "longitude": 12.327907716000027
+  },
+  {
+    "testImage": "images/artwork_301_01.jpg",
+    "expectedArtworkId": "c6e397cb-d460-4b48-b0e2-5777a5fce67f",
+    "latitude": 45.43955612000008,
+    "longitude": 12.330905060000077
+  },
+  {
+    "testImage": "images/artwork_302_01.jpg",
+    "expectedArtworkId": "c6f3aa5a-4502-4ea7-9f64-f89ea56dd0df",
+    "latitude": 45.42883039000003,
+    "longitude": 12.33221186000003
+  },
+  {
+    "testImage": "images/artwork_303_01.jpg",
+    "expectedArtworkId": "c6f5a06c-ded1-4c87-bc77-9b70e09ad65c",
+    "latitude": 45.424168982000026,
+    "longitude": 12.339000403000057
+  },
+  {
+    "testImage": "images/artwork_304_01.jpg",
+    "expectedArtworkId": "c901ad10-74f3-4aab-9699-db5ab7a6fbcc",
+    "latitude": 45.427947860000074,
+    "longitude": 12.321068720000028
+  },
+  {
+    "testImage": "images/artwork_305_01.jpg",
+    "expectedArtworkId": "c97ce642-f866-4fb2-92fa-a5e6d374df14",
+    "latitude": 45.43436514000007,
+    "longitude": 12.317756300000042
+  },
+  {
+    "testImage": "images/artwork_306_01.jpg",
+    "expectedArtworkId": "c9c9150d-8878-48bd-b4ca-605847d24e39",
+    "latitude": 45.43390064000005,
+    "longitude": 12.321724710000069
+  },
+  {
+    "testImage": "images/artwork_307_01.jpg",
+    "expectedArtworkId": "cb1fb2ec-0dc9-481d-b376-9961ede80f88",
+    "latitude": 45.43241923000005,
+    "longitude": 12.33485440000004
+  },
+  {
+    "testImage": "images/artwork_308_01.jpg",
+    "expectedArtworkId": "cbe4a83e-9f29-44fb-981a-b75e4965a477",
+    "latitude": 45.435723144000065,
+    "longitude": 12.338908547000074
+  },
+  {
+    "testImage": "images/artwork_309_01.jpg",
+    "expectedArtworkId": "cca0376b-8f45-4314-b15f-4e30d112e116",
+    "latitude": 45.43808855000003,
+    "longitude": 12.334994510000058
+  },
+  {
+    "testImage": "images/artwork_310_01.jpg",
+    "expectedArtworkId": "cdce3168-2a4e-48e7-8ae7-eb6bf8ea53e0",
+    "latitude": 45.42459445000003,
+    "longitude": 12.325965670000073
+  },
+  {
+    "testImage": "images/artwork_311_01.jpg",
+    "expectedArtworkId": "cdefcb4f-baad-4be0-9590-7a01a0dbccb6",
+    "latitude": 45.433358670000075,
+    "longitude": 12.329080180000062
+  },
+  {
+    "testImage": "images/artwork_312_01.jpg",
+    "expectedArtworkId": "cec0c0a7-81a8-4022-ac2c-54e0668fba42",
+    "latitude": 45.42409704900007,
+    "longitude": 12.339451060000044
+  },
+  {
+    "testImage": "images/artwork_313_01.jpg",
+    "expectedArtworkId": "cf19d10b-6f46-432d-8b88-504778d14613",
+    "latitude": 45.43612032000004,
+    "longitude": 12.321653550000065
+  },
+  {
+    "testImage": "images/artwork_314_01.jpg",
+    "expectedArtworkId": "cf2ea4d7-bab6-4742-bb07-bff6d809e0c8",
+    "latitude": 45.435379229000034,
+    "longitude": 12.33406930800004
+  },
+  {
+    "testImage": "images/artwork_315_01.jpg",
+    "expectedArtworkId": "d03bfd73-e478-4d97-b5e6-aaa60bef8303",
+    "latitude": 45.43412818000007,
+    "longitude": 12.329931330000022
+  },
+  {
+    "testImage": "images/artwork_316_01.jpg",
+    "expectedArtworkId": "d0b80bdb-e814-4561-b01b-06e023534a3b",
+    "latitude": 45.428628400000036,
+    "longitude": 12.380879411000024
+  },
+  {
+    "testImage": "images/artwork_317_01.jpg",
+    "expectedArtworkId": "d1454f1c-90c0-4d8d-b36a-82ffcd829f36",
+    "latitude": 45.434927456000025,
+    "longitude": 12.324161283000024
+  },
+  {
+    "testImage": "images/artwork_318_01.jpg",
+    "expectedArtworkId": "d2183590-6d98-494d-9cce-73cf54f3ee60",
+    "latitude": 45.42628763000005,
+    "longitude": 12.324001930000065
+  },
+  {
+    "testImage": "images/artwork_319_01.jpg",
+    "expectedArtworkId": "d31f22a9-77fc-4ff2-8927-e07159a2173b",
+    "latitude": 45.43481082000005,
+    "longitude": 12.324024555000051
+  },
+  {
+    "testImage": "images/artwork_320_01.jpg",
+    "expectedArtworkId": "d3512e37-2c1f-45fc-b6cd-8d0f5c370ada",
+    "latitude": 45.437728425000046,
+    "longitude": 12.329510613000025
+  },
+  {
+    "testImage": "images/artwork_321_01.jpg",
+    "expectedArtworkId": "d4f91aa7-de45-44be-a6b1-c583852794c3",
+    "latitude": 45.43765864300008,
+    "longitude": 12.337811895000073
+  },
+  {
+    "testImage": "images/artwork_322_01.jpg",
+    "expectedArtworkId": "d50d4ecc-7a84-4187-bfa3-18fc223d5263",
+    "latitude": 45.433620285000075,
+    "longitude": 12.33969378300003
+  },
+  {
+    "testImage": "images/artwork_323_01.jpg",
+    "expectedArtworkId": "d5799c9e-ef48-49fd-9f4a-92952e26d5b6",
+    "latitude": 45.432642060000035,
+    "longitude": 12.318594480000058
+  },
+  {
+    "testImage": "images/artwork_324_01.jpg",
+    "expectedArtworkId": "d5a825c7-0cb1-41b8-92e5-21cc28bbe02d",
+    "latitude": 45.43565771600004,
+    "longitude": 12.33852231000003
+  },
+  {
+    "testImage": "images/artwork_325_01.jpg",
+    "expectedArtworkId": "d6a3a3c7-01ee-45cb-8afc-8f799bffcb4d",
+    "latitude": 45.42958956900003,
+    "longitude": 12.331180116000041
+  },
+  {
+    "testImage": "images/artwork_326_01.jpg",
+    "expectedArtworkId": "d6b09302-00aa-474c-ad8a-cba1227e457e",
+    "latitude": 45.458204840000064,
+    "longitude": 12.351379210000061
+  },
+  {
+    "testImage": "images/artwork_327_01.jpg",
+    "expectedArtworkId": "d6f4f1f3-e4da-44e3-8d06-26585b4332d0",
+    "latitude": 45.43639582900005,
+    "longitude": 12.337062668000044
+  },
+  {
+    "testImage": "images/artwork_328_01.jpg",
+    "expectedArtworkId": "d820775c-a0c7-4f69-99b0-39430a3c75ed",
+    "latitude": 45.43466952000006,
+    "longitude": 12.319122870000058
+  },
+  {
+    "testImage": "images/artwork_329_01.jpg",
+    "expectedArtworkId": "d989995e-12ce-441d-af88-0417bdcf22fd",
+    "latitude": 45.42936849200004,
+    "longitude": 12.345110756000054
+  },
+  {
+    "testImage": "images/artwork_330_01.jpg",
+    "expectedArtworkId": "d99e0ef8-c195-4c2f-bb51-3242bf7227a9",
+    "latitude": 45.43079548800006,
+    "longitude": 12.331136404000063
+  },
+  {
+    "testImage": "images/artwork_331_01.jpg",
+    "expectedArtworkId": "d9bad18b-9543-4e19-bd28-3f27fdb1621b",
+    "latitude": 45.43328882900005,
+    "longitude": 12.339828390000037
+  },
+  {
+    "testImage": "images/artwork_332_01.jpg",
+    "expectedArtworkId": "da42b463-4b15-4f1a-b1b1-01bfc1eabd32",
+    "latitude": 45.43578749900007,
+    "longitude": 12.338851867000074
+  },
+  {
+    "testImage": "images/artwork_333_01.jpg",
+    "expectedArtworkId": "db029aa7-c444-496e-a3a7-eab8517599bf",
+    "latitude": 45.428609470000026,
+    "longitude": 12.329994030000023
+  },
+  {
+    "testImage": "images/artwork_334_01.jpg",
+    "expectedArtworkId": "db62d24b-fd29-42aa-83fc-7b0b598a7e8f",
+    "latitude": 45.43459184000005,
+    "longitude": 12.318973930000027
+  },
+  {
+    "testImage": "images/artwork_335_01.jpg",
+    "expectedArtworkId": "dbab3112-1ab7-40a0-9951-33e9467b106d",
+    "latitude": 45.42955795600005,
+    "longitude": 12.33275418200003
+  },
+  {
+    "testImage": "images/artwork_336_01.jpg",
+    "expectedArtworkId": "dc8b781a-e7e7-4b2f-bb93-22ea265e225e",
+    "latitude": 45.43238442000006,
+    "longitude": 12.334615340000028
+  },
+  {
+    "testImage": "images/artwork_337_01.jpg",
+    "expectedArtworkId": "dceb3c66-84a1-40a3-846a-4144b6686fb0",
+    "latitude": 45.43018859000006,
+    "longitude": 12.358333250000044
+  },
+  {
+    "testImage": "images/artwork_338_01.jpg",
+    "expectedArtworkId": "dd0c8833-c020-4dfc-89f9-f5d834c1475f",
+    "latitude": 45.43775274400008,
+    "longitude": 12.330301016000021
+  },
+  {
+    "testImage": "images/artwork_339_01.jpg",
+    "expectedArtworkId": "dd0fe7a8-08cb-4091-9fb4-9252f443c96f",
+    "latitude": 45.43384472000008,
+    "longitude": 12.319387320000033
+  },
+  {
+    "testImage": "images/artwork_340_01.jpg",
+    "expectedArtworkId": "de19b876-9d9a-481d-8cb0-5485c42d27b5",
+    "latitude": 45.43582255900003,
+    "longitude": 12.326399453000022
+  },
+  {
+    "testImage": "images/artwork_341_01.jpg",
+    "expectedArtworkId": "def9863d-4b7a-4759-8ab9-5d064fec4a34",
+    "latitude": 45.42949282300003,
+    "longitude": 12.326446425000029
+  },
+  {
+    "testImage": "images/artwork_342_01.jpg",
+    "expectedArtworkId": "df9bbf7d-0932-4a51-803b-dfa5b7d927f6",
+    "latitude": 45.43259311000003,
+    "longitude": 12.315592540000068
+  },
+  {
+    "testImage": "images/artwork_343_01.jpg",
+    "expectedArtworkId": "e029cf4e-4546-4e5f-9118-32f25fd16d47",
+    "latitude": 45.42458546000006,
+    "longitude": 12.322051560000034
+  },
+  {
+    "testImage": "images/artwork_344_01.jpg",
+    "expectedArtworkId": "e03437b0-4c76-4b4e-9863-4de967bb8e65",
+    "latitude": 45.424532430000056,
+    "longitude": 12.328071730000033
+  },
+  {
+    "testImage": "images/artwork_345_01.jpg",
+    "expectedArtworkId": "e03a05d8-1be6-43de-808e-24df3675fb7a",
+    "latitude": 45.43259493000005,
+    "longitude": 12.329953230000058
+  },
+  {
+    "testImage": "images/artwork_346_01.jpg",
+    "expectedArtworkId": "e0dd57cf-c215-41cf-8196-c7083ec82709",
+    "latitude": 45.452938334000066,
+    "longitude": 12.351267224000026
+  },
+  {
+    "testImage": "images/artwork_347_01.jpg",
+    "expectedArtworkId": "e15f389c-7ba1-4ca6-b3b9-871fe0543856",
+    "latitude": 45.43098013900004,
+    "longitude": 12.326621414000044
+  },
+  {
+    "testImage": "images/artwork_348_01.jpg",
+    "expectedArtworkId": "e1b4c38f-902a-4ed4-a0a1-2ba08e994c21",
+    "latitude": 45.43516829300006,
+    "longitude": 12.326121569000065
+  },
+  {
+    "testImage": "images/artwork_349_01.jpg",
+    "expectedArtworkId": "e4077d0e-bfd3-45e7-90af-12a4361fe942",
+    "latitude": 45.43365383200006,
+    "longitude": 12.320656764000034
+  },
+  {
+    "testImage": "images/artwork_350_01.jpg",
+    "expectedArtworkId": "e463f7a5-8f52-4100-9fad-0bdcf2a64e1f",
+    "latitude": 45.43830441000006,
+    "longitude": 12.33091268000004
+  },
+  {
+    "testImage": "images/artwork_351_01.jpg",
+    "expectedArtworkId": "e591556e-f62d-4407-bfe4-d4d6ca7a75d3",
+    "latitude": 45.437790774000064,
+    "longitude": 12.336552493000056
+  },
+  {
+    "testImage": "images/artwork_352_01.jpg",
+    "expectedArtworkId": "e615a8cc-686f-41fc-9f03-d9503789da96",
+    "latitude": 45.43486463800008,
+    "longitude": 12.338867977000064
+  },
+  {
+    "testImage": "images/artwork_353_01.jpg",
+    "expectedArtworkId": "e692d620-f78b-4d8a-994d-e64933f19c4b",
+    "latitude": 45.43617198000004,
+    "longitude": 12.322869280000077
+  },
+  {
+    "testImage": "images/artwork_354_01.jpg",
+    "expectedArtworkId": "e7ae6ec4-0aab-4425-a771-d6d45f09750c",
+    "latitude": 45.43078040100005,
+    "longitude": 12.32660405200005
+  },
+  {
+    "testImage": "images/artwork_355_01.jpg",
+    "expectedArtworkId": "e7b521a9-7652-456d-8bf6-fbe13671276c",
+    "latitude": 45.436217302000045,
+    "longitude": 12.334544438000023
+  },
+  {
+    "testImage": "images/artwork_356_01.jpg",
+    "expectedArtworkId": "e928c851-e1c3-4c01-9ca8-1dd9c2361730",
+    "latitude": 45.433219370000074,
+    "longitude": 12.333044620000067
+  },
+  {
+    "testImage": "images/artwork_357_01.jpg",
+    "expectedArtworkId": "e98bb032-41d4-43f8-9208-693c3fd70c16",
+    "latitude": 45.438307800000075,
+    "longitude": 12.335041740000065
+  },
+  {
+    "testImage": "images/artwork_358_01.jpg",
+    "expectedArtworkId": "ea290e17-78c1-452b-859d-80df3908e89c",
+    "latitude": 45.43637671500005,
+    "longitude": 12.325763898000048
+  },
+  {
+    "testImage": "images/artwork_359_01.jpg",
+    "expectedArtworkId": "eadeec25-555e-4a4e-a06d-8f9c7d1d31be",
+    "latitude": 45.43494763000007,
+    "longitude": 12.324159360000067
+  },
+  {
+    "testImage": "images/artwork_360_01.jpg",
+    "expectedArtworkId": "eb39ac02-2aae-4768-8fdd-9a0db5b9f69e",
+    "latitude": 45.431054360000076,
+    "longitude": 12.334315870000069
+  },
+  {
+    "testImage": "images/artwork_361_01.jpg",
+    "expectedArtworkId": "ec5efcf2-2fe9-4aa9-8e3c-af308863917c",
+    "latitude": 45.429587870000034,
+    "longitude": 12.332752630000073
+  },
+  {
+    "testImage": "images/artwork_362_01.jpg",
+    "expectedArtworkId": "ecf511bb-c67a-482a-9998-df76c3386b4c",
+    "latitude": 45.43169121400007,
+    "longitude": 12.32588165900006
+  },
+  {
+    "testImage": "images/artwork_363_01.jpg",
+    "expectedArtworkId": "ed7fb2a2-9491-4e18-8659-4ef4617cc788",
+    "latitude": 45.43876852000005,
+    "longitude": 12.334407770000041
+  },
+  {
+    "testImage": "images/artwork_364_01.jpg",
+    "expectedArtworkId": "eddb028f-953c-4308-b21b-a1a065c1e4a6",
+    "latitude": 45.42507530000006,
+    "longitude": 12.324938230000043
+  },
+  {
+    "testImage": "images/artwork_365_01.jpg",
+    "expectedArtworkId": "ee94a587-f67e-4f52-b540-3407faada765",
+    "latitude": 45.43841578000007,
+    "longitude": 12.336360640000066
+  },
+  {
+    "testImage": "images/artwork_366_01.jpg",
+    "expectedArtworkId": "efd9fe97-5d94-4724-b6c7-e5e70247e990",
+    "latitude": 45.45247826600007,
+    "longitude": 12.350883277000037
+  },
+  {
+    "testImage": "images/artwork_367_01.jpg",
+    "expectedArtworkId": "f00a61bf-bafa-42c2-be09-d22de1d86b77",
+    "latitude": 45.484393811000075,
+    "longitude": 12.419210250000049
+  },
+  {
+    "testImage": "images/artwork_368_01.jpg",
+    "expectedArtworkId": "f0632e01-e07c-4cec-9aa8-c1883a72ad8d",
+    "latitude": 45.430293909000056,
+    "longitude": 12.33148241400005
+  },
+  {
+    "testImage": "images/artwork_369_01.jpg",
+    "expectedArtworkId": "f0c47e2d-9527-4810-a75b-5a1c369f60e3",
+    "latitude": 45.43778124600004,
+    "longitude": 12.335953816000028
+  },
+  {
+    "testImage": "images/artwork_370_01.jpg",
+    "expectedArtworkId": "f204d0b0-aec8-4bba-ab06-50f6227418e3",
+    "latitude": 45.48436155100006,
+    "longitude": 12.418726310000068
+  },
+  {
+    "testImage": "images/artwork_371_01.jpg",
+    "expectedArtworkId": "f207fe91-896c-4fb8-846e-effcfa6afca0",
+    "latitude": 45.43664024100008,
+    "longitude": 12.329658576000043
+  },
+  {
+    "testImage": "images/artwork_372_01.jpg",
+    "expectedArtworkId": "f3b26623-414c-46f2-a427-18a582b9d7aa",
+    "latitude": 45.43149655500008,
+    "longitude": 12.326931295000065
+  },
+  {
+    "testImage": "images/artwork_373_01.jpg",
+    "expectedArtworkId": "f46449d5-b3a8-49d4-a7d4-4ea8e766aa66",
+    "latitude": 45.43237035000004,
+    "longitude": 12.33350949000004
+  },
+  {
+    "testImage": "images/artwork_374_01.jpg",
+    "expectedArtworkId": "f46a9e8d-31c6-4b73-839d-a80d1f63674a",
+    "latitude": 45.44043080000006,
+    "longitude": 12.331477520000021
+  },
+  {
+    "testImage": "images/artwork_375_01.jpg",
+    "expectedArtworkId": "f4f02735-e723-49c4-a921-8279c2cdbd48",
+    "latitude": 45.43222270000007,
+    "longitude": 12.321166660000074
+  },
+  {
+    "testImage": "images/artwork_376_01.jpg",
+    "expectedArtworkId": "f536709d-7b6b-4244-841d-ec1b0fdae69d",
+    "latitude": 45.42679344000004,
+    "longitude": 12.313330330000042
+  },
+  {
+    "testImage": "images/artwork_377_01.jpg",
+    "expectedArtworkId": "f59cf3ee-69a3-4dfe-9dbc-3a67bf435ac2",
+    "latitude": 45.43527276900005,
+    "longitude": 12.327951591000044
+  },
+  {
+    "testImage": "images/artwork_378_01.jpg",
+    "expectedArtworkId": "f5f2221f-7fa1-404d-953c-cd4e1cae02c7",
+    "latitude": 45.435086170000034,
+    "longitude": 12.320462711000062
+  },
+  {
+    "testImage": "images/artwork_379_01.jpg",
+    "expectedArtworkId": "f750d885-1a46-4a42-b21d-1d084c84ea03",
+    "latitude": 45.43178991000008,
+    "longitude": 12.33303187000007
+  },
+  {
+    "testImage": "images/artwork_380_01.jpg",
+    "expectedArtworkId": "f7626824-984a-45ef-88a5-2547690c7243",
+    "latitude": 45.42920239000006,
+    "longitude": 12.332288510000069
+  },
+  {
+    "testImage": "images/artwork_381_01.jpg",
+    "expectedArtworkId": "f76655ec-f06b-4f6a-8898-c7495bcd110c",
+    "latitude": 45.436632419000034,
+    "longitude": 12.33732070900004
+  },
+  {
+    "testImage": "images/artwork_382_01.jpg",
+    "expectedArtworkId": "f8743a32-f101-48be-b91d-b8f34c41bb4d",
+    "latitude": 45.43652302500004,
+    "longitude": 12.32957232800004
+  },
+  {
+    "testImage": "images/artwork_383_01.jpg",
+    "expectedArtworkId": "f877c560-47ea-4177-873e-57bbc9140532",
+    "latitude": 45.436143479000066,
+    "longitude": 12.337682277000056
+  },
+  {
+    "testImage": "images/artwork_384_01.jpg",
+    "expectedArtworkId": "f89eca17-ef2c-4b19-9a3e-daa5218a9188",
+    "latitude": 45.49846704500004,
+    "longitude": 12.418595522000032
+  },
+  {
+    "testImage": "images/artwork_385_01.jpg",
+    "expectedArtworkId": "f8cd56a6-bb6e-4328-a83b-0d2140d06b55",
+    "latitude": 45.42864769300007,
+    "longitude": 12.330032755000047
+  },
+  {
+    "testImage": "images/artwork_386_01.jpg",
+    "expectedArtworkId": "f8d25d3f-c9e3-4b4e-8a20-744771e2547c",
+    "latitude": 45.43429773200006,
+    "longitude": 12.322825287000057
+  },
+  {
+    "testImage": "images/artwork_387_01.jpg",
+    "expectedArtworkId": "f95486b9-e2cc-4446-8138-cfea832ef1b9",
+    "latitude": 45.45966036000004,
+    "longitude": 12.355169130000036
+  },
+  {
+    "testImage": "images/artwork_388_01.jpg",
+    "expectedArtworkId": "f9b53b5a-33ea-4c22-8d57-964f0eda7825",
+    "latitude": 45.43424838000004,
+    "longitude": 12.328622490000043
+  },
+  {
+    "testImage": "images/artwork_389_01.jpg",
+    "expectedArtworkId": "fbf458e1-af24-4d62-a7c1-50af85d8f200",
+    "latitude": 45.42416825200007,
+    "longitude": 12.339034952000077
+  },
+  {
+    "testImage": "images/artwork_390_01.jpg",
+    "expectedArtworkId": "fc02c546-f569-4152-b86a-e4b1f710618e",
+    "latitude": 45.434995600000036,
+    "longitude": 12.32387656000003
+  },
+  {
+    "testImage": "images/artwork_391_01.jpg",
+    "expectedArtworkId": "fc55b6b1-69f9-4ca6-98e3-8d0d32004eb8",
+    "latitude": 45.42675719600004,
+    "longitude": 12.363120911000067
+  },
+  {
+    "testImage": "images/artwork_392_01.jpg",
+    "expectedArtworkId": "fc680f39-fd0b-4a2b-ac2a-c1603bd907c9",
+    "latitude": 45.42931456000008,
+    "longitude": 12.333871995000038
+  },
+  {
+    "testImage": "images/artwork_393_01.jpg",
+    "expectedArtworkId": "fc706ac2-5a4c-4f78-b29a-f4cbb2609b96",
+    "latitude": 45.457360030000075,
+    "longitude": 12.357209650000073
+  },
+  {
+    "testImage": "images/artwork_394_01.jpg",
+    "expectedArtworkId": "fdf6d2ca-404c-4495-b106-78f5b74cf264",
+    "latitude": 45.43211848000004,
+    "longitude": 12.315879650000056
+  },
+  {
+    "testImage": "images/artwork_395_01.jpg",
+    "expectedArtworkId": "fe36edf0-4172-4eee-9b78-1f7b1392b878",
+    "latitude": 45.42959261000004,
+    "longitude": 12.330820257000028
+  },
+  {
+    "testImage": "images/artwork_396_01.jpg",
+    "expectedArtworkId": "fe6a72e9-61f7-402f-9fc2-f71aee3b2999",
+    "latitude": 45.43267510000004,
+    "longitude": 12.333070680000048
+  },
+  {
+    "testImage": "images/artwork_397_01.jpg",
+    "expectedArtworkId": "fe9749ee-6288-4f8c-be32-4baf9dd1d3eb",
+    "latitude": 45.43531254000004,
+    "longitude": 12.324987504000035
+  },
+  {
+    "testImage": "images/artwork_398_01.jpg",
+    "expectedArtworkId": "ff0bd287-235b-4e74-a16e-b0113f4733c5",
+    "latitude": 45.43702346900005,
+    "longitude": 12.324751926000033
+  },
+  {
+    "testImage": "images/artwork_399_01.jpg",
+    "expectedArtworkId": "ff16870c-f6f3-4ad3-8298-347b01a53239",
+    "latitude": 45.43433275000007,
+    "longitude": 12.32268066000006
+  },
+  {
+    "testImage": "images/artwork_400_01.jpg",
+    "expectedArtworkId": "ffe3f2da-e84a-4adb-b750-c419212771a8",
+    "latitude": 45.438317323000035,
+    "longitude": 12.326743402000034
+  },
+  {
+    "testImage": "images/artwork_401_01.jpg",
+    "expectedArtworkId": "ffe71277-eaca-498f-988f-3f7ee32b4dd2",
+    "latitude": 45.43128677200008,
+    "longitude": 12.322398299000042
+  },
+  {
+    "testImage": "images/artwork_402_01.jpg",
+    "expectedArtworkId": "fff7336a-4e42-49af-ba8f-c6a26bb6b0e9",
+    "latitude": 45.43364460000004,
+    "longitude": 12.320700270000032
+  }
+]
