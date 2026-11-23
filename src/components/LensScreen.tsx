@@ -22,13 +22,8 @@ import {
   ArrowRight,
   Maximize2,
 } from 'lucide-react';
-import {
-  MONUMENTS,
-  LENS_TEST_CASES,
-  AVAILABLE_REGIONS,
-  DATASET_STATS,
-} from '../data/monuments';
-import { Monument, MonumentCategory } from '../types';
+import { DATASET_STATS } from '../data/monuments';
+import { Monument } from '../types';
 import { getCategoryPinTheme } from './VeniceGoogleMap';
 import { ImageLightboxModal } from './ImageLightboxModal';
 import { ArtworkImage } from './ArtworkImage';
@@ -52,7 +47,6 @@ interface RecognitionResult {
   visualEvidence: string;
   detectedCategory?: string;
   engine?: string;
-  verifiedTestCase?: boolean;
 }
 
 type GpsStatus = 'idle' | 'requesting' | 'ready' | 'denied' | 'unavailable';
@@ -87,15 +81,11 @@ export const LensScreen: React.FC<LensScreenProps> = ({
   const [noMatchMessage, setNoMatchMessage] = useState<string | null>(null);
   const [recognitionError, setRecognitionError] = useState<string | null>(null);
   const [lastQueryContext, setLastQueryContext] = useState<{
-    expectedArtworkId?: string;
     latitude?: number;
     longitude?: number;
   } | null>(null);
 
   const [showSurveyInfo, setShowSurveyInfo] = useState(false);
-  const [testCaseFilter, setTestCaseFilter] = useState<MonumentCategory | 'All'>('All');
-  const [testCaseRegionFilter, setTestCaseRegionFilter] = useState<string>('All');
-  const [testCaseVisibleCount, setTestCaseVisibleCount] = useState<number>(24);
   const [matchedImageFailed, setMatchedImageFailed] = useState<boolean>(false);
   const [lightboxState, setLightboxState] = useState<{
     images: string[];
@@ -257,7 +247,6 @@ export const LensScreen: React.FC<LensScreenProps> = ({
       options?: {
         mimeType?: string;
         fileName?: string;
-        expectedArtworkId?: string;
         latitude?: number;
         longitude?: number;
       }
@@ -275,7 +264,6 @@ export const LensScreen: React.FC<LensScreenProps> = ({
       setNoMatchMessage(null);
       setRecognitionError(null);
       setLastQueryContext({
-        expectedArtworkId: options?.expectedArtworkId,
         latitude: lat,
         longitude: lng,
       });
@@ -331,9 +319,6 @@ export const LensScreen: React.FC<LensScreenProps> = ({
 
         if (data?.match?.monument) {
           const matchedMonument: Monument = data.match.monument;
-          const isVerified = options?.expectedArtworkId
-            ? matchedMonument.id === options.expectedArtworkId
-            : undefined;
 
           setMatchedImageFailed(false);
           setResult({
@@ -344,7 +329,6 @@ export const LensScreen: React.FC<LensScreenProps> = ({
               `Matched Survey123 record ${matchedMonument.surveyCode} (${matchedMonument.category} • ${matchedMonument.regionDisplay}).`,
             detectedCategory: data.match.detectedCategory || matchedMonument.category,
             engine: data.match.engine || 'PreserVenice Visual Lens Engine',
-            verifiedTestCase: isVerified,
           });
           return;
         }
@@ -398,39 +382,6 @@ export const LensScreen: React.FC<LensScreenProps> = ({
     return () => window.removeEventListener('paste', handlePaste);
   }, [processImageSearch]);
 
-  // Run one of the imported lens_test_cases through real image byte recognition
-  const handleRunTestCase = async (testCase: (typeof LENS_TEST_CASES)[number]) => {
-    try {
-      setAnalyzing(true);
-      setRecognitionError(null);
-      setNoMatchMessage(null);
-      const res = await fetch(testCase.imageUrl);
-      const contentType = res.headers.get('content-type') || '';
-      if (!res.ok || !contentType.startsWith('image/')) {
-        throw new Error(
-          `Reference photograph for ${testCase.label} (${testCase.regionDisplay}) is not uploaded on disk yet. Supply the image files in /public/images/ or capture a live photo above.`
-        );
-      }
-      const blob = await res.blob();
-      const base64: string = await new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onloadend = () => resolve(reader.result as string);
-        reader.onerror = () => reject(new Error('Failed to encode test image.'));
-        reader.readAsDataURL(blob);
-      });
-
-      await processImageSearch(base64, {
-        mimeType: blob.type || 'image/jpeg',
-        expectedArtworkId: testCase.expectedArtworkId,
-        latitude: testCase.latitude,
-        longitude: testCase.longitude,
-      });
-    } catch (err: any) {
-      setAnalyzing(false);
-      setRecognitionError(err?.message || 'Failed to run test case.');
-    }
-  };
-
   // Capture frame from live WebRTC viewfinder, or fall back to native iPhone camera
   const handleCapturePhoto = () => {
     if (!cameraActive || !videoRef.current || !videoRef.current.videoWidth) {
@@ -472,7 +423,6 @@ export const LensScreen: React.FC<LensScreenProps> = ({
     processImageSearch(currentImage, {
       mimeType: currentMimeType,
       fileName: currentFileName || undefined,
-      expectedArtworkId: lastQueryContext?.expectedArtworkId,
       latitude: lastQueryContext?.latitude,
       longitude: lastQueryContext?.longitude,
     });
@@ -498,17 +448,6 @@ export const LensScreen: React.FC<LensScreenProps> = ({
     setFacingMode(nextMode);
     startCamera(nextMode);
   };
-
-  const filteredTestCases = LENS_TEST_CASES.filter((tc) => {
-    const matchesCat = testCaseFilter === 'All' || tc.category === testCaseFilter;
-    const matchesRegion =
-      testCaseRegionFilter === 'All' ||
-      tc.region === testCaseRegionFilter ||
-      tc.regionDisplay === testCaseRegionFilter;
-    return matchesCat && matchesRegion;
-  });
-  const displayedTestCases = filteredTestCases.slice(0, testCaseVisibleCount);
-  const remainingTestCases = Math.max(0, filteredTestCases.length - displayedTestCases.length);
 
   const categoryTheme = result ? getCategoryPinTheme(result.monument.category) : null;
   const hasFeedbackOverlay = !result && (!!noMatchMessage || !!recognitionError);
@@ -894,109 +833,6 @@ export const LensScreen: React.FC<LensScreenProps> = ({
             )}
           </div>
 
-          {/* Imported Survey123 Lens Test Cases across Venice regions */}
-          <div className="bg-white rounded-3xl p-4 shadow-sm border border-[#e5e7eb]">
-            <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-              <div>
-                <span className="text-[10px] font-bold text-[#6b7280] uppercase tracking-wider block">
-                  Venice Lens Test Cases (lens_test_cases.json)
-                </span>
-                <span className="text-xs font-bold text-[#111827]">
-                  {filteredTestCases.length} of {LENS_TEST_CASES.length} records ({DATASET_STATS.accessibleArchiveImagesCount} reference photos loaded)
-                </span>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-1.5">
-                <select
-                  value={testCaseRegionFilter}
-                  onChange={(e) => {
-                    setTestCaseRegionFilter(e.target.value);
-                    setTestCaseVisibleCount(24);
-                  }}
-                  aria-label="Filter test cases by region"
-                  className="bg-[#f3f4f6] border border-[#e5e7eb] rounded-full px-2.5 py-1 text-[10px] font-bold text-[#111827] cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#b91c1c]"
-                >
-                  <option value="All">All Regions ({LENS_TEST_CASES.length})</option>
-                  {AVAILABLE_REGIONS.map((reg) => (
-                    <option key={reg.rawRegion} value={reg.rawRegion}>
-                      {reg.displayName} ({reg.count})
-                    </option>
-                  ))}
-                </select>
-
-                {(['All', 'Statues', 'Reliefs', 'Monuments'] as const).map((cat) => (
-                  <button
-                    key={cat}
-                    onClick={() => {
-                      setTestCaseFilter(cat);
-                      setTestCaseVisibleCount(24);
-                    }}
-                    className={`px-2.5 py-1 rounded-full text-[10px] font-bold transition cursor-pointer ${
-                      testCaseFilter === cat
-                        ? 'bg-black text-white'
-                        : 'bg-[#f3f4f6] text-[#4b5563] hover:bg-[#e5e7eb]'
-                    }`}
-                  >
-                    {cat}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 max-h-96 overflow-y-auto pr-1">
-              {displayedTestCases.map((tc) => {
-                const isStatue = tc.category === 'Statues';
-                const isMonument = tc.category === 'Monuments';
-                return (
-                  <button
-                    key={tc.id}
-                    onClick={() => handleRunTestCase(tc)}
-                    disabled={analyzing}
-                    className="p-2 rounded-2xl border border-[#e5e7eb] hover:border-[#b91c1c] hover:bg-[#fee2e2]/25 transition text-left group cursor-pointer flex flex-col gap-1.5"
-                  >
-                    <div className="relative w-full h-20 rounded-xl overflow-hidden bg-[#f3f4f6]">
-                      <ArtworkImage
-                        src={tc.imageUrl}
-                        alt={tc.label}
-                        surveyCode={tc.regionDisplay}
-                        compact
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                      />
-                      <span
-                        className={`absolute top-1.5 left-1.5 w-2.5 h-2.5 rounded-full border border-white shadow-xs ${
-                          isStatue
-                            ? 'bg-[#0284c7]'
-                            : isMonument
-                            ? 'bg-[#b91c1c]'
-                            : 'bg-[#ea580c]'
-                        }`}
-                      ></span>
-                    </div>
-                    <div>
-                      <div className="font-bold text-[11px] text-[#111827] group-hover:text-[#b91c1c] truncate">
-                        {tc.label}
-                      </div>
-                      <div className="text-[9px] text-[#6b7280] font-mono truncate">
-                        {tc.regionDisplay} • {tc.latitude.toFixed(4)}° N
-                      </div>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-
-            {remainingTestCases > 0 && (
-              <div className="mt-3 text-center">
-                <button
-                  type="button"
-                  onClick={() => setTestCaseVisibleCount((c) => c + 24)}
-                  className="px-4 py-1.5 rounded-full bg-[#f3f4f6] hover:bg-[#e5e7eb] text-[11px] font-bold text-[#111827] transition cursor-pointer"
-                >
-                  Show More Test Cases ({remainingTestCases} remaining)
-                </button>
-              </div>
-            )}
-          </div>
         </div>
       ) : (
         /* Recognition Match Result Card */
@@ -1016,11 +852,6 @@ export const LensScreen: React.FC<LensScreenProps> = ({
                     <span className="bg-[#10b981] text-white text-[9px] font-black px-2 py-0.5 rounded-full">
                       {result.confidence}% Match
                     </span>
-                    {result.verifiedTestCase && (
-                      <span className="bg-white/15 text-[#93ccff] text-[9px] font-bold px-2 py-0.5 rounded-full">
-                        Test ID Verified
-                      </span>
-                    )}
                   </div>
                   <div className="text-[10px] text-[#93ccff] font-mono truncate">
                     {result.engine}
