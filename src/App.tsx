@@ -149,9 +149,7 @@ export default function App() {
 
       {/* Explore Tab (kept mounted via CSS to avoid remounting Google Map across tab switches) */}
       <main
-        className={
-          activeTab === 'explore' ? 'pb-20 animate-in fade-in duration-200' : 'hidden'
-        }
+        className={activeTab === 'explore' ? 'pb-20' : 'hidden'}
         aria-hidden={activeTab !== 'explore'}
       >
         {/* Header with Search and Categories */}

@@ -92,33 +92,33 @@ export const CuratedTrails: React.FC<CuratedTrailsProps> = ({
           return (
             <article
               key={trail.id}
-              className="w-[82vw] max-w-[330px] sm:w-[310px] shrink-0 bg-white rounded-3xl overflow-hidden border border-[#e5e7eb] shadow-sm snap-start flex flex-col hover:shadow-md transition duration-200"
+              className="w-[80vw] max-w-[310px] sm:w-[310px] shrink-0 bg-white rounded-3xl overflow-hidden isolate border border-[#e5e7eb] shadow-sm snap-start flex flex-col hover:shadow-md transition duration-200"
             >
               {/* Card Image Module */}
-              <div className="relative h-44 w-full bg-[#f3f4f6] overflow-hidden shrink-0">
+              <div className="relative h-44 w-full bg-[#f3f4f6] overflow-hidden rounded-t-[23px] shrink-0">
                 <ArtworkImage
                   src={trail.imageUrl}
                   alt={trail.title}
                   surveyCode={trail.number}
                   regionLabel={regionsLabel}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  className="block w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                 />
 
                 {/* Top Badges */}
-                <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 pointer-events-none">
+                <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 min-w-0 overflow-hidden pointer-events-none">
                   <span className="bg-black/85 text-white backdrop-blur-md px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wider whitespace-nowrap shrink-0">
                     {trail.number}
                   </span>
 
                   {trail.rating !== undefined ? (
-                    <span className="bg-white/95 text-[#111827] backdrop-blur-md px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1 shadow-xs max-w-[58%] truncate">
+                    <span className="bg-white/95 text-[#111827] backdrop-blur-md px-2.5 py-1 rounded-full text-[11px] font-bold flex items-center gap-1 shadow-xs min-w-0 max-w-[58%] truncate">
                       <Star className="w-3 h-3 fill-[#b91c1c] text-[#b91c1c] shrink-0" />
                       <span className="truncate tabular-nums">
                         {trail.rating} ({trail.reviewsCount})
                       </span>
                     </span>
                   ) : (
-                    <span className="bg-white/95 text-[#111827] backdrop-blur-md px-2.5 py-1 rounded-full text-[11px] font-bold shadow-xs max-w-[58%] truncate">
+                    <span className="bg-white/95 text-[#111827] backdrop-blur-md px-2.5 py-1 rounded-full text-[11px] font-bold shadow-xs min-w-0 max-w-[58%] truncate">
                       {regionsLabel}
                     </span>
                   )}
@@ -126,7 +126,7 @@ export const CuratedTrails: React.FC<CuratedTrailsProps> = ({
 
                 {/* Bottom Featured Loop Badge */}
                 {trail.featuredBadge && (
-                  <div className="absolute bottom-3 left-3 right-3 pointer-events-none flex">
+                  <div className="absolute bottom-3 left-3 right-3 pointer-events-none flex min-w-0 overflow-hidden">
                     <span className="bg-[#b91c1c] text-white px-3 py-1 rounded-full text-[11px] font-semibold tracking-wide shadow-sm max-w-full truncate">
                       {trail.featuredBadge}
                     </span>

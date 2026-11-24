@@ -129,13 +129,13 @@ export const MonumentDetailModal: React.FC<MonumentDetailModalProps> = ({
           </div>
 
           {/* Coordinate Tag, Enlarge Hint & Photo Counter */}
-          <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-2 pointer-events-none">
-            <span className="bg-black/75 text-white backdrop-blur-md px-3 py-1 rounded-full text-xs font-mono flex items-center gap-1.5 pointer-events-auto">
-              <MapPin className="w-3.5 h-3.5 text-[#ff6d4d]" />
-              {monument.coordinates.formatted}
+          <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-center justify-between gap-2 pointer-events-none">
+            <span className="bg-black/75 text-white backdrop-blur-md px-3 py-1 rounded-full text-xs font-mono flex items-center gap-1.5 pointer-events-auto min-w-0 max-w-full truncate">
+              <MapPin className="w-3.5 h-3.5 text-[#ff6d4d] shrink-0" />
+              <span className="truncate">{monument.coordinates.formatted}</span>
             </span>
 
-            <div className="flex items-center gap-1.5 pointer-events-auto">
+            <div className="flex items-center gap-1.5 pointer-events-auto shrink-0">
               {photos.length > 1 && (
                 <div className="flex items-center gap-1.5 bg-black/70 p-1 rounded-full">
                   {photos.map((imgUrl, idx) => (
