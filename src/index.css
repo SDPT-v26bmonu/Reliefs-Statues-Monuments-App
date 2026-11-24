@@ -3,15 +3,12 @@
 @layer base {
   html {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
   }
 
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     -webkit-tap-highlight-color: transparent;
-    overflow-x: clip;
-    overscroll-behavior-x: none;
   }
 
   h1, h2, h3, h4, .font-display {
@@ -37,10 +34,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
   *,
   *::before,
   *::after {
@@ -58,10 +51,9 @@
   padding-top: env(safe-area-inset-top, 0px);
 }
 
-/* Smooth touch panning for horizontal scrollers without blocking Android vertical page scroll */
+/* Native smooth horizontal scrolling without blocking vertical page scroll or pinch-zoom */
 .scroll-x-smooth {
-  -webkit-overflow-scrolling: touch;
-  touch-action: pan-x pan-y;
+  overscroll-behavior-x: contain;
 }
 
 /* Custom scrollbar for horizontal trail scrolls & drawers */

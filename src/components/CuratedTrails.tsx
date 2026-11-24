@@ -84,7 +84,7 @@ export const CuratedTrails: React.FC<CuratedTrailsProps> = ({
       {/* Horizontal Scroll Trail Cards */}
       <div
         ref={scrollRef}
-        className="flex gap-4 overflow-x-auto scroll-x-smooth subtle-scrollbar pb-3 -mx-4 px-4 sm:mx-0 sm:px-0 snap-x snap-proximity"
+        className="flex gap-4 overflow-x-auto scroll-x-smooth subtle-scrollbar pb-3 snap-x snap-proximity"
       >
         {CURATED_TRAILS.map((trail) => {
           const regionsLabel =

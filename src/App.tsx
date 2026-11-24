@@ -128,7 +128,7 @@ export default function App() {
   };
 
   const appContent = (
-    <div className="min-h-dvh overflow-x-clip bg-[#ffffff] text-[#111827] selection:bg-[#fee2e2] selection:text-[#b91c1c] flex flex-col justify-between">
+    <div className="min-h-screen bg-[#ffffff] text-[#111827] selection:bg-[#fee2e2] selection:text-[#b91c1c] flex flex-col justify-between">
       {/* Sticky Google Maps Quota Warning Banner */}
       {quotaExceeded && (
         <div className="bg-amber-50 border-b border-amber-200 text-amber-900 px-4 py-2.5 text-xs md:text-sm text-center sticky top-0 z-50 shadow-sm">
